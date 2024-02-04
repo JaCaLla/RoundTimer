@@ -15,9 +15,17 @@
 		290C55042B58184A00D0CD4C /* RoundTimer_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C55032B58184A00D0CD4C /* RoundTimer_Watch_AppTests.swift */; };
 		290C550E2B58184A00D0CD4C /* RoundTimer_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C550D2B58184A00D0CD4C /* RoundTimer_Watch_AppUITests.swift */; };
 		290C55102B58184A00D0CD4C /* RoundTimer_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C550F2B58184A00D0CD4C /* RoundTimer_Watch_AppUITestsLaunchTests.swift */; };
-		290C55212B581B0100D0CD4C /* NewRoundTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C55202B581B0100D0CD4C /* NewRoundTimerView.swift */; };
+		290C55212B581B0100D0CD4C /* SelectEMOMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C55202B581B0100D0CD4C /* SelectEMOMView.swift */; };
 		290C55232B581E7200D0CD4C /* RoundsStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C55222B581E7200D0CD4C /* RoundsStepView.swift */; };
 		290C55272B582BD900D0CD4C /* TimerPickerStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C55262B582BD900D0CD4C /* TimerPickerStepView.swift */; };
+		2934BE762B5C206300B65361 /* EMOMTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2934BE752B5C206300B65361 /* EMOMTimerView.swift */; };
+		2934BE792B5C232800B65361 /* Emom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2934BE782B5C232800B65361 /* Emom.swift */; };
+		2934BE7C2B5C23C600B65361 /* EmomUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2934BE7B2B5C23C600B65361 /* EmomUT.swift */; };
+		2934BE802B5C36B700B65361 /* EMOMTimerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2934BE7F2B5C36B700B65361 /* EMOMTimerListView.swift */; };
+		2971C68E2B629ECA00D1BF24 /* EMOMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2971C68D2B629ECA00D1BF24 /* EMOMViewModel.swift */; };
+		2971C6942B62A77A00D1BF24 /* EMOMViewModelUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2971C6932B62A77A00D1BF24 /* EMOMViewModelUT.swift */; };
+		29C058EF2B6C1BD900F82CB2 /* VibrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C058EE2B6C1BD800F82CB2 /* VibrationView.swift */; };
+		29F823FF2B5D824100BFB696 /* EMOMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F823FE2B5D824100BFB696 /* EMOMView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,9 +78,18 @@
 		290C55092B58184A00D0CD4C /* RoundTimer Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RoundTimer Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		290C550D2B58184A00D0CD4C /* RoundTimer_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundTimer_Watch_AppUITests.swift; sourceTree = "<group>"; };
 		290C550F2B58184A00D0CD4C /* RoundTimer_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundTimer_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		290C55202B581B0100D0CD4C /* NewRoundTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRoundTimerView.swift; sourceTree = "<group>"; };
+		290C55202B581B0100D0CD4C /* SelectEMOMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEMOMView.swift; sourceTree = "<group>"; };
 		290C55222B581E7200D0CD4C /* RoundsStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundsStepView.swift; sourceTree = "<group>"; };
 		290C55262B582BD900D0CD4C /* TimerPickerStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPickerStepView.swift; sourceTree = "<group>"; };
+		2934BE752B5C206300B65361 /* EMOMTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOMTimerView.swift; sourceTree = "<group>"; };
+		2934BE782B5C232800B65361 /* Emom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emom.swift; sourceTree = "<group>"; };
+		2934BE7B2B5C23C600B65361 /* EmomUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmomUT.swift; sourceTree = "<group>"; };
+		2934BE7F2B5C36B700B65361 /* EMOMTimerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOMTimerListView.swift; sourceTree = "<group>"; };
+		2971C68D2B629ECA00D1BF24 /* EMOMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOMViewModel.swift; sourceTree = "<group>"; };
+		2971C6932B62A77A00D1BF24 /* EMOMViewModelUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOMViewModelUT.swift; sourceTree = "<group>"; };
+		29C058EE2B6C1BD800F82CB2 /* VibrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrationView.swift; sourceTree = "<group>"; };
+		29E484292B6FA9FB007FF670 /* RoundTimer-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "RoundTimer-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		29F823FE2B5D824100BFB696 /* EMOMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOMView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,12 +141,11 @@
 		290C54F12B58184800D0CD4C /* RoundTimer Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				29E484292B6FA9FB007FF670 /* RoundTimer-Watch-App-Info.plist */,
 				290C54F22B58184800D0CD4C /* RoundTimerApp.swift */,
-				290C54F42B58184800D0CD4C /* ActiveTimerView.swift */,
-				290C55202B581B0100D0CD4C /* NewRoundTimerView.swift */,
-				290C55222B581E7200D0CD4C /* RoundsStepView.swift */,
-				290C55262B582BD900D0CD4C /* TimerPickerStepView.swift */,
+				2934BE7D2B5C367200B65361 /* Views */,
 				290C54F62B58184A00D0CD4C /* Assets.xcassets */,
+				2934BE772B5C22EB00B65361 /* Model */,
 				290C54F82B58184A00D0CD4C /* Preview Content */,
 			);
 			path = "RoundTimer Watch App";
@@ -146,6 +162,8 @@
 		290C55022B58184A00D0CD4C /* RoundTimer Watch AppTests */ = {
 			isa = PBXGroup;
 			children = (
+				2971C68F2B62A6F800D1BF24 /* Views */,
+				2934BE7A2B5C234200B65361 /* Model */,
 				290C55032B58184A00D0CD4C /* RoundTimer_Watch_AppTests.swift */,
 			);
 			path = "RoundTimer Watch AppTests";
@@ -158,6 +176,110 @@
 				290C550F2B58184A00D0CD4C /* RoundTimer_Watch_AppUITestsLaunchTests.swift */,
 			);
 			path = "RoundTimer Watch AppUITests";
+			sourceTree = "<group>";
+		};
+		2934BE772B5C22EB00B65361 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2934BE782B5C232800B65361 /* Emom.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2934BE7A2B5C234200B65361 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2934BE7B2B5C23C600B65361 /* EmomUT.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2934BE7D2B5C367200B65361 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				29C058EE2B6C1BD800F82CB2 /* VibrationView.swift */,
+				2934BE812B5C41E300B65361 /* EMOM */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2934BE7E2B5C368800B65361 /* EMOMTimerListView */ = {
+			isa = PBXGroup;
+			children = (
+				2934BE7F2B5C36B700B65361 /* EMOMTimerListView.swift */,
+				2934BE752B5C206300B65361 /* EMOMTimerView.swift */,
+			);
+			path = EMOMTimerListView;
+			sourceTree = "<group>";
+		};
+		2934BE812B5C41E300B65361 /* EMOM */ = {
+			isa = PBXGroup;
+			children = (
+				2971C68B2B629E9E00D1BF24 /* ActiveTimerView */,
+			);
+			path = EMOM;
+			sourceTree = "<group>";
+		};
+		2937F0E72B6954E800758E47 /* SelectEMOMView */ = {
+			isa = PBXGroup;
+			children = (
+				290C55202B581B0100D0CD4C /* SelectEMOMView.swift */,
+				290C55222B581E7200D0CD4C /* RoundsStepView.swift */,
+				290C55262B582BD900D0CD4C /* TimerPickerStepView.swift */,
+				2934BE7E2B5C368800B65361 /* EMOMTimerListView */,
+			);
+			path = SelectEMOMView;
+			sourceTree = "<group>";
+		};
+		2971C68B2B629E9E00D1BF24 /* ActiveTimerView */ = {
+			isa = PBXGroup;
+			children = (
+				290C54F42B58184800D0CD4C /* ActiveTimerView.swift */,
+				2971C68C2B629EB400D1BF24 /* EMOMView */,
+				2937F0E72B6954E800758E47 /* SelectEMOMView */,
+			);
+			path = ActiveTimerView;
+			sourceTree = "<group>";
+		};
+		2971C68C2B629EB400D1BF24 /* EMOMView */ = {
+			isa = PBXGroup;
+			children = (
+				29F823FE2B5D824100BFB696 /* EMOMView.swift */,
+				2971C68D2B629ECA00D1BF24 /* EMOMViewModel.swift */,
+			);
+			path = EMOMView;
+			sourceTree = "<group>";
+		};
+		2971C68F2B62A6F800D1BF24 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2971C6902B62A71500D1BF24 /* EMOM */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2971C6902B62A71500D1BF24 /* EMOM */ = {
+			isa = PBXGroup;
+			children = (
+				2971C6912B62A73900D1BF24 /* ActiveTimerView */,
+			);
+			path = EMOM;
+			sourceTree = "<group>";
+		};
+		2971C6912B62A73900D1BF24 /* ActiveTimerView */ = {
+			isa = PBXGroup;
+			children = (
+				2971C6922B62A74C00D1BF24 /* EMOMView */,
+			);
+			path = ActiveTimerView;
+			sourceTree = "<group>";
+		};
+		2971C6922B62A74C00D1BF24 /* EMOMView */ = {
+			isa = PBXGroup;
+			children = (
+				2971C6932B62A77A00D1BF24 /* EMOMViewModelUT.swift */,
+			);
+			path = EMOMView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,10 +440,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2934BE802B5C36B700B65361 /* EMOMTimerListView.swift in Sources */,
+				2934BE792B5C232800B65361 /* Emom.swift in Sources */,
+				2934BE762B5C206300B65361 /* EMOMTimerView.swift in Sources */,
 				290C54F52B58184800D0CD4C /* ActiveTimerView.swift in Sources */,
 				290C55272B582BD900D0CD4C /* TimerPickerStepView.swift in Sources */,
+				29F823FF2B5D824100BFB696 /* EMOMView.swift in Sources */,
+				2971C68E2B629ECA00D1BF24 /* EMOMViewModel.swift in Sources */,
 				290C55232B581E7200D0CD4C /* RoundsStepView.swift in Sources */,
-				290C55212B581B0100D0CD4C /* NewRoundTimerView.swift in Sources */,
+				290C55212B581B0100D0CD4C /* SelectEMOMView.swift in Sources */,
+				29C058EF2B6C1BD900F82CB2 /* VibrationView.swift in Sources */,
 				290C54F32B58184800D0CD4C /* RoundTimerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,6 +458,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2971C6942B62A77A00D1BF24 /* EMOMViewModelUT.swift in Sources */,
+				2934BE7C2B5C23C600B65361 /* EmomUT.swift in Sources */,
 				290C55042B58184A00D0CD4C /* RoundTimer_Watch_AppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,6 +623,7 @@
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "RoundTimer-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = RoundTimer;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
@@ -523,6 +654,7 @@
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "RoundTimer-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = RoundTimer;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;

@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct RoundTimer_Watch_AppApp: App {
+    @Environment(\.scenePhase) private var scenePhase
     var body: some Scene {
         WindowGroup {
             ActiveTimerView()
+           // VibrationView()
+        }
+        .backgroundTask(.appRefresh("My_App_Updates")) { context in
+            print("todo")
+        }
+        .onChange(of: scenePhase) {
+          print("onChange: \($0)")
         }
     }
 }

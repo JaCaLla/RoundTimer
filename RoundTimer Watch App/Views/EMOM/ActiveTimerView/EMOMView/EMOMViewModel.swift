@@ -8,29 +8,33 @@
 import SwiftUI
 
 final class EMOMViewModel: ObservableObject {
-
+    // MARK: - Emom timer states
     enum State: Int {
         case notStarted, startedWork, startedRest, paused, finished, cancelled
     }
-
-    @Published var emom: Emom? //= .sample1rounds1Work0Rest
+    // MARK: - Constants
+    private let ticsPerSec = 20.0
+    
+    // MARK: - Private attribures
+    private (set) var emom: Emom?
     internal var state: State = .notStarted
     private var wasPausedOnWorking = false
     private var secsEllapsed = 0
     private var totalSecsEllapsed = 0
     internal var timer: Timer?
-    private let ticsPerSec = 20.0
-
-    @Published var tics = 0
-    /*@Published*/ private var currentRound = 0
-    @Published var chrono = "12:34"
-    @Published var percentage = 0.0
-    @Published var playPause = "play"
-    @Published var gradient = Gradient(colors: [Color(red: 0.0, green: 0.0, blue: 0.4), .blue])
-    @Published var background = Color.clear
-   // @Published var foreground = Color.white
-    @Published var isPaused = false
+    private var tics = 0
+    private var currentRound = 0
+    private (set) var chrono = "12:34"
+    private (set) var actionIcon = "play"
     
+    // MARK: - Published attribures
+    @Published var percentage = 0.0
+    @Published var isPaused = false
+
+    deinit {
+        removeTimer()
+    }
+
     func set(emom: Emom?) {
         guard let emom else { return }
         self.emom = emom
@@ -38,17 +42,14 @@ final class EMOMViewModel: ObservableObject {
         refreshView()
     }
 
-    deinit {
-        removeTimer()
-    }
-
+    // MARK : - User actions
     func close() {
         emom = nil
         state = .cancelled
         removeTimer()
     }
 
-    func start() {
+    func action() {
         if state == .notStarted {
             guard timer == nil else { return }
             timer = Timer.scheduledTimer(timeInterval: 1.0 / ticsPerSec, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
@@ -69,8 +70,21 @@ final class EMOMViewModel: ObservableObject {
         }
     }
     
+    // MARK : - Helpers
+    func getProgressRounds() -> String {
+        "\(getCurrentRound())/\(emom?.rounds ?? 1)"
+    }
+    
+    func getProgressGauge() -> Double {
+        Double(getCurrentRound()) / Double((emom?.rounds ?? Int(1.0)))
+    }
+    
     func getForegroundTextColor() -> Color {
         state == .paused || state == .notStarted ? .gray : .white
+    }
+    
+    func getBackground() -> Color {
+       state == .finished ? .gray : .clear
     }
     
     func hasToShow(work: Bool = true) -> Bool {
@@ -101,18 +115,16 @@ final class EMOMViewModel: ObservableObject {
         return ndor / (Double(totalSecs) * Double(ticsPerSec))
     }
 
-    @objc func timerFired() {
+    // MARK: - Private/Internal functions
+    @objc private func timerFired() {
         guard let emom else { return }
         tics += 1
         if state == .startedWork {
-           // totalSegment = Emom.getSummary(seconds: emom.workSecs)
             if tics % Int(ticsPerSec) == 0 {
                 secsEllapsed += 1
                 totalSecsEllapsed += 1
             }
             percentage = 1 - min(progress(tics: tics, ticsPerSec: ticsPerSec, totalSecs: emom.workSecs), 1.0)
-            // 0.9975
-        //    percentage = min(percentage, 0.95)
             if secsEllapsed >= emom.workSecs {
                 if emom.restSecs == 0 {
                     currentRound += 1
@@ -131,14 +143,11 @@ final class EMOMViewModel: ObservableObject {
                 }
             }
         } else if state == .startedRest {
-          //  totalSegment = Emom.getSummary(seconds: emom.restSecs)
             if tics % Int(ticsPerSec) == 0 {
                 secsEllapsed += 1
                 totalSecsEllapsed += 1
             }
             percentage = 1 - min(progress(tics: tics, ticsPerSec: ticsPerSec, totalSecs: emom.restSecs), 1.0)
-            // 0.9975
-       //     percentage = min(percentage, 0.95)
             if secsEllapsed >= emom.restSecs {
                 currentRound += 1
                 if currentRound >= emom.rounds {
@@ -151,9 +160,7 @@ final class EMOMViewModel: ObservableObject {
                     WKInterfaceDevice.current().play(.retry)
                 }
             }
-        } /*else {
-            totalSegment = Emom.getSummary(seconds: emom.workSecs)
-        }*/
+        }
         refreshView()
     }
 
@@ -163,24 +170,11 @@ final class EMOMViewModel: ObservableObject {
         timer = nil
     }
 
-    func refreshView() {
+    private func refreshView() {
         guard let emom else { return }
         chrono = getChrono(state: state, emom: emom, secsEllapsed: secsEllapsed)
-        playPause = getPlayPauseButton(state: state)
-  //      totalSegment = getTotalSegment(state: state, emom: emom)
-        background = state == .finished ? .gray : .clear
-        //foreground = state == .paused ? .gray : .white
+        actionIcon = getPlayPauseButton(state: state)
     }
-
-//    internal func getTotalSegment(state: State, emom: Emom) -> String {
-//        if state == .finished {
-//            return ""
-//        } else if state == .paused {
-//            return Emom.getSummary(seconds: wasPausedOnWorking ? emom.workSecs : emom.restSecs)
-//        } else {
-//            return Emom.getSummary(seconds: state == .startedRest ? emom.restSecs : emom.workSecs)
-//        }
-//    }
 
     internal func getChrono(state: State, emom: Emom, secsEllapsed: Int = 0) -> String {
         if state == .notStarted {

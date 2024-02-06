@@ -12,7 +12,7 @@ struct ActiveTimerView: View {
     @State var selectedEMOM: Emom?
     @StateObject var emomViewModel = EMOMViewModel()
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             if let emom = emomViewModel.emom {
                 EMOMView()
                     .environmentObject(emomViewModel)
@@ -38,7 +38,8 @@ struct ActiveTimerView: View {
                     }
                 }
             }
-        }.onChange(of: selectedEMOM) {
+        }
+        .onChange(of: selectedEMOM) {
             guard let selectedEMOM else { return }
             emomViewModel.set(emom: selectedEMOM)
             self.selectedEMOM = nil

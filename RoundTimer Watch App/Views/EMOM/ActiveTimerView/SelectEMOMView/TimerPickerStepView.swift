@@ -27,50 +27,42 @@ struct TimerPickerStepView: View {
     @State private var selectedMins = 0
     @State private var selectedSecs = 30
     @EnvironmentObject var selectEMOMViewModel: SelectEMOMViewModel
-   // let pickerWidth = .0
     let pickerHeight = 100.0
     var body: some View {
         VStack {
             HStack(spacing: 5) {
-                Picker("Hours", selection: $selectedHours) { ForEach(0..<23) { Text("\(String(format: "%0.2d",$0))") }
+                Picker("Hours", selection: $selectedHours) { ForEach(0..<23) { Text("\(String(format: "%0.2d", $0))") }
                 }
-                    //.pickerStyle(.wheel)
-                    .frame(/*width: pickerWidth,*/ height: pickerHeight)
-              //  Text(":")
-                Picker("Minutes", selection: $selectedMins) { ForEach(0..<59) { Text("\(String(format: "%0.2d",$0))") }
+                    .frame(height: pickerHeight)
+                Picker("Minutes", selection: $selectedMins) { ForEach(0..<59) { Text("\(String(format: "%0.2d", $0))") }
                 }
-                .focused($fousedfield)
-                   // .pickerStyle(.wheel)
-                    .frame(/*width: pickerWidth,*/ height: pickerHeight)
-                //Text(":")
-                Picker("Seconds", selection: $selectedSecs) { ForEach(0..<59) { Text("\(String(format: "%0.2d",$0))") }
+                    .focused($fousedfield)
+                    .frame(height: pickerHeight)
+                Picker("Seconds", selection: $selectedSecs) { ForEach(0..<59) { Text("\(String(format: "%0.2d", $0))") }
                 }
-                    
-                    .frame(/*width: pickerWidth,*/ height: pickerHeight)
+                    .frame(height: pickerHeight)
             }
-            .pickerStyle(.wheel)
-            .font(.system(size: 30,weight: .black))
+                .pickerStyle(.wheel)
+                .font(.system(size: 30, weight: .black))
             Spacer()
             if pickerViewType == .work {
                 NavigationLink(value: "TimerPickerStepViewRest") {
                     Text("Rest Time ... >")
-                     //   .font(.system(size: 30,weight: .black))
                 }
-                .simultaneousGesture(TapGesture().onEnded{
-                    let secs = selectedHours * 3600 + selectedMins * 60 + selectedSecs
-                    selectEMOMViewModel.workSecs = secs
-                })
+                    .simultaneousGesture(TapGesture().onEnded {
+                        let secs = selectedHours * 3600 + selectedMins * 60 + selectedSecs
+                        selectEMOMViewModel.workSecs = secs
+                    })
             } else {
                 Button(action: {
                     dismissFlowAndStartEMOM()
                 }, label: {
                         Text("Done!")
-                        //.font(.system(size: 30,weight: .black))
                     })
             }
 
         }
-        .navigationTitle(pickerViewType.navigationTitle)
+            .navigationTitle(pickerViewType.navigationTitle)
             .toolbar {
             if pickerViewType == .work {
                 // TO DO: NO SE PUEDE PONER EL BOTÓN POR QUE NO SE PUEDE DISTINGUIR
@@ -93,16 +85,16 @@ struct TimerPickerStepView: View {
         }.onAppear {
             fousedfield = true
             let seconds = pickerViewType == .work ? selectEMOMViewModel.workSecs : selectEMOMViewModel.restSecs
-            (selectedHours, selectedMins, selectedSecs ) = getHHMMSSIndexs(seconds: seconds)
+            (selectedHours, selectedMins, selectedSecs) = getHHMMSSIndexs(seconds: seconds)
         }
     }
-    
+
     func getHHMMSSIndexs(seconds: Int) -> (Int, Int, Int) {
         (Emom.getHH(seconds: seconds),
-         Emom.getMM(seconds: seconds),
-         Emom.getSS(seconds: seconds))
+            Emom.getMM(seconds: seconds),
+            Emom.getSS(seconds: seconds))
     }
-    
+
     private func dismissFlowAndStartEMOM() {
         navPath.removeAll()
         selectEMOMViewModel.dismissFlowAndStartEMOM = true
@@ -119,7 +111,7 @@ struct TimerPickerStepView: View {
 #Preview("Work") {
     TimerPickerStepView(navPath: .constant([SelectEMOMViewModel.Screens.roundsStepView.rawValue, SelectEMOMViewModel.Screens.timerPickerStepViewWork.rawValue]), pickerViewType: .work)
         .environmentObject(SelectEMOMViewModel())
-    
+
 }
 
 //#Preview("Rest") {

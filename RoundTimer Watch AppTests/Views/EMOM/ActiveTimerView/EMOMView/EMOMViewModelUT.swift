@@ -30,7 +30,7 @@ final class EMOMViewModelUT: XCTestCase {
         XCTAssertEqual(sut.chrono, "00:01")
         XCTAssertEqual(sut.percentage, 0.0)
         XCTAssertEqual(sut.totalSegment, "1 s")
-        XCTAssertEqual(sut.playPause, "play.circle")
+        XCTAssertEqual(sut.actionIcon, "play.circle")
         
         XCTAssertEqual(sut.emom?.rounds, 1)
         XCTAssertEqual(sut.emom?.workSecs, 1)
@@ -49,7 +49,7 @@ final class EMOMViewModelUT: XCTestCase {
         sut.set(emom: .sample16rounds50Work10Rest)
         XCTAssertNil(sut.timer)
         XCTAssertEqual(sut.state, .notStarted)
-        sut.start()
+        sut.action()
         XCTAssertEqual(sut.timer?.isValid, true)
         XCTAssertEqual(sut.timer?.timeInterval, 1.0 / 20.0)
         XCTAssertEqual(sut.state, .startedWork)
@@ -60,7 +60,7 @@ final class EMOMViewModelUT: XCTestCase {
         sut = EMOMViewModel()
         sut.set(emom: .sample16rounds50Work10Rest)
         XCTAssertNil(sut.timer)
-        sut.start()
+        sut.action()
         // When
         sut.close()
         // Then

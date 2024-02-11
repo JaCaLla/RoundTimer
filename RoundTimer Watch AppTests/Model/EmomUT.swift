@@ -48,9 +48,32 @@ final class EmomUT: XCTestCase {
         XCTAssertEqual(Emom.getTotal(emom: .sample16rounds50Work10Rest), 16 * 60)
         XCTAssertEqual(Emom.getTotal(emom: .sample10rounds3720Work10Rest), 10 * ((1 * 3600 + 120) + 10))
     }
+
+    func testGetRound() {
+        XCTAssertEqual(Emom.getRound(emom: .sample2rounds30Work0Rest, secsEllapsed: 0), 1)
+        XCTAssertEqual(Emom.getRound(emom: .sample2rounds30Work0Rest, secsEllapsed: 1), 1)
+        XCTAssertEqual(Emom.getRound(emom: .sample2rounds30Work0Rest, secsEllapsed: 29), 1)
+        XCTAssertEqual(Emom.getRound(emom: .sample2rounds30Work0Rest, secsEllapsed: 30), 2)
+        XCTAssertEqual(Emom.getRound(emom: .sample2rounds30Work0Rest, secsEllapsed: 31), 2)
+        XCTAssertEqual(Emom.getRound(emom: .sample2rounds30Work0Rest, secsEllapsed: 59), 2)
+        XCTAssertEqual(Emom.getRound(emom: .sample2rounds30Work0Rest, secsEllapsed: 60), 2)
+        XCTAssertEqual(Emom.getRound(emom: .sample2rounds30Work0Rest, secsEllapsed: 61), 2)
+    }
+    
+    func testSecsToNextRound() {
+        XCTAssertEqual(Emom.secsToNextRoud(emom: .sample2rounds30Work0Rest, secsEllapsed: 0), 0)
+        XCTAssertEqual(Emom.secsToNextRoud(emom: .sample2rounds30Work0Rest, secsEllapsed: 20), 10)
+        XCTAssertEqual(Emom.secsToNextRoud(emom: .sample2rounds30Work0Rest, secsEllapsed: 29), 1)
+        XCTAssertEqual(Emom.secsToNextRoud(emom: .sample2rounds30Work0Rest, secsEllapsed: 30), 0)
+        XCTAssertEqual(Emom.secsToNextRoud(emom: .sample2rounds30Work0Rest, secsEllapsed: 31), 29)
+        XCTAssertEqual(Emom.secsToNextRoud(emom: .sample2rounds30Work0Rest, secsEllapsed: 59), 1)
+        XCTAssertEqual(Emom.secsToNextRoud(emom: .sample2rounds30Work0Rest, secsEllapsed: 60), 0)
+        XCTAssertEqual(Emom.secsToNextRoud(emom: .sample2rounds30Work0Rest, secsEllapsed: 61), 0)
+        XCTAssertEqual(Emom.secsToNextRoud(emom: .sample2rounds30Work0Rest, secsEllapsed: 62), 0)
+        XCTAssertEqual(Emom.secsToNextRoud(emom: .sample2rounds30Work0Rest, secsEllapsed: 99999), 0)
+    }
+    
     /*
-     static func getTotal(emom: Emom) -> Int {
-         emom.rounds * ( emom.workSecs + emom.restSecs)
-     }
-     */
+     secsToNextRoud
+    */
 }

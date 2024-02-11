@@ -11,12 +11,18 @@ struct ActiveTimerView: View {
     @State private var isPresentingNewRoundTimerView = false
     @State var selectedEMOM: Emom?
     @StateObject var emomViewModel = EMOMViewModel()
+    @StateObject var contentModel = ContentModel()
     var body: some View {
         VStack(spacing: 0) {
-            if let emom = emomViewModel.emom {
-                EMOMView()
-                    .environmentObject(emomViewModel)
-            } else {
+//            if let emom = emomViewModel.emom {
+//                EMOMView()
+//                    .environmentObject(emomViewModel)
+//            }
+            if let emom = contentModel.emom {
+                ContentView()
+                    .environmentObject(contentModel)
+            }
+            else {
                 NavigationView {
                     VStack {
                         Image(systemName: "timer")
@@ -41,7 +47,8 @@ struct ActiveTimerView: View {
         }
         .onChange(of: selectedEMOM) {
             guard let selectedEMOM else { return }
-            emomViewModel.set(emom: selectedEMOM)
+           // emomViewModel.set(emom: selectedEMOM)
+            contentModel.set(emom: selectedEMOM)
             self.selectedEMOM = nil
         }
     }
@@ -57,6 +64,11 @@ struct ActiveTimerView: View {
 
 extension Emom {
     static let sample1rounds1Work0Rest = Emom(rounds: 1, workSecs: 1, restSecs: 0)
+    static let sample1rounds30Work0Rest = Emom(rounds: 1, workSecs: 30, restSecs: 0)
+    static let sample2rounds30Work0Rest = Emom(rounds: 2, workSecs: 30, restSecs: 0) // pass
+    static let sample3rounds60Work0Rest = Emom(rounds: 3, workSecs: 60, restSecs: 0)
+    static let sample15rounds60Work0Rest = Emom(rounds: 15, workSecs: 60, restSecs: 0)
+    
     static let sample1rounds10Work0Rest = Emom(rounds: 1, workSecs: 10, restSecs: 0)
     static let sample1rounds30Work30Rest = Emom(rounds: 1, workSecs: 30, restSecs: 30)
     static let sample16rounds50Work10Rest = Emom(rounds: 16, workSecs: 50, restSecs: 10)

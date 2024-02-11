@@ -6,14 +6,15 @@
 //
 
 import SwiftUI
+import HealthKit
 
-final class EMOMViewModel: ObservableObject {
+final class EMOMViewModel: NSObject, ObservableObject {
     // MARK: - Emom timer states
     enum State: Int {
         case notStarted, startedWork, startedRest, paused, finished, cancelled
     }
     // MARK: - Constants
-    private let ticsPerSec = 20.0
+    private let ticsPerSec = 1.0 //20.0
     
     // MARK: - Private attribures
     private (set) var emom: Emom?
@@ -21,11 +22,14 @@ final class EMOMViewModel: ObservableObject {
     private var wasPausedOnWorking = false
     private var secsEllapsed = 0
     private var totalSecsEllapsed = 0
-    internal var timer: Timer?
-    private var tics = 0
-    private var currentRound = 0
+    internal var tics = 0
+    internal var currentRound = 0
     private (set) var chrono = "12:34"
     private (set) var actionIcon = "play"
+    
+    internal var timer: Timer?
+    private var session: WKExtendedRuntimeSession?
+  //  var workoutSession: HKWorkoutSession?
     
     // MARK: - Published attribures
     @Published var percentage = 0.0
@@ -47,14 +51,40 @@ final class EMOMViewModel: ObservableObject {
         emom = nil
         state = .cancelled
         removeTimer()
+        removeExtendedRuntimeSession()
     }
 
-    func action() {
-        if state == .notStarted {
-            guard timer == nil else { return }
-            timer = Timer.scheduledTimer(timeInterval: 1.0 / ticsPerSec, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
+    private func startTimer() {
+        guard timer == nil else { return }
+        //timer = Timer.scheduledTimer(timeInterval: 1.0 / ticsPerSec, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
+        timer = Timer(fire: Date.now, interval: 1.0 / ticsPerSec, repeats: true, block: { [weak self] timer in
+            self?.timerFired()
+        })
+        if let timer {
+            RunLoop.main.add(timer, forMode: .common)
             state = .startedWork
             refreshView()
+        }
+    }
+    
+    private func startExtendedRuntimeSession(startTimer: Bool = true) {
+        if startTimer {
+            self.startTimer()
+        }
+        session = WKExtendedRuntimeSession()
+        session?.delegate = self
+        session?.start()
+    }
+    
+    private func removeExtendedRuntimeSession() {
+        guard let session else { return }
+        session.invalidate()
+    }
+    
+    func action() {
+        if state == .notStarted {
+            startExtendedRuntimeSession()
+           // startWorkoutSession()
         } else if state == .startedRest || state == .startedWork {
             wasPausedOnWorking = state == .startedWork
             state = .paused
@@ -67,6 +97,8 @@ final class EMOMViewModel: ObservableObject {
         } else if state == .finished {
             reset()
             refreshView()
+            removeTimer()
+            removeExtendedRuntimeSession()
         }
     }
     
@@ -209,5 +241,21 @@ final class EMOMViewModel: ObservableObject {
         percentage = 0.0
         wasPausedOnWorking = false
         totalSecsEllapsed = 0
+    }
+}
+
+extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
+    func extendedRuntimeSession(_ extendedRuntimeSession: WKExtendedRuntimeSession, didInvalidateWith reason: WKExtendedRuntimeSessionInvalidationReason, error: Error?) {
+        print("todo")
+    }
+    
+    func extendedRuntimeSessionDidStart(_ extendedRuntimeSession: WKExtendedRuntimeSession) {
+        startTimer()
+    }
+    
+    func extendedRuntimeSessionWillExpire(_ extendedRuntimeSession: WKExtendedRuntimeSession) {
+        guard state == .startedWork || state == .startedRest || state == .paused else { return }
+        removeExtendedRuntimeSession()
+        startExtendedRuntimeSession(startTimer: false)
     }
 }

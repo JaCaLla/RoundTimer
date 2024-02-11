@@ -11,6 +11,12 @@ struct Emom: Equatable {
     var rounds: Int
     var workSecs: Int = 0
     var restSecs: Int = 0
+    
+    init(rounds: Int, workSecs: Int = 0, restSecs: Int = 0, pendingSecs: Int = 0) {
+        self.rounds = rounds
+        self.workSecs = workSecs
+        self.restSecs = restSecs
+    }
 
 //    func workRatio() -> Double? {
 //        Double(String(format: "%.2f", Double(workSecs) / Double(workSecs + restSecs))) ?? -1.0
@@ -25,7 +31,7 @@ struct Emom: Equatable {
         if hours > 0 {
            return String(format: "%0.2d:%0.2d:%0.2d", Emom.getHH(seconds: seconds), Emom.getMM(seconds: seconds), Emom.getSS(seconds: seconds))
         } else {
-            return String(format: "%0.2d:%0.2d", Emom.getMM(seconds: seconds), Emom.getSS(seconds: seconds))
+            return String(format: "%0.1d:%0.2d", Emom.getMM(seconds: seconds), Emom.getSS(seconds: seconds))
         }
         
     }
@@ -55,4 +61,29 @@ struct Emom: Equatable {
     static func getTotal(emom: Emom) -> Int {
         emom.rounds * ( emom.workSecs + emom.restSecs)
     }
+    
+    static func getRound(emom: Emom, secsEllapsed: Int) -> Int {
+        var roundsEllapsed: Double = Double(secsEllapsed) / Double(emom.workSecs + emom.restSecs)
+        if secsEllapsed % (emom.workSecs + emom.restSecs) == 0 {
+            roundsEllapsed += 1
+        }
+        return  min(Int(roundsEllapsed.rounded(.up)), emom.rounds)
+    }
+
+    static func secsToNextRoud(emom: Emom, secsEllapsed: Int) -> Int {
+//        var roundsEllapsed: Double = Double(secsEllapsed) / Double(emom.workSecs + emom.restSecs)
+//        if secsEllapsed % (emom.workSecs + emom.restSecs) == 0 {
+//            roundsEllapsed += 1
+//        }
+//        return  min(Int(roundsEllapsed.rounded(.up)), emom.rounds)
+        guard secsEllapsed <= (emom.workSecs + emom.restSecs) * emom.rounds else { return 0 }
+        let secsRound = (emom.workSecs + emom.restSecs)
+        let remaining = secsEllapsed % secsRound
+        return remaining == 0 ? 0 : secsRound - remaining
+    }
+    
+//    static func secsPerRound(emom: Emom, isWork: Bool = true) -> Double {
+//        guard emom.rounds > 0 else { return -1.0 }
+//        return Double(emom.workSecs / emom.rounds) 
+//    }
 }

@@ -20,22 +20,12 @@ struct RoundsStepView: View {
         VStack {
             Spacer()
             Text("\(Int(number))")
-                .font(.system(size: 70,weight: .black))
+                .foregroundColor(.roundColor)
+                .font(.roundInputFont)
               .focusable()
               .focused($fousedfield)
               .digitalCrownRotation($number, from: 2.0, through: 50.0, by:1.0, sensitivity: .medium,
-                                    isHapticFeedbackEnabled: true)
-//            Picker("Rounds", selection: $pickerRoundIndex ) {
-//                ForEach(0..<roundsRange.count) {
-//                    Text("\(roundsRange[$0])")
-//                     //   .font(.system(size: 40,weight: .black))
-//                        //.fontWeight(.black)
-//                }
-//            }
-//            .pickerStyle(.wheel)
-//            .frame(width: 80, height: 100)
-//            .focused($fousedfield)
-            
+                                    isHapticFeedbackEnabled: true)            
             Spacer()
             if selectEMOMViewModel.rounds > 0 {
                 NavigationLink(value: SelectEMOMViewModel.Screens.timerPickerStepViewWork.rawValue) {

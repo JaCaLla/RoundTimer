@@ -23,7 +23,6 @@ struct TimerPickerStepView: View {
     @Binding var navPath: [String]
     var pickerViewType: TimerPickerStepViewType
     @FocusState private var fousedfield: Bool
-    @State private var selectedHours = 0
     @State private var selectedMins = 0
     @State private var selectedSecs = 30
     @EnvironmentObject var selectEMOMViewModel: SelectEMOMViewModel
@@ -31,26 +30,26 @@ struct TimerPickerStepView: View {
     var body: some View {
         VStack {
             HStack(spacing: 5) {
-                Picker("Hours", selection: $selectedHours) { ForEach(0..<23) { Text("\(String(format: "%0.2d", $0))") }
-                }
-                    .frame(height: pickerHeight)
-                Picker("Minutes", selection: $selectedMins) { ForEach(0..<59) { Text("\(String(format: "%0.2d", $0))") }
-                }
+                if pickerViewType == .work {
+                    Picker("Minutes", selection: $selectedMins) { ForEach(0..<59) { Text("\(String(format: "%0.1d", $0))") }
+                    }
                     .focused($fousedfield)
                     .frame(height: pickerHeight)
+                }
                 Picker("Seconds", selection: $selectedSecs) { ForEach(0..<59) { Text("\(String(format: "%0.2d", $0))") }
                 }
                     .frame(height: pickerHeight)
             }
                 .pickerStyle(.wheel)
-                .font(.system(size: 30, weight: .black))
+                .foregroundColor(.timerStartedColor)
+                .font(.pickerSelectionFont)
             Spacer()
             if pickerViewType == .work {
                 NavigationLink(value: "TimerPickerStepViewRest") {
                     Text("Rest Time ... >")
                 }
                     .simultaneousGesture(TapGesture().onEnded {
-                        let secs = selectedHours * 3600 + selectedMins * 60 + selectedSecs
+                        let secs = selectedMins * 60 + selectedSecs
                         selectEMOMViewModel.workSecs = secs
                     })
             } else {
@@ -85,13 +84,12 @@ struct TimerPickerStepView: View {
         }.onAppear {
             fousedfield = true
             let seconds = pickerViewType == .work ? selectEMOMViewModel.workSecs : selectEMOMViewModel.restSecs
-            (selectedHours, selectedMins, selectedSecs) = getHHMMSSIndexs(seconds: seconds)
+            (selectedMins, selectedSecs) = getHHMMSSIndexs(seconds: seconds)
         }
     }
 
-    func getHHMMSSIndexs(seconds: Int) -> (Int, Int, Int) {
-        (Emom.getHH(seconds: seconds),
-            Emom.getMM(seconds: seconds),
+    func getHHMMSSIndexs(seconds: Int) -> ( Int, Int) {
+        (Emom.getMM(seconds: seconds),
             Emom.getSS(seconds: seconds))
     }
 
@@ -99,7 +97,7 @@ struct TimerPickerStepView: View {
         navPath.removeAll()
         selectEMOMViewModel.dismissFlowAndStartEMOM = true
         // TO DO: Extract this calculation because will be performed in many places
-        let secs = selectedHours * 3600 + selectedMins * 60 + selectedSecs
+        let secs = selectedMins * 60 + selectedSecs
         if pickerViewType == .work {
             selectEMOMViewModel.workSecs = secs
         } else {

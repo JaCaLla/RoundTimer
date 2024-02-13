@@ -8,13 +8,14 @@ final class ContentModel: NSObject, ObservableObject {
     }
 
     @Published var roundsLeft = 0
-    @Published var endOfRound: Date?
+    @Published var timerDisplayed: Date?
     @Published var endOfBrushing: Date?
     @Published var chrono = "--:--"
     @Published var percentage = 0.0
 
     private (set) var actionIcon = "play"
-    private var timer: Timer!
+    private var timerWork: Timer!
+    private var timerRest: Timer!
     private var session: WKExtendedRuntimeSession!
     internal var state: State = .notStarted
     private var startedRound: Int = 0
@@ -38,8 +39,8 @@ final class ContentModel: NSObject, ObservableObject {
 
     func pause() {
         session.invalidate()
-        if let timer {
-            secsToFinishAfterPausing = abs(timer.fireDate.timeIntervalSinceNow)
+        if let timerWork {
+            secsToFinishAfterPausing = abs(timerWork.fireDate.timeIntervalSinceNow)
             print("\(secsToFinishAfterPausing) rounds left: \(roundsLeft)")
             
             chrono = Emom.getHHMMSS(seconds: Int(secsToFinishAfterPausing))
@@ -64,11 +65,19 @@ final class ContentModel: NSObject, ObservableObject {
         self.emom = emom
         state = .notStarted
         refreshView()
-        chrono = Emom.getHHMMSS(seconds: emom.workSecs)
+        chrono = Emom.getHHMMSS(seconds: emom.workSecs + emom.restSecs)
     }
 
     private func endOfRound(emom: Emom) -> Date? {
+        Date.now.addingTimeInterval(Double(emom.workSecs + emom.restSecs))
+    }
+    
+    private func endOfWork(emom: Emom) -> Date? {
         Date.now.addingTimeInterval(Double(emom.workSecs))
+    }
+    
+    private func endOfRest(emom: Emom) -> Date? {
+        Date.now.addingTimeInterval(Double(emom.restSecs))
     }
 
     private func refreshView() {
@@ -119,6 +128,8 @@ final class ContentModel: NSObject, ObservableObject {
             return .timerNotStartedColor
         } else if state == .startedWork {
             return .timerStartedColor
+        } else if state == .startedRest {
+            return .timerRestStartedColor
         } else {
             return .green
         }
@@ -127,7 +138,7 @@ final class ContentModel: NSObject, ObservableObject {
     func getTimerAndRoundFont() -> Font {
         guard let emom else { return .timerAndRoundLargeFont }
         let isRound2Digits = emom.rounds > 9
-        let isWork2MMDigits = emom.workSecs >= 10 * 60
+        let isWork2MMDigits = [emom.workSecs, emom.restSecs].contains(where: { $0 >= 10 * 60 })
         if isRound2Digits && isWork2MMDigits {
             return .timerAndRoundSmallFont
         } else if isRound2Digits || isWork2MMDigits {
@@ -147,6 +158,8 @@ final class ContentModel: NSObject, ObservableObject {
             return String(format: "%0d", emom.rounds)
         } else if state == .startedWork || state == .paused {
             return String(format: "%0d", emom.rounds - roundsLeft + 1)
+        } else if state == .startedRest || state == .paused {
+            return String(format: "%0d", emom.rounds - roundsLeft + 1)
         } else {
             return "00"
         }
@@ -159,6 +172,8 @@ final class ContentModel: NSObject, ObservableObject {
             return "PRESS PLAY!"
         } else if state == .startedWork {
             return roundsLeft <= 1 ? "LAST ROUND!!!" : "WORK!"
+        } else if state == .startedRest {
+            return roundsLeft <= 1 ? "LAST ROUND!!!" : "REST!"
         } else if state == .paused {
             return "PAUSED!"
         } else {
@@ -168,9 +183,14 @@ final class ContentModel: NSObject, ObservableObject {
 
     
     private func removeTimer() {
-        guard timer != nil else { return }
-        timer?.invalidate()
-        timer = nil
+        if timerWork != nil {
+            timerWork.invalidate()
+        }
+        timerWork = nil
+        if let timerRest {
+            timerRest.invalidate()
+        }
+        timerRest = nil
     }
     
     private func removeExtendedRuntimeSession() {
@@ -186,32 +206,32 @@ extension ContentModel: WKExtendedRuntimeSessionDelegate {
     ) {
         guard let emom else { return }
         // let now = Date.now
-        let secondsPerRound = Double(emom.workSecs)
-        endOfRound = endOfRound(emom: emom)
+        let secondsPerRound = Double(emom.workSecs + emom.restSecs)
+        timerDisplayed = endOfWork(emom: emom)
         if state == .paused {
-            endOfRound = Date.now.addingTimeInterval(secsToFinishAfterPausing)
+            timerDisplayed = Date.now.addingTimeInterval(secsToFinishAfterPausing)
         }
-
+        guard let fireWork = endOfRound(emom: emom) else { return }
         roundsLeft = emom.rounds
 
-        guard emom.restSecs == 0,
-            let endOfRound else { return }
+        guard let timerDisplayed else { return }
 
         WKInterfaceDevice.current().play(.start)
 
         state = .startedWork
         refreshView()
         
-        timer = Timer(
-            fire: endOfRound,
+        timerWork = Timer(
+            fire: fireWork,
             interval: secondsPerRound,
             repeats: true
         ) { [weak self] _ in
+            self?.state = .startedWork
             self?.roundsLeft -= 1
             self?.startedRound = Int(Date.now.timeIntervalSince1970.rounded(.toNearestOrEven))
 
             guard self?.roundsLeft ?? 0 <= 0 else {
-                self?.endOfRound = Date.now.addingTimeInterval(secondsPerRound)
+                self?.timerDisplayed = Date.now.addingTimeInterval(TimeInterval(emom.workSecs)/*secondsPerRound*/)
                 self?.refreshView()
                 WKInterfaceDevice.current().play(.notification)
                 return
@@ -224,7 +244,21 @@ extension ContentModel: WKExtendedRuntimeSessionDelegate {
             WKInterfaceDevice.current().play(.notification)
         }
 
-        RunLoop.main.add(timer, forMode: .common)
+        RunLoop.main.add(timerWork, forMode: .common)
+
+        guard let fireRest = endOfWork(emom: emom) else { return }
+        print("\(fireRest)")
+        print("\(timerDisplayed)")
+        
+        if state == .paused {
+            // TO DO
+        }
+        timerRest = Timer(fire: fireRest, interval: secondsPerRound, repeats: true, block: {[weak self] timer in
+            self?.state = .startedRest
+            self?.timerDisplayed = self?.endOfRest(emom: emom)
+            self?.refreshView()
+        })
+        RunLoop.main.add(timerRest, forMode: .common)
     }
 
     func extendedRuntimeSessionWillExpire(
@@ -237,10 +271,13 @@ extension ContentModel: WKExtendedRuntimeSessionDelegate {
         didInvalidateWith reason: WKExtendedRuntimeSessionInvalidationReason,
         error: Error?
     ) {
-        timer?.invalidate()
-        timer = nil
+        timerWork?.invalidate()
+        timerWork = nil
         
-        endOfRound = nil
+        timerRest?.invalidate()
+        timerRest = nil
+        
+        timerDisplayed = nil
         endOfBrushing = nil
 
         if state == .finished {

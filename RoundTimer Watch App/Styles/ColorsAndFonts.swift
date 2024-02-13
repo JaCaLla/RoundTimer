@@ -11,6 +11,7 @@ extension Color {
     static let roundColor = Color("ElectricRed")
     static let timerStartedColor = Color("ElectricBlue")
     static let timerNotStartedColor = Color("Gray")
+    static let timerRestStartedColor = Color("ElectricYellow")
     
     static let timerFinishedBackgroundColor = Color("ElectricRedBack")
     

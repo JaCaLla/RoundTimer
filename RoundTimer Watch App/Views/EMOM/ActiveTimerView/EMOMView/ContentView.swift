@@ -24,7 +24,7 @@ struct ContentView: View {
                     Text("\(model.getCurrentRound())")
                         .foregroundColor(.roundColor)
                     Spacer()
-                    if let endOfRound = model.endOfRound {
+                    if let endOfRound = model.timerDisplayed {
                         Text("\(endOfRound, style: .timer)")
                             .foregroundStyle(model.getForegroundTextColor())
                     } else {

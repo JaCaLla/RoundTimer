@@ -27,12 +27,13 @@ struct VibrationView: View {
  //   @State var keys:[String]
     @State private var pickerRoundIndex = 0
     var body: some View {
-        VStack {
+        ScrollView {
             Picker("Vibration", selection: $pickerRoundIndex ) {
                 ForEach(0..<dic.values.count) {
                     Text("\(Array(dic.keys)[$0])")
                 }
             }
+            .frame(height: 100)
             .pickerStyle(.wheel)
             Button(action: {
             let key = Array(dic.keys)[pickerRoundIndex]
@@ -41,6 +42,26 @@ struct VibrationView: View {
                 }
             }, label: {
                 Text("Action")
+            })
+            Button(action: {
+                VibrationManager.shared.start()
+            }, label: {
+                Text("Start")
+            })
+            Button(action: {
+                VibrationManager.shared.work()
+            }, label: {
+                Text("Work")
+            })
+            Button(action: {
+                VibrationManager.shared.rest()
+            }, label: {
+                Text("Rest")
+            })
+            Button(action: {
+                VibrationManager.shared.finish()
+            }, label: {
+                Text("Finish")
             })
         }
     }

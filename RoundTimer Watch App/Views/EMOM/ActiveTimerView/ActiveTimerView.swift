@@ -10,14 +10,9 @@ import SwiftUI
 struct ActiveTimerView: View {
     @State private var isPresentingNewRoundTimerView = false
     @State var selectedEMOM: Emom?
-//    @StateObject var emomViewModel = EMOMViewModel()
     @StateObject var contentModel = EMOMViewModel()
     var body: some View {
         VStack(spacing: 0) {
-//            if let emom = emomViewModel.emom {
-//                EMOMView()
-//                    .environmentObject(emomViewModel)
-//            }
             if let emom = contentModel.emom {
                 EMOMView()
                     .environmentObject(contentModel)
@@ -64,6 +59,7 @@ struct ActiveTimerView: View {
 
 extension Emom {
     static let sample1rounds1Work0Rest = Emom(rounds: 1, workSecs: 1, restSecs: 0)
+    static let sample1rounds5Work0Rest = Emom(rounds: 1, workSecs: 5, restSecs: 0)
     static let sample1rounds30Work0Rest = Emom(rounds: 1, workSecs: 30, restSecs: 0)
     static let sample2rounds30Work0Rest = Emom(rounds: 2, workSecs: 30, restSecs: 0) // pass
     static let sample3rounds60Work0Rest = Emom(rounds: 3, workSecs: 60, restSecs: 0)

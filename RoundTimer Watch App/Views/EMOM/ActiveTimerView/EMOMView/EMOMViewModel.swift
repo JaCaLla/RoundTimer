@@ -8,9 +8,9 @@ final class EMOMViewModel: NSObject, ObservableObject {
     }
 
     @Published var roundsLeft = 0
-    @Published var timerDisplayed: Date?
+    @Published var chronoOnMove: Date?
     @Published var endOfBrushing: Date?
-    @Published var chrono = "--:--"
+    @Published var chronoFrozen = "--:--"
     @Published var percentage = 0.0
 
     private (set) var actionIcon = "play"
@@ -53,13 +53,13 @@ final class EMOMViewModel: NSObject, ObservableObject {
             secsToFinishAfterPausing = abs(timerWork.fireDate.timeIntervalSinceNow) - Double((emom?.restSecs ?? 0))
             print("\(secsToFinishAfterPausing) rounds left: \(roundsLeft)")
             roundsLeftAfterPausing = roundsLeft
-            chrono = Emom.getHHMMSS(seconds: Int(secsToFinishAfterPausing))
+            chronoFrozen = Emom.getHHMMSS(seconds: Int(secsToFinishAfterPausing))
         } else if let timerWork,
             previousState == .startedRest {
             secsToFinishRestAfterPausing = abs(timerWork.fireDate.timeIntervalSinceNow)
             print("\(secsToFinishRestAfterPausing) rounds left: \(roundsLeft)")
             roundsLeftAfterPausing = roundsLeft
-            chrono = Emom.getHHMMSS(seconds: Int(secsToFinishRestAfterPausing))
+            chronoFrozen = Emom.getHHMMSS(seconds: Int(secsToFinishRestAfterPausing))
         }
 
     }
@@ -69,11 +69,11 @@ final class EMOMViewModel: NSObject, ObservableObject {
             startBrushing()
         } else if state == .startedRest || state == .startedWork {
             previousState = state
-            state = .paused
+            set(to: .paused)
             pause()
             refreshView()
         } else if state == .finished {
-            state = .notStarted
+            set(to: .notStarted)
             roundsLeftAfterPausing = nil
             refreshView()
         }
@@ -84,7 +84,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
             self.emom = emom
             state = .notStarted
             refreshView()
-            chrono = Emom.getHHMMSS(seconds: emom.workSecs + emom.restSecs)
+            chronoFrozen = Emom.getHHMMSS(seconds: emom.workSecs + emom.restSecs)
         }
 
         private func endOfRound(emom: Emom) -> Date? {
@@ -100,7 +100,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
         }
 
         private func refreshView() {
-            actionIcon = getPlayPauseButton(state: state)
+            actionIcon = getPlayPauseButton()
             percentage = getProgress()
         }
 
@@ -115,7 +115,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
             }
         }
 
-        internal func getPlayPauseButton(state: State) -> String {
+        internal func getPlayPauseButton() -> String {
             if state == .finished {
                 return "arrow.uturn.left.circle"
             } else if state == .startedWork || state == .startedRest {
@@ -216,6 +216,10 @@ final class EMOMViewModel: NSObject, ObservableObject {
             guard let session else { return }
             session.invalidate()
         }
+    
+    private func set(to state: State) {
+        self.state = state
+    }
     }
 
 // MARK: - WKExtendedRuntimeSessionDelegate
@@ -225,95 +229,87 @@ final class EMOMViewModel: NSObject, ObservableObject {
         ) {
             guard let emom,
                   var fireWork = endOfRound(emom: emom) else { return }
-           // roundsLeft = emom.rounds /// NOOOOO!!!
-            // let now = Date.now
             let secondsPerRound = Double(emom.workSecs + emom.restSecs)
-            timerDisplayed = endOfWork(emom: emom)
+            chronoOnMove = endOfWork(emom: emom)
             if state == .paused {
                 if previousState == .startedWork {
-                    timerDisplayed = Date.now.addingTimeInterval(secsToFinishAfterPausing)
+                    chronoOnMove = Date.now.addingTimeInterval(secsToFinishAfterPausing)
                     fireWork = Date.now.addingTimeInterval(secsToFinishAfterPausing + Double(emom.restSecs))
+                    if  emom.restSecs == 0 {
+                        self.set(to: .startedWork)
+                    }
                 } else if previousState == .startedRest {
-                    //secsToFinishRestAfterPausing
                     fireWork = Date.now.addingTimeInterval(secsToFinishRestAfterPausing)
+                    if  emom.restSecs == 0 {
+                        self.set(to: .startedRest)
+                    }
                 }
+            } else if state == .notStarted {
+                set(to: .startedWork)
             }
-//            guard let fireWork = endOfRound(emom: emom) else { return }
-//            roundsLeft = emom.rounds
-
-//            guard let timerDisplayed else { return }
-
             
             VibrationManager.shared.start()
 
-           // state = .startedWork
-           // refreshView()
-            print("fireWork: \(fireWork)")
-            
             timerWork = Timer(
                 fire: fireWork,
                 interval: secondsPerRound,
                 repeats: true
             ) { [weak self] _ in
-                self?.state = .startedWork
-             //   if emom.restSecs == 0 {
                     self?.roundsLeft -= 1
-              //  }
                 self?.startedRound = Int(Date.now.timeIntervalSince1970.rounded(.toNearestOrEven))
 
                 guard self?.roundsLeft ?? 0 <= 0 else {
-                    self?.timerDisplayed = Date.now.addingTimeInterval(TimeInterval(emom.workSecs)/*secondsPerRound*/)
+                    self?.set(to: .startedWork)
+                    self?.chronoOnMove = Date.now.addingTimeInterval(TimeInterval(emom.workSecs)/*secondsPerRound*/)
                     self?.refreshView()
-                    //WKInterfaceDevice.current().play(.notification)
                     VibrationManager.shared.work()
                     return
                 }
 
-                self?.state = .finished
+                self?.set(to: .finished)
                 self?.refreshView()
                 extendedRuntimeSession.invalidate()
 
-               // WKInterfaceDevice.current().play(.notification)
                 VibrationManager.shared.finish()
             }
 
             RunLoop.main.add(timerWork, forMode: .common)
 
-            guard var fireRest = endOfWork(emom: emom) else { return }
-            print("\(timerDisplayed)")
+            guard emom.restSecs > 0,
+                  var fireRest = endOfWork(emom: emom) else {
+                refreshView()
+                return
+            }
 
             if state == .paused {
                 if previousState == .startedWork {
                     fireRest = Date.now.addingTimeInterval(secsToFinishAfterPausing)
+                    self.set(to: .startedWork)
                 } else if previousState == .startedRest {
-                    timerDisplayed = Date.now.addingTimeInterval(secsToFinishRestAfterPausing)
+                    chronoOnMove = Date.now.addingTimeInterval(secsToFinishRestAfterPausing)
                     fireRest = Date.now.addingTimeInterval(secsToFinishRestAfterPausing + Double(emom.workSecs))
+                    self.set(to: .startedRest)
                 }
             }
+            
             print("fireRest: \(fireRest)")
             timerRest = Timer(fire: fireRest, interval: secondsPerRound, repeats: true, block: { [weak self] timer in
-//                if emom.restSecs > 0 {
-//                    self?.roundsLeft -= 1
-//                }
+                self?.set(to: .startedRest)
                 guard self?.roundsLeft ?? 0 <= 0 else {
-                    self?.state = .startedRest
-                    self?.timerDisplayed = self?.endOfRest(emom: emom)
+                    self?.set(to: .startedRest)
+                    self?.chronoOnMove = self?.endOfRest(emom: emom)
                     self?.refreshView()
-                    //WKInterfaceDevice.current().play(.notification)
                     VibrationManager.shared.rest()
                     return
                 }
-                self?.state = .finished
+                
                 self?.refreshView()
                 extendedRuntimeSession.invalidate()
 
-                //WKInterfaceDevice.current().play(.notification)
                 VibrationManager.shared.finish()
 
             })
             RunLoop.main.add(timerRest, forMode: .common)
-            
-            state = previousState == .startedWork ? .startedWork : .startedRest
              refreshView()
         }
 
@@ -333,14 +329,13 @@ final class EMOMViewModel: NSObject, ObservableObject {
             timerRest?.invalidate()
             timerRest = nil
 
-            timerDisplayed = nil
+            chronoOnMove = nil
             endOfBrushing = nil
 
             if state == .finished {
                 roundsLeft = 0
                 if let emom {
-                  //  let emomSecs = Emom.getTotal(emom: emom)
-                    chrono = Emom.getHHMMSS(seconds: Emom.getTotal(emom: emom))
+                    chronoFrozen = Emom.getHHMMSS(seconds: Emom.getTotal(emom: emom))
                 }
             }
         }

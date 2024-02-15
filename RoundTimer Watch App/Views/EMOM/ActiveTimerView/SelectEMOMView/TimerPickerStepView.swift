@@ -30,12 +30,10 @@ struct TimerPickerStepView: View {
     var body: some View {
         VStack {
             HStack(spacing: 5) {
-                if pickerViewType == .work {
                     Picker("Minutes", selection: $selectedMins) { ForEach(0..<59) { Text("\(String(format: "%0.1d", $0))") }
                     }
                     .focused($fousedfield)
                     .frame(height: pickerHeight)
-                }
                 Picker("Seconds", selection: $selectedSecs) { ForEach(0..<59) { Text("\(String(format: "%0.2d", $0))") }
                 }
                     .frame(height: pickerHeight)

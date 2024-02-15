@@ -24,11 +24,11 @@ struct EMOMView: View {
                     Text("\(model.getCurrentRound())")
                         .foregroundColor(.roundColor)
                     Spacer()
-                    if let endOfRound = model.timerDisplayed {
+                    if let endOfRound = model.chronoOnMove {
                         Text("\(endOfRound, style: .timer)")
                             .foregroundStyle(model.getForegroundTextColor())
                     } else {
-                        Text(model.chrono)
+                        Text(model.chronoFrozen)
                             .foregroundStyle(model.getForegroundTextColor())
                     }
                 }

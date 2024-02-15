@@ -7,6 +7,34 @@
 
 import SwiftUI
 
+enum RoundStepViewType {
+    case round, work, rest
+
+    var navigationTitle: String {
+        switch self {
+        case .work: "Work"
+        case .rest: "Rest"
+        case .round: "Round"
+        }
+    }
+    
+    var initial: Double {
+        switch self {
+        case .work: 60.0
+        case .rest: 0.0
+        case .round: 2.0
+        }
+    }
+    
+    var through: Double {
+        switch self {
+        case .work: 60.0
+        case .rest: 0.0
+        case .round: 2.0
+        }
+    }
+}
+
 struct RoundsStepView: View {
     
     @State private var pickerRoundIndex = 0

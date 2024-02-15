@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		290AC81E2B7E0FB7005A26E0 /* EMOMViewModeNoRestlUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290AC81D2B7E0FB7005A26E0 /* EMOMViewModeNoRestlUT.swift */; };
 		290C54EE2B58184800D0CD4C /* RoundTimer Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 290C54ED2B58184800D0CD4C /* RoundTimer Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		290C54F32B58184800D0CD4C /* RoundTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C54F22B58184800D0CD4C /* RoundTimerApp.swift */; };
 		290C54F52B58184800D0CD4C /* ActiveTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C54F42B58184800D0CD4C /* ActiveTimerView.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		290AC81D2B7E0FB7005A26E0 /* EMOMViewModeNoRestlUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOMViewModeNoRestlUT.swift; sourceTree = "<group>"; };
 		290C54E72B58184800D0CD4C /* RoundTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoundTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		290C54ED2B58184800D0CD4C /* RoundTimer Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RoundTimer Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		290C54F22B58184800D0CD4C /* RoundTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundTimerApp.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				2971C6932B62A77A00D1BF24 /* EMOMViewModelUT.swift */,
+				290AC81D2B7E0FB7005A26E0 /* EMOMViewModeNoRestlUT.swift */,
 			);
 			path = EMOMView;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				290AC81E2B7E0FB7005A26E0 /* EMOMViewModeNoRestlUT.swift in Sources */,
 				2971C6942B62A77A00D1BF24 /* EMOMViewModelUT.swift in Sources */,
 				2934BE7C2B5C23C600B65361 /* EmomUT.swift in Sources */,
 				290C55042B58184A00D0CD4C /* RoundTimer_Watch_AppTests.swift in Sources */,

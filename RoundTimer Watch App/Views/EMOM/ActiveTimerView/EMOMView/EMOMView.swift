@@ -39,7 +39,7 @@ struct EMOMView: View {
                     .scaleEffect(x: 1.0, y: 0.25)
             }
             Spacer(minLength: 7)
-            HStack {
+            HStack(spacing: 5) {
                 Button(action: {
                     model.action()
                 }, label: {
@@ -70,8 +70,25 @@ struct ButtonAW: ViewModifier {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        EMOMView()
-    }
+
+
+#Preview("Small Font") {
+    let model =  EMOMViewModel()
+    model.set(emom: Emom(rounds: 22, workSecs: 1800, restSecs: 0))
+    return EMOMView()
+        .environmentObject(model)
+}
+
+#Preview("Regular Font") {
+    let model =  EMOMViewModel()
+    model.set(emom: Emom(rounds: 2, workSecs: 1800, restSecs: 0))
+    return EMOMView()
+        .environmentObject(model)
+}
+
+#Preview("Large Font") {
+    let model =  EMOMViewModel()
+    model.set(emom: Emom(rounds: 2, workSecs: 200, restSecs: 0))
+    return EMOMView()
+        .environmentObject(model)
 }

@@ -92,11 +92,11 @@ final class EMOMViewModel: NSObject, ObservableObject {
         }
 
         private func endOfWork(emom: Emom) -> Date? {
-            Date.now.addingTimeInterval(Double(emom.workSecs))
+            Date.now.addingTimeInterval(Double(emom.workSecs + 1 ))
         }
 
         private func endOfRest(emom: Emom) -> Date? {
-            Date.now.addingTimeInterval(Double(emom.restSecs))
+            Date.now.addingTimeInterval(Double(emom.restSecs + 1 ))
         }
 
         private func refreshView() {

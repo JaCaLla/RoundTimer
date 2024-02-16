@@ -19,11 +19,20 @@ struct ActiveTimerView: View {
             }
             else {
                 NavigationView {
-                    VStack {
-                        Image(systemName: "timer")
-                            .imageScale(.large)
-                            .foregroundStyle(.tint)
+                    VStack(spacing: 20) {
+                        Button(action: {
+                            isPresentingNewRoundTimerView.toggle()
+                        }, label: {
+                                Image(systemName: "timer")
+                                .resizable()
+                                .foregroundColor(.electricBlue)
+                                .frame(width: 50.0, height: 50.0)
+                            })
+                        .frame(width: 70.0, height: 70.0)
+                        .clipShape(Circle())
                         Text("No active EMOM!")
+                            .foregroundColor(.electricRed)
+                            .font(.messageFont)
                             .fullScreenCover(isPresented: $isPresentingNewRoundTimerView) {
                             SelectEMOMView(emom: $selectedEMOM)
                         }
@@ -34,6 +43,7 @@ struct ActiveTimerView: View {
                                 isPresentingNewRoundTimerView.toggle()
                             }, label: {
                                     Image(systemName: "plus")
+                                    .foregroundColor(.electricRed)
                                 })
                         }
                     }
@@ -42,7 +52,6 @@ struct ActiveTimerView: View {
         }
         .onChange(of: selectedEMOM) {
             guard let selectedEMOM else { return }
-           // emomViewModel.set(emom: selectedEMOM)
             contentModel.set(emom: selectedEMOM)
             self.selectedEMOM = nil
         }

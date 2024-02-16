@@ -26,7 +26,7 @@ final class SelectEMOMViewModel: ObservableObject {
 
     init() {
         rounds = roundsDefault
-        workSecs = workSecsDefault
+        workSecs = workSecsDefault + 1
         restSecs = restSecsDefault
     }
 

@@ -57,6 +57,13 @@ struct EMOMView: View {
             .onChange(of: scenePhase) { print($0) }
             .onChange(of: model.roundsLeft) {
             print(".")
+        }.overlay {
+            if model.showCountDownView {
+                CountdownView {
+                    model.showCountDownView = false
+                    model.startBrushing()
+                }
+            }
         }
     }
 }

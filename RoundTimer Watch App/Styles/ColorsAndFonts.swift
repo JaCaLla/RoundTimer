@@ -19,10 +19,11 @@ extension Color {
 
 extension Font {
     static let timerAndRoundLargeFont =  Font.system(size: 55, weight: .black)
-    static let timerAndRoundMediumFont =  Font.system(size: 47, weight: .black)
+    static let timerAndRoundMediumFont =  Font.system(size: 45 - 3, weight: .black)
     static let timerAndRoundSmallFont =  Font.system(size: 40, weight: .black)
     static let messageFont =  Font.system(size: 20, weight: .black)
     static let roundInputFont =  Font.system(size: 70, weight: .black)
     static let pickerSelectionFont = Font.system(size: 40, weight: .black)
+    static let countDownFont = Font.system(size: 120, weight: .black)
     
 }

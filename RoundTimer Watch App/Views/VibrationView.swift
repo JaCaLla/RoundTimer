@@ -44,22 +44,22 @@ struct VibrationView: View {
                 Text("Action")
             })
             Button(action: {
-                VibrationManager.shared.start()
+                HapticManager.shared.start()
             }, label: {
                 Text("Start")
             })
             Button(action: {
-                VibrationManager.shared.work()
+                HapticManager.shared.work()
             }, label: {
                 Text("Work")
             })
             Button(action: {
-                VibrationManager.shared.rest()
+                HapticManager.shared.rest()
             }, label: {
                 Text("Rest")
             })
             Button(action: {
-                VibrationManager.shared.finish()
+                HapticManager.shared.finish()
             }, label: {
                 Text("Finish")
             })

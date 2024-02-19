@@ -12,6 +12,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
     @Published var endOfBrushing: Date?
     @Published var chronoFrozen = "--:--"
     @Published var percentage = 0.0
+    @Published var showCountDownView = false
 
     private (set) var actionIcon = "play"
     private var timerWork: Timer!
@@ -46,7 +47,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
     }
 
     func pause() {
-        VibrationManager.shared.pause()
+        HapticManager.shared.pause()
         session.invalidate()
         if let timerWork,
             previousState == .startedWork {
@@ -65,8 +66,10 @@ final class EMOMViewModel: NSObject, ObservableObject {
     }
 
     func action() {
-        if [.notStarted, .paused].contains(where: { $0 == state }) {
-            startBrushing()
+        if [.notStarted].contains(where: { $0 == state }) {
+            showCountDownView = true
+        } else if [.paused].contains(where: { $0 == state }) {
+              startBrushing()
         } else if state == .startedRest || state == .startedWork {
             previousState = state
             set(to: .paused)
@@ -237,6 +240,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
                     fireWork = Date.now.addingTimeInterval(secsToFinishAfterPausing + Double(emom.restSecs))
                     if  emom.restSecs == 0 {
                         self.set(to: .startedWork)
+                        AudioManager.shared.work()
                     }
                 } else if previousState == .startedRest {
                     fireWork = Date.now.addingTimeInterval(secsToFinishRestAfterPausing)
@@ -248,7 +252,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
                 set(to: .startedWork)
             }
             
-            VibrationManager.shared.start()
+            HapticManager.shared.start()
 
             timerWork = Timer(
                 fire: fireWork,
@@ -259,18 +263,19 @@ final class EMOMViewModel: NSObject, ObservableObject {
                 self?.startedRound = Int(Date.now.timeIntervalSince1970.rounded(.toNearestOrEven))
 
                 guard self?.roundsLeft ?? 0 <= 0 else {
+                    AudioManager.shared.work()
                     self?.set(to: .startedWork)
                     self?.chronoOnMove = Date.now.addingTimeInterval(TimeInterval(emom.workSecs)/*secondsPerRound*/)
                     self?.refreshView()
-                    VibrationManager.shared.work()
+                    HapticManager.shared.work()
                     return
                 }
-
+                AudioManager.shared.finish()
                 self?.set(to: .finished)
                 self?.refreshView()
                 extendedRuntimeSession.invalidate()
 
-                VibrationManager.shared.finish()
+                HapticManager.shared.finish()
             }
 
             RunLoop.main.add(timerWork, forMode: .common)
@@ -284,10 +289,12 @@ final class EMOMViewModel: NSObject, ObservableObject {
             if state == .paused {
                 if previousState == .startedWork {
                     fireRest = Date.now.addingTimeInterval(secsToFinishAfterPausing)
+                    AudioManager.shared.work()
                     self.set(to: .startedWork)
                 } else if previousState == .startedRest {
                     chronoOnMove = Date.now.addingTimeInterval(secsToFinishRestAfterPausing)
                     fireRest = Date.now.addingTimeInterval(secsToFinishRestAfterPausing + Double(emom.workSecs))
+                    AudioManager.shared.rest()
                     self.set(to: .startedRest)
                 }
             }
@@ -296,17 +303,18 @@ final class EMOMViewModel: NSObject, ObservableObject {
             timerRest = Timer(fire: fireRest, interval: secondsPerRound, repeats: true, block: { [weak self] timer in
                 self?.set(to: .startedRest)
                 guard self?.roundsLeft ?? 0 <= 0 else {
+                    AudioManager.shared.rest()
                     self?.set(to: .startedRest)
                     self?.chronoOnMove = self?.endOfRest(emom: emom)
                     self?.refreshView()
-                    VibrationManager.shared.rest()
+                    HapticManager.shared.rest()
                     return
                 }
                 
                 self?.refreshView()
                 extendedRuntimeSession.invalidate()
 
-                VibrationManager.shared.finish()
+                HapticManager.shared.finish()
 
             })
             RunLoop.main.add(timerRest, forMode: .common)

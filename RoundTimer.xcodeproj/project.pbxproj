@@ -24,11 +24,17 @@
 		2934BE7C2B5C23C600B65361 /* EmomUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2934BE7B2B5C23C600B65361 /* EmomUT.swift */; };
 		2934BE802B5C36B700B65361 /* EMOMTimerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2934BE7F2B5C36B700B65361 /* EMOMTimerListView.swift */; };
 		2949C4E32B769DCC00F9B88A /* ColorsAndFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2949C4E22B769DCC00F9B88A /* ColorsAndFonts.swift */; };
-		297179572B7D132900048F40 /* VibrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297179562B7D132900048F40 /* VibrationManager.swift */; };
+		297179572B7D132900048F40 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297179562B7D132900048F40 /* HapticManager.swift */; };
 		2971C6942B62A77A00D1BF24 /* EMOMViewModelUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2971C6932B62A77A00D1BF24 /* EMOMViewModelUT.swift */; };
 		29A0576B2B7436AC007E00AD /* EMOMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A057692B7436AC007E00AD /* EMOMView.swift */; };
 		29A0576C2B7436AC007E00AD /* EMOMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A0576A2B7436AC007E00AD /* EMOMViewModel.swift */; };
+		29A3195D2B8380E2005A26BC /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3195C2B8380E2005A26BC /* AudioManager.swift */; };
 		29C058EF2B6C1BD900F82CB2 /* VibrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C058EE2B6C1BD800F82CB2 /* VibrationView.swift */; };
+		29EB21FC2B83A5FD00261DDD /* start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29EB21FB2B83A5FD00261DDD /* start.mp3 */; };
+		29EB21FE2B83A60E00261DDD /* rest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29EB21FD2B83A60E00261DDD /* rest.mp3 */; };
+		29EB22002B83A62000261DDD /* work.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29EB21FF2B83A62000261DDD /* work.mp3 */; };
+		29EB22022B83AE4700261DDD /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB22012B83AE4700261DDD /* CountdownView.swift */; };
+		29EB22042B83C95100261DDD /* finish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29EB22032B83C95100261DDD /* finish.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,12 +97,18 @@
 		2934BE7B2B5C23C600B65361 /* EmomUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmomUT.swift; sourceTree = "<group>"; };
 		2934BE7F2B5C36B700B65361 /* EMOMTimerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOMTimerListView.swift; sourceTree = "<group>"; };
 		2949C4E22B769DCC00F9B88A /* ColorsAndFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsAndFonts.swift; sourceTree = "<group>"; };
-		297179562B7D132900048F40 /* VibrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrationManager.swift; sourceTree = "<group>"; };
+		297179562B7D132900048F40 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		2971C6932B62A77A00D1BF24 /* EMOMViewModelUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOMViewModelUT.swift; sourceTree = "<group>"; };
 		29A057692B7436AC007E00AD /* EMOMView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMOMView.swift; sourceTree = "<group>"; };
 		29A0576A2B7436AC007E00AD /* EMOMViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMOMViewModel.swift; sourceTree = "<group>"; };
+		29A3195C2B8380E2005A26BC /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		29C058EE2B6C1BD800F82CB2 /* VibrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrationView.swift; sourceTree = "<group>"; };
 		29E484292B6FA9FB007FF670 /* RoundTimer-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "RoundTimer-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		29EB21FB2B83A5FD00261DDD /* start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = start.mp3; sourceTree = "<group>"; };
+		29EB21FD2B83A60E00261DDD /* rest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rest.mp3; sourceTree = "<group>"; };
+		29EB21FF2B83A62000261DDD /* work.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = work.mp3; sourceTree = "<group>"; };
+		29EB22012B83AE4700261DDD /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
+		29EB22032B83C95100261DDD /* finish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = finish.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +160,7 @@
 		290C54F12B58184800D0CD4C /* RoundTimer Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				29EB21FA2B83A5EB00261DDD /* Resources */,
 				297179552B7D131300048F40 /* Managers */,
 				2949C4E12B769DB400F9B88A /* Styles */,
 				291FC3D12B72C1A300546DB7 /* RoundTimer Watch App.entitlements */,
@@ -252,7 +265,8 @@
 		297179552B7D131300048F40 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				297179562B7D132900048F40 /* VibrationManager.swift */,
+				297179562B7D132900048F40 /* HapticManager.swift */,
+				29A3195C2B8380E2005A26BC /* AudioManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -272,6 +286,7 @@
 			children = (
 				29A0576A2B7436AC007E00AD /* EMOMViewModel.swift */,
 				29A057692B7436AC007E00AD /* EMOMView.swift */,
+				29EB22012B83AE4700261DDD /* CountdownView.swift */,
 			);
 			path = EMOMView;
 			sourceTree = "<group>";
@@ -307,6 +322,17 @@
 				290AC81D2B7E0FB7005A26E0 /* EMOMViewModeNoRestlUT.swift */,
 			);
 			path = EMOMView;
+			sourceTree = "<group>";
+		};
+		29EB21FA2B83A5EB00261DDD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				29EB21FB2B83A5FD00261DDD /* start.mp3 */,
+				29EB21FD2B83A60E00261DDD /* rest.mp3 */,
+				29EB21FF2B83A62000261DDD /* work.mp3 */,
+				29EB22032B83C95100261DDD /* finish.mp3 */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,7 +467,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29EB21FE2B83A60E00261DDD /* rest.mp3 in Resources */,
+				29EB22002B83A62000261DDD /* work.mp3 in Resources */,
 				290C54FA2B58184A00D0CD4C /* Preview Assets.xcassets in Resources */,
+				29EB22042B83C95100261DDD /* finish.mp3 in Resources */,
+				29EB21FC2B83A5FD00261DDD /* start.mp3 in Resources */,
 				290C54F72B58184A00D0CD4C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,8 +503,10 @@
 				2949C4E32B769DCC00F9B88A /* ColorsAndFonts.swift in Sources */,
 				2934BE762B5C206300B65361 /* EMOMTimerView.swift in Sources */,
 				29A0576C2B7436AC007E00AD /* EMOMViewModel.swift in Sources */,
+				29EB22022B83AE4700261DDD /* CountdownView.swift in Sources */,
 				290C54F52B58184800D0CD4C /* ActiveTimerView.swift in Sources */,
-				297179572B7D132900048F40 /* VibrationManager.swift in Sources */,
+				297179572B7D132900048F40 /* HapticManager.swift in Sources */,
+				29A3195D2B8380E2005A26BC /* AudioManager.swift in Sources */,
 				290C55272B582BD900D0CD4C /* TimerPickerStepView.swift in Sources */,
 				290C55232B581E7200D0CD4C /* RoundsStepView.swift in Sources */,
 				290C55212B581B0100D0CD4C /* SelectEMOMView.swift in Sources */,

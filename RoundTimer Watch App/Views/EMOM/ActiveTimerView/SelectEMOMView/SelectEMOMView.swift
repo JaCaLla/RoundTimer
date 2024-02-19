@@ -15,9 +15,9 @@ final class SelectEMOMViewModel: ObservableObject {
     }
 
     // TO REFACTOR: Replace this by an Emom
-    let roundsDefault = 1
-    let workSecsDefault = 15
-    let restSecsDefault = 5
+    let roundsDefault = 12
+    let workSecsDefault = 50
+    let restSecsDefault = 10
 
     var dismissFlowAndStartEMOM = false
     var rounds = -1
@@ -26,7 +26,7 @@ final class SelectEMOMViewModel: ObservableObject {
 
     init() {
         rounds = roundsDefault
-        workSecs = workSecsDefault + 1
+        workSecs = workSecsDefault
         restSecs = restSecsDefault
     }
 
@@ -57,12 +57,6 @@ struct SelectEMOMView: View {
         NavigationStack(path: $navPath) {
             ScrollView {
                 VStack {
-//                    VStack {
-//                        NavigationLink(value: SelectEMOMViewModel.Screens.roundsStepView.rawValue) {
-//                            Text("New >")
-//                        }
-//                        EMOMTimerListView(emoms: .sampleOddList)
-//                    }
                     RoundsStepView(navPath: $navPath)
                 }
                     .navigationTitle("EMOM")

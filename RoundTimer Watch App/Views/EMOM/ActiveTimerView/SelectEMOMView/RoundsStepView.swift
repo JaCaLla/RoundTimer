@@ -43,16 +43,16 @@ struct RoundsStepView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var selectEMOMViewModel: SelectEMOMViewModel
    // let roundsRange = Array(1..<60)
-    @State private var number: Double = 2.0
+    @State private var selectedRound: Double = 2.0
     var body: some View {
         VStack {
             Spacer()
-            Text("\(Int(number))")
+            Text("\(Int(selectedRound))")
                 .foregroundColor(.roundColor)
                 .font(.roundInputFont)
               .focusable()
               .focused($fousedfield)
-              .digitalCrownRotation($number, from: 2.0, through: 50.0, by:1.0, sensitivity: .medium,
+              .digitalCrownRotation($selectedRound, from: 2.0, through: 50.0, by:1.0, sensitivity: .medium,
                                     isHapticFeedbackEnabled: true)            
             Spacer()
             if selectEMOMViewModel.rounds > 0 {
@@ -66,12 +66,13 @@ struct RoundsStepView: View {
         }
        /// .font(.system(size: 30,weight: .black))
        // .defaultFocus($fousedfield, .rounds)
-        .onChange(of: number, initial: true) { _, newValue in
-            selectEMOMViewModel.rounds = Int(number)//roundsRange[pickerRoundIndex]
+        .onChange(of: selectedRound, initial: true) { _, newValue in
+            selectEMOMViewModel.rounds = Int(selectedRound)//roundsRange[pickerRoundIndex]
         }
         .navigationTitle("Rounds")
         .onAppear {
             fousedfield = true
+            selectedRound = Double(selectEMOMViewModel.rounds )
 //            pickerRoundIndex = roundsRange.firstIndex(where: { selectEMOMViewModel.rounds == $0} ) ?? 0
         }
     }

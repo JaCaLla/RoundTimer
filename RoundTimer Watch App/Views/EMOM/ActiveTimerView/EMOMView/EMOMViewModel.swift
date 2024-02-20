@@ -68,6 +68,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
     func action() {
         if [.notStarted].contains(where: { $0 == state }) {
             showCountDownView = true
+            HapticManager.shared.pause()
         } else if [.paused].contains(where: { $0 == state }) {
               startBrushing()
         } else if state == .startedRest || state == .startedWork {

@@ -23,37 +23,14 @@ final class EMOMViewModeNoRestlUT: XCTestCase {
 
     func testExample() throws {
         XCTAssertEqual(sut.state, .notStarted)
-        XCTAssertEqual(sut.chronoFrozen, "--:--")
+        XCTAssertEqual(sut.chronoFrozen, "0:30")
         XCTAssertNil(sut.chronoOnMove)
-        XCTAssertEqual(sut.percentage, 0.0)
-        XCTAssertEqual(sut.actionIcon, "--:--")
+        XCTAssertEqual(sut.actionIcon, "play.circle")
         
         sut.set(emom: .sample1rounds5Work0Rest)
         XCTAssertEqual(sut.state, .notStarted)
-        XCTAssertEqual(sut.chronoFrozen, "--:--")
+        XCTAssertEqual(sut.chronoFrozen, "0:05")
         XCTAssertNil(sut.chronoOnMove)
-        XCTAssertEqual(sut.percentage, 0.0)
-        XCTAssertEqual(sut.actionIcon, "--:--")
-        
+        XCTAssertEqual(sut.actionIcon, "play.circle")
     }
-
-    
-    /*
-     @Published var roundsLeft = 0
-     @Published var timerDisplayed: Date?
-     @Published var endOfBrushing: Date?
-     @Published var chrono = "--:--"
-     @Published var percentage = 0.0
-
-     private (set) var actionIcon = "play"
-     private var timerWork: Timer!
-     private var timerRest: Timer!
-     private var session: WKExtendedRuntimeSession!
-     internal var state: State = .notStarted
-     internal var previousState: State = .startedWork
-     private var startedRound: Int = 0
-     private var secsToFinishAfterPausing: TimeInterval = 0
-     private var secsToFinishRestAfterPausing: TimeInterval = 0
-     private var roundsLeftAfterPausing: Int?
-     */
 }

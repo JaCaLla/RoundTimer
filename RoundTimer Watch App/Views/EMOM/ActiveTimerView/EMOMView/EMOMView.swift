@@ -27,13 +27,14 @@ struct EMOMView: View {
                     if let endOfRound = model.chronoOnMove {
                         Text("\(endOfRound, style: .timer)")
                             .foregroundStyle(model.getForegroundTextColor())
+                            .allowsTightening(true)
                     } else {
                         Text(model.chronoFrozen)
                             .foregroundStyle(model.getForegroundTextColor())
                     }
                 }
                 .font(model.getTimerAndRoundFont())
-                Gauge(value: model.percentage, label: { })
+                Gauge(value: model.getRoundsProgress(), label: { })
                     .tint(.roundColor)
                     .gaugeStyle(.accessoryLinearCapacity)
                     .scaleEffect(x: 1.0, y: 0.25)
@@ -55,13 +56,11 @@ struct EMOMView: View {
             Spacer(minLength: 15)
         }.background(model.getBackground())
             .onChange(of: scenePhase) { print($0) }
-            .onChange(of: model.roundsLeft) {
-            print(".")
-        }.overlay {
+        .overlay {
             if model.showCountDownView {
                 CountdownView {
-                    model.showCountDownView = false
-                    model.startBrushing()
+                    //model.showCountDownView = false
+                    model.startWorkTime()
                 }
             }
         }

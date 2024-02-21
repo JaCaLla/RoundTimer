@@ -103,6 +103,7 @@
 		29A0576A2B7436AC007E00AD /* EMOMViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMOMViewModel.swift; sourceTree = "<group>"; };
 		29A3195C2B8380E2005A26BC /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		29C058EE2B6C1BD800F82CB2 /* VibrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrationView.swift; sourceTree = "<group>"; };
+		29CEC11A2B8625E500C6E0A4 /* RoundTimer Watch App.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RoundTimer Watch App.xctestplan"; sourceTree = "<group>"; };
 		29E484292B6FA9FB007FF670 /* RoundTimer-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "RoundTimer-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		29EB21FB2B83A5FD00261DDD /* start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = start.mp3; sourceTree = "<group>"; };
 		29EB21FD2B83A60E00261DDD /* rest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rest.mp3; sourceTree = "<group>"; };
@@ -139,6 +140,7 @@
 		290C54E02B58184800D0CD4C = {
 			isa = PBXGroup;
 			children = (
+				29CEC11A2B8625E500C6E0A4 /* RoundTimer Watch App.xctestplan */,
 				290C54F12B58184800D0CD4C /* RoundTimer Watch App */,
 				290C55022B58184A00D0CD4C /* RoundTimer Watch AppTests */,
 				290C550C2B58184A00D0CD4C /* RoundTimer Watch AppUITests */,

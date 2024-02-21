@@ -44,7 +44,7 @@ struct EMOMView: View {
                 Button(action: {
                     model.action()
                 }, label: {
-                        Image(systemName: model.actionIcon)
+                        Image(systemName: model.getActionIcon())
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: bottonSideSize, height: bottonSideSize)

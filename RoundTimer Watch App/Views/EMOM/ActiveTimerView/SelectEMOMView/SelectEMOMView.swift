@@ -16,8 +16,8 @@ final class SelectEMOMViewModel: ObservableObject {
 
     // TO REFACTOR: Replace this by an Emom
     let roundsDefault = 12
-    let workSecsDefault = 50
-    let restSecsDefault = 10
+    let workSecsDefault = 10
+    let restSecsDefault = 5
 
     var dismissFlowAndStartEMOM = false
     var rounds = -1

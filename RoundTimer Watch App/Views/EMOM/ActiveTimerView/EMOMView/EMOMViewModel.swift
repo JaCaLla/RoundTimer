@@ -21,7 +21,6 @@ final class EMOMViewModel: NSObject, ObservableObject {
     internal var secsToFinishRestAfterPausing: TimeInterval = 0
     internal var roundsLeftAfterPausing: Int?
     internal var roundsLeft = 0
-
     @Published var emom: Emom?
 
     func startWorkTime() {
@@ -148,16 +147,16 @@ final class EMOMViewModel: NSObject, ObservableObject {
         }
     }
 
-    func getTimerAndRoundFont() -> Font {
+    func getTimerAndRoundFont(isLuminanceReduced: Bool = false) -> Font {
         guard let emom else { return .timerAndRoundLargeFont }
         let isRound2Digits = emom.rounds > 9
         let isWork2MMDigits = [emom.workSecs, emom.restSecs].contains(where: { $0 >= 10 * 60 })
         if isRound2Digits && isWork2MMDigits {
-            return .timerAndRoundSmallFont
+            return isLuminanceReduced ? .timerAndRoundLRSmallFont : .timerAndRoundSmallFont
         } else if isRound2Digits || isWork2MMDigits {
-            return .timerAndRoundMediumFont
+            return isLuminanceReduced ? .timerAndRoundLRMediumFont : .timerAndRoundLargeFont
         } else {
-            return .timerAndRoundLargeFont
+            return isLuminanceReduced ? .timerAndRoundLRLargeFont : .timerAndRoundLargeFont
         }
     }
 
@@ -167,7 +166,9 @@ final class EMOMViewModel: NSObject, ObservableObject {
 
     func getCurrentRound() -> String {
         guard let emom else { return "" }
-        if [.notStarted, .finished].contains(where: { state == $0 }) {
+        if [.notStarted].contains(where: { state == $0 }) {
+            return "1"
+        } else if [.finished].contains(where: { state == $0 }) {
             return String(format: "%0d", emom.rounds)
         } else if state == .startedWork || state == .paused {
             return String(format: "%0d", emom.rounds - roundsLeft + 1)
@@ -176,6 +177,11 @@ final class EMOMViewModel: NSObject, ObservableObject {
         } else {
             return "00"
         }
+    }
+    
+    func getRounds() -> String {
+        guard let emom else { return "" }
+        return String(format: "/%0d", emom.rounds)
     }
 
     func getCurrentMessage() -> String {
@@ -233,6 +239,9 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
     ) {
         guard let emom else { return }
         processWorktime(extendedRuntimeSession: extendedRuntimeSession, emom: emom, timerWork: &timerWork)
+        
+        HapticManager.shared.start()
+                
         guard emom.restSecs > 0 else { return }
         processResttime(extendedRuntimeSession: extendedRuntimeSession, emom: emom, timerRest: &timerRest)
     }

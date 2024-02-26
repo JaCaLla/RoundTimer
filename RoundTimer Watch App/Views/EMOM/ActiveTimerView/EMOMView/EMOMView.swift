@@ -7,16 +7,17 @@ struct EMOMView: View {
     @EnvironmentObject var model: EMOMViewModel
     var body: some View {
         VStack(spacing: 0) {
-            HStack {
-                Button(action: {
-                    model.close()
-                }, label: {
+            if !isLuminanceReduced {
+                HStack {
+                    Button(action: {
+                        model.close()
+                    }, label: {
                         Image(systemName: "xmark")
                     })
                     .modifier(ButtonAW())
-                Spacer()
+                    Spacer()
+                }
             }
-
             Spacer()
             VStack(spacing: 0) {
                 Text("\(model.getCurrentMessage())")

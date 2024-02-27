@@ -16,7 +16,7 @@ extension Color {
 }
 
 extension Font {
-    static let timerAndRoundLargeFont =  Font.system(size: 55, weight: .black)
+    static let timerAndRoundLargeFont =  Font.system(size: 55 - 5, weight: .black)
     static let timerAndRoundMediumFont =  Font.system(size: 45, weight: .black)
     static let timerAndRoundSmallFont =  Font.system(size: 40, weight: .black)
     static let timerAndRoundLRLargeFont =  Font.system(size: 55 - 25, weight: .black)

@@ -113,7 +113,7 @@ struct ButtonAW: ViewModifier {
 
 #Preview("Large Font") {
     let model =  EMOMViewModel()
-    model.set(emom: Emom(rounds: 2, workSecs: 200, restSecs: 0))
+    model.set(emom: Emom(rounds: 12, workSecs: 200, restSecs: 0))
     return EMOMView()
         .environmentObject(model)
 }

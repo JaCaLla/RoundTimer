@@ -152,11 +152,11 @@ final class EMOMViewModel: NSObject, ObservableObject {
         let isRound2Digits = emom.rounds > 9
         let isWork2MMDigits = [emom.workSecs, emom.restSecs].contains(where: { $0 >= 10 * 60 })
         if isRound2Digits && isWork2MMDigits {
-            return isLuminanceReduced ? .timerAndRoundLRSmallFont : .timerAndRoundSmallFont
+            return isLuminanceReduced && state != .finished ? .timerAndRoundLRSmallFont : .timerAndRoundSmallFont
         } else if isRound2Digits || isWork2MMDigits {
-            return isLuminanceReduced ? .timerAndRoundLRMediumFont : .timerAndRoundLargeFont
+            return isLuminanceReduced && state != .finished ? .timerAndRoundLRMediumFont : .timerAndRoundLargeFont
         } else {
-            return isLuminanceReduced ? .timerAndRoundLRLargeFont : .timerAndRoundLargeFont
+            return isLuminanceReduced && state != .finished ? .timerAndRoundLRLargeFont : .timerAndRoundLargeFont
         }
     }
 

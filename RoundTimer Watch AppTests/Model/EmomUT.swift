@@ -10,14 +10,14 @@ import XCTest
 final class EmomUT: XCTestCase {
 
     func testTimeHHMMSS() {
-        XCTAssertEqual(Emom.sample1rounds10Work0Rest.timeHHMMSS(), "00:10")
-        XCTAssertEqual(Emom.sample1rounds10Work0Rest.timeHHMMSS(isWork: false), "00:00")
-        XCTAssertEqual(Emom.sample1rounds30Work30Rest.timeHHMMSS(), "00:30")
-        XCTAssertEqual(Emom.sample1rounds30Work30Rest.timeHHMMSS(isWork: false), "00:30")
-        XCTAssertEqual(Emom.sample16rounds50Work10Rest.timeHHMMSS(), "00:50")
-        XCTAssertEqual(Emom.sample16rounds50Work10Rest.timeHHMMSS(isWork: false), "00:10")
+        XCTAssertEqual(Emom.sample1rounds10Work0Rest.timeHHMMSS(), "0:10")
+        XCTAssertEqual(Emom.sample1rounds10Work0Rest.timeHHMMSS(isWork: false), "0:00")
+        XCTAssertEqual(Emom.sample1rounds30Work30Rest.timeHHMMSS(), "0:30")
+        XCTAssertEqual(Emom.sample1rounds30Work30Rest.timeHHMMSS(isWork: false), "0:30")
+        XCTAssertEqual(Emom.sample16rounds50Work10Rest.timeHHMMSS(), "0:50")
+        XCTAssertEqual(Emom.sample16rounds50Work10Rest.timeHHMMSS(isWork: false), "0:10")
         XCTAssertEqual(Emom.sample10rounds3720Work10Rest.timeHHMMSS(), "01:02:00")
-        XCTAssertEqual(Emom.sample10rounds3720Work10Rest.timeHHMMSS(isWork: false), "00:10")
+        XCTAssertEqual(Emom.sample10rounds3720Work10Rest.timeHHMMSS(isWork: false), "0:10")
     }
     
     func testGetSummary() {

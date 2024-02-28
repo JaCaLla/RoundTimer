@@ -69,6 +69,8 @@ struct ActiveTimerView: View {
 extension Emom {
     static let sample1rounds1Work0Rest = Emom(rounds: 1, workSecs: 1, restSecs: 0)
     static let sample1rounds5Work0Rest = Emom(rounds: 1, workSecs: 5, restSecs: 0)
+    static let sample2rounds5Work5Rest = Emom(rounds: 2, workSecs: 5, restSecs: 5)
+    static let sample2rounds5Work0Rest = Emom(rounds: 2, workSecs: 5, restSecs: 0)
     static let sample1rounds30Work0Rest = Emom(rounds: 1, workSecs: 30, restSecs: 0)
     static let sample2rounds30Work0Rest = Emom(rounds: 2, workSecs: 30, restSecs: 0) // pass
     static let sample3rounds60Work0Rest = Emom(rounds: 3, workSecs: 60, restSecs: 0)

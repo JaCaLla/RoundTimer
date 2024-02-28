@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-protocol VibrationManagerProtocol {
+protocol HapticManagerProtocol {
     func start()
     func pause()
     func rest()
@@ -16,11 +16,11 @@ protocol VibrationManagerProtocol {
     func finish()
 }
 
-final class VibrationManager {
-    static let shared = VibrationManager()
+final class HapticManager {
+    static let shared = HapticManager()
 }
 
-extension VibrationManager: VibrationManagerProtocol {
+extension HapticManager: HapticManagerProtocol {
     func start() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
             WKInterfaceDevice.current().play(.failure)

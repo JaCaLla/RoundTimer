@@ -30,11 +30,11 @@ struct TimerPickerStepView: View {
     var body: some View {
         VStack {
             HStack(spacing: 5) {
-                    Picker("Minutes", selection: $selectedMins) { ForEach(0..<59) { Text("\(String(format: "%0.1d", $0))") }
+                    Picker("Minutes", selection: $selectedMins) { ForEach(0..<60) { Text("\(String(format: "%0.1d", $0))") }
                     }
                     .focused($fousedfield)
                     .frame(height: pickerHeight)
-                Picker("Seconds", selection: $selectedSecs) { ForEach(0..<59) { Text("\(String(format: "%0.2d", $0))") }
+                Picker("Seconds", selection: $selectedSecs) { ForEach(0..<60) { Text("\(String(format: "%0.2d", $0))") }
                 }
                     .frame(height: pickerHeight)
             }
@@ -42,7 +42,8 @@ struct TimerPickerStepView: View {
                 .foregroundColor(.timerStartedColor)
                 .font(.pickerSelectionFont)
             Spacer()
-            if pickerViewType == .work {
+            if pickerViewType == .work,
+                !(selectedMins == 0 && selectedSecs == 0) {
                 NavigationLink(value: "TimerPickerStepViewRest") {
                     Text("Rest Time ... >")
                 }
@@ -50,7 +51,7 @@ struct TimerPickerStepView: View {
                         let secs = selectedMins * 60 + selectedSecs
                         selectEMOMViewModel.workSecs = secs
                     })
-            } else {
+            } else if pickerViewType == .rest {
                 Button(action: {
                     dismissFlowAndStartEMOM()
                 }, label: {

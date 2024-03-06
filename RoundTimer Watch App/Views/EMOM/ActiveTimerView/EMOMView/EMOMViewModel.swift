@@ -150,11 +150,12 @@ final class EMOMViewModel: NSObject, ObservableObject {
     func getTimerAndRoundFont(isLuminanceReduced: Bool = false) -> Font {
         guard let emom else { return .timerAndRoundLargeFont }
         let isRound2Digits = emom.rounds > 9
-        let isWork2MMDigits = [emom.workSecs, emom.restSecs].contains(where: { $0 >= 10 * 60 })
+        let isWork2MMDigits = [emom.workSecs, emom.restSecs].contains(where: { $0 >= 10 * 60 }) ||
+        (state == .finished && ((emom.workSecs + emom.restSecs) * emom.rounds) > 10 * 60)
         if isRound2Digits && isWork2MMDigits {
             return isLuminanceReduced && state != .finished ? .timerAndRoundLRSmallFont : .timerAndRoundSmallFont
         } else if isRound2Digits || isWork2MMDigits {
-            return isLuminanceReduced && state != .finished ? .timerAndRoundLRMediumFont : .timerAndRoundLargeFont
+            return isLuminanceReduced && state != .finished ?  .timerAndRoundLRMediumFont : .timerAndRoundMediumFont
         } else {
             return isLuminanceReduced && state != .finished ? .timerAndRoundLRLargeFont : .timerAndRoundLargeFont
         }

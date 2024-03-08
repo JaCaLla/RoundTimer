@@ -55,7 +55,7 @@ struct TimerPickerStepView: View {
                 Button(action: {
                     dismissFlowAndStartEMOM()
                 }, label: {
-                        Text("Done!")
+                        Text("START WORK!")
                     })
             }
 

@@ -10,12 +10,12 @@ import SwiftUI
 struct ActiveTimerView: View {
     @State private var isPresentingNewRoundTimerView = false
     @State var selectedEMOM: Emom?
-    @StateObject var contentModel = EMOMViewModel()
+    @StateObject var emomViewModel = EMOMViewModel()
     var body: some View {
         VStack(spacing: 0) {
-            if let emom = contentModel.emom {
+            if let emom = emomViewModel.emom {
                 EMOMView()
-                    .environmentObject(contentModel)
+                    .environmentObject(emomViewModel)
             }
             else {
                 NavigationView {
@@ -52,7 +52,8 @@ struct ActiveTimerView: View {
         }
         .onChange(of: selectedEMOM) {
             guard let selectedEMOM else { return }
-            contentModel.set(emom: selectedEMOM)
+            emomViewModel.set(emom: selectedEMOM)
+            emomViewModel.action()
             self.selectedEMOM = nil
         }
     }

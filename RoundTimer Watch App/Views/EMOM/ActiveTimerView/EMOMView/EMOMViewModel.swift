@@ -9,7 +9,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
 
     @Published var chronoOnMove: Date?
     @Published var chronoFrozen = "--:--"
-    @Published var showCountDownView = false
+   // @Published var showCountDownView = false
 
     internal var actionIcon = "play"
     internal var timerWork: Timer?
@@ -23,8 +23,8 @@ final class EMOMViewModel: NSObject, ObservableObject {
     internal var roundsLeft = 0
     @Published var emom: Emom?
 
-    func startWorkTime() {
-        showCountDownView = false
+    private func startWorkTime() {
+      //  showCountDownView = false
         if let roundsLeftAfterPausing {
             set(roundsLeft: roundsLeftAfterPausing)
         } else if let emom {
@@ -63,7 +63,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
 
     func action() {
         if [.notStarted].contains(where: { $0 == state }) {
-            showCountDownView = true
+            startWorkTime()
             HapticManager.shared.pause()
         } else if [.paused].contains(where: { $0 == state }) {
             startWorkTime()

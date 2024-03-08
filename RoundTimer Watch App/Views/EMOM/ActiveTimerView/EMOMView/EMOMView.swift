@@ -4,13 +4,13 @@ struct EMOMView: View {
     let bottonSideSize = 50.0
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.isLuminanceReduced) var isLuminanceReduced
-    @EnvironmentObject var model: EMOMViewModel
+    @EnvironmentObject var emomViewModel: EMOMViewModel
     var body: some View {
         VStack(spacing: 0) {
             if !isLuminanceReduced {
                 HStack {
                     Button(action: {
-                        model.close()
+                        emomViewModel.close()
                     }, label: {
                         Image(systemName: "xmark")
                     })
@@ -20,32 +20,32 @@ struct EMOMView: View {
             }
             Spacer()
             VStack(spacing: 0) {
-                Text("\(model.getCurrentMessage())")
+                Text("\(emomViewModel.getCurrentMessage())")
                     .font(.messageFont)
                 HStack {
                     HStack(alignment: .firstTextBaseline, spacing: 0) {
-                        Text("\(model.getCurrentRound())")
+                        Text("\(emomViewModel.getCurrentRound())")
                             .foregroundColor(.roundColor)
-                        Text("\(model.getRounds())")
+                        Text("\(emomViewModel.getRounds())")
                             .font(.emomRounds)
                             .foregroundColor(.roundColor)
                     }
-                    .font(model.getTimerAndRoundFont())
+                    .font(emomViewModel.getTimerAndRoundFont())
                     Spacer()
                     VStack {
-                        if let chronoOnMove = model.chronoOnMove {
+                        if let chronoOnMove = emomViewModel.chronoOnMove {
                             Text("\(chronoOnMove, style: .timer)")
-                                .foregroundStyle(model.getForegroundTextColor())
+                                .foregroundStyle(emomViewModel.getForegroundTextColor())
                                 .allowsTightening(true)
                         } else {
-                            Text(model.chronoFrozen)
-                                .foregroundStyle(model.getForegroundTextColor())
+                            Text(emomViewModel.chronoFrozen)
+                                .foregroundStyle(emomViewModel.getForegroundTextColor())
                         }
                     }
-                    .font(model.getTimerAndRoundFont(isLuminanceReduced: isLuminanceReduced))
+                    .font(emomViewModel.getTimerAndRoundFont(isLuminanceReduced: isLuminanceReduced))
                 }
                 
-                Gauge(value: model.getRoundsProgress(), label: { })
+                Gauge(value: emomViewModel.getRoundsProgress(), label: { })
                     .tint(.roundColor)
                     .gaugeStyle(.accessoryLinearCapacity)
                     .scaleEffect(x: 1.0, y: 0.25)
@@ -59,30 +59,30 @@ struct EMOMView: View {
                 }.frame(height: 50)
             } else {
                 Button(action: {
-                    model.action()
+                    emomViewModel.action()
                 }, label: {
-                        Image(systemName: model.getActionIcon())
+                        Image(systemName: emomViewModel.getActionIcon())
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: bottonSideSize, height: bottonSideSize)
                     })
-                    .foregroundStyle(model.actionButtonColor())
+                    .foregroundStyle(emomViewModel.actionButtonColor())
                     .frame(width: bottonSideSize, height: bottonSideSize)
                     .clipShape(Circle())
             }
 
        //     }
             Spacer(minLength: 15 - 10)
-        }.background(model.getBackground())
+        }.background(emomViewModel.getBackground())
             .onChange(of: scenePhase) { print($0) }
-        .overlay {
-            if model.showCountDownView {
-                CountdownView {
-                    //model.showCountDownView = false
-                    model.startWorkTime()
-                }
-            }
-        }
+//        .overlay {
+//            if emomViewModel.showCountDownView {
+//                CountdownView {
+//                    //model.showCountDownView = false
+//                    emomViewModel.startWorkTime()
+//                }
+//            }
+//        }
     }
 }
 

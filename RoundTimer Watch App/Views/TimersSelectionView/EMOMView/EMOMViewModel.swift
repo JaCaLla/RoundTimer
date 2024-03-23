@@ -9,7 +9,6 @@ final class EMOMViewModel: NSObject, ObservableObject {
 
     @Published var chronoOnMove: Date?
     @Published var chronoFrozen = "--:--"
-   // @Published var showCountDownView = false
 
     internal var actionIcon = "play"
     internal var timerWork: Timer?
@@ -21,7 +20,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
     internal var secsToFinishRestAfterPausing: TimeInterval = 0
     internal var roundsLeftAfterPausing: Int?
     internal var roundsLeft = 0
-    @Published var emom: Emom?
+    @Published var emom: CustomTimer?
 
     private func startWorkTime() {
       //  showCountDownView = false
@@ -50,13 +49,13 @@ final class EMOMViewModel: NSObject, ObservableObject {
             secsToFinishAfterPausing = abs(timerWork.fireDate.timeIntervalSinceNow) - Double((emom?.restSecs ?? 0))
             // print("\(secsToFinishAfterPausing) rounds left: \(roundsLeft)")
             roundsLeftAfterPausing = roundsLeft
-            chronoFrozen = Emom.getHHMMSS(seconds: Int(secsToFinishAfterPausing))
+            chronoFrozen = CustomTimer.getHHMMSS(seconds: Int(secsToFinishAfterPausing))
         } else if let timerWork,
             previousStateBeforePausing == .startedRest {
             secsToFinishRestAfterPausing = abs(timerWork.fireDate.timeIntervalSinceNow)
             // print("\(secsToFinishRestAfterPausing) rounds left: \(roundsLeft)")
             roundsLeftAfterPausing = roundsLeft
-            chronoFrozen = Emom.getHHMMSS(seconds: Int(secsToFinishRestAfterPausing))
+            chronoFrozen = CustomTimer.getHHMMSS(seconds: Int(secsToFinishRestAfterPausing))
         }
 
     }
@@ -78,22 +77,22 @@ final class EMOMViewModel: NSObject, ObservableObject {
         }
     }
 
-    func set(emom: Emom?) {
+    func set(emom: CustomTimer?) {
         guard let emom else { return }
         self.emom = emom
         state = .notStarted
-        chronoFrozen = Emom.getHHMMSS(seconds: emom.workSecs)
+        chronoFrozen = CustomTimer.getHHMMSS(seconds: emom.workSecs)
     }
 
-    private func endOfRound(emom: Emom) -> Date? {
+    private func endOfRound(emom: CustomTimer) -> Date? {
         Date.now.addingTimeInterval(Double(emom.workSecs + emom.restSecs))
     }
 
-    private func endOfWork(emom: Emom) -> Date? {
+    private func endOfWork(emom: CustomTimer) -> Date? {
         Date.now.addingTimeInterval(Double(emom.workSecs /*+ 1*/))
     }
 
-    private func endOfRest(emom: Emom) -> Date? {
+    private func endOfRest(emom: CustomTimer) -> Date? {
         Date.now.addingTimeInterval(Double(emom.restSecs /*+ 1*/))
     }
 
@@ -263,13 +262,13 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
         if state == .finished {
             set(roundsLeft: 0)
             if let emom {
-                chronoFrozen = Emom.getHHMMSS(seconds: Emom.getTotal(emom: emom))
+                chronoFrozen = CustomTimer.getHHMMSS(seconds: CustomTimer.getTotal(emom: emom))
             }
         }
     }
 
     // MARK :- Private/Internal
-    private func processWorktime(extendedRuntimeSession: WKExtendedRuntimeSession, emom: Emom, timerWork: inout Timer?) {
+    private func processWorktime(extendedRuntimeSession: WKExtendedRuntimeSession, emom: CustomTimer, timerWork: inout Timer?) {
         guard var fireWork = endOfRound(emom: emom) else { return }
         chronoOnMove = endOfWork(emom: emom)
         if state == .paused {
@@ -293,7 +292,7 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
         createAndRunTimerWork(emom, extendedRuntimeSession, fireWork, timerWork: &timerWork)
     }
     
-    fileprivate func createAndRunTimerWork(_ emom: Emom, _ extendedRuntimeSession: WKExtendedRuntimeSession, _ fireWork: Date, timerWork: inout Timer?) {
+    fileprivate func createAndRunTimerWork(_ emom: CustomTimer, _ extendedRuntimeSession: WKExtendedRuntimeSession, _ fireWork: Date, timerWork: inout Timer?) {
 
         HapticManager.shared.start()
         
@@ -324,7 +323,7 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
         RunLoop.main.add(timerWork, forMode: .common)
     }
     
-    private func processResttime(extendedRuntimeSession: WKExtendedRuntimeSession, emom: Emom, timerRest: inout Timer?) {
+    private func processResttime(extendedRuntimeSession: WKExtendedRuntimeSession, emom: CustomTimer, timerRest: inout Timer?) {
         guard var fireRest = endOfWork(emom: emom) else { return }
 
         if state == .paused {
@@ -343,7 +342,7 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
         createAndRunRestTimer(emom, fireRest, extendedRuntimeSession, timerRest: &timerRest)
     }
     
-    fileprivate func createAndRunRestTimer(_ emom: Emom, _ fireRest: Date, _ extendedRuntimeSession: WKExtendedRuntimeSession, timerRest: inout Timer?) {
+    fileprivate func createAndRunRestTimer(_ emom: CustomTimer, _ fireRest: Date, _ extendedRuntimeSession: WKExtendedRuntimeSession, timerRest: inout Timer?) {
         let secondsPerRound = Double(emom.workSecs + emom.restSecs)
         
         let blockRestTimer: (Timer) -> Void = { [weak self] _ in

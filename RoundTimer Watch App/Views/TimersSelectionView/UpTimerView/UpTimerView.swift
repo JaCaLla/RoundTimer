@@ -10,7 +10,6 @@ struct UpTimerView: View {
     let bottonSideSize = 50.0
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.isLuminanceReduced) var isLuminanceReduced
-    //@EnvironmentObject var upTimerViewModel: UpTimerViewModel
     @Binding var customTimer: CustomTimer?
     @StateObject var upTimerViewModel = UpTimerViewModel()
     var body: some View {
@@ -55,7 +54,6 @@ struct UpTimerView: View {
                     .scaleEffect(x: 1.0, y: 0.25)
             }
             Spacer(minLength: 7)
-        //    HStack(spacing: 5) {
             if isLuminanceReduced {
                 HStack {
                     Image(systemName: "battery.25percent")
@@ -74,8 +72,6 @@ struct UpTimerView: View {
                     .frame(width: bottonSideSize, height: bottonSideSize)
                     .clipShape(Circle())
             }
-
-       //     }
             Spacer(minLength: 15 - 10)
         }.background(upTimerViewModel.getBackground())
             .onChange(of: scenePhase) { print($0) }
@@ -84,25 +80,8 @@ struct UpTimerView: View {
                 upTimerViewModel.set(emom: customTimer)
                 upTimerViewModel.action()
             }
-//        .overlay {
-//            if emomViewModel.showCountDownView {
-//                CountdownView {
-//                    //model.showCountDownView = false
-//                    emomViewModel.startWorkTime()
-//                }
-//            }
-//        }
     }
 }
-
-//struct ButtonAW: ViewModifier {
-//    func body(content: Content) -> some View {
-//        content
-//            .frame(width: 25, height: 25)
-//            .foregroundColor(Color.white)
-//            .clipShape(Circle())
-//    }
-//}
 
 
 

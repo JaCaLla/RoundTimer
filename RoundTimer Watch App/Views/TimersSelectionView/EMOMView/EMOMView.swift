@@ -4,7 +4,6 @@ struct EMOMView: View {
     let bottonSideSize = 50.0
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.isLuminanceReduced) var isLuminanceReduced
-    //@EnvironmentObject var emomViewModel: EMOMViewModel
     @Binding var customTimer: CustomTimer?
     @StateObject var emomViewModel = EMOMViewModel()
     var body: some View {
@@ -54,7 +53,6 @@ struct EMOMView: View {
                     .scaleEffect(x: 1.0, y: 0.25)
             }
             Spacer(minLength: 7)
-        //    HStack(spacing: 5) {
             if isLuminanceReduced {
                 HStack {
                     Image(systemName: "battery.25percent")
@@ -73,8 +71,6 @@ struct EMOMView: View {
                     .frame(width: bottonSideSize, height: bottonSideSize)
                     .clipShape(Circle())
             }
-
-       //     }
             Spacer(minLength: 15 - 10)
         }.background(emomViewModel.getBackground())
             .onChange(of: scenePhase) { print($0) }
@@ -83,14 +79,6 @@ struct EMOMView: View {
                 emomViewModel.set(emom: customTimer)
                 emomViewModel.action()
             }
-//        .overlay {
-//            if emomViewModel.showCountDownView {
-//                CountdownView {
-//                    //model.showCountDownView = false
-//                    emomViewModel.startWorkTime()
-//                }
-//            }
-//        }
     }
 }
 

@@ -9,7 +9,6 @@ final class EMOMViewModel: NSObject, ObservableObject {
 
     @Published var chronoOnMove: Date?
     @Published var chronoFrozen = "--:--"
-   // @Published var showCountDownView = false
 
     internal var actionIcon = "play"
     internal var timerWork: Timer?

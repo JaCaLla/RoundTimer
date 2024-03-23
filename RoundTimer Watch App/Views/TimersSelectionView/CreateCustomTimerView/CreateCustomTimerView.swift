@@ -29,7 +29,7 @@ struct CreateCustomTimerView: View {
             }
         }
         .onChange(of: navPath) { oldValue, newValue in
-            if isDoneFromTimerPickerStepView(/*customTimer,*/ oldValue, newValue) {
+            if isDoneFromTimerPickerStepView(oldValue, newValue) {
                 customTimer = createCustomTimerViewModel.getEmom()
                 dismiss()
             } else if isBack(.roundsStepView, oldValue, newValue) {
@@ -46,8 +46,7 @@ struct CreateCustomTimerView: View {
         !oldValue.isEmpty && newValue.isEmpty && popToRoot
     }
     
-    func isDoneFromTimerPickerStepView(/*_ customTimer: CustomTimer?,*/_ oldValue: [String], _ newValue: [String]) -> Bool {
-        //guard let customTimer else { return false }
+    func isDoneFromTimerPickerStepView(_ oldValue: [String], _ newValue: [String]) -> Bool {
         if createCustomTimerViewModel.timerType == .emom,
            oldValue.count > 1,
             newValue.isEmpty {

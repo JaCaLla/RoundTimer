@@ -25,7 +25,7 @@ struct TimerPickerStepView: View {
     @FocusState private var fousedfield: Bool
     @State private var selectedMins = 0
     @State private var selectedSecs = 30
-    @EnvironmentObject var selectEMOMViewModel: SelectEMOMViewModel
+    @EnvironmentObject var selectEMOMViewModel: CreateCustomTimerViewModel
     let pickerHeight = 100.0
     var body: some View {
         VStack {
@@ -44,12 +44,16 @@ struct TimerPickerStepView: View {
             Spacer()
             if pickerViewType == .work,
                 !(selectedMins == 0 && selectedSecs == 0) {
-                NavigationLink(value: "TimerPickerStepViewRest") {
-                    Text("Rest Time ... >")
+                NavigationLink(value: selectEMOMViewModel.getNavigationLink()) {
+                    Text(selectEMOMViewModel.getContinueButtonText())
                 }
                     .simultaneousGesture(TapGesture().onEnded {
-                        let secs = selectedMins * 60 + selectedSecs
-                        selectEMOMViewModel.workSecs = secs
+                        if selectEMOMViewModel.timerType == .upTimer {
+                            dismissFlowAndStartEMOM()
+                        } else {
+                            let secs = selectedMins * 60 + selectedSecs
+                            selectEMOMViewModel.workSecs = secs
+                        }
                     })
             } else if pickerViewType == .rest {
                 Button(action: {
@@ -88,8 +92,8 @@ struct TimerPickerStepView: View {
     }
 
     func getHHMMSSIndexs(seconds: Int) -> ( Int, Int) {
-        (Emom.getMM(seconds: seconds),
-            Emom.getSS(seconds: seconds))
+        (CustomTimer.getMM(seconds: seconds),
+            CustomTimer.getSS(seconds: seconds))
     }
 
     private func dismissFlowAndStartEMOM() {
@@ -106,8 +110,8 @@ struct TimerPickerStepView: View {
 }
 
 #Preview("Work") {
-    TimerPickerStepView(navPath: .constant([SelectEMOMViewModel.Screens.roundsStepView.rawValue, SelectEMOMViewModel.Screens.timerPickerStepViewWork.rawValue]), pickerViewType: .work)
-        .environmentObject(SelectEMOMViewModel())
+    TimerPickerStepView(navPath: .constant([CreateCustomTimerViewModel.Screens.roundsStepView.rawValue, CreateCustomTimerViewModel.Screens.timerPickerStepViewWork.rawValue]), pickerViewType: .work)
+        .environmentObject(CreateCustomTimerViewModel())
 
 }
 

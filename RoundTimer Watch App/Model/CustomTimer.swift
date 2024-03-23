@@ -6,13 +6,19 @@
 //
 
 import Foundation
+enum TimerType {
+    case emom
+    case upTimer
+}
 
-struct Emom: Equatable {
+struct CustomTimer: Equatable {
+    var timerType: TimerType
     var rounds: Int
     var workSecs: Int = 0
     var restSecs: Int = 0
     
-    init(rounds: Int, workSecs: Int = 0, restSecs: Int = 0, pendingSecs: Int = 0) {
+    init(timerType: TimerType, rounds: Int, workSecs: Int = 0, restSecs: Int = 0, pendingSecs: Int = 0) {
+        self.timerType = timerType
         self.rounds = rounds
         self.workSecs = workSecs
         self.restSecs = restSecs
@@ -23,15 +29,15 @@ struct Emom: Equatable {
 //    }
 
     func timeHHMMSS(isWork: Bool = true) -> String {
-        return Emom.getHHMMSS(seconds: isWork ? workSecs : restSecs)
+        return CustomTimer.getHHMMSS(seconds: isWork ? workSecs : restSecs)
     }
     
     static func getHHMMSS(seconds: Int) -> String {
-        let hours = Emom.getHH(seconds: seconds)
+        let hours = CustomTimer.getHH(seconds: seconds)
         if hours > 0 {
-           return String(format: "%0.2d:%0.2d:%0.2d", Emom.getHH(seconds: seconds), Emom.getMM(seconds: seconds), Emom.getSS(seconds: seconds))
+           return String(format: "%0.2d:%0.2d:%0.2d", CustomTimer.getHH(seconds: seconds), CustomTimer.getMM(seconds: seconds), CustomTimer.getSS(seconds: seconds))
         } else {
-            return String(format: "%0.1d:%0.2d", Emom.getMM(seconds: seconds), Emom.getSS(seconds: seconds))
+            return String(format: "%0.1d:%0.2d", CustomTimer.getMM(seconds: seconds), CustomTimer.getSS(seconds: seconds))
         }
         
     }
@@ -58,11 +64,11 @@ struct Emom: Equatable {
         (seconds % 3600) % 60
     }
     
-    static func getTotal(emom: Emom) -> Int {
+    static func getTotal(emom: CustomTimer) -> Int {
         emom.rounds * ( emom.workSecs + emom.restSecs)
     }
     
-    static func getRound(emom: Emom, secsEllapsed: Int) -> Int {
+    static func getRound(emom: CustomTimer, secsEllapsed: Int) -> Int {
         var roundsEllapsed: Double = Double(secsEllapsed) / Double(emom.workSecs + emom.restSecs)
         if secsEllapsed % (emom.workSecs + emom.restSecs) == 0 {
             roundsEllapsed += 1
@@ -70,7 +76,7 @@ struct Emom: Equatable {
         return  min(Int(roundsEllapsed.rounded(.up)), emom.rounds)
     }
 
-    static func secsToNextRoud(emom: Emom, secsEllapsed: Int) -> Int {
+    static func secsToNextRoud(emom: CustomTimer, secsEllapsed: Int) -> Int {
 //        var roundsEllapsed: Double = Double(secsEllapsed) / Double(emom.workSecs + emom.restSecs)
 //        if secsEllapsed % (emom.workSecs + emom.restSecs) == 0 {
 //            roundsEllapsed += 1

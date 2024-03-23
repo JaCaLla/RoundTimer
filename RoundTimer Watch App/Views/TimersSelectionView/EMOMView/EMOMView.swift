@@ -4,13 +4,16 @@ struct EMOMView: View {
     let bottonSideSize = 50.0
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.isLuminanceReduced) var isLuminanceReduced
-    @EnvironmentObject var emomViewModel: EMOMViewModel
+    //@EnvironmentObject var emomViewModel: EMOMViewModel
+    @Binding var customTimer: CustomTimer?
+    @StateObject var emomViewModel = EMOMViewModel()
     var body: some View {
         VStack(spacing: 0) {
             if !isLuminanceReduced {
                 HStack {
                     Button(action: {
                         emomViewModel.close()
+                        customTimer = nil
                     }, label: {
                         Image(systemName: "xmark")
                     })
@@ -75,6 +78,11 @@ struct EMOMView: View {
             Spacer(minLength: 15 - 10)
         }.background(emomViewModel.getBackground())
             .onChange(of: scenePhase) { print($0) }
+            .onAppear {
+                guard emomViewModel.state == .notStarted else { return }
+                emomViewModel.set(emom: customTimer)
+                emomViewModel.action()
+            }
 //        .overlay {
 //            if emomViewModel.showCountDownView {
 //                CountdownView {
@@ -98,22 +106,22 @@ struct ButtonAW: ViewModifier {
 
 
 #Preview("Small Font") {
-    let model =  EMOMViewModel()
-    model.set(emom: Emom(rounds: 22, workSecs: 1800, restSecs: 0))
-    return EMOMView()
-        .environmentObject(model)
+   // let model =  EMOMViewModel()
+  //  model.set(emom: CustomTimer(timerType: .emom,rounds: 22, workSecs: 1800, restSecs: 0))
+    return EMOMView(customTimer: .constant(nil))
+    //    .environmentObject(model)
 }
 
 #Preview("Regular Font") {
-    let model =  EMOMViewModel()
-    model.set(emom: Emom(rounds: 2, workSecs: 1800, restSecs: 0))
-    return EMOMView()
-        .environmentObject(model)
+    //let model =  EMOMViewModel()
+   // model.set(emom: CustomTimer(timerType: .emom,rounds: 2, workSecs: 1800, restSecs: 0))
+    return EMOMView(customTimer: .constant(nil))
+     //   .environmentObject(model)
 }
 
 #Preview("Large Font") {
     let model =  EMOMViewModel()
-    model.set(emom: Emom(rounds: 12, workSecs: 200, restSecs: 0))
-    return EMOMView()
-        .environmentObject(model)
+ //   model.set(emom: CustomTimer(timerType: .emom,rounds: 12, workSecs: 200, restSecs: 0))
+    return EMOMView(customTimer: .constant(nil))
+   //     .environmentObject(model)
 }

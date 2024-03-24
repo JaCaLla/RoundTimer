@@ -16,13 +16,19 @@ final class UpTimerViewModel: NSObject, ObservableObject {
 
     @Published var chronoOnMove: Date?
     @Published var chronoFrozen = "--:--"
+    @Published var progress: Double = 0.0
 
     internal var actionIcon = "play"
     internal var timerWork: Timer?
+    internal var refreshProgressTimer: Timer?
     internal var extendedRuntimeSession: WKExtendedRuntimeSession?
     internal var state: State = .notStarted
     internal var ellapsed = 0.0
-    @Published var emom: CustomTimer?
+    @Published var customTimer: CustomTimer?
+    
+    deinit {
+        removeTimers()
+    }
 
     private func startWorkTime() {
         extendedRuntimeSession = WKExtendedRuntimeSession()
@@ -31,7 +37,7 @@ final class UpTimerViewModel: NSObject, ObservableObject {
     }
 
     func close() {
-        emom = nil
+        customTimer = nil
         state = .cancelled
         removeTimers()
         removeExtendedRuntimeSession()
@@ -40,12 +46,18 @@ final class UpTimerViewModel: NSObject, ObservableObject {
     func pause() {
         HapticManager.shared.pause()
         extendedRuntimeSession?.invalidate()
-        if let timerWork, let emom {
-            let secsToFinishAfterPausing = abs(timerWork.fireDate.timeIntervalSinceNow)
-            ellapsed = Double(emom.workSecs - Int(secsToFinishAfterPausing)) - 1
-            print("secsEllapsed: \(ellapsed) secs2Finish:\(Int(secsToFinishAfterPausing))")
+        if let timerWork, let customTimer {
+            ellapsed = getEllapedSecs(timerWork: timerWork, customTimer: customTimer)
             chronoFrozen = CustomTimer.getHHMMSS(seconds: Int(ellapsed))
         }
+    }
+    
+    private func getEllapedSecs(timerWork: Timer?, customTimer: CustomTimer?) -> Double {
+        guard let timerWork, let customTimer else { return 0.0 }
+        let secsToFinishAfterPausing = abs(timerWork.fireDate.timeIntervalSinceNow)
+        let ellapsed = Double(customTimer.workSecs - Int(secsToFinishAfterPausing)) - 1
+        print("secsEllapsed: \(ellapsed) secs2Finish:\(Int(secsToFinishAfterPausing))")
+        return ellapsed
     }
 
     func action() {
@@ -59,13 +71,13 @@ final class UpTimerViewModel: NSObject, ObservableObject {
             set(to: .paused)
         } else if state == .finished {
             set(to: .notStarted)
-            set(emom: emom)
+            set(emom: customTimer)
         }
     }
 
     func set(emom: CustomTimer?) {
         guard let emom else { return }
-        self.emom = emom
+        self.customTimer = emom
         state = .notStarted
         chronoFrozen = CustomTimer.getHHMMSS(seconds: emom.workSecs)
     }
@@ -108,10 +120,10 @@ final class UpTimerViewModel: NSObject, ObservableObject {
     }
 
     func getTimerAndRoundFont(isLuminanceReduced: Bool = false) -> Font {
-        guard let emom else { return .timerAndRoundLargeFont }
-        let isRound2Digits = emom.rounds > 9
-        let isWork2MMDigits = [emom.workSecs, emom.restSecs].contains(where: { $0 >= 10 * 60 }) ||
-        (state == .finished && ((emom.workSecs + emom.restSecs) * emom.rounds) > 10 * 60)
+        guard let customTimer else { return .timerAndRoundLargeFont }
+        let isRound2Digits = customTimer.rounds > 9
+        let isWork2MMDigits = [customTimer.workSecs, customTimer.restSecs].contains(where: { $0 >= 10 * 60 }) ||
+        (state == .finished && ((customTimer.workSecs + customTimer.restSecs) * customTimer.rounds) > 10 * 60)
         if isRound2Digits && isWork2MMDigits {
             return isLuminanceReduced && state != .finished ? .timerAndRoundLRSmallFont : .timerAndRoundSmallFont
         } else if isRound2Digits || isWork2MMDigits {
@@ -150,6 +162,7 @@ final class UpTimerViewModel: NSObject, ObservableObject {
 
     private func removeTimers() {
         dropTimer(&timerWork)
+        dropTimer(&refreshProgressTimer)
     }
     
     private func dropTimer(_ timer: inout Timer?) {
@@ -175,10 +188,12 @@ extension UpTimerViewModel: WKExtendedRuntimeSessionDelegate {
     func extendedRuntimeSessionDidStart(
         _ extendedRuntimeSession: WKExtendedRuntimeSession
     ) {
-        guard let emom else { return }
-        processWorktime(extendedRuntimeSession: extendedRuntimeSession, emom: emom, timerWork: &timerWork)
+        guard let customTimer else { return }
+        processWorktime(extendedRuntimeSession: extendedRuntimeSession, emom: customTimer, timerWork: &timerWork)
         
         HapticManager.shared.start()
+        
+        createAndRunProgressTimer(customTimer, extendedRuntimeSession, timer: &refreshProgressTimer)
     }
 
     func extendedRuntimeSessionWillExpire(
@@ -194,8 +209,8 @@ extension UpTimerViewModel: WKExtendedRuntimeSessionDelegate {
         removeTimers()
         chronoOnMove = nil
 
-        if state == .finished, let emom {
-                chronoFrozen = CustomTimer.getHHMMSS(seconds: CustomTimer.getTotal(emom: emom))
+        if state == .finished, let customTimer {
+                chronoFrozen = CustomTimer.getHHMMSS(seconds: CustomTimer.getTotal(emom: customTimer))
         }
     }
 
@@ -225,6 +240,7 @@ extension UpTimerViewModel: WKExtendedRuntimeSessionDelegate {
                 self.set(to: .finished)
                 extendedRuntimeSession.invalidate()
                 HapticManager.shared.finish()
+            print("TimerWork: FINISHED!!!!! <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
         }
 
         timerWork = Timer(
@@ -235,6 +251,29 @@ extension UpTimerViewModel: WKExtendedRuntimeSessionDelegate {
         
         guard let timerWork else { return }
         RunLoop.main.add(timerWork, forMode: .common)
+    }
+    
+    
+    fileprivate func createAndRunProgressTimer(_ customTimer: CustomTimer, _ extendedRuntimeSession: WKExtendedRuntimeSession, timer: inout Timer?) {
+
+        let secondsPerRound = Double(customTimer.workSecs / 2)
+        
+        let blockTimerWork: (Timer) -> Void = { [weak self] _ in
+            
+            guard let self else { return }
+            let ellapsed = getEllapedSecs(timerWork: timerWork, customTimer: customTimer)
+            self.progress = ellapsed / Double(customTimer.workSecs)
+            print("Timer refresh! \(ellapsed) progress: \(self.progress)")
+        }
+
+        timer = Timer(
+            fire: Date.now.addingTimeInterval(1.0),
+            interval: 1.0,
+            repeats: true,
+            block: blockTimerWork)
+        
+        guard let timer else { return }
+        RunLoop.main.add(timer, forMode: .common)
     }
 }
 

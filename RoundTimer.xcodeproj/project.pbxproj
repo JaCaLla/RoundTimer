@@ -21,6 +21,7 @@
 		2934BE792B5C232800B65361 /* CustomTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2934BE782B5C232800B65361 /* CustomTimer.swift */; };
 		2934BE7C2B5C23C600B65361 /* EmomUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2934BE7B2B5C23C600B65361 /* EmomUT.swift */; };
 		2949C4E32B769DCC00F9B88A /* ColorsAndFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2949C4E22B769DCC00F9B88A /* ColorsAndFonts.swift */; };
+		295E20AD2BAEFD00004AC4FB /* AppVersionUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E20AC2BAEFD00004AC4FB /* AppVersionUT.swift */; };
 		297179572B7D132900048F40 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297179562B7D132900048F40 /* HapticManager.swift */; };
 		2971C6942B62A77A00D1BF24 /* EMOMViewModelUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2971C6932B62A77A00D1BF24 /* EMOMViewModelUT.swift */; };
 		29A0576B2B7436AC007E00AD /* EMOMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A057692B7436AC007E00AD /* EMOMView.swift */; };
@@ -94,6 +95,7 @@
 		2934BE782B5C232800B65361 /* CustomTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimer.swift; sourceTree = "<group>"; };
 		2934BE7B2B5C23C600B65361 /* EmomUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmomUT.swift; sourceTree = "<group>"; };
 		2949C4E22B769DCC00F9B88A /* ColorsAndFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsAndFonts.swift; sourceTree = "<group>"; };
+		295E20AC2BAEFD00004AC4FB /* AppVersionUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionUT.swift; sourceTree = "<group>"; };
 		297179562B7D132900048F40 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		2971C6932B62A77A00D1BF24 /* EMOMViewModelUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOMViewModelUT.swift; sourceTree = "<group>"; };
 		29A057692B7436AC007E00AD /* EMOMView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMOMView.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				2971C68F2B62A6F800D1BF24 /* Views */,
 				2934BE7A2B5C234200B65361 /* Model */,
 				290C55032B58184A00D0CD4C /* RoundTimer_Watch_AppTests.swift */,
+				295E20AC2BAEFD00004AC4FB /* AppVersionUT.swift */,
 			);
 			path = "RoundTimer Watch AppTests";
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2971C6942B62A77A00D1BF24 /* EMOMViewModelUT.swift in Sources */,
+				295E20AD2BAEFD00004AC4FB /* AppVersionUT.swift in Sources */,
 				2934BE7C2B5C23C600B65361 /* EmomUT.swift in Sources */,
 				290C55042B58184A00D0CD4C /* RoundTimer_Watch_AppTests.swift in Sources */,
 			);
@@ -675,7 +679,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "RoundTimer Watch App/RoundTimer Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_ASSET_PATHS = "\"RoundTimer Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				ENABLE_PREVIEWS = YES;
@@ -690,7 +694,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = jca.RoundTimer.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -709,7 +713,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "RoundTimer Watch App/RoundTimer Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_ASSET_PATHS = "\"RoundTimer Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				ENABLE_PREVIEWS = YES;
@@ -724,7 +728,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = jca.RoundTimer.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -742,10 +746,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				INFOPLIST_KEY_CFBundleDisplayName = RoundTimer;
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = jca.RoundTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -758,10 +762,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				INFOPLIST_KEY_CFBundleDisplayName = RoundTimer;
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = jca.RoundTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -776,10 +780,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "jca.RoundTimer-Watch-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -797,10 +801,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "jca.RoundTimer-Watch-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -818,10 +822,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "jca.RoundTimer-Watch-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -838,10 +842,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "jca.RoundTimer-Watch-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;

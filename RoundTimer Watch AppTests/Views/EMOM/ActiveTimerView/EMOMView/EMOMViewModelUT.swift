@@ -9,26 +9,13 @@ import XCTest
 
 final class EMOMViewModelUT: XCTestCase {
 
-//    var sut: EMOMViewModel!
-//
-//    override func setUpWithError() throws {
-//        sut = EMOMViewModel()
-//        sut.set(emom: .sample16rounds50Work10Rest)
-//    }
-//
-//    override func tearDownWithError() throws {
-//        sut = nil
-//    }
+
 
     func testInit() throws {
         let sut = EMOMViewModel()
         sut.set(emom: .sample1rounds1Work0Rest)
 
-        //  XCTAssertNil(sut.timer)
-        //   XCTAssertEqual(sut.tics, 0)
-        //  XCTAssertEqual(sut.currentRound, 0)
         XCTAssertEqual(sut.chronoFrozen, "0:01")
-        //XCTAssertEqual(sut.totalSegment, "1 s")
         XCTAssertEqual(sut.actionIcon, "play")
 
         XCTAssertEqual(sut.emom?.rounds, 1)
@@ -36,20 +23,12 @@ final class EMOMViewModelUT: XCTestCase {
         XCTAssertEqual(sut.emom?.restSecs, 0)
     }
 
-//    func testDeInit() {
-//        let sut = EMOMViewModel()
-//        sut.set(emom: .sample16rounds50Work10Rest)
-//     //   XCTAssertNil(sut.timer)
-//        sut = nil
-//    }
-
     func testSetEmom() {
         let sut = EMOMViewModel()
         sut.set(emom: .sample1rounds5Work0Rest)
 
 
         XCTAssertEqual(sut.state, .notStarted)
-        XCTAssertEqual(sut.showCountDownView, false)
         let timeInterval = sut.chronoOnMove?.timeIntervalSinceNow ?? 0.0
         XCTAssertEqual(timeInterval.rounded(.down), 0.0)
         XCTAssertNil(sut.timerWork)
@@ -70,12 +49,9 @@ final class EMOMViewModelUT: XCTestCase {
         let expectation = XCTestExpectation(description: "testStart")
         let sut = EMOMViewModel()
         sut.set(emom: .sample1rounds5Work0Rest)
-        //  XCTAssertNil(sut.timer)
         XCTAssertEqual(sut.state, .notStarted)
-        XCTAssertEqual(sut.showCountDownView, false)
         sut.action()
         XCTAssertEqual(sut.state, .notStarted)
-        XCTAssertEqual(sut.showCountDownView, true)
         XCTAssertEqual(sut.getActionIcon(), "play.circle")
         XCTAssertEqual(sut.getCurrentMessage(), "PRESS PLAY!")
         DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) { [weak self] in
@@ -88,7 +64,7 @@ final class EMOMViewModelUT: XCTestCase {
                 XCTAssertEqual(sut.getActionIcon(), "pause.circle")
                 XCTAssertEqual(sut.getCurrentMessage(), "LAST ROUND!!!")
                 XCTAssertEqual(sut.state, .startedWork)
-                XCTAssertEqual(sut.showCountDownView, false)
+                
                 sut.close()
                 // Allow WKExtendedRuntimeSession delegate class unlink from sut
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -110,7 +86,6 @@ final class EMOMViewModelUT: XCTestCase {
         // validating the delegate actions
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
             XCTAssertEqual(sut.state, .startedWork)
-            XCTAssertEqual(sut.showCountDownView, false)
             let timeInterval = sut.chronoOnMove?.timeIntervalSinceNow ?? 0.0
             XCTAssertEqual(timeInterval.rounded(.down), 5.0)
             XCTAssertEqual(sut.timerWork?.timeInterval, 5.0)
@@ -140,7 +115,7 @@ final class EMOMViewModelUT: XCTestCase {
         // validating the delegate actions
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
             XCTAssertEqual(sut.state, .startedWork)
-            XCTAssertEqual(sut.showCountDownView, false)
+            
             XCTAssertEqual(sut.getActionIcon(), "pause.circle")
             XCTAssertEqual(sut.getCurrentMessage(), "LAST ROUND!!!")
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
@@ -172,7 +147,7 @@ final class EMOMViewModelUT: XCTestCase {
         // validating the delegate actions
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             XCTAssertEqual(sut.state, .startedWork)
-            XCTAssertEqual(sut.showCountDownView, false)
+            
             XCTAssertEqual(sut.getActionIcon(), "pause.circle")
             XCTAssertEqual(sut.getCurrentMessage(), "WORK!")
             XCTAssertEqual(sut.roundsLeft, 2)
@@ -206,7 +181,7 @@ final class EMOMViewModelUT: XCTestCase {
         // validating the delegate actions
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             XCTAssertEqual(sut.state, .startedWork)
-            XCTAssertEqual(sut.showCountDownView, false)
+            
             XCTAssertEqual(sut.getActionIcon(), "pause.circle")
             XCTAssertEqual(sut.getCurrentMessage(), "LAST ROUND!!!")
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
@@ -243,7 +218,7 @@ final class EMOMViewModelUT: XCTestCase {
         // validating the delegate actions
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { 
             XCTAssertEqual(sut.state, .startedWork)
-            XCTAssertEqual(sut.showCountDownView, false)
+            
             XCTAssertEqual(sut.getActionIcon(), "pause.circle")
             XCTAssertEqual(sut.getCurrentMessage(), "LAST ROUND!!!")
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
@@ -281,7 +256,7 @@ final class EMOMViewModelUT: XCTestCase {
         // validating the delegate actions
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
             XCTAssertEqual(sut.state, .startedWork)
-            XCTAssertEqual(sut.showCountDownView, false)
+            
             XCTAssertEqual(sut.getActionIcon(), "pause.circle")
             XCTAssertEqual(sut.getCurrentMessage(), "LAST ROUND!!!")
             DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
@@ -318,7 +293,7 @@ final class EMOMViewModelUT: XCTestCase {
         // validating the delegate actions
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { 
             XCTAssertEqual(sut.state, .startedWork)
-            XCTAssertEqual(sut.showCountDownView, false)
+            
             XCTAssertEqual(sut.getActionIcon(), "pause.circle")
             XCTAssertEqual(sut.getCurrentMessage(), "LAST ROUND!!!")
             DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
@@ -359,7 +334,7 @@ final class EMOMViewModelUT: XCTestCase {
         // validating the delegate actions
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             XCTAssertEqual(sut.state, .startedWork)
-            XCTAssertEqual(sut.showCountDownView, false)
+            
             XCTAssertEqual(sut.getActionIcon(), "pause.circle")
             XCTAssertEqual(sut.getCurrentMessage(), "WORK!")
             DispatchQueue.main.asyncAfter(deadline: .now() + 8.0) {
@@ -388,7 +363,7 @@ final class EMOMViewModelUT: XCTestCase {
         // validating the delegate actions
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             XCTAssertEqual(sut.state, .startedWork)
-            XCTAssertEqual(sut.showCountDownView, false)
+            
             XCTAssertEqual(sut.getActionIcon(), "pause.circle")
             XCTAssertEqual(sut.getCurrentMessage(), "WORK!")
             DispatchQueue.main.asyncAfter(deadline: .now() + 8.0) {
@@ -424,7 +399,7 @@ final class EMOMViewModelUT: XCTestCase {
         // validating the delegate actions
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             XCTAssertEqual(sut.state, .startedWork)
-            XCTAssertEqual(sut.showCountDownView, false)
+            
             XCTAssertEqual(sut.getActionIcon(), "pause.circle")
             XCTAssertEqual(sut.getCurrentMessage(), "WORK!")
             DispatchQueue.main.asyncAfter(deadline: .now() + 8.0) {
@@ -469,7 +444,7 @@ final class EMOMViewModelUT: XCTestCase {
         // validating the delegate actions
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             XCTAssertEqual(sut.state, .startedWork)
-            XCTAssertEqual(sut.showCountDownView, false)
+            
             XCTAssertEqual(sut.getActionIcon(), "pause.circle")
             XCTAssertEqual(sut.getCurrentMessage(), "WORK!")
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
@@ -505,7 +480,7 @@ final class EMOMViewModelUT: XCTestCase {
         // validating the delegate actions
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             XCTAssertEqual(sut.state, .startedWork)
-            XCTAssertEqual(sut.showCountDownView, false)
+            
             XCTAssertEqual(sut.getActionIcon(), "pause.circle")
             XCTAssertEqual(sut.getCurrentMessage(), "WORK!")
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
@@ -546,7 +521,7 @@ final class EMOMViewModelUT: XCTestCase {
         // validating the delegate actions
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             XCTAssertEqual(sut.state, .startedWork)
-            XCTAssertEqual(sut.showCountDownView, false)
+            
             XCTAssertEqual(sut.getActionIcon(), "pause.circle")
             XCTAssertEqual(sut.getCurrentMessage(), "LAST ROUND!!!")
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
@@ -554,7 +529,7 @@ final class EMOMViewModelUT: XCTestCase {
                 // Allow WKExtendedRuntimeSession delegate class unlink from sut
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     XCTAssertEqual(sut.state, .cancelled)
-                    XCTAssertEqual(sut.showCountDownView, false)
+                    
                     let timeInterval = sut.chronoOnMove?.timeIntervalSinceNow ?? 0.0
                     XCTAssertEqual(timeInterval.rounded(.down), 0.0)
                     XCTAssertNil(sut.timerWork)

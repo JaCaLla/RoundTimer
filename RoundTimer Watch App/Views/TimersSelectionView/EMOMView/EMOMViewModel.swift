@@ -22,7 +22,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
     internal var roundsLeft = 0
     @Published var emom: CustomTimer?
 
-    private func startWorkTime() {
+    internal func startWorkTime() {
       //  showCountDownView = false
         if let roundsLeftAfterPausing {
             set(roundsLeft: roundsLeftAfterPausing)

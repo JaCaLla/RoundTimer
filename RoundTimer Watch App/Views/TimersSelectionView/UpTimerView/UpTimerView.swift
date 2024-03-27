@@ -12,6 +12,7 @@ struct UpTimerView: View {
     @Environment(\.isLuminanceReduced) var isLuminanceReduced
     @Binding var customTimer: CustomTimer?
     @StateObject var upTimerViewModel = UpTimerViewModel()
+    @State var gaugeProgress: Double = 0.0
     var body: some View {
         VStack(spacing: 0) {
             if !isLuminanceReduced {
@@ -48,7 +49,7 @@ struct UpTimerView: View {
                     .font(upTimerViewModel.getTimerAndRoundFont(isLuminanceReduced: isLuminanceReduced))
                 }
                 
-                Gauge(value: upTimerViewModel.getRoundsProgress(customTimer: customTimer), label: { })
+                Gauge(value: upTimerViewModel.progress, label: { })
                     .tint(.roundColor)
                     .gaugeStyle(.accessoryLinearCapacity)
                     .scaleEffect(x: 1.0, y: 0.25)
@@ -75,6 +76,9 @@ struct UpTimerView: View {
             Spacer(minLength: 15 - 10)
         }.background(upTimerViewModel.getBackground())
             .onChange(of: scenePhase) { print($0) }
+            .onChange(of: upTimerViewModel.progress) {
+                gaugeProgress = upTimerViewModel.progress
+            }
             .onAppear {
                 guard upTimerViewModel.state == .notStarted else { return }
                 upTimerViewModel.set(emom: customTimer)

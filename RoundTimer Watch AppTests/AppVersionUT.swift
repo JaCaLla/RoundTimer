@@ -15,8 +15,8 @@ final class AppVersionUT: XCTestCase {
             XCTFail("testAppVersionAndBuild failed on fetching keys from dictionary")
             return
         }
-        XCTAssertEqual(appVersion, "1.3")
-        XCTAssertEqual(appBuild, "12")
+        XCTAssertEqual(appVersion, "1.4")
+        XCTAssertEqual(appBuild, "13")
     }
 
 }

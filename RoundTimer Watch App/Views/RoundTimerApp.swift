@@ -12,7 +12,8 @@ struct RoundTimer_Watch_AppApp: App {
     @Environment(\.scenePhase) private var scenePhase
     var body: some Scene {
         WindowGroup {
-            ActiveTimerView()
+            TimersSelectionView()
+         //   ActiveTimerView()
 //            CountdownView(onComplete: {
 //                print("todo")
 //            })

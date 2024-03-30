@@ -24,7 +24,6 @@ struct VibrationView: View {
         "underwaterDepthPrompt":.underwaterDepthPrompt,
         "underwaterDepthCriticalPrompt":.underwaterDepthCriticalPrompt,
     ]
- //   @State var keys:[String]
     @State private var pickerRoundIndex = 0
     var body: some View {
         ScrollView {

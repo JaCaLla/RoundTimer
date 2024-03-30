@@ -43,7 +43,7 @@ final class UpTimerViewModel: NSObject, ObservableObject {
         removeExtendedRuntimeSession()
     }
 
-    func pause() {
+    private func pause() {
         HapticManager.shared.pause()
         extendedRuntimeSession?.invalidate()
         if let timerWork, let customTimer {
@@ -68,9 +68,9 @@ final class UpTimerViewModel: NSObject, ObservableObject {
             startWorkTime()
         } else if state == .startedWork {
             pause()
-            set(to: .paused)
+            set(state: .paused)
         } else if state == .finished {
-            set(to: .notStarted)
+            set(state: .notStarted)
             set(emom: customTimer)
         }
     }
@@ -177,8 +177,8 @@ final class UpTimerViewModel: NSObject, ObservableObject {
         extendedRuntimeSession.invalidate()
     }
 
-    private func set(to state: State) {
-        self.state = state
+    private func set(state to: State) {
+        self.state = to
     }
 }
 
@@ -194,6 +194,8 @@ extension UpTimerViewModel: WKExtendedRuntimeSessionDelegate {
         HapticManager.shared.start()
         
         createAndRunProgressTimer(customTimer, extendedRuntimeSession, timer: &refreshProgressTimer)
+        
+        set(state: .startedWork)
     }
 
     func extendedRuntimeSessionWillExpire(
@@ -216,16 +218,14 @@ extension UpTimerViewModel: WKExtendedRuntimeSessionDelegate {
 
     // MARK :- Private/Internal
     private func processWorktime(extendedRuntimeSession: WKExtendedRuntimeSession, emom: CustomTimer, timerWork: inout Timer?) {
-          // When: state == .notStarted
         var fireWork = Date.now.addingTimeInterval(Double(emom.workSecs))
-        chronoOnMove = Date.now//endOfWork(emom: emom)
+        chronoOnMove = Date.now
         if state == .paused {
                 chronoOnMove = Date.now.addingTimeInterval(-ellapsed)
             let secsToFire = Double(emom.workSecs) - ellapsed
             print("secs2Fire: \(secsToFire)")
                 fireWork = Date.now.addingTimeInterval(secsToFire)
         }
-        set(to: .startedWork)
 
         createAndRunTimerWork(emom, extendedRuntimeSession, fireWork, timerWork: &timerWork)
     }
@@ -237,10 +237,9 @@ extension UpTimerViewModel: WKExtendedRuntimeSessionDelegate {
         let blockTimerWork: (Timer) -> Void = { [weak self] _ in
             guard let self else { return }
                 AudioManager.shared.finish()
-                self.set(to: .finished)
+                self.set(state: .finished)
                 extendedRuntimeSession.invalidate()
                 HapticManager.shared.finish()
-            print("TimerWork: FINISHED!!!!! <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
         }
 
         timerWork = Timer(
@@ -256,9 +255,7 @@ extension UpTimerViewModel: WKExtendedRuntimeSessionDelegate {
     
     fileprivate func createAndRunProgressTimer(_ customTimer: CustomTimer, _ extendedRuntimeSession: WKExtendedRuntimeSession, timer: inout Timer?) {
 
-        let secondsPerRound = Double(customTimer.workSecs / 2)
-        
-        let blockTimerWork: (Timer) -> Void = { [weak self] _ in
+         let blockTimerWork: (Timer) -> Void = { [weak self] _ in
             
             guard let self else { return }
             let ellapsed = getEllapedSecs(timerWork: timerWork, customTimer: customTimer)

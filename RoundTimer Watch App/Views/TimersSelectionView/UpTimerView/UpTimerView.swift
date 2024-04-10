@@ -73,7 +73,7 @@ struct UpTimerView: View {
                     .frame(width: bottonSideSize, height: bottonSideSize)
                     .clipShape(Circle())
             }
-            Spacer(minLength: 15 - 10)
+            Spacer(minLength: 5)
         }.background(upTimerViewModel.getBackground())
             .onChange(of: scenePhase) { print($0) }
             .onChange(of: upTimerViewModel.progress) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		290B144C2BBC6FD400C69246 /* ColorsAndFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B144B2BBC6FD400C69246 /* ColorsAndFonts.swift */; };
 		290BCA812BAA1B5B0024FDC8 /* CreateCustomTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290BCA802BAA1B5B0024FDC8 /* CreateCustomTimerViewModel.swift */; };
 		290C54EE2B58184800D0CD4C /* RoundTimer Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 290C54ED2B58184800D0CD4C /* RoundTimer Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		290C54F32B58184800D0CD4C /* RoundTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C54F22B58184800D0CD4C /* RoundTimerApp.swift */; };
@@ -18,12 +19,26 @@
 		290C55212B581B0100D0CD4C /* CreateCustomTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C55202B581B0100D0CD4C /* CreateCustomTimerView.swift */; };
 		290C55232B581E7200D0CD4C /* RoundsStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C55222B581E7200D0CD4C /* RoundsStepView.swift */; };
 		290C55272B582BD900D0CD4C /* TimerPickerStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C55262B582BD900D0CD4C /* TimerPickerStepView.swift */; };
+		2911E3BA2BB891F7004D931B /* AppRoundTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2911E3B92BB891F7004D931B /* AppRoundTimerApp.swift */; };
+		2911E3BC2BB891F7004D931B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2911E3BB2BB891F7004D931B /* ContentView.swift */; };
+		2911E3BE2BB891F9004D931B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2911E3BD2BB891F9004D931B /* Assets.xcassets */; };
+		2911E3C22BB891F9004D931B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2911E3C12BB891F9004D931B /* Preview Assets.xcassets */; };
+		2911E3CC2BB891F9004D931B /* AppRoundTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2911E3CB2BB891F9004D931B /* AppRoundTimerTests.swift */; };
+		2911E3D62BB891FA004D931B /* AppRoundTimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2911E3D52BB891FA004D931B /* AppRoundTimerUITests.swift */; };
+		2911E3D82BB891FA004D931B /* AppRoundTimerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2911E3D72BB891FA004D931B /* AppRoundTimerUITestsLaunchTests.swift */; };
+		2911E44B2BB8A67A004D931B /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2911E44A2BB8A67A004D931B /* IntroView.swift */; };
+		2911E44D2BB8A6A1004D931B /* EMOMTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2911E44C2BB8A6A1004D931B /* EMOMTimerView.swift */; };
+		2911E44F2BB8A6CD004D931B /* TimerUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2911E44E2BB8A6CD004D931B /* TimerUpView.swift */; };
+		2911E4532BBAD333004D931B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2911E4522BBAD333004D931B /* Localizable.xcstrings */; };
 		2934BE792B5C232800B65361 /* CustomTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2934BE782B5C232800B65361 /* CustomTimer.swift */; };
 		2934BE7C2B5C23C600B65361 /* EmomUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2934BE7B2B5C23C600B65361 /* EmomUT.swift */; };
 		2949C4E32B769DCC00F9B88A /* ColorsAndFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2949C4E22B769DCC00F9B88A /* ColorsAndFonts.swift */; };
 		295E20AD2BAEFD00004AC4FB /* AppVersionUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E20AC2BAEFD00004AC4FB /* AppVersionUT.swift */; };
 		297179572B7D132900048F40 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297179562B7D132900048F40 /* HapticManager.swift */; };
 		2971C6942B62A77A00D1BF24 /* EMOMViewModelUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2971C6932B62A77A00D1BF24 /* EMOMViewModelUT.swift */; };
+		2985A9112BC0667F00A175A7 /* ParagraphImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2985A9102BC0667F00A175A7 /* ParagraphImageView.swift */; };
+		2985A9142BC066D000A175A7 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2985A9132BC066D000A175A7 /* Image.swift */; };
+		2985A9172BC06CEF00A175A7 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2985A9162BC06CEF00A175A7 /* Slide.swift */; };
 		29A0576B2B7436AC007E00AD /* EMOMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A057692B7436AC007E00AD /* EMOMView.swift */; };
 		29A0576C2B7436AC007E00AD /* EMOMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A0576A2B7436AC007E00AD /* EMOMViewModel.swift */; };
 		29A281232BA3884E00343246 /* TimersSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A281222BA3884E00343246 /* TimersSelectionView.swift */; };
@@ -60,6 +75,20 @@
 			remoteGlobalIDString = 290C54EC2B58184800D0CD4C;
 			remoteInfo = "RoundTimer Watch App";
 		};
+		2911E3C82BB891F9004D931B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 290C54E12B58184800D0CD4C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2911E3B62BB891F7004D931B;
+			remoteInfo = AppRoundTimer;
+		};
+		2911E3D22BB891FA004D931B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 290C54E12B58184800D0CD4C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2911E3B62BB891F7004D931B;
+			remoteInfo = AppRoundTimer;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,6 +106,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		290B144B2BBC6FD400C69246 /* ColorsAndFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsAndFonts.swift; sourceTree = "<group>"; };
 		290BCA802BAA1B5B0024FDC8 /* CreateCustomTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomTimerViewModel.swift; sourceTree = "<group>"; };
 		290C54E72B58184800D0CD4C /* RoundTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoundTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		290C54ED2B58184800D0CD4C /* RoundTimer Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RoundTimer Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +121,21 @@
 		290C55202B581B0100D0CD4C /* CreateCustomTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomTimerView.swift; sourceTree = "<group>"; };
 		290C55222B581E7200D0CD4C /* RoundsStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundsStepView.swift; sourceTree = "<group>"; };
 		290C55262B582BD900D0CD4C /* TimerPickerStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPickerStepView.swift; sourceTree = "<group>"; };
+		2911E3B72BB891F7004D931B /* AppRoundTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppRoundTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2911E3B92BB891F7004D931B /* AppRoundTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoundTimerApp.swift; sourceTree = "<group>"; };
+		2911E3BB2BB891F7004D931B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2911E3BD2BB891F9004D931B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2911E3BF2BB891F9004D931B /* AppRoundTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppRoundTimer.entitlements; sourceTree = "<group>"; };
+		2911E3C12BB891F9004D931B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2911E3C72BB891F9004D931B /* AppRoundTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppRoundTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2911E3CB2BB891F9004D931B /* AppRoundTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoundTimerTests.swift; sourceTree = "<group>"; };
+		2911E3D12BB891F9004D931B /* AppRoundTimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppRoundTimerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2911E3D52BB891FA004D931B /* AppRoundTimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoundTimerUITests.swift; sourceTree = "<group>"; };
+		2911E3D72BB891FA004D931B /* AppRoundTimerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoundTimerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2911E44A2BB8A67A004D931B /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		2911E44C2BB8A6A1004D931B /* EMOMTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOMTimerView.swift; sourceTree = "<group>"; };
+		2911E44E2BB8A6CD004D931B /* TimerUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerUpView.swift; sourceTree = "<group>"; };
+		2911E4522BBAD333004D931B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		291FC3D12B72C1A300546DB7 /* RoundTimer Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "RoundTimer Watch App.entitlements"; sourceTree = "<group>"; };
 		2934BE782B5C232800B65361 /* CustomTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimer.swift; sourceTree = "<group>"; };
 		2934BE7B2B5C23C600B65361 /* EmomUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmomUT.swift; sourceTree = "<group>"; };
@@ -98,6 +143,9 @@
 		295E20AC2BAEFD00004AC4FB /* AppVersionUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionUT.swift; sourceTree = "<group>"; };
 		297179562B7D132900048F40 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		2971C6932B62A77A00D1BF24 /* EMOMViewModelUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOMViewModelUT.swift; sourceTree = "<group>"; };
+		2985A9102BC0667F00A175A7 /* ParagraphImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParagraphImageView.swift; sourceTree = "<group>"; };
+		2985A9132BC066D000A175A7 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		2985A9162BC06CEF00A175A7 /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		29A057692B7436AC007E00AD /* EMOMView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMOMView.swift; sourceTree = "<group>"; };
 		29A0576A2B7436AC007E00AD /* EMOMViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMOMViewModel.swift; sourceTree = "<group>"; };
 		29A281222BA3884E00343246 /* TimersSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersSelectionView.swift; sourceTree = "<group>"; };
@@ -136,9 +184,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2911E3B42BB891F7004D931B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2911E3C42BB891F9004D931B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2911E3CE2BB891F9004D931B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		290B144A2BBC6FB900C69246 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				290B144B2BBC6FD400C69246 /* ColorsAndFonts.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 		290C54E02B58184800D0CD4C = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +223,9 @@
 				290C54F12B58184800D0CD4C /* RoundTimer Watch App */,
 				290C55022B58184A00D0CD4C /* RoundTimer Watch AppTests */,
 				290C550C2B58184A00D0CD4C /* RoundTimer Watch AppUITests */,
+				2911E3B82BB891F7004D931B /* AppRoundTimer */,
+				2911E3CA2BB891F9004D931B /* AppRoundTimerTests */,
+				2911E3D42BB891FA004D931B /* AppRoundTimerUITests */,
 				290C54E82B58184800D0CD4C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -157,6 +237,9 @@
 				290C54ED2B58184800D0CD4C /* RoundTimer Watch App.app */,
 				290C54FF2B58184A00D0CD4C /* RoundTimer Watch AppTests.xctest */,
 				290C55092B58184A00D0CD4C /* RoundTimer Watch AppUITests.xctest */,
+				2911E3B72BB891F7004D931B /* AppRoundTimer.app */,
+				2911E3C72BB891F9004D931B /* AppRoundTimerTests.xctest */,
+				2911E3D12BB891F9004D931B /* AppRoundTimerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -203,6 +286,61 @@
 				290C550F2B58184A00D0CD4C /* RoundTimer_Watch_AppUITestsLaunchTests.swift */,
 			);
 			path = "RoundTimer Watch AppUITests";
+			sourceTree = "<group>";
+		};
+		2911E3B82BB891F7004D931B /* AppRoundTimer */ = {
+			isa = PBXGroup;
+			children = (
+				2985A90E2BC0665400A175A7 /* Views */,
+				290B144A2BBC6FB900C69246 /* Styles */,
+				2911E4502BBACCEC004D931B /* Resources */,
+				2911E3B92BB891F7004D931B /* AppRoundTimerApp.swift */,
+				2911E3BD2BB891F9004D931B /* Assets.xcassets */,
+				2911E3BF2BB891F9004D931B /* AppRoundTimer.entitlements */,
+				2911E3C02BB891F9004D931B /* Preview Content */,
+			);
+			path = AppRoundTimer;
+			sourceTree = "<group>";
+		};
+		2911E3C02BB891F9004D931B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2911E3C12BB891F9004D931B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2911E3CA2BB891F9004D931B /* AppRoundTimerTests */ = {
+			isa = PBXGroup;
+			children = (
+				2911E3CB2BB891F9004D931B /* AppRoundTimerTests.swift */,
+			);
+			path = AppRoundTimerTests;
+			sourceTree = "<group>";
+		};
+		2911E3D42BB891FA004D931B /* AppRoundTimerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2911E3D52BB891FA004D931B /* AppRoundTimerUITests.swift */,
+				2911E3D72BB891FA004D931B /* AppRoundTimerUITestsLaunchTests.swift */,
+			);
+			path = AppRoundTimerUITests;
+			sourceTree = "<group>";
+		};
+		2911E4502BBACCEC004D931B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2911E4512BBACCFD004D931B /* Strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2911E4512BBACCFD004D931B /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				2911E4522BBAD333004D931B /* Localizable.xcstrings */,
+			);
+			path = Strings;
 			sourceTree = "<group>";
 		};
 		2934BE772B5C22EB00B65361 /* Model */ = {
@@ -312,6 +450,44 @@
 			path = EMOMView;
 			sourceTree = "<group>";
 		};
+		2985A90E2BC0665400A175A7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2985A9152BC06CE300A175A7 /* Model */,
+				2985A9122BC066BA00A175A7 /* Extension */,
+				2985A90F2BC0666700A175A7 /* Common */,
+				2911E3BB2BB891F7004D931B /* ContentView.swift */,
+				2911E44C2BB8A6A1004D931B /* EMOMTimerView.swift */,
+				2911E44A2BB8A67A004D931B /* IntroView.swift */,
+				2911E44E2BB8A6CD004D931B /* TimerUpView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2985A90F2BC0666700A175A7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2985A9102BC0667F00A175A7 /* ParagraphImageView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		2985A9122BC066BA00A175A7 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2985A9132BC066D000A175A7 /* Image.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		2985A9152BC06CE300A175A7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2985A9162BC06CEF00A175A7 /* Slide.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		29A281262BA6FED300343246 /* UpTimerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +581,59 @@
 			productReference = 290C55092B58184A00D0CD4C /* RoundTimer Watch AppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		2911E3B62BB891F7004D931B /* AppRoundTimer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2911E3DF2BB891FA004D931B /* Build configuration list for PBXNativeTarget "AppRoundTimer" */;
+			buildPhases = (
+				2911E3B32BB891F7004D931B /* Sources */,
+				2911E3B42BB891F7004D931B /* Frameworks */,
+				2911E3B52BB891F7004D931B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AppRoundTimer;
+			productName = AppRoundTimer;
+			productReference = 2911E3B72BB891F7004D931B /* AppRoundTimer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2911E3C62BB891F9004D931B /* AppRoundTimerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2911E3E02BB891FA004D931B /* Build configuration list for PBXNativeTarget "AppRoundTimerTests" */;
+			buildPhases = (
+				2911E3C32BB891F9004D931B /* Sources */,
+				2911E3C42BB891F9004D931B /* Frameworks */,
+				2911E3C52BB891F9004D931B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2911E3C92BB891F9004D931B /* PBXTargetDependency */,
+			);
+			name = AppRoundTimerTests;
+			productName = AppRoundTimerTests;
+			productReference = 2911E3C72BB891F9004D931B /* AppRoundTimerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2911E3D02BB891F9004D931B /* AppRoundTimerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2911E3E12BB891FA004D931B /* Build configuration list for PBXNativeTarget "AppRoundTimerUITests" */;
+			buildPhases = (
+				2911E3CD2BB891F9004D931B /* Sources */,
+				2911E3CE2BB891F9004D931B /* Frameworks */,
+				2911E3CF2BB891F9004D931B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2911E3D32BB891FA004D931B /* PBXTargetDependency */,
+			);
+			name = AppRoundTimerUITests;
+			productName = AppRoundTimerUITests;
+			productReference = 2911E3D12BB891F9004D931B /* AppRoundTimerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -429,6 +658,17 @@
 						CreatedOnToolsVersion = 15.0.1;
 						TestTargetID = 290C54EC2B58184800D0CD4C;
 					};
+					2911E3B62BB891F7004D931B = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					2911E3C62BB891F9004D931B = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 2911E3B62BB891F7004D931B;
+					};
+					2911E3D02BB891F9004D931B = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 2911E3B62BB891F7004D931B;
+					};
 				};
 			};
 			buildConfigurationList = 290C54E42B58184800D0CD4C /* Build configuration list for PBXProject "RoundTimer" */;
@@ -448,6 +688,9 @@
 				290C54EC2B58184800D0CD4C /* RoundTimer Watch App */,
 				290C54FE2B58184A00D0CD4C /* RoundTimer Watch AppTests */,
 				290C55082B58184A00D0CD4C /* RoundTimer Watch AppUITests */,
+				2911E3B62BB891F7004D931B /* AppRoundTimer */,
+				2911E3C62BB891F9004D931B /* AppRoundTimerTests */,
+				2911E3D02BB891F9004D931B /* AppRoundTimerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -481,6 +724,30 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		290C55072B58184A00D0CD4C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2911E3B52BB891F7004D931B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2911E3C22BB891F9004D931B /* Preview Assets.xcassets in Resources */,
+				2911E3BE2BB891F9004D931B /* Assets.xcassets in Resources */,
+				2911E4532BBAD333004D931B /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2911E3C52BB891F9004D931B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2911E3CF2BB891F9004D931B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -533,6 +800,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2911E3B32BB891F7004D931B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2911E44F2BB8A6CD004D931B /* TimerUpView.swift in Sources */,
+				2985A9142BC066D000A175A7 /* Image.swift in Sources */,
+				2911E44D2BB8A6A1004D931B /* EMOMTimerView.swift in Sources */,
+				290B144C2BBC6FD400C69246 /* ColorsAndFonts.swift in Sources */,
+				2911E3BC2BB891F7004D931B /* ContentView.swift in Sources */,
+				2985A9112BC0667F00A175A7 /* ParagraphImageView.swift in Sources */,
+				2985A9172BC06CEF00A175A7 /* Slide.swift in Sources */,
+				2911E3BA2BB891F7004D931B /* AppRoundTimerApp.swift in Sources */,
+				2911E44B2BB8A67A004D931B /* IntroView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2911E3C32BB891F9004D931B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2911E3CC2BB891F9004D931B /* AppRoundTimerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2911E3CD2BB891F9004D931B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2911E3D62BB891FA004D931B /* AppRoundTimerUITests.swift in Sources */,
+				2911E3D82BB891FA004D931B /* AppRoundTimerUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -550,6 +850,16 @@
 			isa = PBXTargetDependency;
 			target = 290C54EC2B58184800D0CD4C /* RoundTimer Watch App */;
 			targetProxy = 290C550A2B58184A00D0CD4C /* PBXContainerItemProxy */;
+		};
+		2911E3C92BB891F9004D931B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2911E3B62BB891F7004D931B /* AppRoundTimer */;
+			targetProxy = 2911E3C82BB891F9004D931B /* PBXContainerItemProxy */;
+		};
+		2911E3D32BB891FA004D931B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2911E3B62BB891F7004D931B /* AppRoundTimer */;
+			targetProxy = 2911E3D22BB891FA004D931B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -679,7 +989,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "RoundTimer Watch App/RoundTimer Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"RoundTimer Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				ENABLE_PREVIEWS = YES;
@@ -694,7 +1004,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = jca.RoundTimer.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -713,7 +1023,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "RoundTimer Watch App/RoundTimer Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"RoundTimer Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				ENABLE_PREVIEWS = YES;
@@ -728,7 +1038,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = jca.RoundTimer.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -746,10 +1056,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				INFOPLIST_KEY_CFBundleDisplayName = RoundTimer;
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = jca.RoundTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -762,10 +1072,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				INFOPLIST_KEY_CFBundleDisplayName = RoundTimer;
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = jca.RoundTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -780,10 +1090,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "jca.RoundTimer-Watch-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -801,10 +1111,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "jca.RoundTimer-Watch-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -822,10 +1132,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "jca.RoundTimer-Watch-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -842,10 +1152,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "jca.RoundTimer-Watch-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -855,6 +1165,172 @@
 				TEST_TARGET_NAME = "RoundTimer Watch App";
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		2911E3D92BB891FA004D931B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AppRoundTimer/AppRoundTimer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_ASSET_PATHS = "\"AppRoundTimer/Preview Content\"";
+				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.5;
+				PRODUCT_BUNDLE_IDENTIFIER = jca.AppRoundTimer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2911E3DA2BB891FA004D931B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AppRoundTimer/AppRoundTimer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_ASSET_PATHS = "\"AppRoundTimer/Preview Content\"";
+				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.5;
+				PRODUCT_BUNDLE_IDENTIFIER = jca.AppRoundTimer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2911E3DB2BB891FA004D931B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.5;
+				PRODUCT_BUNDLE_IDENTIFIER = jca.AppRoundTimerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppRoundTimer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AppRoundTimer";
+			};
+			name = Debug;
+		};
+		2911E3DC2BB891FA004D931B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.5;
+				PRODUCT_BUNDLE_IDENTIFIER = jca.AppRoundTimerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppRoundTimer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AppRoundTimer";
+			};
+			name = Release;
+		};
+		2911E3DD2BB891FA004D931B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.5;
+				PRODUCT_BUNDLE_IDENTIFIER = jca.AppRoundTimerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AppRoundTimer;
+			};
+			name = Debug;
+		};
+		2911E3DE2BB891FA004D931B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.5;
+				PRODUCT_BUNDLE_IDENTIFIER = jca.AppRoundTimerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AppRoundTimer;
 			};
 			name = Release;
 		};
@@ -902,6 +1378,33 @@
 			buildConfigurations = (
 				290C551E2B58184A00D0CD4C /* Debug */,
 				290C551F2B58184A00D0CD4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2911E3DF2BB891FA004D931B /* Build configuration list for PBXNativeTarget "AppRoundTimer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2911E3D92BB891FA004D931B /* Debug */,
+				2911E3DA2BB891FA004D931B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2911E3E02BB891FA004D931B /* Build configuration list for PBXNativeTarget "AppRoundTimerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2911E3DB2BB891FA004D931B /* Debug */,
+				2911E3DC2BB891FA004D931B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2911E3E12BB891FA004D931B /* Build configuration list for PBXNativeTarget "AppRoundTimerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2911E3DD2BB891FA004D931B /* Debug */,
+				2911E3DE2BB891FA004D931B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

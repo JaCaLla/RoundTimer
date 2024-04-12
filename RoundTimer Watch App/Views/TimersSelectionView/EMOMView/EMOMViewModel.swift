@@ -315,7 +315,7 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
                 HapticManager.shared.finish()
             }
         }
-        let secondsPerRound = Double(emom.workSecs + 1 + emom.restSecs)
+        let secondsPerRound = Double(emom.workSecs /*+ 1 */+ emom.restSecs)
         timerWork = Timer(
             fire: fireWork,
             interval: secondsPerRound,
@@ -357,7 +357,7 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
                 HapticManager.shared.finish()
             }
         }
-        let secondsPerRound = Double(emom.workSecs + 1 + emom.restSecs)
+        let secondsPerRound = Double(emom.workSecs /*+ 1*/ + emom.restSecs)
         timerRest = Timer(fire: fireRest, interval: secondsPerRound, repeats: true, block: blockRestTimer)
         guard let timerRest else { return }
         RunLoop.main.add(timerRest, forMode: .common)

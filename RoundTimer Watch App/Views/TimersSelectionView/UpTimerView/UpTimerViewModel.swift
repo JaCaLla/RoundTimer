@@ -212,7 +212,7 @@ extension UpTimerViewModel: WKExtendedRuntimeSessionDelegate {
         chronoOnMove = nil
 
         if state == .finished, let customTimer {
-                chronoFrozen = CustomTimer.getHHMMSS(seconds: CustomTimer.getTotal(emom: customTimer))
+            chronoFrozen = CustomTimer.getHHMMSS(seconds: CustomTimer.getTotal(emom: customTimer))
         }
     }
 

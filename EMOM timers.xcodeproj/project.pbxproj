@@ -1,0 +1,1330 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2919869B2BC7048F0012ACA0 /* EMOM_timersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919869A2BC7048F0012ACA0 /* EMOM_timersApp.swift */; };
+		2919869F2BC704900012ACA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2919869E2BC704900012ACA0 /* Assets.xcassets */; };
+		291986A22BC704900012ACA0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 291986A12BC704900012ACA0 /* Preview Assets.xcassets */; };
+		291986AC2BC704900012ACA0 /* EMOM_timersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291986AB2BC704900012ACA0 /* EMOM_timersTests.swift */; };
+		291986B62BC704900012ACA0 /* EMOM_timersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291986B52BC704900012ACA0 /* EMOM_timersUITests.swift */; };
+		291986B82BC704900012ACA0 /* EMOM_timersUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291986B72BC704900012ACA0 /* EMOM_timersUITestsLaunchTests.swift */; };
+		291986BE2BC704900012ACA0 /* EMOM timers Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 291986BD2BC704900012ACA0 /* EMOM timers Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		291986C32BC704900012ACA0 /* EMOM_timersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291986C22BC704900012ACA0 /* EMOM_timersApp.swift */; };
+		291986C52BC704900012ACA0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291986C42BC704900012ACA0 /* ContentView.swift */; };
+		291986C72BC704910012ACA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 291986C62BC704910012ACA0 /* Assets.xcassets */; };
+		291986CA2BC704910012ACA0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 291986C92BC704910012ACA0 /* Preview Assets.xcassets */; };
+		291986DE2BC704910012ACA0 /* EMOM_timers_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291986DD2BC704910012ACA0 /* EMOM_timers_Watch_AppUITests.swift */; };
+		291986E02BC704910012ACA0 /* EMOM_timers_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291986DF2BC704910012ACA0 /* EMOM_timers_Watch_AppUITestsLaunchTests.swift */; };
+		291987032BC7074A0012ACA0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291986FF2BC7074A0012ACA0 /* ContentView.swift */; };
+		291987042BC7074A0012ACA0 /* EMOMTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291987002BC7074A0012ACA0 /* EMOMTimerView.swift */; };
+		291987052BC7074A0012ACA0 /* TimerUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291987012BC7074A0012ACA0 /* TimerUpView.swift */; };
+		291987062BC7074A0012ACA0 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291987022BC7074A0012ACA0 /* IntroView.swift */; };
+		291987092BC708640012ACA0 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291987082BC708640012ACA0 /* Slide.swift */; };
+		2919870C2BC708840012ACA0 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919870B2BC708840012ACA0 /* Image.swift */; };
+		2919870F2BC708AD0012ACA0 /* ParagraphImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919870E2BC708AD0012ACA0 /* ParagraphImageView.swift */; };
+		296909CC2BC9A4B500737D0A /* CreateCustomTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909BE2BC9A4B500737D0A /* CreateCustomTimerView.swift */; };
+		296909CD2BC9A4B500737D0A /* CreateCustomTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909BF2BC9A4B500737D0A /* CreateCustomTimerViewModel.swift */; };
+		296909CE2BC9A4B500737D0A /* RoundsStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909C02BC9A4B500737D0A /* RoundsStepView.swift */; };
+		296909CF2BC9A4B500737D0A /* TimerPickerStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909C12BC9A4B500737D0A /* TimerPickerStepView.swift */; };
+		296909D02BC9A4B500737D0A /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909C32BC9A4B500737D0A /* CountdownView.swift */; };
+		296909D12BC9A4B500737D0A /* EMOMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909C42BC9A4B500737D0A /* EMOMView.swift */; };
+		296909D22BC9A4B500737D0A /* EMOMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909C52BC9A4B500737D0A /* EMOMViewModel.swift */; };
+		296909D32BC9A4B500737D0A /* UpTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909C72BC9A4B500737D0A /* UpTimerView.swift */; };
+		296909D42BC9A4B500737D0A /* UpTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909C82BC9A4B500737D0A /* UpTimerViewModel.swift */; };
+		296909D52BC9A4B500737D0A /* TimersSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909CA2BC9A4B500737D0A /* TimersSelectionView.swift */; };
+		296909D72BC9A4BE00737D0A /* VibrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909D62BC9A4BE00737D0A /* VibrationView.swift */; };
+		296909E42BC9B7DA00737D0A /* EMOMViewModelUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909DB2BC9B7DA00737D0A /* EMOMViewModelUT.swift */; };
+		296909E52BC9B7DA00737D0A /* AppVersionUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909E02BC9B7DA00737D0A /* AppVersionUT.swift */; };
+		296909E62BC9B7DA00737D0A /* EmomUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909E12BC9B7DA00737D0A /* EmomUT.swift */; };
+		296909E72BC9B7DA00737D0A /* RoundTimer_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909E32BC9B7DA00737D0A /* RoundTimer_Watch_AppTests.swift */; };
+		29D4BD5A2BC99C1B00A0F6B4 /* ColorsAndFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4BD582BC99C1B00A0F6B4 /* ColorsAndFonts.swift */; };
+		29D4BD5E2BC99C5A00A0F6B4 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 29D4BD5B2BC99C5A00A0F6B4 /* Localizable.xcstrings */; };
+		29D4BD7C2BC99EAB00A0F6B4 /* CustomTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4BD7A2BC99EAB00A0F6B4 /* CustomTimer.swift */; };
+		29D4BD7F2BC99ECB00A0F6B4 /* ColorsAndFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4BD7D2BC99ECB00A0F6B4 /* ColorsAndFonts.swift */; };
+		29D4BD832BC99ED300A0F6B4 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4BD802BC99ED300A0F6B4 /* AudioManager.swift */; };
+		29D4BD842BC99ED300A0F6B4 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4BD812BC99ED300A0F6B4 /* HapticManager.swift */; };
+		29D4BD8A2BC99EDE00A0F6B4 /* finish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29D4BD852BC99EDD00A0F6B4 /* finish.mp3 */; };
+		29D4BD8B2BC99EDE00A0F6B4 /* rest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29D4BD862BC99EDD00A0F6B4 /* rest.mp3 */; };
+		29D4BD8C2BC99EDE00A0F6B4 /* start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29D4BD872BC99EDD00A0F6B4 /* start.mp3 */; };
+		29D4BD8D2BC99EDE00A0F6B4 /* work.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29D4BD882BC99EDD00A0F6B4 /* work.mp3 */; };
+		29D4BD8F2BC99F1B00A0F6B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29D4BD8E2BC99F1B00A0F6B4 /* Assets.xcassets */; };
+		29E377892BC9BC7D001DFE00 /* EMOM-timers-Watch-App-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29E377882BC9BC7D001DFE00 /* EMOM-timers-Watch-App-Info.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		291986A82BC704900012ACA0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2919868F2BC7048F0012ACA0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 291986962BC7048F0012ACA0;
+			remoteInfo = "EMOM timers";
+		};
+		291986B22BC704900012ACA0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2919868F2BC7048F0012ACA0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 291986962BC7048F0012ACA0;
+			remoteInfo = "EMOM timers";
+		};
+		291986BF2BC704900012ACA0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2919868F2BC7048F0012ACA0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 291986BC2BC704900012ACA0;
+			remoteInfo = "EMOM timers Watch App";
+		};
+		291986D02BC704910012ACA0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2919868F2BC7048F0012ACA0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 291986BC2BC704900012ACA0;
+			remoteInfo = "EMOM timers Watch App";
+		};
+		291986DA2BC704910012ACA0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2919868F2BC7048F0012ACA0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 291986BC2BC704900012ACA0;
+			remoteInfo = "EMOM timers Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		291986E62BC704910012ACA0 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				291986BE2BC704900012ACA0 /* EMOM timers Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		291986972BC7048F0012ACA0 /* EMOM timers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EMOM timers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2919869A2BC7048F0012ACA0 /* EMOM_timersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOM_timersApp.swift; sourceTree = "<group>"; };
+		2919869E2BC704900012ACA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		291986A12BC704900012ACA0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		291986A72BC704900012ACA0 /* EMOM timersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EMOM timersTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		291986AB2BC704900012ACA0 /* EMOM_timersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOM_timersTests.swift; sourceTree = "<group>"; };
+		291986B12BC704900012ACA0 /* EMOM timersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EMOM timersUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		291986B52BC704900012ACA0 /* EMOM_timersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOM_timersUITests.swift; sourceTree = "<group>"; };
+		291986B72BC704900012ACA0 /* EMOM_timersUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOM_timersUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		291986BD2BC704900012ACA0 /* EMOM timers Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EMOM timers Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		291986C22BC704900012ACA0 /* EMOM_timersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOM_timersApp.swift; sourceTree = "<group>"; };
+		291986C42BC704900012ACA0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		291986C62BC704910012ACA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		291986C92BC704910012ACA0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		291986CF2BC704910012ACA0 /* EMOM timers Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EMOM timers Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		291986D92BC704910012ACA0 /* EMOM timers Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EMOM timers Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		291986DD2BC704910012ACA0 /* EMOM_timers_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOM_timers_Watch_AppUITests.swift; sourceTree = "<group>"; };
+		291986DF2BC704910012ACA0 /* EMOM_timers_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOM_timers_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		291986FF2BC7074A0012ACA0 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		291987002BC7074A0012ACA0 /* EMOMTimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMOMTimerView.swift; sourceTree = "<group>"; };
+		291987012BC7074A0012ACA0 /* TimerUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerUpView.swift; sourceTree = "<group>"; };
+		291987022BC7074A0012ACA0 /* IntroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		291987082BC708640012ACA0 /* Slide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
+		2919870B2BC708840012ACA0 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		2919870E2BC708AD0012ACA0 /* ParagraphImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParagraphImageView.swift; sourceTree = "<group>"; };
+		296909BE2BC9A4B500737D0A /* CreateCustomTimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCustomTimerView.swift; sourceTree = "<group>"; };
+		296909BF2BC9A4B500737D0A /* CreateCustomTimerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCustomTimerViewModel.swift; sourceTree = "<group>"; };
+		296909C02BC9A4B500737D0A /* RoundsStepView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundsStepView.swift; sourceTree = "<group>"; };
+		296909C12BC9A4B500737D0A /* TimerPickerStepView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerPickerStepView.swift; sourceTree = "<group>"; };
+		296909C32BC9A4B500737D0A /* CountdownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
+		296909C42BC9A4B500737D0A /* EMOMView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMOMView.swift; sourceTree = "<group>"; };
+		296909C52BC9A4B500737D0A /* EMOMViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMOMViewModel.swift; sourceTree = "<group>"; };
+		296909C72BC9A4B500737D0A /* UpTimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpTimerView.swift; sourceTree = "<group>"; };
+		296909C82BC9A4B500737D0A /* UpTimerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpTimerViewModel.swift; sourceTree = "<group>"; };
+		296909CA2BC9A4B500737D0A /* TimersSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimersSelectionView.swift; sourceTree = "<group>"; };
+		296909D62BC9A4BE00737D0A /* VibrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VibrationView.swift; sourceTree = "<group>"; };
+		296909D92BC9A70D00737D0A /* EMOM timers Watch App.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "EMOM timers Watch App.entitlements"; sourceTree = "<group>"; };
+		296909DB2BC9B7DA00737D0A /* EMOMViewModelUT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMOMViewModelUT.swift; sourceTree = "<group>"; };
+		296909E02BC9B7DA00737D0A /* AppVersionUT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVersionUT.swift; sourceTree = "<group>"; };
+		296909E12BC9B7DA00737D0A /* EmomUT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmomUT.swift; sourceTree = "<group>"; };
+		296909E32BC9B7DA00737D0A /* RoundTimer_Watch_AppTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTimer_Watch_AppTests.swift; sourceTree = "<group>"; };
+		29D4BD582BC99C1B00A0F6B4 /* ColorsAndFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsAndFonts.swift; sourceTree = "<group>"; };
+		29D4BD5B2BC99C5A00A0F6B4 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		29D4BD7A2BC99EAB00A0F6B4 /* CustomTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTimer.swift; sourceTree = "<group>"; };
+		29D4BD7D2BC99ECB00A0F6B4 /* ColorsAndFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsAndFonts.swift; sourceTree = "<group>"; };
+		29D4BD802BC99ED300A0F6B4 /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		29D4BD812BC99ED300A0F6B4 /* HapticManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		29D4BD852BC99EDD00A0F6B4 /* finish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = finish.mp3; sourceTree = "<group>"; };
+		29D4BD862BC99EDD00A0F6B4 /* rest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rest.mp3; sourceTree = "<group>"; };
+		29D4BD872BC99EDD00A0F6B4 /* start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = start.mp3; sourceTree = "<group>"; };
+		29D4BD882BC99EDD00A0F6B4 /* work.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = work.mp3; sourceTree = "<group>"; };
+		29D4BD8E2BC99F1B00A0F6B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		29E377882BC9BC7D001DFE00 /* EMOM-timers-Watch-App-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "EMOM-timers-Watch-App-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		291986942BC7048F0012ACA0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		291986A42BC704900012ACA0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		291986AE2BC704900012ACA0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		291986BA2BC704900012ACA0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		291986CC2BC704910012ACA0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		291986D62BC704910012ACA0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2919868E2BC7048F0012ACA0 = {
+			isa = PBXGroup;
+			children = (
+				29E377882BC9BC7D001DFE00 /* EMOM-timers-Watch-App-Info.plist */,
+				291986992BC7048F0012ACA0 /* EMOM timers */,
+				291986AA2BC704900012ACA0 /* EMOM timersTests */,
+				291986B42BC704900012ACA0 /* EMOM timersUITests */,
+				291986C12BC704900012ACA0 /* EMOM timers Watch App */,
+				291986D22BC704910012ACA0 /* EMOM timers Watch AppTests */,
+				291986DC2BC704910012ACA0 /* EMOM timers Watch AppUITests */,
+				291986982BC7048F0012ACA0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		291986982BC7048F0012ACA0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				291986972BC7048F0012ACA0 /* EMOM timers.app */,
+				291986A72BC704900012ACA0 /* EMOM timersTests.xctest */,
+				291986B12BC704900012ACA0 /* EMOM timersUITests.xctest */,
+				291986BD2BC704900012ACA0 /* EMOM timers Watch App.app */,
+				291986CF2BC704910012ACA0 /* EMOM timers Watch AppTests.xctest */,
+				291986D92BC704910012ACA0 /* EMOM timers Watch AppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		291986992BC7048F0012ACA0 /* EMOM timers */ = {
+			isa = PBXGroup;
+			children = (
+				29D4BD5D2BC99C5A00A0F6B4 /* Resources */,
+				291986F62BC7051A0012ACA0 /* Views */,
+				29D4BD592BC99C1B00A0F6B4 /* Styles */,
+				2919869A2BC7048F0012ACA0 /* EMOM_timersApp.swift */,
+				2919869E2BC704900012ACA0 /* Assets.xcassets */,
+				291986A02BC704900012ACA0 /* Preview Content */,
+			);
+			path = "EMOM timers";
+			sourceTree = "<group>";
+		};
+		291986A02BC704900012ACA0 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				291986A12BC704900012ACA0 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		291986AA2BC704900012ACA0 /* EMOM timersTests */ = {
+			isa = PBXGroup;
+			children = (
+				291986AB2BC704900012ACA0 /* EMOM_timersTests.swift */,
+			);
+			path = "EMOM timersTests";
+			sourceTree = "<group>";
+		};
+		291986B42BC704900012ACA0 /* EMOM timersUITests */ = {
+			isa = PBXGroup;
+			children = (
+				291986B52BC704900012ACA0 /* EMOM_timersUITests.swift */,
+				291986B72BC704900012ACA0 /* EMOM_timersUITestsLaunchTests.swift */,
+			);
+			path = "EMOM timersUITests";
+			sourceTree = "<group>";
+		};
+		291986C12BC704900012ACA0 /* EMOM timers Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				296909D92BC9A70D00737D0A /* EMOM timers Watch App.entitlements */,
+				29D4BD892BC99EDD00A0F6B4 /* Resources */,
+				29D4BD822BC99ED300A0F6B4 /* Managers */,
+				29D4BD7E2BC99ECB00A0F6B4 /* Styles */,
+				29D4BD7B2BC99EAB00A0F6B4 /* Model */,
+				29D4BD612BC99E1300A0F6B4 /* Views */,
+				291986C42BC704900012ACA0 /* ContentView.swift */,
+				291986C62BC704910012ACA0 /* Assets.xcassets */,
+				291986C82BC704910012ACA0 /* Preview Content */,
+			);
+			path = "EMOM timers Watch App";
+			sourceTree = "<group>";
+		};
+		291986C82BC704910012ACA0 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				291986C92BC704910012ACA0 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		291986D22BC704910012ACA0 /* EMOM timers Watch AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				296909E02BC9B7DA00737D0A /* AppVersionUT.swift */,
+				296909E22BC9B7DA00737D0A /* Model */,
+				296909E32BC9B7DA00737D0A /* RoundTimer_Watch_AppTests.swift */,
+				296909DF2BC9B7DA00737D0A /* Views */,
+			);
+			path = "EMOM timers Watch AppTests";
+			sourceTree = "<group>";
+		};
+		291986DC2BC704910012ACA0 /* EMOM timers Watch AppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				291986DD2BC704910012ACA0 /* EMOM_timers_Watch_AppUITests.swift */,
+				291986DF2BC704910012ACA0 /* EMOM_timers_Watch_AppUITestsLaunchTests.swift */,
+			);
+			path = "EMOM timers Watch AppUITests";
+			sourceTree = "<group>";
+		};
+		291986F62BC7051A0012ACA0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2919870D2BC708A00012ACA0 /* Common */,
+				2919870A2BC708740012ACA0 /* Extension */,
+				291987072BC708570012ACA0 /* Model */,
+				291986FF2BC7074A0012ACA0 /* ContentView.swift */,
+				291987002BC7074A0012ACA0 /* EMOMTimerView.swift */,
+				291987022BC7074A0012ACA0 /* IntroView.swift */,
+				291987012BC7074A0012ACA0 /* TimerUpView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		291987072BC708570012ACA0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				291987082BC708640012ACA0 /* Slide.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2919870A2BC708740012ACA0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2919870B2BC708840012ACA0 /* Image.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		2919870D2BC708A00012ACA0 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2919870E2BC708AD0012ACA0 /* ParagraphImageView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		296909C22BC9A4B500737D0A /* CreateCustomTimerView */ = {
+			isa = PBXGroup;
+			children = (
+				296909BE2BC9A4B500737D0A /* CreateCustomTimerView.swift */,
+				296909BF2BC9A4B500737D0A /* CreateCustomTimerViewModel.swift */,
+				296909C02BC9A4B500737D0A /* RoundsStepView.swift */,
+				296909C12BC9A4B500737D0A /* TimerPickerStepView.swift */,
+			);
+			path = CreateCustomTimerView;
+			sourceTree = "<group>";
+		};
+		296909C62BC9A4B500737D0A /* EMOMView */ = {
+			isa = PBXGroup;
+			children = (
+				296909C32BC9A4B500737D0A /* CountdownView.swift */,
+				296909C42BC9A4B500737D0A /* EMOMView.swift */,
+				296909C52BC9A4B500737D0A /* EMOMViewModel.swift */,
+			);
+			path = EMOMView;
+			sourceTree = "<group>";
+		};
+		296909C92BC9A4B500737D0A /* UpTimerView */ = {
+			isa = PBXGroup;
+			children = (
+				296909C72BC9A4B500737D0A /* UpTimerView.swift */,
+				296909C82BC9A4B500737D0A /* UpTimerViewModel.swift */,
+			);
+			path = UpTimerView;
+			sourceTree = "<group>";
+		};
+		296909CB2BC9A4B500737D0A /* TimersSelectionView */ = {
+			isa = PBXGroup;
+			children = (
+				296909C22BC9A4B500737D0A /* CreateCustomTimerView */,
+				296909C62BC9A4B500737D0A /* EMOMView */,
+				296909C92BC9A4B500737D0A /* UpTimerView */,
+				296909CA2BC9A4B500737D0A /* TimersSelectionView.swift */,
+			);
+			path = TimersSelectionView;
+			sourceTree = "<group>";
+		};
+		296909DC2BC9B7DA00737D0A /* EMOMView */ = {
+			isa = PBXGroup;
+			children = (
+				296909DB2BC9B7DA00737D0A /* EMOMViewModelUT.swift */,
+			);
+			path = EMOMView;
+			sourceTree = "<group>";
+		};
+		296909DD2BC9B7DA00737D0A /* ActiveTimerView */ = {
+			isa = PBXGroup;
+			children = (
+				296909DC2BC9B7DA00737D0A /* EMOMView */,
+			);
+			path = ActiveTimerView;
+			sourceTree = "<group>";
+		};
+		296909DE2BC9B7DA00737D0A /* EMOM */ = {
+			isa = PBXGroup;
+			children = (
+				296909DD2BC9B7DA00737D0A /* ActiveTimerView */,
+			);
+			path = EMOM;
+			sourceTree = "<group>";
+		};
+		296909DF2BC9B7DA00737D0A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				296909DE2BC9B7DA00737D0A /* EMOM */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		296909E22BC9B7DA00737D0A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				296909E12BC9B7DA00737D0A /* EmomUT.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		29D4BD592BC99C1B00A0F6B4 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				29D4BD582BC99C1B00A0F6B4 /* ColorsAndFonts.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		29D4BD5C2BC99C5A00A0F6B4 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				29D4BD5B2BC99C5A00A0F6B4 /* Localizable.xcstrings */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		29D4BD5D2BC99C5A00A0F6B4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				29D4BD5C2BC99C5A00A0F6B4 /* Strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		29D4BD612BC99E1300A0F6B4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				291986C22BC704900012ACA0 /* EMOM_timersApp.swift */,
+				296909D62BC9A4BE00737D0A /* VibrationView.swift */,
+				296909CB2BC9A4B500737D0A /* TimersSelectionView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		29D4BD7B2BC99EAB00A0F6B4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				29D4BD7A2BC99EAB00A0F6B4 /* CustomTimer.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		29D4BD7E2BC99ECB00A0F6B4 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				29D4BD8E2BC99F1B00A0F6B4 /* Assets.xcassets */,
+				29D4BD7D2BC99ECB00A0F6B4 /* ColorsAndFonts.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		29D4BD822BC99ED300A0F6B4 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				29D4BD802BC99ED300A0F6B4 /* AudioManager.swift */,
+				29D4BD812BC99ED300A0F6B4 /* HapticManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		29D4BD892BC99EDD00A0F6B4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				29D4BD852BC99EDD00A0F6B4 /* finish.mp3 */,
+				29D4BD862BC99EDD00A0F6B4 /* rest.mp3 */,
+				29D4BD872BC99EDD00A0F6B4 /* start.mp3 */,
+				29D4BD882BC99EDD00A0F6B4 /* work.mp3 */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		291986962BC7048F0012ACA0 /* EMOM timers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 291986E72BC704910012ACA0 /* Build configuration list for PBXNativeTarget "EMOM timers" */;
+			buildPhases = (
+				291986932BC7048F0012ACA0 /* Sources */,
+				291986942BC7048F0012ACA0 /* Frameworks */,
+				291986952BC7048F0012ACA0 /* Resources */,
+				291986E62BC704910012ACA0 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				291986C02BC704900012ACA0 /* PBXTargetDependency */,
+			);
+			name = "EMOM timers";
+			productName = "EMOM timers";
+			productReference = 291986972BC7048F0012ACA0 /* EMOM timers.app */;
+			productType = "com.apple.product-type.application";
+		};
+		291986A62BC704900012ACA0 /* EMOM timersTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 291986EA2BC704910012ACA0 /* Build configuration list for PBXNativeTarget "EMOM timersTests" */;
+			buildPhases = (
+				291986A32BC704900012ACA0 /* Sources */,
+				291986A42BC704900012ACA0 /* Frameworks */,
+				291986A52BC704900012ACA0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				291986A92BC704900012ACA0 /* PBXTargetDependency */,
+			);
+			name = "EMOM timersTests";
+			productName = "EMOM timersTests";
+			productReference = 291986A72BC704900012ACA0 /* EMOM timersTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		291986B02BC704900012ACA0 /* EMOM timersUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 291986ED2BC704910012ACA0 /* Build configuration list for PBXNativeTarget "EMOM timersUITests" */;
+			buildPhases = (
+				291986AD2BC704900012ACA0 /* Sources */,
+				291986AE2BC704900012ACA0 /* Frameworks */,
+				291986AF2BC704900012ACA0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				291986B32BC704900012ACA0 /* PBXTargetDependency */,
+			);
+			name = "EMOM timersUITests";
+			productName = "EMOM timersUITests";
+			productReference = 291986B12BC704900012ACA0 /* EMOM timersUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		291986BC2BC704900012ACA0 /* EMOM timers Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 291986E32BC704910012ACA0 /* Build configuration list for PBXNativeTarget "EMOM timers Watch App" */;
+			buildPhases = (
+				291986B92BC704900012ACA0 /* Sources */,
+				291986BA2BC704900012ACA0 /* Frameworks */,
+				291986BB2BC704900012ACA0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "EMOM timers Watch App";
+			productName = "EMOM timers Watch App";
+			productReference = 291986BD2BC704900012ACA0 /* EMOM timers Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		291986CE2BC704910012ACA0 /* EMOM timers Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 291986F02BC704910012ACA0 /* Build configuration list for PBXNativeTarget "EMOM timers Watch AppTests" */;
+			buildPhases = (
+				291986CB2BC704910012ACA0 /* Sources */,
+				291986CC2BC704910012ACA0 /* Frameworks */,
+				291986CD2BC704910012ACA0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				291986D12BC704910012ACA0 /* PBXTargetDependency */,
+			);
+			name = "EMOM timers Watch AppTests";
+			productName = "EMOM timers Watch AppTests";
+			productReference = 291986CF2BC704910012ACA0 /* EMOM timers Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		291986D82BC704910012ACA0 /* EMOM timers Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 291986F32BC704910012ACA0 /* Build configuration list for PBXNativeTarget "EMOM timers Watch AppUITests" */;
+			buildPhases = (
+				291986D52BC704910012ACA0 /* Sources */,
+				291986D62BC704910012ACA0 /* Frameworks */,
+				291986D72BC704910012ACA0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				291986DB2BC704910012ACA0 /* PBXTargetDependency */,
+			);
+			name = "EMOM timers Watch AppUITests";
+			productName = "EMOM timers Watch AppUITests";
+			productReference = 291986D92BC704910012ACA0 /* EMOM timers Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2919868F2BC7048F0012ACA0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					291986962BC7048F0012ACA0 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					291986A62BC704900012ACA0 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 291986962BC7048F0012ACA0;
+					};
+					291986B02BC704900012ACA0 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 291986962BC7048F0012ACA0;
+					};
+					291986BC2BC704900012ACA0 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					291986CE2BC704910012ACA0 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 291986BC2BC704900012ACA0;
+					};
+					291986D82BC704910012ACA0 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 291986BC2BC704900012ACA0;
+					};
+				};
+			};
+			buildConfigurationList = 291986922BC7048F0012ACA0 /* Build configuration list for PBXProject "EMOM timers" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2919868E2BC7048F0012ACA0;
+			productRefGroup = 291986982BC7048F0012ACA0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				291986962BC7048F0012ACA0 /* EMOM timers */,
+				291986A62BC704900012ACA0 /* EMOM timersTests */,
+				291986B02BC704900012ACA0 /* EMOM timersUITests */,
+				291986BC2BC704900012ACA0 /* EMOM timers Watch App */,
+				291986CE2BC704910012ACA0 /* EMOM timers Watch AppTests */,
+				291986D82BC704910012ACA0 /* EMOM timers Watch AppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		291986952BC7048F0012ACA0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				291986A22BC704900012ACA0 /* Preview Assets.xcassets in Resources */,
+				2919869F2BC704900012ACA0 /* Assets.xcassets in Resources */,
+				29D4BD5E2BC99C5A00A0F6B4 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		291986A52BC704900012ACA0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		291986AF2BC704900012ACA0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		291986BB2BC704900012ACA0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29E377892BC9BC7D001DFE00 /* EMOM-timers-Watch-App-Info.plist in Resources */,
+				29D4BD8B2BC99EDE00A0F6B4 /* rest.mp3 in Resources */,
+				291986CA2BC704910012ACA0 /* Preview Assets.xcassets in Resources */,
+				29D4BD8C2BC99EDE00A0F6B4 /* start.mp3 in Resources */,
+				29D4BD8A2BC99EDE00A0F6B4 /* finish.mp3 in Resources */,
+				29D4BD8F2BC99F1B00A0F6B4 /* Assets.xcassets in Resources */,
+				291986C72BC704910012ACA0 /* Assets.xcassets in Resources */,
+				29D4BD8D2BC99EDE00A0F6B4 /* work.mp3 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		291986CD2BC704910012ACA0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		291986D72BC704910012ACA0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		291986932BC7048F0012ACA0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2919870C2BC708840012ACA0 /* Image.swift in Sources */,
+				291987032BC7074A0012ACA0 /* ContentView.swift in Sources */,
+				291987062BC7074A0012ACA0 /* IntroView.swift in Sources */,
+				291987052BC7074A0012ACA0 /* TimerUpView.swift in Sources */,
+				291987092BC708640012ACA0 /* Slide.swift in Sources */,
+				29D4BD5A2BC99C1B00A0F6B4 /* ColorsAndFonts.swift in Sources */,
+				291987042BC7074A0012ACA0 /* EMOMTimerView.swift in Sources */,
+				2919869B2BC7048F0012ACA0 /* EMOM_timersApp.swift in Sources */,
+				2919870F2BC708AD0012ACA0 /* ParagraphImageView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		291986A32BC704900012ACA0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				291986AC2BC704900012ACA0 /* EMOM_timersTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		291986AD2BC704900012ACA0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				291986B82BC704900012ACA0 /* EMOM_timersUITestsLaunchTests.swift in Sources */,
+				291986B62BC704900012ACA0 /* EMOM_timersUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		291986B92BC704900012ACA0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				296909D02BC9A4B500737D0A /* CountdownView.swift in Sources */,
+				29D4BD842BC99ED300A0F6B4 /* HapticManager.swift in Sources */,
+				296909D12BC9A4B500737D0A /* EMOMView.swift in Sources */,
+				296909D32BC9A4B500737D0A /* UpTimerView.swift in Sources */,
+				291986C52BC704900012ACA0 /* ContentView.swift in Sources */,
+				29D4BD832BC99ED300A0F6B4 /* AudioManager.swift in Sources */,
+				29D4BD7C2BC99EAB00A0F6B4 /* CustomTimer.swift in Sources */,
+				291986C32BC704900012ACA0 /* EMOM_timersApp.swift in Sources */,
+				296909CC2BC9A4B500737D0A /* CreateCustomTimerView.swift in Sources */,
+				296909D52BC9A4B500737D0A /* TimersSelectionView.swift in Sources */,
+				296909D42BC9A4B500737D0A /* UpTimerViewModel.swift in Sources */,
+				296909CF2BC9A4B500737D0A /* TimerPickerStepView.swift in Sources */,
+				296909D22BC9A4B500737D0A /* EMOMViewModel.swift in Sources */,
+				296909CD2BC9A4B500737D0A /* CreateCustomTimerViewModel.swift in Sources */,
+				29D4BD7F2BC99ECB00A0F6B4 /* ColorsAndFonts.swift in Sources */,
+				296909D72BC9A4BE00737D0A /* VibrationView.swift in Sources */,
+				296909CE2BC9A4B500737D0A /* RoundsStepView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		291986CB2BC704910012ACA0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				296909E42BC9B7DA00737D0A /* EMOMViewModelUT.swift in Sources */,
+				296909E72BC9B7DA00737D0A /* RoundTimer_Watch_AppTests.swift in Sources */,
+				296909E62BC9B7DA00737D0A /* EmomUT.swift in Sources */,
+				296909E52BC9B7DA00737D0A /* AppVersionUT.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		291986D52BC704910012ACA0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				291986E02BC704910012ACA0 /* EMOM_timers_Watch_AppUITestsLaunchTests.swift in Sources */,
+				291986DE2BC704910012ACA0 /* EMOM_timers_Watch_AppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		291986A92BC704900012ACA0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 291986962BC7048F0012ACA0 /* EMOM timers */;
+			targetProxy = 291986A82BC704900012ACA0 /* PBXContainerItemProxy */;
+		};
+		291986B32BC704900012ACA0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 291986962BC7048F0012ACA0 /* EMOM timers */;
+			targetProxy = 291986B22BC704900012ACA0 /* PBXContainerItemProxy */;
+		};
+		291986C02BC704900012ACA0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 291986BC2BC704900012ACA0 /* EMOM timers Watch App */;
+			targetProxy = 291986BF2BC704900012ACA0 /* PBXContainerItemProxy */;
+		};
+		291986D12BC704910012ACA0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 291986BC2BC704900012ACA0 /* EMOM timers Watch App */;
+			targetProxy = 291986D02BC704910012ACA0 /* PBXContainerItemProxy */;
+		};
+		291986DB2BC704910012ACA0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 291986BC2BC704900012ACA0 /* EMOM timers Watch App */;
+			targetProxy = 291986DA2BC704910012ACA0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		291986E12BC704910012ACA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		291986E22BC704910012ACA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		291986E42BC704910012ACA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"EMOM timers Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "EMOM-timers-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "EMOM timers";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "jca.EMOM-timers";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timers.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
+			};
+			name = Debug;
+		};
+		291986E52BC704910012ACA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"EMOM timers Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "EMOM-timers-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "EMOM timers";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "jca.EMOM-timers";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timers.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
+			};
+			name = Release;
+		};
+		291986E82BC704910012ACA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"EMOM timers/Preview Content\"";
+				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "EMOM timers";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timers";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		291986E92BC704910012ACA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"EMOM timers/Preview Content\"";
+				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "EMOM timers";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timers";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		291986EB2BC704910012ACA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timersTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EMOM timers.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EMOM timers";
+			};
+			name = Debug;
+		};
+		291986EC2BC704910012ACA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timersTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EMOM timers.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EMOM timers";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		291986EE2BC704910012ACA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timersUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "EMOM timers";
+			};
+			name = Debug;
+		};
+		291986EF2BC704910012ACA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timersUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "EMOM timers";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		291986F12BC704910012ACA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timers-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EMOM timers Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EMOM timers Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
+			};
+			name = Debug;
+		};
+		291986F22BC704910012ACA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timers-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EMOM timers Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EMOM timers Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
+			};
+			name = Release;
+		};
+		291986F42BC704910012ACA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timers-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "EMOM timers Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
+			};
+			name = Debug;
+		};
+		291986F52BC704910012ACA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timers-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "EMOM timers Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		291986922BC7048F0012ACA0 /* Build configuration list for PBXProject "EMOM timers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				291986E12BC704910012ACA0 /* Debug */,
+				291986E22BC704910012ACA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		291986E32BC704910012ACA0 /* Build configuration list for PBXNativeTarget "EMOM timers Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				291986E42BC704910012ACA0 /* Debug */,
+				291986E52BC704910012ACA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		291986E72BC704910012ACA0 /* Build configuration list for PBXNativeTarget "EMOM timers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				291986E82BC704910012ACA0 /* Debug */,
+				291986E92BC704910012ACA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		291986EA2BC704910012ACA0 /* Build configuration list for PBXNativeTarget "EMOM timersTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				291986EB2BC704910012ACA0 /* Debug */,
+				291986EC2BC704910012ACA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		291986ED2BC704910012ACA0 /* Build configuration list for PBXNativeTarget "EMOM timersUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				291986EE2BC704910012ACA0 /* Debug */,
+				291986EF2BC704910012ACA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		291986F02BC704910012ACA0 /* Build configuration list for PBXNativeTarget "EMOM timers Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				291986F12BC704910012ACA0 /* Debug */,
+				291986F22BC704910012ACA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		291986F32BC704910012ACA0 /* Build configuration list for PBXNativeTarget "EMOM timers Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				291986F42BC704910012ACA0 /* Debug */,
+				291986F52BC704910012ACA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2919868F2BC7048F0012ACA0 /* Project object */;
+}

@@ -27,6 +27,7 @@
 		291987092BC708640012ACA0 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291987082BC708640012ACA0 /* Slide.swift */; };
 		2919870C2BC708840012ACA0 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919870B2BC708840012ACA0 /* Image.swift */; };
 		2919870F2BC708AD0012ACA0 /* ParagraphImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919870E2BC708AD0012ACA0 /* ParagraphImageView.swift */; };
+		293EC2BA2BD2E3F1008D1FD3 /* EMOM-timers-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 293EC2B92BD2E3F1008D1FD3 /* EMOM-timers-Info.plist */; };
 		296909CC2BC9A4B500737D0A /* CreateCustomTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909BE2BC9A4B500737D0A /* CreateCustomTimerView.swift */; };
 		296909CD2BC9A4B500737D0A /* CreateCustomTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909BF2BC9A4B500737D0A /* CreateCustomTimerViewModel.swift */; };
 		296909CE2BC9A4B500737D0A /* RoundsStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909C02BC9A4B500737D0A /* RoundsStepView.swift */; };
@@ -134,6 +135,7 @@
 		291987082BC708640012ACA0 /* Slide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		2919870B2BC708840012ACA0 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		2919870E2BC708AD0012ACA0 /* ParagraphImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParagraphImageView.swift; sourceTree = "<group>"; };
+		293EC2B92BD2E3F1008D1FD3 /* EMOM-timers-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EMOM-timers-Info.plist"; sourceTree = "<group>"; };
 		296909BE2BC9A4B500737D0A /* CreateCustomTimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCustomTimerView.swift; sourceTree = "<group>"; };
 		296909BF2BC9A4B500737D0A /* CreateCustomTimerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCustomTimerViewModel.swift; sourceTree = "<group>"; };
 		296909C02BC9A4B500737D0A /* RoundsStepView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundsStepView.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				29D4BD592BC99C1B00A0F6B4 /* Styles */,
 				2919869A2BC7048F0012ACA0 /* EMOM_timersApp.swift */,
 				2919869E2BC704900012ACA0 /* Assets.xcassets */,
+				293EC2B92BD2E3F1008D1FD3 /* EMOM-timers-Info.plist */,
 				291986A02BC704900012ACA0 /* Preview Content */,
 			);
 			path = "EMOM timers";
@@ -683,6 +686,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				291986A22BC704900012ACA0 /* Preview Assets.xcassets in Resources */,
+				293EC2BA2BD2E3F1008D1FD3 /* EMOM-timers-Info.plist in Resources */,
 				2919869F2BC704900012ACA0 /* Assets.xcassets in Resources */,
 				29D4BD5E2BC99C5A00A0F6B4 /* Localizable.xcstrings in Resources */,
 			);
@@ -966,7 +970,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"EMOM timers Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				ENABLE_PREVIEWS = YES;
@@ -997,7 +1001,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"EMOM timers Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				ENABLE_PREVIEWS = YES;
@@ -1030,7 +1034,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"EMOM timers/Preview Content\"";
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				ENABLE_PREVIEWS = YES;
@@ -1050,9 +1054,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1063,7 +1071,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"EMOM timers/Preview Content\"";
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				ENABLE_PREVIEWS = YES;
@@ -1083,9 +1091,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1096,7 +1108,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
@@ -1117,7 +1129,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
@@ -1138,7 +1150,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
@@ -1158,7 +1170,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
@@ -1180,7 +1192,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -1201,7 +1213,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -1222,7 +1234,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -1242,7 +1254,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;

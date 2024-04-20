@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2907B74F2BD39ED100E97D2A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2907B74E2BD39ED100E97D2A /* Settings.bundle */; };
 		2919869B2BC7048F0012ACA0 /* EMOM_timersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919869A2BC7048F0012ACA0 /* EMOM_timersApp.swift */; };
 		2919869F2BC704900012ACA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2919869E2BC704900012ACA0 /* Assets.xcassets */; };
 		291986A22BC704900012ACA0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 291986A12BC704900012ACA0 /* Preview Assets.xcassets */; };
@@ -110,6 +111,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2907B74E2BD39ED100E97D2A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		291986972BC7048F0012ACA0 /* EMOM timers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EMOM timers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2919869A2BC7048F0012ACA0 /* EMOM_timersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOM_timersApp.swift; sourceTree = "<group>"; };
 		2919869E2BC704900012ACA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 		2919868E2BC7048F0012ACA0 = {
 			isa = PBXGroup;
 			children = (
+				2907B74E2BD39ED100E97D2A /* Settings.bundle */,
 				29E377882BC9BC7D001DFE00 /* EMOM-timers-Watch-App-Info.plist */,
 				291986992BC7048F0012ACA0 /* EMOM timers */,
 				291986AA2BC704900012ACA0 /* EMOM timersTests */,
@@ -521,6 +524,7 @@
 			buildPhases = (
 				291986932BC7048F0012ACA0 /* Sources */,
 				291986942BC7048F0012ACA0 /* Frameworks */,
+				2907B74D2BD39CD900E97D2A /* Settings app version */,
 				291986952BC7048F0012ACA0 /* Resources */,
 				291986E62BC704910012ACA0 /* Embed Watch Content */,
 			);
@@ -687,6 +691,7 @@
 			files = (
 				291986A22BC704900012ACA0 /* Preview Assets.xcassets in Resources */,
 				293EC2BA2BD2E3F1008D1FD3 /* EMOM-timers-Info.plist in Resources */,
+				2907B74F2BD39ED100E97D2A /* Settings.bundle in Resources */,
 				2919869F2BC704900012ACA0 /* Assets.xcassets in Resources */,
 				29D4BD5E2BC99C5A00A0F6B4 /* Localizable.xcstrings in Resources */,
 			);
@@ -736,6 +741,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2907B74D2BD39CD900E97D2A /* Settings app version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Settings app version";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PLISTBUDDY=\"/usr/libexec/PlistBuddy\"\nSETTINGS_PLIST=\"${SRCROOT}/Settings.bundle/Root.plist\"\nVERSION=\"$MARKETING_VERSION ($CURRENT_PROJECT_VERSION)\"\n$PLISTBUDDY -c \"Set :PreferenceSpecifiers:0:DefaultValue '$VERSION'\" \"$SETTINGS_PLIST\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		291986932BC7048F0012ACA0 /* Sources */ = {
@@ -883,7 +909,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -946,7 +972,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

@@ -1,0 +1,37 @@
+{
+  "configurations" : [
+    {
+      "id" : "84FB2586-82D1-4E8B-9E25-7B25946EBB10",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:RoundTimer.xcodeproj",
+      "identifier" : "290C54EC2B58184800D0CD4C",
+      "name" : "RoundTimer Watch App"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:RoundTimer.xcodeproj",
+        "identifier" : "290C54FE2B58184A00D0CD4C",
+        "name" : "RoundTimer Watch AppTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:RoundTimer.xcodeproj",
+        "identifier" : "290C55082B58184A00D0CD4C",
+        "name" : "RoundTimer Watch AppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

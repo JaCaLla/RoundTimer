@@ -1,0 +1,146 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "emom_paragraph_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EMOM stands for Every Minute on a Minute, is a timer used for workouts where you have to do a concrete amount of work in a window of time. Optionally you can define extra rest time for each round. "
+          }
+        }
+      }
+    },
+    "emom_paragraph_2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Round timer Apple Watch App "
+          }
+        }
+      }
+    },
+    "emom_paragraph_3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select EMOM timer"
+          }
+        }
+      }
+    },
+    "emom_paragraph_4" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select amount of round by rotating digital crown"
+          }
+        }
+      }
+    },
+    "emom_paragraph_5" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select amount of workout, by taping on minutes and seconds and editing by rotating digital crown."
+          }
+        }
+      }
+    },
+    "emom_paragraph_6" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optional. You can setup rest time also. Press 'START WORK' for trigger the timer."
+          }
+        }
+      }
+    },
+    "emom_paragraph_7" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Workout has started, you can pause/resume at any time."
+          }
+        }
+      }
+    },
+    "emom_paragraph_8" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rest time has started, you can pause/resume at any time."
+          }
+        }
+      }
+    },
+    "emom_paragraph_9" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When finishes you can restart timer or just create a new one."
+          }
+        }
+      }
+    },
+    "emom_paragraph_10" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Important. Due Watch OS power save policy, after a few seconds of interaction screen will be dimmed and you will lose precision in timer seconds, but after tapping screen or after doing gesture of watching time screen will be restored. Haptic and audio events will not be affected by this operating system feature. "
+          }
+        }
+      }
+    },
+    "intro_paragraph_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Round timer is a EMOM and up timer..."
+          }
+        }
+      }
+    },
+    "intro_paragraph_2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "... in your Apple Watch"
+          }
+        }
+      }
+    },
+    "timerup_paragraph_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A timer up is a timer that starts from 0 secs up to defined workout time."
+          }
+        }
+      }
+    },
+    "timerup_paragraph_3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Up timer"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

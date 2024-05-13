@@ -39,26 +39,29 @@ struct TimersSelectionView: View {
                         selectEMOMViewModel.setTimertype(type: .emom)
                         startCreateTimerFlow.toggle()
                     }, label: {
-                            HStack {
-                                Image(systemName: "timer")
-                                    .resizable()
-                                    .foregroundColor(.electricBlue)
-                                    .frame(width: 20.0, height: 20.0)
-                                Text("EMOM timer")
-                            }
+                        TimersSelectionButtonView(systemName: "timer", text: "EMOM timer")
+//                            HStack {
+//                                Image(systemName: "timer")
+//                                    .resizable()
+//                                    .foregroundColor(.electricBlue)
+//                                    .frame(width: 20.0, height: 20.0)
+//                                Text("EMOM timer")
+//                            }
                         })
                     Button(action: {
                         selectEMOMViewModel.setTimertype(type: .upTimer)
                         startCreateTimerFlow.toggle()
                     }, label: {
-                            HStack {
-                                Image(systemName: "timer")
-                                    .resizable()
-                                    .foregroundColor(.electricBlue)
-                                    .frame(width: 20.0, height: 20.0)
-                                Text("Up timer")
-                            }
+                        TimersSelectionButtonView(systemName: "timer", text: "Up timer")
+//                            HStack {
+//                                Image(systemName: "timer")
+//                                    .resizable()
+//                                    .foregroundColor(.electricBlue)
+//                                    .frame(width: 20.0, height: 20.0)
+//                                Text()
+//                            }
                         })
+                    SendMessageView()
                 }
                     .fullScreenCover(isPresented: $startCreateTimerFlow) {
                     CreateCustomTimerView(customTimer: $customTimer)
@@ -131,6 +134,19 @@ struct TimersSelectionView: View {
     }
 }
 
+struct TimersSelectionButtonView: View {
+    var systemName: String
+    var text: String
+    var body: some View {
+        HStack {
+            Image(systemName: systemName)
+                .resizable()
+                .foregroundColor(.electricBlue)
+                .frame(width: 20.0, height: 20.0)
+            Text(text)
+        }
+    }
+}
 
 #Preview {
     TimersSelectionView()

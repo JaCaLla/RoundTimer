@@ -44,6 +44,19 @@
 		296909E52BC9B7DA00737D0A /* AppVersionUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909E02BC9B7DA00737D0A /* AppVersionUT.swift */; };
 		296909E62BC9B7DA00737D0A /* EmomUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909E12BC9B7DA00737D0A /* EmomUT.swift */; };
 		296909E72BC9B7DA00737D0A /* RoundTimer_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909E32BC9B7DA00737D0A /* RoundTimer_Watch_AppTests.swift */; };
+		299619472BE2B8080010F578 /* SendMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299619462BE2B8080010F578 /* SendMessageView.swift */; };
+		2996194A2BE2BD1C0010F578 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299619492BE2BD1C0010F578 /* Connectivity.swift */; };
+		2996194C2BE2BD460010F578 /* ConnectivityUserInfoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2996194B2BE2BD460010F578 /* ConnectivityUserInfoKey.swift */; };
+		2996194E2BE2BD840010F578 /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2996194D2BE2BD840010F578 /* Delivery.swift */; };
+		2996194F2BE2BD9B0010F578 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299619492BE2BD1C0010F578 /* Connectivity.swift */; };
+		299619502BE2BD9B0010F578 /* ConnectivityUserInfoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2996194B2BE2BD460010F578 /* ConnectivityUserInfoKey.swift */; };
+		299619512BE2BD9B0010F578 /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2996194D2BE2BD840010F578 /* Delivery.swift */; };
+		299619532BE2BE7A0010F578 /* TicketOffice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299619522BE2BE7A0010F578 /* TicketOffice.swift */; };
+		299619542BE2BE7A0010F578 /* TicketOffice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299619522BE2BE7A0010F578 /* TicketOffice.swift */; };
+		299619562BE2BED10010F578 /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299619552BE2BED10010F578 /* QRCode.swift */; };
+		299619572BE2BED10010F578 /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299619552BE2BED10010F578 /* QRCode.swift */; };
+		299619592BE2BEEC0010F578 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299619582BE2BEEC0010F578 /* Movie.swift */; };
+		2996195A2BE2BEEC0010F578 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299619582BE2BEEC0010F578 /* Movie.swift */; };
 		29D4BD5A2BC99C1B00A0F6B4 /* ColorsAndFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4BD582BC99C1B00A0F6B4 /* ColorsAndFonts.swift */; };
 		29D4BD5E2BC99C5A00A0F6B4 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 29D4BD5B2BC99C5A00A0F6B4 /* Localizable.xcstrings */; };
 		29D4BD7C2BC99EAB00A0F6B4 /* CustomTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4BD7A2BC99EAB00A0F6B4 /* CustomTimer.swift */; };
@@ -56,6 +69,7 @@
 		29D4BD8D2BC99EDE00A0F6B4 /* work.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29D4BD882BC99EDD00A0F6B4 /* work.mp3 */; };
 		29D4BD8F2BC99F1B00A0F6B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29D4BD8E2BC99F1B00A0F6B4 /* Assets.xcassets */; };
 		29E377892BC9BC7D001DFE00 /* EMOM-timers-Watch-App-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29E377882BC9BC7D001DFE00 /* EMOM-timers-Watch-App-Info.plist */; };
+		29EBF3122BF2728400C79539 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29EBF3112BF2728400C79539 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +168,13 @@
 		296909E02BC9B7DA00737D0A /* AppVersionUT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVersionUT.swift; sourceTree = "<group>"; };
 		296909E12BC9B7DA00737D0A /* EmomUT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmomUT.swift; sourceTree = "<group>"; };
 		296909E32BC9B7DA00737D0A /* RoundTimer_Watch_AppTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTimer_Watch_AppTests.swift; sourceTree = "<group>"; };
+		299619462BE2B8080010F578 /* SendMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageView.swift; sourceTree = "<group>"; };
+		299619492BE2BD1C0010F578 /* Connectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
+		2996194B2BE2BD460010F578 /* ConnectivityUserInfoKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectivityUserInfoKey.swift; sourceTree = "<group>"; };
+		2996194D2BE2BD840010F578 /* Delivery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
+		299619522BE2BE7A0010F578 /* TicketOffice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketOffice.swift; sourceTree = "<group>"; };
+		299619552BE2BED10010F578 /* QRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
+		299619582BE2BEEC0010F578 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		29D4BD582BC99C1B00A0F6B4 /* ColorsAndFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsAndFonts.swift; sourceTree = "<group>"; };
 		29D4BD5B2BC99C5A00A0F6B4 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		29D4BD7A2BC99EAB00A0F6B4 /* CustomTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTimer.swift; sourceTree = "<group>"; };
@@ -166,6 +187,7 @@
 		29D4BD882BC99EDD00A0F6B4 /* work.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = work.mp3; sourceTree = "<group>"; };
 		29D4BD8E2BC99F1B00A0F6B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29E377882BC9BC7D001DFE00 /* EMOM-timers-Watch-App-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "EMOM-timers-Watch-App-Info.plist"; sourceTree = "<group>"; };
+		29EBF3112BF2728400C79539 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +239,7 @@
 		2919868E2BC7048F0012ACA0 = {
 			isa = PBXGroup;
 			children = (
+				299619482BE2BCFE0010F578 /* Shared */,
 				2907B74E2BD39ED100E97D2A /* Settings.bundle */,
 				29E377882BC9BC7D001DFE00 /* EMOM-timers-Watch-App-Info.plist */,
 				291986992BC7048F0012ACA0 /* EMOM timers */,
@@ -245,6 +268,7 @@
 		291986992BC7048F0012ACA0 /* EMOM timers */ = {
 			isa = PBXGroup;
 			children = (
+				29EBF3112BF2728400C79539 /* GoogleService-Info.plist */,
 				29D4BD5D2BC99C5A00A0F6B4 /* Resources */,
 				291986F62BC7051A0012ACA0 /* Views */,
 				29D4BD592BC99C1B00A0F6B4 /* Styles */,
@@ -396,6 +420,7 @@
 		296909CB2BC9A4B500737D0A /* TimersSelectionView */ = {
 			isa = PBXGroup;
 			children = (
+				299619452BE2475D0010F578 /* SendMessage */,
 				296909C22BC9A4B500737D0A /* CreateCustomTimerView */,
 				296909C62BC9A4B500737D0A /* EMOMView */,
 				296909C92BC9A4B500737D0A /* UpTimerView */,
@@ -442,6 +467,27 @@
 				296909E12BC9B7DA00737D0A /* EmomUT.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		299619452BE2475D0010F578 /* SendMessage */ = {
+			isa = PBXGroup;
+			children = (
+				299619462BE2B8080010F578 /* SendMessageView.swift */,
+			);
+			path = SendMessage;
+			sourceTree = "<group>";
+		};
+		299619482BE2BCFE0010F578 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				299619492BE2BD1C0010F578 /* Connectivity.swift */,
+				2996194B2BE2BD460010F578 /* ConnectivityUserInfoKey.swift */,
+				2996194D2BE2BD840010F578 /* Delivery.swift */,
+				299619522BE2BE7A0010F578 /* TicketOffice.swift */,
+				299619552BE2BED10010F578 /* QRCode.swift */,
+				299619582BE2BEEC0010F578 /* Movie.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		29D4BD592BC99C1B00A0F6B4 /* Styles */ = {
@@ -690,6 +736,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				291986A22BC704900012ACA0 /* Preview Assets.xcassets in Resources */,
+				29EBF3122BF2728400C79539 /* GoogleService-Info.plist in Resources */,
 				293EC2BA2BD2E3F1008D1FD3 /* EMOM-timers-Info.plist in Resources */,
 				2907B74F2BD39ED100E97D2A /* Settings.bundle in Resources */,
 				2919869F2BC704900012ACA0 /* Assets.xcassets in Resources */,
@@ -774,9 +821,15 @@
 				291987052BC7074A0012ACA0 /* TimerUpView.swift in Sources */,
 				291987092BC708640012ACA0 /* Slide.swift in Sources */,
 				29D4BD5A2BC99C1B00A0F6B4 /* ColorsAndFonts.swift in Sources */,
+				2996194F2BE2BD9B0010F578 /* Connectivity.swift in Sources */,
+				299619562BE2BED10010F578 /* QRCode.swift in Sources */,
+				299619502BE2BD9B0010F578 /* ConnectivityUserInfoKey.swift in Sources */,
+				299619532BE2BE7A0010F578 /* TicketOffice.swift in Sources */,
+				299619512BE2BD9B0010F578 /* Delivery.swift in Sources */,
 				291987042BC7074A0012ACA0 /* EMOMTimerView.swift in Sources */,
 				2919869B2BC7048F0012ACA0 /* EMOM_timersApp.swift in Sources */,
 				2919870F2BC708AD0012ACA0 /* ParagraphImageView.swift in Sources */,
+				299619592BE2BEEC0010F578 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,21 +856,28 @@
 			files = (
 				296909D02BC9A4B500737D0A /* CountdownView.swift in Sources */,
 				29D4BD842BC99ED300A0F6B4 /* HapticManager.swift in Sources */,
+				2996194A2BE2BD1C0010F578 /* Connectivity.swift in Sources */,
 				296909D12BC9A4B500737D0A /* EMOMView.swift in Sources */,
 				296909D32BC9A4B500737D0A /* UpTimerView.swift in Sources */,
 				291986C52BC704900012ACA0 /* ContentView.swift in Sources */,
 				29D4BD832BC99ED300A0F6B4 /* AudioManager.swift in Sources */,
+				299619542BE2BE7A0010F578 /* TicketOffice.swift in Sources */,
+				299619572BE2BED10010F578 /* QRCode.swift in Sources */,
 				29D4BD7C2BC99EAB00A0F6B4 /* CustomTimer.swift in Sources */,
 				291986C32BC704900012ACA0 /* EMOM_timersApp.swift in Sources */,
 				296909CC2BC9A4B500737D0A /* CreateCustomTimerView.swift in Sources */,
 				296909D52BC9A4B500737D0A /* TimersSelectionView.swift in Sources */,
 				296909D42BC9A4B500737D0A /* UpTimerViewModel.swift in Sources */,
+				2996195A2BE2BEEC0010F578 /* Movie.swift in Sources */,
 				296909CF2BC9A4B500737D0A /* TimerPickerStepView.swift in Sources */,
 				296909D22BC9A4B500737D0A /* EMOMViewModel.swift in Sources */,
 				296909CD2BC9A4B500737D0A /* CreateCustomTimerViewModel.swift in Sources */,
 				29D4BD7F2BC99ECB00A0F6B4 /* ColorsAndFonts.swift in Sources */,
 				296909D72BC9A4BE00737D0A /* VibrationView.swift in Sources */,
+				299619472BE2B8080010F578 /* SendMessageView.swift in Sources */,
 				296909CE2BC9A4B500737D0A /* RoundsStepView.swift in Sources */,
+				2996194E2BE2BD840010F578 /* Delivery.swift in Sources */,
+				2996194C2BE2BD460010F578 /* ConnectivityUserInfoKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

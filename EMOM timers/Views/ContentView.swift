@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    let connectivity = Connectivity.shared
     var body: some View {
         VStack(spacing: -50 /*+ 50*/){
             VStack{

@@ -93,3 +93,7 @@ struct CustomTimer: Equatable {
 //        return Double(emom.workSecs / emom.rounds) 
 //    }
 }
+
+extension CustomTimer {
+    static let customTimerDefault = CustomTimer(timerType: .upTimer, rounds: 0, workSecs: 0, restSecs: 0)
+}

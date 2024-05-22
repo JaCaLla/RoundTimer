@@ -20,6 +20,8 @@ struct IntroView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding()
+        }.onAppear {
+            TrackingsManager.shared.log(eventName: "IntroView", metadata: nil)
         }
     }
 }

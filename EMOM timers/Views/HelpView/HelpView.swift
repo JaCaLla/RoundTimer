@@ -7,15 +7,20 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct HelpView: View {
     let connectivity = Connectivity.shared
     var body: some View {
         VStack(spacing: -50 /*+ 50*/){
             VStack{
+                Button("AddMessage (fromContentView)") {
+                  //  TrackingsManager.shared.log(eventName: "ButtonTapped", metadata: nil)
+                    LocalPersitenceManager.shared.add(message: "fromContentView")
+                }
                 TabView {
                     IntroView()
                     EMOMTimerView()
                     TimerUpView()
+                    ReceivedWatchOSMessagesView()
                 }
                 .ignoresSafeArea()
                 .tabViewStyle(.page)
@@ -31,5 +36,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    HelpView()
 }

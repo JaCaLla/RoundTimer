@@ -10,7 +10,7 @@ import SwiftUI
 struct SendMessageView: View {
     var body: some View {
         Button {
-            Connectivity.shared.send(message: "patata", delivery: .guaranteed)
+            Connectivity.shared.send(message: Connectivity.getTimestamp(), delivery: .guaranteed)
         } label: {
             Text("SendMessage")
         }

@@ -40,26 +40,12 @@ struct TimersSelectionView: View {
                         startCreateTimerFlow.toggle()
                     }, label: {
                         TimersSelectionButtonView(systemName: "timer", text: "EMOM timer")
-//                            HStack {
-//                                Image(systemName: "timer")
-//                                    .resizable()
-//                                    .foregroundColor(.electricBlue)
-//                                    .frame(width: 20.0, height: 20.0)
-//                                Text("EMOM timer")
-//                            }
                         })
                     Button(action: {
                         selectEMOMViewModel.setTimertype(type: .upTimer)
                         startCreateTimerFlow.toggle()
                     }, label: {
                         TimersSelectionButtonView(systemName: "timer", text: "Up timer")
-//                            HStack {
-//                                Image(systemName: "timer")
-//                                    .resizable()
-//                                    .foregroundColor(.electricBlue)
-//                                    .frame(width: 20.0, height: 20.0)
-//                                Text()
-//                            }
                         })
                     SendMessageView()
                 }

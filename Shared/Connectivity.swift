@@ -155,11 +155,14 @@ final class Connectivity: NSObject, ObservableObject {
         self.purchasedIds = ids
     }
     
-    key = ConnectivityUserInfoKey.purchased.rawValue
+    key = ConnectivityUserInfoKey.message.rawValue
       if let message = dictionary[key] as? String {
           self.message = message
+#if os(iOS)
+      LocalPersitenceManager.shared.add(message: message + "|\(Connectivity.getTimestamp())")//"fromWatchOS")
+      #endif
       }
-    
+
   }
 
   typealias OptionalHandler<T> = ((T) -> Void)?
@@ -175,6 +178,13 @@ final class Connectivity: NSObject, ObservableObject {
       }
     }
   }
+    
+    static func getTimestamp() -> String {
+        let dateFormatter : DateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = Date()
+        return dateFormatter.string(from: date)
+    }
 }
 
 // MARK: - WCSessionDelegate

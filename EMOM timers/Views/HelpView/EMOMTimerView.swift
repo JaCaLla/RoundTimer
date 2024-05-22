@@ -23,6 +23,9 @@ struct EMOMTimerView: View {
             ParagraphImageView(header: "emom_paragraph_1",
                                slides: slides)
             .padding()
+            .onAppear {
+                TrackingsManager.shared.log(eventName: "EmomTimerView", metadata: ["type": "screenevent"])
+            }
     }
 }
 

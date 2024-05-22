@@ -14,6 +14,7 @@ extension Color {
     static let timerRestStartedColor = Color("ElectricYellow")
     static let timerFinishedBackgroundColor = Color("ElectricRedBack")
     static let paragrahColor = Color(.white)
+    static let defaultBackgroundColor = Color(.black)
 }
 
 extension Font {
@@ -29,4 +30,8 @@ extension Font {
     static let countDownFont = Font.system(size: 120, weight: .black)
     static let emomRounds = Font.system(size: 25, weight: .black)
     static let paragraph = Font.system(size: 25, weight: .black)
+    
+    static let timerAndRoundiOSAppFont =  Font.system(size: 175, weight: .black)
+    static let emomRoundsiOSAppFont = Font.system(size: 80, weight: .black)
+    static let messageiOSAppFont =  Font.system(size: 40, weight: .black)
 }

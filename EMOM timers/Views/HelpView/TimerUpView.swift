@@ -19,6 +19,9 @@ struct TimerUpView: View {
             ParagraphImageView(header: "timerup_paragraph_1",
                                slides: slides)
             .padding()
+            .onAppear {
+                TrackingsManager.shared.log(eventName: "TimerUp", metadata: [:])
+            }
     }
 }
 

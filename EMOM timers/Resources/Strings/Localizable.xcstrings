@@ -1,6 +1,21 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    ":" : {
+
+    },
+    "%@" : {
+
+    },
+    "AddMessage" : {
+
+    },
+    "AddMessage (fromContentView)" : {
+
+    },
+    "Continue" : {
+
+    },
     "emom_paragraph_1" : {
       "localizations" : {
         "en" : {
@@ -101,6 +116,9 @@
         }
       }
     },
+    "Help" : {
+
+    },
     "intro_paragraph_1" : {
       "localizations" : {
         "en" : {
@@ -121,6 +139,18 @@
         }
       }
     },
+    "Reset" : {
+
+    },
+    "Rest time:" : {
+
+    },
+    "Start workout session" : {
+
+    },
+    "Timers" : {
+
+    },
     "timerup_paragraph_1" : {
       "localizations" : {
         "en" : {
@@ -140,6 +170,9 @@
           }
         }
       }
+    },
+    "Work time:" : {
+
     }
   },
   "version" : "1.0"

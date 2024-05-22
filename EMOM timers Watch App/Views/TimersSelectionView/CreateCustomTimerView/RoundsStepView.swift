@@ -37,7 +37,7 @@ enum RoundStepViewType {
 
 struct RoundsStepView: View {
     
-    @State private var pickerRoundIndex = 0
+   // @State private var pickerRoundIndex = 0
     @FocusState private var fousedfield: Bool
     @Binding var navPath: [String]
     @Environment(\.dismiss) var dismiss

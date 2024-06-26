@@ -1,9 +1,13 @@
 import Foundation
 import WatchConnectivity
+import os.log
 
 final class Connectivity: NSObject, ObservableObject {
   @Published var purchasedIds: [Int] = []
-  @Published var message: String = ""
+ // @Published var message: String = ""
+
+    @Published var companionCustomTimer: CustomTimer?
+
 
   static let shared = Connectivity()
 
@@ -19,7 +23,7 @@ final class Connectivity: NSObject, ObservableObject {
     WCSession.default.delegate = self
     WCSession.default.activate()
   }
-    
+  /*
     public func send(message: String,
                      delivery: Delivery,
                 replyHandler: (([String: Any]) -> Void)? = nil,
@@ -47,7 +51,37 @@ final class Connectivity: NSObject, ObservableObject {
           }
         }
     }
+    */
+    public func send(connectivityMessage: ConnectivityMessage,
+                     delivery: Delivery,
+                replyHandler: (([String: Any]) -> Void)? = nil,
+                errorHandler: ((Error) -> Void)? = nil ) {
+        guard canSendToPeer() else { return }
+        guard let userInfo: [String: Any] = connectivityMessage.toDict() else {
+                return
+        }
+        LocalLogger.log("Connectivity.send delivery:\(delivery):connectivityMessage:\(connectivityMessage.description)")
+        switch delivery {
+        case .failable:
+          WCSession.default.sendMessage(
+            userInfo,
+            replyHandler: optionalMainQueueDispatch(handler: replyHandler),
+            errorHandler: optionalMainQueueDispatch(handler: errorHandler)
+          )
 
+        case .guaranteed:
+          WCSession.default.transferUserInfo(userInfo)
+
+        case .highPriority:
+          do {
+            try WCSession.default.updateApplicationContext(userInfo)
+          } catch {
+            errorHandler?(error)
+          }
+        }
+        
+    }
+/*
   public func send(
     movieIds: [Int],
     delivery: Delivery,
@@ -99,32 +133,32 @@ final class Connectivity: NSObject, ObservableObject {
       errorHandler: optionalMainQueueDispatch(handler: errorHandler)
     )
   }
-
+*/
   #if os(iOS)
-  public func sendQrCodes(_ data: [String: Any]) {
-    let key = ConnectivityUserInfoKey.qrCodes.rawValue
-    guard let ids = data[key] as? [Int], !ids.isEmpty else { return }
-
-    let tempDir = FileManager.default.temporaryDirectory
-    TicketOffice.shared
-      .movies
-      .filter { ids.contains($0.id) }
-      .forEach { movie in
-        let image = QRCode.generate(
-          movie: movie,
-          size: .init(width: 100, height: 100)
-        )
-
-        guard let data = image?.pngData() else { return }
-
-        let url = tempDir.appendingPathComponent(UUID().uuidString)
-        guard let _ = try? data.write(to: url) else {
-          return
-        }
-
-        WCSession.default.transferFile(url, metadata: [key: movie.id])
-      }
-  }
+//  public func sendQrCodes(_ data: [String: Any]) {
+//    let key = ConnectivityUserInfoKey.qrCodes.rawValue
+//    guard let ids = data[key] as? [Int], !ids.isEmpty else { return }
+//
+//    let tempDir = FileManager.default.temporaryDirectory
+//    TicketOffice.shared
+//      .movies
+//      .filter { ids.contains($0.id) }
+//      .forEach { movie in
+//        let image = QRCode.generate(
+//          movie: movie,
+//          size: .init(width: 100, height: 100)
+//        )
+//
+//        guard let data = image?.pngData() else { return }
+//
+//        let url = tempDir.appendingPathComponent(UUID().uuidString)
+//        guard let _ = try? data.write(to: url) else {
+//          return
+//        }
+//
+//        WCSession.default.transferFile(url, metadata: [key: movie.id])
+//      }
+//  }
   #endif
 
   private func canSendToPeer() -> Bool {
@@ -145,26 +179,52 @@ final class Connectivity: NSObject, ObservableObject {
     return true
   }
 
-  private func update(from dictionary: [String: Any]) {
-    #if os(iOS)
-    sendQrCodes(dictionary)
-    #endif
+    private func update(from dictionary: [String: Any]) async {
+//    #if os(iOS)
+//    sendQrCodes(dictionary)
+//    #endif
 
-    var key = ConnectivityUserInfoKey.purchased.rawValue
-    if let ids = dictionary[key] as? [Int] {
-        self.purchasedIds = ids
-    }
+//    var key = ConnectivityUserInfoKey.purchased.rawValue
+//    if let ids = dictionary[key] as? [Int] {
+//        self.purchasedIds = ids
+//    }
     
-    key = ConnectivityUserInfoKey.message.rawValue
-      if let message = dictionary[key] as? String {
-          self.message = message
-#if os(iOS)
-      LocalPersitenceManager.shared.add(message: message + "|\(Connectivity.getTimestamp())")//"fromWatchOS")
-      #endif
-      }
-
+//    key = ConnectivityUserInfoKey.message.rawValue
+//      if let message = dictionary[key] as? String {
+//          self.message = message
+//#if os(iOS)
+//      LocalPersitenceManager.shared.add(message: message + "|\(Connectivity.getTimestamp())")//"fromWatchOS")
+//      #endif
+//      }
+      
+        guard let connectivityMessage = ConnectivityMessage(dictionary: dictionary) else { return }
+      //    self.connectivityMessage = connectivityMessage
+           if connectivityMessage.action == .startTimer, let customTimer = connectivityMessage.customTimer {
+               LocalLogger.log("Connectivity.update.companionCustomTimer = \(customTimer.description)")
+               await MainActor.run {
+                   self.companionCustomTimer = customTimer
+               }
+           } else if connectivityMessage.action == .removeTimer {
+               LocalLogger.log("Connectivity.update.companionCustomTimer = nil")
+               await MainActor.run {
+                   self.companionCustomTimer = nil
+               }
+           }
   }
 
+    func addTimer() {
+        // to do llamar a la función 
+        let customTimer = CustomTimer(timerType: .emom, rounds: 2, workSecs: 10)
+        let message = ConnectivityMessage(action: .startTimer, direction: .fromIPhoneToAWatch, customTimer: customTimer)
+        if message.action == .startTimer, let customTimer = message.customTimer  {
+            self.companionCustomTimer = customTimer
+        }
+    }
+    
+    func removeTimer() {
+        self.companionCustomTimer = nil//= CustomTimer(timerType: .none, rounds: 0)
+    }
+    
   typealias OptionalHandler<T> = ((T) -> Void)?
 
   private func optionalMainQueueDispatch<T>(handler: OptionalHandler<T>) -> OptionalHandler<T> {
@@ -207,14 +267,18 @@ extension Connectivity: WCSessionDelegate {
     _ session: WCSession,
     didReceiveUserInfo userInfo: [String: Any] = [:]
   ) {
-    update(from: userInfo)
+      Task {
+          await update(from: userInfo)
+      }
   }
 
   func session(
     _ session: WCSession,
     didReceiveApplicationContext applicationContext: [String: Any]
   ) {
-    update(from: applicationContext)
+      Task {
+          await update(from: applicationContext)
+      }
   }
 
   // This method is called when a message is sent with failable priority
@@ -224,7 +288,10 @@ extension Connectivity: WCSessionDelegate {
     didReceiveMessage message: [String: Any],
     replyHandler: @escaping ([String: Any]) -> Void
   ) {
-    update(from: message)
+      Task {
+          await update(from: message)
+      }
+    
 
     let key = ConnectivityUserInfoKey.verified.rawValue
     replyHandler([key: true])
@@ -236,7 +303,10 @@ extension Connectivity: WCSessionDelegate {
     _ session: WCSession,
     didReceiveMessage message: [String: Any]
   ) {
-    update(from: message)
+      Task {
+          await update(from: message)
+      }
+   
   }
 
   func session(
@@ -253,16 +323,16 @@ extension Connectivity: WCSessionDelegate {
   }
 
   #if os(watchOS)
-  func session(_ session: WCSession, didReceive file: WCSessionFile) {
-    let key = ConnectivityUserInfoKey.qrCodes.rawValue
-    guard let id = file.metadata?[key] as? Int else {
-      return
-    }
-
-    let destination = QRCode.url(for: id)
-
-    try? FileManager.default.removeItem(at: destination)
-    try? FileManager.default.moveItem(at: file.fileURL, to: destination)
-  }
+//  func session(_ session: WCSession, didReceive file: WCSessionFile) {
+//    let key = ConnectivityUserInfoKey.qrCodes.rawValue
+//    guard let id = file.metadata?[key] as? Int else {
+//      return
+//    }
+//
+//    let destination = QRCode.url(for: id)
+//
+//    try? FileManager.default.removeItem(at: destination)
+//    try? FileManager.default.moveItem(at: file.fileURL, to: destination)
+//  }
   #endif
 }

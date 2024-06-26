@@ -59,6 +59,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
     }
 
     func action() {
+        LocalLogger.log("EMOMViewModel.action  state:\(state.rawValue)")
         if [.notStarted].contains(where: { $0 == state }) {
             startWorkTime()
             HapticManager.shared.pause()
@@ -111,6 +112,8 @@ final class EMOMViewModel: NSObject, ObservableObject {
         } else if state == .startedWork || state == .startedRest {
             return "pause.circle"
         } else {
+            //notStarted, startedWork, startedRest, paused, finished, cancelled
+            LocalLogger.log(" EMOMViewModel.getActionIcon(). Estado desconocido \(state.rawValue)")
             return "play.circle"
         }
     }

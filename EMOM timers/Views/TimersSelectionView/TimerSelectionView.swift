@@ -7,28 +7,26 @@
 
 import SwiftUI
 import HealthKit
+import os.log
 
 struct TimersSelectionView: View {
     @Binding var customTimer: CustomTimer? 
     @State var startCreateTimerFlow: Bool = false
     @State var foregroundColor: Color = .blue
     var body: some View {
-//        if let customTimer {
-//            EMOMView(customTimer: $customTimer)
-//        } else {
             VStack {
                 Button(action: {
-    //                selectEMOMViewModel.setTimertype(type: .emom)
-                    startCreateTimerFlow.toggle()
+                    HealthkitManager.shared.startWorkoutSession(completion: { result in
+                        LocalLogger.log("HealthkitManager.shared.startWorkoutSession:\(result ? "✅" : "❌")")
+                        foregroundColor = result ? .green : .red
+                        if result {
+                            startCreateTimerFlow.toggle()
+                        }
+                    })
                 }, label: {
                     TimersSelectionButtonView(systemName: "timer", text: "EMOM timer")
                     })
-                Button(action: {
-    //                selectEMOMViewModel.setTimertype(type: .emom)
-                    startCreateTimerFlow.toggle()
-                }, label: {
-                    TimersSelectionButtonView(systemName: "timer", text: "UP timer")
-                    })
+                Spacer()
                 Button(action: {
                     foregroundColor = .white
                     HealthkitManager.shared.startWorkoutSession(completion: {
@@ -39,14 +37,13 @@ struct TimersSelectionView: View {
                         .foregroundStyle(foregroundColor)
                     })
             }.fullScreenCover(isPresented: $startCreateTimerFlow) {
-                CreateCustomTimerView(customTimer: $customTimer)
+                CreateCustomTimerView2(customTimer: $customTimer)
             }.task {
                 _ = HealthkitManager.shared
               }
             .onAppear(perform: {
                 HealthkitManager.shared.authorizeHealthKit()
             })
-      //  }
     }
 }
 

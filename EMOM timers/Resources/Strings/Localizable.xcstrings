@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     ":" : {
 
     },
@@ -116,9 +119,6 @@
         }
       }
     },
-    "Help" : {
-
-    },
     "intro_paragraph_1" : {
       "localizations" : {
         "en" : {
@@ -140,6 +140,9 @@
       }
     },
     "Reset" : {
+
+    },
+    "Rest" : {
 
     },
     "Rest time:" : {

@@ -17,24 +17,33 @@ struct TimersSelectionView: View {
     @State private var startCreateTimerFlow = false
     @State var customTimer: CustomTimer?
     @StateObject var selectEMOMViewModel: CreateCustomTimerViewModel = CreateCustomTimerViewModel()
+    @StateObject private var timerStore = TimerStore.shared
     private let healthStore = HKHealthStore()
+    @State var closedFromCompation = false
 
     // State variable to hold the heart rate
     @State private var heartRate: Double = 0
     var body: some View {
         VStack(spacing: 0) {
-            Text("\(Int(heartRate)) BPM")
-                .font(.title)
-                .padding()
-            if let customTimer = customTimer {
+//            Text("\(Int(heartRate)) BPM")
+//                .font(.title)
+//                .padding()
+            if let customTimer {
                 switch customTimer.timerType {
                 case .emom:
-                    EMOMView(customTimer: $customTimer)
+                    EMOMView(customTimer: $customTimer, closedFromCompation: $startCreateTimerFlow)
                 case .upTimer:
                     UpTimerView(customTimer: $customTimer)
+                default:
+                   EmptyView()
                 }
             } else {
                 VStack {
+                    Button(action: {
+                        Connectivity.shared.addTimer()
+                    }, label: {
+                        TimersSelectionButtonView(systemName: "timer", text: "Remote")
+                        })
                     Button(action: {
                         selectEMOMViewModel.setTimertype(type: .emom)
                         startCreateTimerFlow.toggle()
@@ -47,7 +56,7 @@ struct TimersSelectionView: View {
                     }, label: {
                         TimersSelectionButtonView(systemName: "timer", text: "Up timer")
                         })
-                    SendMessageView()
+                   // SendMessageView()
                 }
                     .fullScreenCover(isPresented: $startCreateTimerFlow) {
                     CreateCustomTimerView(customTimer: $customTimer)
@@ -61,6 +70,28 @@ struct TimersSelectionView: View {
             // Fetch heart rate data
             fetchHeartRateData()
         }
+        .onChange(of: timerStore.customTimer) {
+            LocalLogger.log("TimerSelectionView.onChange \(timerStore.customTimer?.description ?? "") closedFromCompation: \(timerStore.customTimer != nil)")
+            self.customTimer = timerStore.customTimer
+            closedFromCompation = self.customTimer == nil
+            /*
+            if let companionCustomTimer = timerStore.customTimer {
+                self.customTimer = timerStore.customTimer
+                closedFromCompation = false
+            } else {
+                self.customTimer = nil
+                closedFromCompation = true
+            }*/
+            LocalLogger.log("TimerSelectionView.onChange closedFromCompation: \(self.customTimer != nil)")
+        }
+        .onChange(of: self.customTimer) {
+            if customTimer == nil {
+                Connectivity.shared.removeTimer()
+            }
+        }
+//        .onChange(of: ticketOffice.removedTimerFromCompationApp) {
+//            closedFromCompation = true
+//        }
     }
 
     // Request HealthKit authorization

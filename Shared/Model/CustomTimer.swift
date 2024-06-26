@@ -6,16 +6,29 @@
 //
 
 import Foundation
-enum TimerType {
+enum TimerType: String, Codable {
+  //  case none
     case emom
     case upTimer
 }
 
-struct CustomTimer: Equatable {
+struct CustomTimer: Equatable, Codable {
     var timerType: TimerType
     var rounds: Int
     var workSecs: Int = 0
     var restSecs: Int = 0
+    
+    var description: String {
+        return "CustomTimer(\(self.timerType.rawValue),\(self.rounds),\(self.workSecs),\(self.restSecs))"
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case timerType
+        case rounds
+        case workSecs
+        case restSecs
+    }
+
     
     init(timerType: TimerType, rounds: Int, workSecs: Int = 0, restSecs: Int = 0, pendingSecs: Int = 0) {
         self.timerType = timerType
@@ -23,10 +36,18 @@ struct CustomTimer: Equatable {
         self.workSecs = workSecs
         self.restSecs = restSecs
     }
-
-//    func workRatio() -> Double? {
-//        Double(String(format: "%.2f", Double(workSecs) / Double(workSecs + restSecs))) ?? -1.0
-//    }
+    
+    init?(dictionary: [String:Any]) {
+        guard let timerTypeStr = dictionary[CustomTimer.CodingKeys.timerType.rawValue] as? String,
+              let timerType = TimerType(rawValue: timerTypeStr),
+              let rounds = dictionary[CustomTimer.CodingKeys.rounds.rawValue] as? Int else {
+            return nil
+        }
+        self.timerType = timerType
+        self.rounds = rounds
+        self.workSecs = dictionary[CustomTimer.CodingKeys.workSecs.rawValue] as? Int ?? 0
+        self.restSecs = dictionary[CustomTimer.CodingKeys.restSecs.rawValue] as? Int ?? 0
+    }
 
     func timeHHMMSS(isWork: Bool = true) -> String {
         return CustomTimer.getHHMMSS(seconds: isWork ? workSecs : restSecs)
@@ -77,21 +98,11 @@ struct CustomTimer: Equatable {
     }
 
     static func secsToNextRoud(emom: CustomTimer, secsEllapsed: Int) -> Int {
-//        var roundsEllapsed: Double = Double(secsEllapsed) / Double(emom.workSecs + emom.restSecs)
-//        if secsEllapsed % (emom.workSecs + emom.restSecs) == 0 {
-//            roundsEllapsed += 1
-//        }
-//        return  min(Int(roundsEllapsed.rounded(.up)), emom.rounds)
         guard secsEllapsed <= (emom.workSecs + emom.restSecs) * emom.rounds else { return 0 }
         let secsRound = (emom.workSecs + emom.restSecs)
         let remaining = secsEllapsed % secsRound
         return remaining == 0 ? 0 : secsRound - remaining
     }
-    
-//    static func secsPerRound(emom: Emom, isWork: Bool = true) -> Double {
-//        guard emom.rounds > 0 else { return -1.0 }
-//        return Double(emom.workSecs / emom.rounds) 
-//    }
 }
 
 extension CustomTimer {

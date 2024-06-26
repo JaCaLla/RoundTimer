@@ -6,29 +6,38 @@
 //
 
 import SwiftUI
-
+import os.log
 struct MainView: View {
     @State var customTimer: CustomTimer?
+    @StateObject private var timerStore = TimerStore.shared
     var body: some View {
         ZStack {
-            if let customTimer {
+            if customTimer != nil {
                 EMOMView(customTimer: $customTimer)
                     .forceRotation(orientation: .landscape)
                     
             } else {
-                TabView {
+//                TabView {
                     TimersSelectionView(customTimer: $customTimer)
                         .tabItem {
                             Text("Timers")
                         }
-                    HelpView()
-                        .tabItem {
-                            Text("Help")
-                        }
-                }
+//                    HelpView()
+//                        .tabItem {
+//                            Text("Help")
+//                        }
+//                }
             }
+        }.onChange(of: customTimer) {
+            if let customTimer {
+                LocalLogger.log("MainView.onChange:\(customTimer.description)")
+                timerStore.startTimerOnAW(customTimer: customTimer)
+            } else {
+                timerStore.removeTimerOnAW()
+            }
+            
         }
-
+        .forceRotation(orientation: .landscape)
     }
 }
 

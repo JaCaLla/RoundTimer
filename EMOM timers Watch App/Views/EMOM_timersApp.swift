@@ -23,7 +23,7 @@ struct EMOM_timers_Watch_AppApp: App {
             print("todo")
         }
         .onChange(of: scenePhase) {
-          print("onChange: \($0)")
+            LocalLogger.log("EMOM_timers_Watch_AppApp.onChange: \($0)")
         }
     }
 }

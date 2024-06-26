@@ -10,7 +10,6 @@ import SwiftUI
 struct EMOMView: View {
     let bottonSideSize = 50.0
     @Environment(\.scenePhase) private var scenePhase
-   // @Environment(\.isLuminanceReduced) var isLuminanceReduced
     @Binding var customTimer: CustomTimer?
     @StateObject var emomViewModel = EMOMViewModel()
 
@@ -51,8 +50,6 @@ struct EMOMView: View {
                                     .foregroundStyle(emomViewModel.getForegroundTextColor())
                             }
                         }
-                     //   .font(emomViewModel.getTimerAndRoundFont(isLuminanceReduced: false))
-    //                    .foregroundColor(.timerStartedColor)
                         .font(.timerAndRoundiOSAppFont)
                 }
             }
@@ -68,73 +65,6 @@ struct EMOMView: View {
         .onTapGesture {
             emomViewModel.action()
         }
-        
-        //        VStack(spacing: 0) {
-//           // if !isLuminanceReduced {
-//                HStack {
-//                    Button(action: {
-//                        emomViewModel.close()
-//                        customTimer = nil
-//                    }, label: {
-//                        Image(systemName: "xmark")
-//                    })
-//                    .modifier(ButtonAW())
-//                    Spacer()
-//                }
-//           // }
-//            Spacer()
-//            VStack(spacing: 0) {
-//                Text("\(emomViewModel.getCurrentMessage())")
-//                    .font(.messageFont)
-//                HStack {
-//                    HStack(alignment: .firstTextBaseline, spacing: 0) {
-//                        Text("\(emomViewModel.getCurrentRound())")
-//                            .foregroundColor(.roundColor)
-//                        Text("\(emomViewModel.getRounds())")
-//                            .font(.emomRounds)
-//                            .foregroundColor(.roundColor)
-//                    }
-//                    .font(emomViewModel.getTimerAndRoundFont())
-//                    Spacer()
-//                    VStack {
-//                        if let chronoOnMove = emomViewModel.chronoOnMove {
-//                            Text("\(chronoOnMove, style: .timer)")
-//                                .foregroundStyle(emomViewModel.getForegroundTextColor())
-//                                .allowsTightening(true)
-//                        } else {
-//                            Text(emomViewModel.chronoFrozen)
-//                                .foregroundStyle(emomViewModel.getForegroundTextColor())
-//                        }
-//                    }
-//                    .font(emomViewModel.getTimerAndRoundFont(isLuminanceReduced: false))
-//                }
-//                
-//                Gauge(value: emomViewModel.getRoundsProgress(), label: { })
-//                    .tint(.roundColor)
-//                    .gaugeStyle(.accessoryLinearCapacity)
-//                    .scaleEffect(x: 1.0, y: 0.25)
-//            }
-//            Spacer(minLength: 7)
-//            Button(action: {
-//                emomViewModel.action()
-//            }, label: {
-//                    Image(systemName: emomViewModel.getActionIcon())
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fit)
-//                        .frame(width: bottonSideSize, height: bottonSideSize)
-//                })
-//                .foregroundStyle(emomViewModel.actionButtonColor())
-//                .frame(width: bottonSideSize, height: bottonSideSize)
-//                .clipShape(Circle())
-//            Spacer(minLength: 15 - 10)
-//        }.background(.green) //emomViewModel.getBackground())
-//            .onChange(of: scenePhase) { print($0) }
-//            .onAppear {
-//                guard emomViewModel.state == .notStarted else { return }
-//                emomViewModel.set(emom: customTimer)
-//                emomViewModel.action()
-//            }
-            
     }
 }
 

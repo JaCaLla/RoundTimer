@@ -11,7 +11,7 @@ import os.log
 
 struct TimersSelectionView: View {
     @Binding var customTimer: CustomTimer? 
-    @State var startCreateTimerFlow: Bool = false
+    @State var isPresentedCreateCustomTimerView: Bool = false
     @State var foregroundColor: Color = .blue
     var body: some View {
             VStack {
@@ -20,7 +20,7 @@ struct TimersSelectionView: View {
                         LocalLogger.log("HealthkitManager.shared.startWorkoutSession:\(result ? "✅" : "❌")")
                         foregroundColor = result ? .green : .red
                         if result {
-                            startCreateTimerFlow.toggle()
+                            isPresentedCreateCustomTimerView.toggle()
                         }
                     })
                 }, label: {
@@ -36,8 +36,8 @@ struct TimersSelectionView: View {
                     Text("Start workout session")
                         .foregroundStyle(foregroundColor)
                     })
-            }.fullScreenCover(isPresented: $startCreateTimerFlow) {
-                CreateCustomTimerView2(customTimer: $customTimer)
+            }.fullScreenCover(isPresented: $isPresentedCreateCustomTimerView) {
+                CreateCustomTimerView(customTimer: $customTimer)
             }.task {
                 _ = HealthkitManager.shared
               }

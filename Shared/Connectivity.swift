@@ -4,10 +4,11 @@ import os.log
 
 final class Connectivity: NSObject, ObservableObject {
   @Published var purchasedIds: [Int] = []
- // @Published var message: String = ""
+ 
 
     @Published var companionCustomTimer: CustomTimer?
 
+    @Published var pingReceivedOnAW: Bool = false
 
   static let shared = Connectivity()
 
@@ -23,35 +24,7 @@ final class Connectivity: NSObject, ObservableObject {
     WCSession.default.delegate = self
     WCSession.default.activate()
   }
-  /*
-    public func send(message: String,
-                     delivery: Delivery,
-                replyHandler: (([String: Any]) -> Void)? = nil,
-                errorHandler: ((Error) -> Void)? = nil ) {
-        guard canSendToPeer() else { return }
-        var userInfo: [String: String] = [
-          ConnectivityUserInfoKey.message.rawValue: message
-        ]
-        switch delivery {
-        case .failable:
-          WCSession.default.sendMessage(
-            userInfo,
-            replyHandler: optionalMainQueueDispatch(handler: replyHandler),
-            errorHandler: optionalMainQueueDispatch(handler: errorHandler)
-          )
 
-        case .guaranteed:
-          WCSession.default.transferUserInfo(userInfo)
-
-        case .highPriority:
-          do {
-            try WCSession.default.updateApplicationContext(userInfo)
-          } catch {
-            errorHandler?(error)
-          }
-        }
-    }
-    */
     public func send(connectivityMessage: ConnectivityMessage,
                      delivery: Delivery,
                 replyHandler: (([String: Any]) -> Void)? = nil,
@@ -81,85 +54,6 @@ final class Connectivity: NSObject, ObservableObject {
         }
         
     }
-/*
-  public func send(
-    movieIds: [Int],
-    delivery: Delivery,
-    wantedQrCodes: [Int]? = nil,
-    replyHandler: (([String: Any]) -> Void)? = nil,
-    errorHandler: ((Error) -> Void)? = nil
-  ) {
-    guard canSendToPeer() else { return }
-
-    var userInfo: [String: [Int]] = [
-      ConnectivityUserInfoKey.purchased.rawValue: movieIds
-    ]
-
-    if let wantedQrCodes = wantedQrCodes {
-      let key = ConnectivityUserInfoKey.qrCodes.rawValue
-      userInfo[key] = wantedQrCodes
-    }
-
-    switch delivery {
-    case .failable:
-      WCSession.default.sendMessage(
-        userInfo,
-        replyHandler: optionalMainQueueDispatch(handler: replyHandler),
-        errorHandler: optionalMainQueueDispatch(handler: errorHandler)
-      )
-
-    case .guaranteed:
-      WCSession.default.transferUserInfo(userInfo)
-
-    case .highPriority:
-      do {
-        try WCSession.default.updateApplicationContext(userInfo)
-      } catch {
-        errorHandler?(error)
-      }
-    }
-  }
-
-  public func send(
-    data: Data,
-    replyHandler: ((Data) -> Void)? = nil,
-    errorHandler: ((Error) -> Void)? = nil
-  ) {
-    guard canSendToPeer() else { return }
-
-    WCSession.default.sendMessageData(
-      data,
-      replyHandler: optionalMainQueueDispatch(handler: replyHandler),
-      errorHandler: optionalMainQueueDispatch(handler: errorHandler)
-    )
-  }
-*/
-  #if os(iOS)
-//  public func sendQrCodes(_ data: [String: Any]) {
-//    let key = ConnectivityUserInfoKey.qrCodes.rawValue
-//    guard let ids = data[key] as? [Int], !ids.isEmpty else { return }
-//
-//    let tempDir = FileManager.default.temporaryDirectory
-//    TicketOffice.shared
-//      .movies
-//      .filter { ids.contains($0.id) }
-//      .forEach { movie in
-//        let image = QRCode.generate(
-//          movie: movie,
-//          size: .init(width: 100, height: 100)
-//        )
-//
-//        guard let data = image?.pngData() else { return }
-//
-//        let url = tempDir.appendingPathComponent(UUID().uuidString)
-//        guard let _ = try? data.write(to: url) else {
-//          return
-//        }
-//
-//        WCSession.default.transferFile(url, metadata: [key: movie.id])
-//      }
-//  }
-  #endif
 
   private func canSendToPeer() -> Bool {
     guard WCSession.default.activationState == .activated else {
@@ -180,25 +74,7 @@ final class Connectivity: NSObject, ObservableObject {
   }
 
     private func update(from dictionary: [String: Any]) async {
-//    #if os(iOS)
-//    sendQrCodes(dictionary)
-//    #endif
-
-//    var key = ConnectivityUserInfoKey.purchased.rawValue
-//    if let ids = dictionary[key] as? [Int] {
-//        self.purchasedIds = ids
-//    }
-    
-//    key = ConnectivityUserInfoKey.message.rawValue
-//      if let message = dictionary[key] as? String {
-//          self.message = message
-//#if os(iOS)
-//      LocalPersitenceManager.shared.add(message: message + "|\(Connectivity.getTimestamp())")//"fromWatchOS")
-//      #endif
-//      }
-      
         guard let connectivityMessage = ConnectivityMessage(dictionary: dictionary) else { return }
-      //    self.connectivityMessage = connectivityMessage
            if connectivityMessage.action == .startTimer, let customTimer = connectivityMessage.customTimer {
                LocalLogger.log("Connectivity.update.companionCustomTimer = \(customTimer.description)")
                await MainActor.run {
@@ -209,6 +85,18 @@ final class Connectivity: NSObject, ObservableObject {
                await MainActor.run {
                    self.companionCustomTimer = nil
                }
+           } else if connectivityMessage.action == .ping {
+               LocalLogger.log("Connectivity.update.pingReceivedOnAW = true \(connectivityMessage.direction)")
+               if     connectivityMessage.direction == .fromIPhoneToAWatch {
+                    self.pingReceivedOnAW = true
+                   
+               } else {
+                   await MainActor.run {
+                       self.pingReceivedOnAW = true
+                   }
+               }
+           } else {
+               LocalLogger.log("Connectivity.update unknown message")
            }
   }
 
@@ -224,7 +112,7 @@ final class Connectivity: NSObject, ObservableObject {
     func removeTimer() {
         self.companionCustomTimer = nil//= CustomTimer(timerType: .none, rounds: 0)
     }
-    
+
   typealias OptionalHandler<T> = ((T) -> Void)?
 
   private func optionalMainQueueDispatch<T>(handler: OptionalHandler<T>) -> OptionalHandler<T> {

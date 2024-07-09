@@ -1,5 +1,5 @@
 //
-//  CreateCustomTimerView.swift
+//  CreateCustomTimerView2.swift
 //  EMOM timers
 //
 //  Created by Javier Calartrava on 16/5/24.
@@ -8,57 +8,76 @@
 import SwiftUI
 
 struct CreateCustomTimerView: View {
+ //   @Environment(\.dismiss) var dismiss
     @Binding var customTimer: CustomTimer?
-    @State private var selectedIndexRounds = 0
-    @State private var selectedWorkMins = 0
-    @State private var selectedWorkSecs = 3
-    @State private var selectedRestMins = 0
-    @State private var selectedRestSecs = 1
-    let minRounds = 2
-    let pickerHeight = 200.0
+    let pickerSize = 200.0
+    @State private var isRestOn = false
+    @State private var isFetchingAW = false
+    @StateObject var viewModel = CreateCustomTimerViewModel()
     var body: some View {
         VStack {
             Spacer()
-            CreateCustomTimerPickerView(title: "Rounds", color: .roundColor,min: minRounds, max: 50, value: $selectedIndexRounds)
-               // .foregroundColor(.roundColor)
-            .frame(height: pickerHeight)
-            Spacer()
-            VStack(spacing: 0){
-                Text("Work time:")
-                    .foregroundColor(.timerStartedColor)
-                HStack(spacing: 5) {
-                    CreateCustomTimerPickerView(title: "Minutes", color: .timerStartedColor, value: $selectedWorkMins)
-                        .frame(height: pickerHeight)
-                    Text(":")
-                    CreateCustomTimerPickerView(title: "Seconds",color: .timerStartedColor, value: $selectedWorkSecs)
-                        .frame(height: pickerHeight)
+            HStack {
+                Spacer()
+                CreateCustomTimerWorkRestToggleView(isRestOn: $isRestOn)
+                Spacer(minLength: 140)
+                DismissButton()
+            }
+            HStack {
+                CreateCustomTimerPickerView(title: String(localized: "picker_rounds"),
+                    color: .roundColor,
+                    min: viewModel.minRounds,
+                    max: viewModel.maxRounds,
+                    format: "%d",
+                    value: $viewModel.selectedIndexRounds)
+                    .frame(width: pickerSize, height: pickerSize)
+                Spacer(minLength: 150)
+                if isRestOn {
+                    CreateCustomTimerMMSSPickerView(selectedMins: $viewModel.selectedRestMins, selectedSecs: $viewModel.selectedRestSecs, isRestOn: isRestOn)
+                } else {
+                    CreateCustomTimerMMSSPickerView(selectedMins: $viewModel.selectedWorkMins, selectedSecs: $viewModel.selectedWorkSecs, isRestOn: isRestOn)
                 }
             }
             Spacer()
-            VStack(spacing: 0){
-                Text("Rest time:")
-                    .foregroundColor(.timerRestStartedColor)
-                HStack(spacing: 5) {
-                    CreateCustomTimerPickerView(title: "Minutes", color: .timerRestStartedColor, value: $selectedRestMins)
-                        .frame(height: pickerHeight)
-                    Text(":")
-                    CreateCustomTimerPickerView(title: "Seconds",color: .timerRestStartedColor, value: $selectedRestSecs)
-                        .frame(height: pickerHeight)
+//            ZStack {
+//                if isFetchingAW {
+//                    ProgressView()
+//                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+//                        .scaleEffect(2.0, anchor: .center)
+//                }
+                HStack() {
+                    Button {
+                        viewModel.isLinkedToAW.toggle()
+                    } label: {
+                        Image(systemName: viewModel.imageConnectionAW())
+                            .modifier(ButtonStyle())
+                    }
+                    Spacer()
+                    CreateCustomTimerContinueButton(isFetchingAW: $isFetchingAW, 
+                                                    customTimer: $customTimer)
+                        .environmentObject(viewModel)
                 }
-            }
-
-              //  .foregroundColor(.timerStartedColor)
-            Spacer()
-            Button(LocalizedStringKey("Continue"), action: {
-                let workSecs = selectedWorkMins * 60 + selectedWorkSecs
-                let restSecs = selectedRestMins * 60 + selectedRestSecs
-                let rounds = minRounds + selectedIndexRounds
-                let timer = CustomTimer(timerType: .emom, rounds: rounds, workSecs: workSecs, restSecs: restSecs)
-                customTimer = timer
-            })
+      //      }
         }
-        .pickerStyle(.wheel)
-        .font(.pickerSelectionFont)
+          //  .pickerStyle(.wheel)
+            .task {
+            await viewModel.onAppearActions()
+        }
+            .background(Color.defaultBackgroundColor)
+    }
+}
+
+struct CreateCustomTimerWorkRestToggleView: View {
+    @Binding var isRestOn: Bool
+    var body: some View {
+        HStack {
+            Spacer()
+            Text(isRestOn ? String(localized: "rest") : String(localized: "work"))
+            Toggle("", isOn: $isRestOn)
+                .toggleStyle(SwitchToggleStyle(tint: isRestOn ? .timerRestStartedColor : .timerStartedColor))
+                .frame(width: 100)
+        }.foregroundColor(isRestOn ? .timerRestStartedColor : .timerStartedColor)
+            .font(.pickerSelectionFont)
     }
 }
 

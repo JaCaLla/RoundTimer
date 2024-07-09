@@ -16,6 +16,8 @@ extension Color {
     static let buttonTextColor = Color("White")
     static let paragrahColor = Color(.white)
     static let defaultBackgroundColor = Color(.black)
+    static let countdownColor = Color("ElectricBlue")
+    static let countdownInminentColor =  Color("ElectricRed")
 }
 
 extension Font {

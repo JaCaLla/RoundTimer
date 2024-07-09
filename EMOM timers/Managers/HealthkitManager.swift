@@ -13,7 +13,7 @@ final class HealthkitManager {
   static let shared = HealthkitManager()
 
   // 3
-   var healthStore: HKHealthStore?
+   private var healthStore: HKHealthStore?
 
   // 4
   private init() {
@@ -42,37 +42,28 @@ final class HealthkitManager {
     }
     
     func startWorkoutSession(completion: @escaping (Bool) -> Void) {
-        let semaphore = DispatchSemaphore(value: 0)
 
-    //    Task {
             let configuration = HKWorkoutConfiguration()
             configuration.activityType = .running
             configuration.locationType = .outdoor
-
-//            do {
-//               try await healthStore?.startWatchApp(toHandle: configuration)
-//            }
-//            catch {
-//                // Handle the error here.
-//                fatalError("*** An error occurred while starting a workout on Apple Watch: \(error.localizedDescription) ***")
-//            }
             
             healthStore?.startWatchApp(with: configuration, completion: { result, error in
                 completion(error==nil)
-//                if let error {
-//                    fatalError("*** An error occurred while starting a workout on Apple Watch: \(error.localizedDescription) ***")
-//                } else {
-//                    print("*** Workout Session Started ***")
-//                }
+
             })
+    }
+    
+    func startWorkoutSession() async -> Bool {
 
-
-           
-     //       semaphore.signal()
-   //     }
-
-    //    semaphore.wait()
-        
-        
+            let configuration = HKWorkoutConfiguration()
+            configuration.activityType = .running
+            configuration.locationType = .outdoor
+            
+        return await withCheckedContinuation { continuation in
+            healthStore?.startWatchApp(with: configuration, completion: { result, error in
+                continuation.resume(returning: error == nil)
+                //return error == nil
+            })
+        }
     }
 }

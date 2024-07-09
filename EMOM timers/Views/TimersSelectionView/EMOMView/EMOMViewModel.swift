@@ -4,7 +4,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
 
     // MARK: - Emom timer states
     enum State: Int {
-        case notStarted, startedWork, startedRest, paused, finished, cancelled
+        case notStarted, countdown, startedWork, startedRest, paused, finished, cancelled
     }
 
     @Published var chronoOnMove: Date?
@@ -13,54 +13,24 @@ final class EMOMViewModel: NSObject, ObservableObject {
     internal var actionIcon = "play"
     internal var timerWork: Timer?
     internal var timerRest: Timer?
-   // internal var extendedRuntimeSession: WKExtendedRuntimeSession?
+    internal var timerCountdown: Timer?
     internal var state: State = .notStarted
     internal var previousStateBeforePausing: State = .startedWork
     internal var secsToFinishAfterPausing: TimeInterval = 0
     internal var secsToFinishRestAfterPausing: TimeInterval = 0
     internal var roundsLeftAfterPausing: Int?
     internal var roundsLeft = 0
+    static let coundownValue = 10
+    var countdownCurrentValue = coundownValue
     @Published var emom: CustomTimer?
-
-    internal func startWorkTime() {
-        if let roundsLeftAfterPausing {
-            set(roundsLeft: roundsLeftAfterPausing)
-        } else if let emom {
-            set(roundsLeft: emom.rounds)
-        }
-//        extendedRuntimeSession = WKExtendedRuntimeSession()
-//        extendedRuntimeSession?.delegate = self
-//        extendedRuntimeSession?.start()
-        guard let emom else { return }
-        processWorktime(/*extendedRuntimeSession: extendedRuntimeSession,*/ emom: emom, timerWork: &timerWork)
-        
-       // HapticManager.shared.start()
-                
-        if emom.restSecs > 0 {
-            processResttime(/*extendedRuntimeSession: extendedRuntimeSession,*/ emom: emom, timerRest: &timerRest)
-        }
-        // Do set state after setting timers
-        if state == .paused {
-            if previousStateBeforePausing == .startedWork {
-                self.set(state: .startedWork)
-            } else if previousStateBeforePausing == .startedRest {
-                set(state: .startedRest)
-            }
-        } else if state == .notStarted {
-            set(state: .startedWork)
-        }
-    }
 
     func close() {
         emom = nil
         state = .cancelled
         removeTimers()
-       // removeExtendedRuntimeSession()
     }
 
     private func pause() {
-      //  HapticManager.shared.pause()
-   //     extendedRuntimeSession?.invalidate()
         if let timerWork,
             previousStateBeforePausing == .startedWork {
             secsToFinishAfterPausing = abs(timerWork.fireDate.timeIntervalSinceNow) - Double((emom?.restSecs ?? 0))
@@ -77,7 +47,11 @@ final class EMOMViewModel: NSObject, ObservableObject {
     }
 
     func action() {
-        if [.notStarted].contains(where: { $0 == state }) {
+        LocalLogger.log("EMOMViewModel.action  state:\(state.rawValue)")
+        if [.countdown].contains(where: { $0 == state }) {
+            ApplicationManager.setInForeground(true)
+            startCountdown()
+        } else if [.notStarted].contains(where: { $0 == state }) {
             startWorkTime()
    //         HapticManager.shared.pause()
         } else if [.paused].contains(where: { $0 == state }) {
@@ -87,16 +61,17 @@ final class EMOMViewModel: NSObject, ObservableObject {
             set(state: .paused)
             pause()
         } else if state == .finished {
+            ApplicationManager.setInForeground(false)
             set(state: .notStarted)
             set(emom: emom)
             roundsLeftAfterPausing = nil
         }
     }
-
+    
     func set(emom: CustomTimer?) {
         guard let emom else { return }
         self.emom = emom
-        state = .notStarted
+        self.set(state: .countdown)
         chronoFrozen = CustomTimer.getHHMMSS(seconds: emom.workSecs)
     }
 
@@ -118,6 +93,8 @@ final class EMOMViewModel: NSObject, ObservableObject {
             return 1.0
         } else if state == .startedWork || state == .startedRest {
             return Double(emom.rounds - roundsLeft + 1) / Double(emom.rounds)
+        } else if state == .countdown {
+            return 1.0 - Double(countdownCurrentValue) / Double(EMOMViewModel.coundownValue)
         } else {
             return 0.0
         }
@@ -157,6 +134,8 @@ final class EMOMViewModel: NSObject, ObservableObject {
             return .timerStartedColor
         } else if state == .startedRest {
             return .timerRestStartedColor
+        } else if state == .countdown {
+            return countdownCurrentValue > 3 ? .countdownColor : .countdownInminentColor
         } else {
             return .green
         }
@@ -181,7 +160,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
     }
 
     func getCurrentRound() -> String {
-        guard let emom else { return "" }
+        guard let emom, [.countdown].allSatisfy({ state != $0 }) else { return "" }
         if [.notStarted].contains(where: { state == $0 }) {
             return "1"
         } else if [.finished].contains(where: { state == $0 }) {
@@ -196,7 +175,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
     }
     
     func getRounds() -> String {
-        guard let emom else { return "" }
+        guard let emom, [.countdown].allSatisfy({ state != $0 }) else { return "" }
         return String(format: "/%0d", emom.rounds)
     }
 
@@ -216,10 +195,60 @@ final class EMOMViewModel: NSObject, ObservableObject {
         }
     }
 
+    internal func startWorkTime() {
+        if let roundsLeftAfterPausing {
+            set(roundsLeft: roundsLeftAfterPausing)
+        } else if let emom {
+            set(roundsLeft: emom.rounds)
+        }
 
+        guard let emom else { return }
+        processWorktime( emom: emom, timerWork: &timerWork)
+                
+        if emom.restSecs > 0 {
+            processResttime(emom: emom, timerRest: &timerRest)
+        }
+        // Do set state after setting timers
+        if state == .paused {
+            if previousStateBeforePausing == .startedWork {
+                self.set(state: .startedWork)
+            } else if previousStateBeforePausing == .startedRest {
+                set(state: .startedRest)
+            }
+        } else if state == .notStarted {
+            set(state: .startedWork)
+        }
+    }
+    internal func startCountdown() {
+        let blockTimerCountdown: (Timer) -> Void = { [weak self] _ in
+            guard let self else { return }
+            countdownCurrentValue -= 1
+            LocalLogger.log("EmomViewModel.blockTimerCountdown value:\(countdownCurrentValue)")
+
+            if countdownCurrentValue < 1 {
+                timerCountdown?.invalidate()
+                dropTimer(&timerCountdown)
+                self.set(state: .notStarted)
+                self.action()
+                return
+            }
+            self.chronoFrozen = "\(countdownCurrentValue)"
+        }
+        //let secondsPerRound = Double(emom.workSecs /*+ 1 */+ emom.restSecs)
+        timerCountdown = Timer(
+            fire: Date.now,
+            interval: 1,
+            repeats: true,
+            block: blockTimerCountdown)
+        
+        guard let timerCountdown else { return }
+        RunLoop.main.add(timerCountdown, forMode: .common)
+    }
+    
     private func removeTimers() {
         dropTimer(&timerWork)
         dropTimer(&timerRest)
+        dropTimer(&timerCountdown)
     }
     
     private func dropTimer(_ timer: inout Timer?) {

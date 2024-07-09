@@ -52,7 +52,6 @@ struct ConnectivityMessage: Dictionable {
     }
     
     init?(dictionary: [String:Any]) {
-        //self.action =  dictionary["action"] as? ConnectivityMessageAction ?? .none
         guard let action = ConnectivityMessageAction(rawValue: dictionary[ConnectivityMessage.CodingKeys.action.rawValue] as? String ?? ""),
             let direction = ConnectivityMessageDirection(rawValue: dictionary[ConnectivityMessage.CodingKeys.direction.rawValue] as? String ?? "")
             else {
@@ -71,6 +70,7 @@ enum ConnectivityMessageAction: String, Codable {
     case none
     case startTimer
     case removeTimer
+    case ping
 }
 
 enum ConnectivityMessageDirection: String, Codable {

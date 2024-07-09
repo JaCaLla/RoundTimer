@@ -32,6 +32,17 @@ struct MainView: View {
             if let customTimer {
                 LocalLogger.log("MainView.onChange:\(customTimer.description)")
                 timerStore.startTimerOnAW(customTimer: customTimer)
+                //let customTimerTmp = customTimer
+                //self.customTimer = nil
+//                timerStore.ping {
+//                    HealthkitManager.shared.startWorkoutSession(completion: { result in
+//                        LocalLogger.log("MainView.onChange:\(customTimer.description)")
+//                        LocalLogger.log("HealthkitManager.shared.startWorkoutSession(completion:\(result)")
+//                        guard result else { return }
+//                        timerStore.startTimerOnAW(customTimer: customTimer)
+//                        self.customTimer = customTimer
+//                    })
+//                }
             } else {
                 timerStore.removeTimerOnAW()
             }

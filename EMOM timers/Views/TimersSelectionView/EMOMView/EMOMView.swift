@@ -68,16 +68,6 @@ struct EMOMView: View {
     }
 }
 
-struct ButtonAW: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .frame(width: 25, height: 25)
-            .foregroundColor(Color.white)
-            .clipShape(Circle())
-    }
-}
-
-
 
 #Preview("Small Font") {
     let model =  EMOMViewModel()

@@ -61,23 +61,23 @@ struct EMOMView: View {
                     Text("Screen dimmed. Tap to unblock.")
                 }.frame(height: 50)
             } else {
-                Button(action: {
-                    emomViewModel.action()
-                }, label: {
-                        Image(systemName: emomViewModel.getActionIcon())
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: bottonSideSize, height: bottonSideSize)
-                    })
-                    .foregroundStyle(emomViewModel.actionButtonColor())
-                    .frame(width: bottonSideSize, height: bottonSideSize)
-                    .clipShape(Circle())
+//                Button(action: {
+//                    emomViewModel.action()
+//                }, label: {
+//                        Image(systemName: emomViewModel.getActionIcon())
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fit)
+//                            .frame(width: bottonSideSize, height: bottonSideSize)
+//                    })
+//                    .foregroundStyle(emomViewModel.actionButtonColor())
+//                    .frame(width: bottonSideSize, height: bottonSideSize)
+//                    .clipShape(Circle())
             }
             Spacer(minLength: 15 - 10)
         }.background(emomViewModel.getBackground())
           //  .onChange(of: scenePhase) { print($0) }
             .onAppear {
-                print(" >>>> EMOMView. emomViewModel.set(emom:) state:\(emomViewModel.state)")
+              //  print(" >>>> EMOMView. emomViewModel.set(emom:) state:\(emomViewModel.state)")
                 guard emomViewModel.state == .notStarted else {
                     print(" >>>> EMOMView. NOT VALID STATE FOR START TIMER!!!")
                     return
@@ -93,17 +93,6 @@ struct EMOMView: View {
             }
     }
 }
-
-
-struct ButtonAW: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .frame(width: 25, height: 25)
-            .foregroundColor(Color.white)
-            .clipShape(Circle())
-    }
-}
-
 
 
 #Preview("Small Font") {

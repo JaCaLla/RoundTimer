@@ -13,6 +13,7 @@ struct CreateCustomTimerPickerView: View {
     let min: Int
     let max: Int
     let format: String
+    let pickerHeight = 200.0
     @Binding private var value: Int
     init(title: String, color: Color, min: Int = 0, max: Int = 60, format: String = "%0.2d", value: Binding<Int>) {
         self.title = title
@@ -25,15 +26,22 @@ struct CreateCustomTimerPickerView: View {
     var body: some View {
         VStack(spacing: 0) {
             Text(title)
-            Picker(title, selection: $value) { ForEach(min..<max) {
-                Text("\(String(format: format, $0))")
-                    .foregroundColor(color)
-                    .font(.pickerSelectionFont)
-            }
-            }
-            
-        }                    .foregroundColor(color)
-            .font(.pickerSelectionFont)
-
+                .foregroundColor(color)
+                .font(.pickerSelectionFont)
+            Picker(title, selection: $value) {
+                ForEach(min..<max, id: \.self) {
+                    Text("\(String(format: format, $0))")
+                        .foregroundColor(color)
+                        .font(.pickerSelectionFont)
+                }
+            }.pickerStyle(.wheel)
+        }
+        .frame(height: pickerHeight)
     }
+}
+
+#Preview(traits: .fixedLayout(width: 200, height: 200)) {
+    CreateCustomTimerPickerView(title: String(localized: "picker_secs"),
+                                color: .timerStartedColor,
+                                value: .constant(5))
 }

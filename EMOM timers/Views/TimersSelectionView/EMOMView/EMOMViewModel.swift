@@ -3,7 +3,7 @@ import SwiftUI
 final class EMOMViewModel: NSObject, ObservableObject {
 
     // MARK: - Emom timer states
-    enum State: Int {
+    enum State: String {
         case notStarted, countdown, startedWork, startedRest, paused, finished, cancelled
     }
 
@@ -14,6 +14,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
     internal var timerWork: Timer?
     internal var timerRest: Timer?
     internal var timerCountdown: Timer?
+    internal var timerRefresh: Timer?
     internal var state: State = .notStarted
     internal var previousStateBeforePausing: State = .startedWork
     internal var secsToFinishAfterPausing: TimeInterval = 0
@@ -28,6 +29,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
         emom = nil
         state = .cancelled
         removeTimers()
+        TimerStore.shared.send(mirroredTimer: .removedFromCompanion)
     }
 
     private func pause() {
@@ -50,6 +52,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
         LocalLogger.log("EMOMViewModel.action  state:\(state.rawValue)")
         if [.countdown].contains(where: { $0 == state }) {
             ApplicationManager.setInForeground(true)
+            startRefreshTimer()
             startCountdown()
         } else if [.notStarted].contains(where: { $0 == state }) {
             startWorkTime()
@@ -219,11 +222,12 @@ final class EMOMViewModel: NSObject, ObservableObject {
             set(state: .startedWork)
         }
     }
+
     internal func startCountdown() {
         let blockTimerCountdown: (Timer) -> Void = { [weak self] _ in
             guard let self else { return }
             countdownCurrentValue -= 1
-            LocalLogger.log("EmomViewModel.blockTimerCountdown value:\(countdownCurrentValue)")
+           // LocalLogger.log("\(calls) EmomViewModel.blockTimerCountdown value:\(countdownCurrentValue)")
 
             if countdownCurrentValue < 1 {
                 timerCountdown?.invalidate()
@@ -245,10 +249,61 @@ final class EMOMViewModel: NSObject, ObservableObject {
         RunLoop.main.add(timerCountdown, forMode: .common)
     }
     
+    internal func startRefreshTimer() {
+        let blockTimerRefresh: (Timer) -> Void = { [weak self] _ in
+            guard let self else { return }
+            if state == .countdown, let mirroredTimer = getMirroredCustomTimer() {
+                //TimerStore.shared.countdown(value: countdownCurrentValue)
+                TimerStore.shared.send(mirroredTimer: mirroredTimer)
+                LocalLogger.log("EmomViewModel.blockTimerRefresh state:\(state) value:\(countdownCurrentValue)")
+            } else if  [.startedWork, .startedRest, .finished].contains(where: { self.state == $0 }),
+                        let mirroredTimer = getMirroredCustomTimer() {
+                TimerStore.shared.send(mirroredTimer: mirroredTimer)
+                LocalLogger.log("EmomViewModel.blockTimerRefresh state:\(state) value:\(countdownCurrentValue)")
+            }
+        }
+        //let secondsPerRound = Double(emom.workSecs /*+ 1 */+ emom.restSecs)
+        timerRefresh = Timer(
+            fire: Date.now,
+            interval: 1,
+            repeats: true,
+            block: blockTimerRefresh)
+        
+        guard let timerRefresh else { return }
+        RunLoop.main.add(timerRefresh, forMode: .common)
+    }
+    
+    private func getMirroredCustomTimer() -> MirroredTimer? {
+        guard let emom else { return nil }
+        if state == .countdown {
+            let mirroredTimerCountdown = MirroredTimerCountdown(value: countdownCurrentValue)
+            let mirroredTimer = MirroredTimer(mirroredTimerType: .countdown, mirroredTimerCountdown: mirroredTimerCountdown)
+            return mirroredTimer
+        } else if [ .startedWork,.startedRest].contains(where: { $0 == state}) ,
+                  let chronoOnMove {
+            let mirroredTimerWorking = MirroredTimerWorking(rounds: emom.rounds,
+                                                            currentRounds: emom.rounds - roundsLeft + 1,
+                                                            date: chronoOnMove.timeIntervalSince1970,
+                                                            isWork: state == .startedWork)
+            let mirroredTimer = MirroredTimer(mirroredTimerType: .working, mirroredTimerWorking: mirroredTimerWorking)
+            return mirroredTimer
+        } else if [ .finished].contains(where: { $0 == state}) {
+           let mirroredTimerStopped = MirroredTimerStopped(rounds: emom.rounds,
+                                                           currentRounds: emom.rounds - roundsLeft + 1,
+                                                           date: chronoFrozen,
+                                                           isWork: state == .startedWork)
+           let mirroredTimer = MirroredTimer(mirroredTimerType: .stopped, mirroredTimerStopped: mirroredTimerStopped)
+           return mirroredTimer
+       } else {
+            return nil
+        }
+    }
+    
     private func removeTimers() {
         dropTimer(&timerWork)
         dropTimer(&timerRest)
         dropTimer(&timerCountdown)
+        dropTimer(&timerRefresh)
     }
     
     private func dropTimer(_ timer: inout Timer?) {
@@ -334,6 +389,9 @@ final class EMOMViewModel: NSObject, ObservableObject {
             set(roundsLeft: 0)
             if let emom {
                 chronoFrozen = CustomTimer.getHHMMSS(seconds: CustomTimer.getTotal(emom: emom))
+            }
+            if let mirroredTimer = getMirroredCustomTimer() {
+                TimerStore.shared.send(mirroredTimer: mirroredTimer)
             }
         }
     }

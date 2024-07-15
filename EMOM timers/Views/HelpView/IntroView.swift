@@ -21,7 +21,7 @@ struct IntroView: View {
                 .aspectRatio(contentMode: .fit)
                 .padding()
         }.onAppear {
-            TrackingsManager.shared.log(eventName: "IntroView", metadata: nil)
+//            TrackingsManager.shared.log(eventName: "IntroView", metadata: nil)
         }
     }
 }

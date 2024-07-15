@@ -20,13 +20,13 @@ struct CreateCustomTimerContinueButton: View {
             }
             Button(action: {
                 isFetchingAW = true
-                TimerStore.shared.ping {
+                //TimerStore.shared.ping {
                     HealthkitManager.shared.startWorkoutSession(completion: { result in
                         LocalLogger.log("CreateCustomTimerView2.Button(action:)")
                         isFetchingAW = false
                         customTimer = viewModel.buildCustomTimer()
                     })
-                }
+                //}
             }) {
                 Text(String(localized: "continue"))
                     .modifier(ButtonStyle())

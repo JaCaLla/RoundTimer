@@ -16,6 +16,7 @@ struct TimerSelectionItem {
 struct TimersSelectionView: View {
     @State private var startCreateTimerFlow = false
     @State var customTimer: CustomTimer?
+    @State private var mirroredTimer: MirroredTimer?
     @StateObject var selectEMOMViewModel: CreateCustomTimerViewModel = CreateCustomTimerViewModel()
     @StateObject private var timerStore = TimerStore.shared
     private let healthStore = HKHealthStore()
@@ -25,9 +26,9 @@ struct TimersSelectionView: View {
     @State private var heartRate: Double = 0
     var body: some View {
         VStack(spacing: 0) {
-//            Text("\(Int(heartRate)) BPM")
-//                .font(.title)
-//                .padding()
+            //            Text("\(Int(heartRate)) BPM")
+            //                .font(.title)
+            //                .padding()
             if let customTimer {
                 switch customTimer.timerType {
                 case .emom:
@@ -35,10 +36,18 @@ struct TimersSelectionView: View {
                 case .upTimer:
                     UpTimerView(customTimer: $customTimer)
                 default:
-                   EmptyView()
+                    EmptyView()
                 }
+            } else if let mirroredTimer {
+                MirroredTimerView(mirroredTimer: $mirroredTimer, closedFromCompation: $startCreateTimerFlow)
             } else {
                 VStack {
+                    Button(action: {
+                        let mirroredTimerStopped = MirroredTimerStopped(rounds: 10, currentRounds: 2, date: "12:34", isWork: false)
+                        mirroredTimer = MirroredTimer(mirroredTimerType: .working, mirroredTimerStopped: mirroredTimerStopped)
+                    }, label: {
+                        TimersSelectionButtonView(systemName: "iphone.landscape", text: "Mirrored")
+                        })
                     Button(action: {
                         Connectivity.shared.addTimer()
                     }, label: {
@@ -69,6 +78,15 @@ struct TimersSelectionView: View {
 
             // Fetch heart rate data
             fetchHeartRateData()
+        }
+        .onChange(of: timerStore.mirroredTimer) {
+            guard let mirroredTimer = timerStore.mirroredTimer else { return }
+            LocalLogger.log("TimerSelectionView.onChange \(mirroredTimer)")
+            if mirroredTimer.mirroredTimerType == .removedFromCompanion {
+                self.mirroredTimer = nil
+            } else {
+                self.mirroredTimer = timerStore.mirroredTimer
+            }
         }
         .onChange(of: timerStore.customTimer) {
             LocalLogger.log("TimerSelectionView.onChange \(timerStore.customTimer?.description ?? "") closedFromCompation: \(timerStore.customTimer != nil)")

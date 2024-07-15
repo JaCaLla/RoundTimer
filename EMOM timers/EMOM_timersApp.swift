@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import FirebaseCore
+//import FirebaseCore
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -36,7 +36,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    FirebaseApp.configure()
+   // FirebaseApp.configure()
 
     return true
   }
@@ -60,7 +60,7 @@ struct AppRoundTimerApp: App {
     args.append("-FIRDebugEnabled")
     ProcessInfo.processInfo.setValue(args, forKey: "arguments")
 #endif
-          TrackingsManager.shared.log(eventName: "StartedUp", metadata: nil)
+     //     TrackingsManager.shared.log(eventName: "StartedUp", metadata: nil)
       }
       .onChange(of: scenePhase) { oldPhase, newPhase in
           switch newPhase {

@@ -16,9 +16,6 @@
     "Action" : {
 
     },
-    "AddMessage" : {
-
-    },
     "continue" : {
       "localizations" : {
         "en" : {
@@ -111,9 +108,6 @@
         }
       }
     },
-    "Reset" : {
-
-    },
     "rest" : {
       "localizations" : {
         "en" : {
@@ -134,9 +128,6 @@
 
     },
     "Seconds" : {
-
-    },
-    "SendMessage" : {
 
     },
     "Start" : {

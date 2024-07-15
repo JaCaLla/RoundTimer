@@ -7,7 +7,7 @@ final class Connectivity: NSObject, ObservableObject {
  
 
     @Published var companionCustomTimer: CustomTimer?
-
+    @Published var mirroredTimer: MirroredTimer?
     @Published var pingReceivedOnAW: Bool = false
 
   static let shared = Connectivity()
@@ -33,7 +33,7 @@ final class Connectivity: NSObject, ObservableObject {
         guard let userInfo: [String: Any] = connectivityMessage.toDict() else {
                 return
         }
-        LocalLogger.log("Connectivity.send delivery:\(delivery):connectivityMessage:\(connectivityMessage.description)")
+        LocalLogger.log("Connectivity.send delivery:\(delivery):connectivityMessage:\(connectivityMessage)")
         switch delivery {
         case .failable:
           WCSession.default.sendMessage(
@@ -85,16 +85,24 @@ final class Connectivity: NSObject, ObservableObject {
                await MainActor.run {
                    self.companionCustomTimer = nil
                }
+           } else if connectivityMessage.action == .refreshMirroredTimer,
+                        let mirroredTimer = connectivityMessage.mirroredTimer {
+               LocalLogger.log("Connectivity.update.mirroredTimer = \(mirroredTimer)")
+               self.mirroredTimer = mirroredTimer
+               
            } else if connectivityMessage.action == .ping {
                LocalLogger.log("Connectivity.update.pingReceivedOnAW = true \(connectivityMessage.direction)")
                if     connectivityMessage.direction == .fromIPhoneToAWatch {
-                    self.pingReceivedOnAW = true
+                   self.pingReceivedOnAW = true
                    
                } else {
                    await MainActor.run {
                        self.pingReceivedOnAW = true
                    }
                }
+           } else if connectivityMessage.action == .refreshMirroredTimer,
+                    let mirroredTimer = connectivityMessage.mirroredTimer {
+               self.mirroredTimer = mirroredTimer
            } else {
                LocalLogger.log("Connectivity.update unknown message")
            }

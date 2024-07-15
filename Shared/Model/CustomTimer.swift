@@ -18,10 +18,6 @@ struct CustomTimer: Equatable, Codable {
     var workSecs: Int = 0
     var restSecs: Int = 0
     
-    var description: String {
-        return "CustomTimer(\(self.timerType.rawValue),\(self.rounds),\(self.workSecs),\(self.restSecs))"
-    }
-    
     enum CodingKeys: String, CodingKey {
         case timerType
         case rounds
@@ -105,6 +101,14 @@ struct CustomTimer: Equatable, Codable {
     }
 }
 
+// MARK :- CustomStringConvertible
+extension CustomTimer: CustomStringConvertible {
+    var description: String {
+        return "CustomTimer(\(self.timerType.rawValue),\(self.rounds),\(self.workSecs),\(self.restSecs))"
+    }
+}
+
+// MARK :- Examples
 extension CustomTimer {
     static let customTimerDefault = CustomTimer(timerType: .upTimer, rounds: 0, workSecs: 0, restSecs: 0)
 }

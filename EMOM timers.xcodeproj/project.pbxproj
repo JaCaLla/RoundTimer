@@ -35,6 +35,16 @@
 		291C8AFF2C3C6FF1001ABC9A /* DismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C8AFE2C3C6FF1001ABC9A /* DismissButton.swift */; };
 		291CB5442BF5296F00E4F2B2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291CB5432BF5296F00E4F2B2 /* MainView.swift */; };
 		291CB5482BF52B8500E4F2B2 /* TimerSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291CB5472BF52B8500E4F2B2 /* TimerSelectionView.swift */; };
+		291DC5F12C41AA0200419E55 /* MirroredTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DC5F02C41AA0200419E55 /* MirroredTimer.swift */; };
+		291DC5F22C41AA0200419E55 /* MirroredTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DC5F02C41AA0200419E55 /* MirroredTimer.swift */; };
+		291DC5F42C424D5A00419E55 /* MirroredTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DC5F32C424D5A00419E55 /* MirroredTimerView.swift */; };
+		291DC5F52C424D5A00419E55 /* MirroredTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DC5F32C424D5A00419E55 /* MirroredTimerView.swift */; };
+		291DC5F72C4251B900419E55 /* MirroredTimerCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DC5F62C4251B900419E55 /* MirroredTimerCountdown.swift */; };
+		291DC5F82C4251B900419E55 /* MirroredTimerCountdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DC5F62C4251B900419E55 /* MirroredTimerCountdown.swift */; };
+		291DC5FB2C42664600419E55 /* MirroredTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DC5FA2C42664600419E55 /* MirroredTimerViewModel.swift */; };
+		291DC5FC2C42664600419E55 /* MirroredTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DC5FA2C42664600419E55 /* MirroredTimerViewModel.swift */; };
+		291DC5FE2C42F30800419E55 /* MirroredTimerWorking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DC5FD2C42F30800419E55 /* MirroredTimerWorking.swift */; };
+		291DC5FF2C42F30800419E55 /* MirroredTimerWorking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DC5FD2C42F30800419E55 /* MirroredTimerWorking.swift */; };
 		293DF0342C36F03800911E0C /* CreateCustomTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293DF0332C36F03800911E0C /* CreateCustomTimerViewModel.swift */; };
 		293DF0362C37FBA200911E0C /* CreateCustomTimerMMSSPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293DF0352C37FBA200911E0C /* CreateCustomTimerMMSSPickerView.swift */; };
 		293EC2BA2BD2E3F1008D1FD3 /* EMOM-timers-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 293EC2B92BD2E3F1008D1FD3 /* EMOM-timers-Info.plist */; };
@@ -64,6 +74,8 @@
 		2979A3F22BF7763D006E32E6 /* EMOMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2979A3F12BF7763D006E32E6 /* EMOMViewModel.swift */; };
 		2979A3F62BF7C69C006E32E6 /* OrientationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2979A3F52BF7C69C006E32E6 /* OrientationManager.swift */; };
 		2979A3F82BFA5496006E32E6 /* HealthkitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2979A3F72BFA5496006E32E6 /* HealthkitManager.swift */; };
+		2990199E2C44256F009AF6B7 /* MirroredTimerStopped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990199D2C44256F009AF6B7 /* MirroredTimerStopped.swift */; };
+		2990199F2C44256F009AF6B7 /* MirroredTimerStopped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990199D2C44256F009AF6B7 /* MirroredTimerStopped.swift */; };
 		299619472BE2B8080010F578 /* SendMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299619462BE2B8080010F578 /* SendMessageView.swift */; };
 		2996194A2BE2BD1C0010F578 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299619492BE2BD1C0010F578 /* Connectivity.swift */; };
 		2996194C2BE2BD460010F578 /* ConnectivityUserInfoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2996194B2BE2BD460010F578 /* ConnectivityUserInfoKey.swift */; };
@@ -87,13 +99,6 @@
 		29E377892BC9BC7D001DFE00 /* EMOM-timers-Watch-App-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29E377882BC9BC7D001DFE00 /* EMOM-timers-Watch-App-Info.plist */; };
 		29E61FE12BFE2D0900C0CD60 /* ConnectivityMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E61FE02BFE2D0900C0CD60 /* ConnectivityMessage.swift */; };
 		29E61FE22BFE2D0900C0CD60 /* ConnectivityMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E61FE02BFE2D0900C0CD60 /* ConnectivityMessage.swift */; };
-		29EBF3152BF2755900C79539 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 29EBF3142BF2755900C79539 /* FirebaseAnalytics */; };
-		29EBF3172BF2755900C79539 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 29EBF3162BF2755900C79539 /* FirebaseAnalyticsOnDeviceConversion */; };
-		29EBF3192BF2755900C79539 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 29EBF3182BF2755900C79539 /* FirebaseAnalyticsSwift */; };
-		29EBF31B2BF2755900C79539 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 29EBF31A2BF2755900C79539 /* FirebaseAnalyticsWithoutAdIdSupport */; };
-		29EBF31D2BF2755900C79539 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 29EBF31C2BF2755900C79539 /* FirebaseCrashlytics */; };
-		29EBF31F2BF2755900C79539 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 29EBF31E2BF2755900C79539 /* FirebaseRemoteConfig */; };
-		29EBF3212BF2755900C79539 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 29EBF3202BF2755900C79539 /* FirebaseRemoteConfigSwift */; };
 		29EBF3242BF2773C00C79539 /* TrackingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBF3232BF2773C00C79539 /* TrackingsManager.swift */; };
 		29EBF3282BF284E400C79539 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29EBF3272BF284E400C79539 /* GoogleService-Info.plist */; };
 		29EBF32A2BF28D1D00C79539 /* LocalPersitenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBF3292BF28D1D00C79539 /* LocalPersitenceManager.swift */; };
@@ -187,6 +192,11 @@
 		291C8AFE2C3C6FF1001ABC9A /* DismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissButton.swift; sourceTree = "<group>"; };
 		291CB5432BF5296F00E4F2B2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		291CB5472BF52B8500E4F2B2 /* TimerSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSelectionView.swift; sourceTree = "<group>"; };
+		291DC5F02C41AA0200419E55 /* MirroredTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirroredTimer.swift; sourceTree = "<group>"; };
+		291DC5F32C424D5A00419E55 /* MirroredTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirroredTimerView.swift; sourceTree = "<group>"; };
+		291DC5F62C4251B900419E55 /* MirroredTimerCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirroredTimerCountdown.swift; sourceTree = "<group>"; };
+		291DC5FA2C42664600419E55 /* MirroredTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirroredTimerViewModel.swift; sourceTree = "<group>"; };
+		291DC5FD2C42F30800419E55 /* MirroredTimerWorking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirroredTimerWorking.swift; sourceTree = "<group>"; };
 		293DF0332C36F03800911E0C /* CreateCustomTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomTimerViewModel.swift; sourceTree = "<group>"; };
 		293DF0352C37FBA200911E0C /* CreateCustomTimerMMSSPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomTimerMMSSPickerView.swift; sourceTree = "<group>"; };
 		293EC2B92BD2E3F1008D1FD3 /* EMOM-timers-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EMOM-timers-Info.plist"; sourceTree = "<group>"; };
@@ -215,6 +225,7 @@
 		2979A3F72BFA5496006E32E6 /* HealthkitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthkitManager.swift; sourceTree = "<group>"; };
 		2979A3F92BFA5B20006E32E6 /* EMOM-timers-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "EMOM-timers-Info.plist"; sourceTree = SOURCE_ROOT; };
 		2979A3FA2BFA5B51006E32E6 /* EMOM timers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "EMOM timers.entitlements"; sourceTree = "<group>"; };
+		2990199D2C44256F009AF6B7 /* MirroredTimerStopped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirroredTimerStopped.swift; sourceTree = "<group>"; };
 		299619462BE2B8080010F578 /* SendMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageView.swift; sourceTree = "<group>"; };
 		299619492BE2BD1C0010F578 /* Connectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		2996194B2BE2BD460010F578 /* ConnectivityUserInfoKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectivityUserInfoKey.swift; sourceTree = "<group>"; };
@@ -245,13 +256,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29EBF3192BF2755900C79539 /* FirebaseAnalyticsSwift in Frameworks */,
-				29EBF3152BF2755900C79539 /* FirebaseAnalytics in Frameworks */,
-				29EBF31D2BF2755900C79539 /* FirebaseCrashlytics in Frameworks */,
-				29EBF3212BF2755900C79539 /* FirebaseRemoteConfigSwift in Frameworks */,
-				29EBF31F2BF2755900C79539 /* FirebaseRemoteConfig in Frameworks */,
-				29EBF3172BF2755900C79539 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
-				29EBF31B2BF2755900C79539 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +489,15 @@
 			path = TimersSelectionView;
 			sourceTree = "<group>";
 		};
+		291DC5F92C42663200419E55 /* MirroredTimerView */ = {
+			isa = PBXGroup;
+			children = (
+				291DC5F32C424D5A00419E55 /* MirroredTimerView.swift */,
+				291DC5FA2C42664600419E55 /* MirroredTimerViewModel.swift */,
+			);
+			path = MirroredTimerView;
+			sourceTree = "<group>";
+		};
 		294B80042C387058002EC314 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -534,11 +547,12 @@
 		296909CB2BC9A4B500737D0A /* TimersSelectionView */ = {
 			isa = PBXGroup;
 			children = (
+				296909CA2BC9A4B500737D0A /* TimersSelectionView.swift */,
+				291DC5F92C42663200419E55 /* MirroredTimerView */,
 				299619452BE2475D0010F578 /* SendMessage */,
 				296909C22BC9A4B500737D0A /* CreateCustomTimerView */,
 				296909C62BC9A4B500737D0A /* EMOMView */,
 				296909C92BC9A4B500737D0A /* UpTimerView */,
-				296909CA2BC9A4B500737D0A /* TimersSelectionView.swift */,
 			);
 			path = TimersSelectionView;
 			sourceTree = "<group>";
@@ -596,6 +610,11 @@
 			isa = PBXGroup;
 			children = (
 				29D4BD7A2BC99EAB00A0F6B4 /* CustomTimer.swift */,
+				291DC5F02C41AA0200419E55 /* MirroredTimer.swift */,
+				291DC5F62C4251B900419E55 /* MirroredTimerCountdown.swift */,
+				291DC5FD2C42F30800419E55 /* MirroredTimerWorking.swift */,
+				2990199D2C44256F009AF6B7 /* MirroredTimerStopped.swift */,
+				29E61FE02BFE2D0900C0CD60 /* ConnectivityMessage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -638,7 +657,6 @@
 				2979A3E02BF665B3006E32E6 /* Styles */,
 				299619492BE2BD1C0010F578 /* Connectivity.swift */,
 				299619522BE2BE7A0010F578 /* TimerStore.swift */,
-				29E61FE02BFE2D0900C0CD60 /* ConnectivityMessage.swift */,
 				2996194B2BE2BD460010F578 /* ConnectivityUserInfoKey.swift */,
 				2996194D2BE2BD840010F578 /* Delivery.swift */,
 				29A143902C27554400599CC0 /* LocalLogger.swift */,
@@ -746,13 +764,6 @@
 			);
 			name = "EMOM timers";
 			packageProductDependencies = (
-				29EBF3142BF2755900C79539 /* FirebaseAnalytics */,
-				29EBF3162BF2755900C79539 /* FirebaseAnalyticsOnDeviceConversion */,
-				29EBF3182BF2755900C79539 /* FirebaseAnalyticsSwift */,
-				29EBF31A2BF2755900C79539 /* FirebaseAnalyticsWithoutAdIdSupport */,
-				29EBF31C2BF2755900C79539 /* FirebaseCrashlytics */,
-				29EBF31E2BF2755900C79539 /* FirebaseRemoteConfig */,
-				29EBF3202BF2755900C79539 /* FirebaseRemoteConfigSwift */,
 			);
 			productName = "EMOM timers";
 			productReference = 291986972BC7048F0012ACA0 /* EMOM timers.app */;
@@ -891,7 +902,6 @@
 			);
 			mainGroup = 2919868E2BC7048F0012ACA0;
 			packageReferences = (
-				29EBF3132BF2755900C79539 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 291986982BC7048F0012ACA0 /* Products */;
 			projectDirPath = "";
@@ -994,6 +1004,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				291DC5F42C424D5A00419E55 /* MirroredTimerView.swift in Sources */,
+				2990199E2C44256F009AF6B7 /* MirroredTimerStopped.swift in Sources */,
 				2979A3F22BF7763D006E32E6 /* EMOMViewModel.swift in Sources */,
 				2979A3E62BF6681A006E32E6 /* CustomTimer.swift in Sources */,
 				2919870C2BC708840012ACA0 /* Image.swift in Sources */,
@@ -1001,8 +1013,10 @@
 				29EBF3242BF2773C00C79539 /* TrackingsManager.swift in Sources */,
 				29EBF32C2BF28FF700C79539 /* ReceivedWatchOSMessagesView.swift in Sources */,
 				291987062BC7074A0012ACA0 /* IntroView.swift in Sources */,
+				291DC5FB2C42664600419E55 /* MirroredTimerViewModel.swift in Sources */,
 				2979A3E42BF66607006E32E6 /* ColorsAndFonts.swift in Sources */,
 				291CB5482BF52B8500E4F2B2 /* TimerSelectionView.swift in Sources */,
+				291DC5FE2C42F30800419E55 /* MirroredTimerWorking.swift in Sources */,
 				2979A3F82BFA5496006E32E6 /* HealthkitManager.swift in Sources */,
 				29A143912C27554400599CC0 /* LocalLogger.swift in Sources */,
 				2944D2542C3590DC00085160 /* ApplicationManager.swift in Sources */,
@@ -1010,6 +1024,7 @@
 				291C8AFB2C3C6BB0001ABC9A /* ButtonAW.swift in Sources */,
 				291CB5442BF5296F00E4F2B2 /* MainView.swift in Sources */,
 				291987052BC7074A0012ACA0 /* TimerUpView.swift in Sources */,
+				291DC5F72C4251B900419E55 /* MirroredTimerCountdown.swift in Sources */,
 				291987092BC708640012ACA0 /* Slide.swift in Sources */,
 				2996194F2BE2BD9B0010F578 /* Connectivity.swift in Sources */,
 				29EFDC6B2C289B4600C46504 /* CreateCustomTimerView.swift in Sources */,
@@ -1026,6 +1041,7 @@
 				291987042BC7074A0012ACA0 /* EMOMTimerView.swift in Sources */,
 				2919869B2BC7048F0012ACA0 /* EMOM_timersApp.swift in Sources */,
 				29EFDC6D2C289B8800C46504 /* CreateCustomTimerPickerView.swift in Sources */,
+				291DC5F12C41AA0200419E55 /* MirroredTimer.swift in Sources */,
 				291C8AF62C3C5C6A001ABC9A /* CreateCustomTimerContinueButton.swift in Sources */,
 				2919870F2BC708AD0012ACA0 /* ParagraphImageView.swift in Sources */,
 			);
@@ -1052,7 +1068,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				291DC5F52C424D5A00419E55 /* MirroredTimerView.swift in Sources */,
 				296909D02BC9A4B500737D0A /* CountdownView.swift in Sources */,
+				291DC5FC2C42664600419E55 /* MirroredTimerViewModel.swift in Sources */,
 				291C8AFC2C3C6BD3001ABC9A /* ButtonAW.swift in Sources */,
 				29D4BD842BC99ED300A0F6B4 /* HapticManager.swift in Sources */,
 				2996194A2BE2BD1C0010F578 /* Connectivity.swift in Sources */,
@@ -1063,7 +1081,9 @@
 				29E61FE22BFE2D0900C0CD60 /* ConnectivityMessage.swift in Sources */,
 				294E44252BFB4E8C00281D1C /* HealthkitManager.swift in Sources */,
 				29D4BD832BC99ED300A0F6B4 /* AudioManager.swift in Sources */,
+				291DC5F22C41AA0200419E55 /* MirroredTimer.swift in Sources */,
 				299619542BE2BE7A0010F578 /* TimerStore.swift in Sources */,
+				291DC5FF2C42F30800419E55 /* MirroredTimerWorking.swift in Sources */,
 				29D4BD7C2BC99EAB00A0F6B4 /* CustomTimer.swift in Sources */,
 				291986C32BC704900012ACA0 /* EMOM_timersApp.swift in Sources */,
 				296909CC2BC9A4B500737D0A /* CreateCustomTimerView.swift in Sources */,
@@ -1073,10 +1093,12 @@
 				296909D22BC9A4B500737D0A /* EMOMViewModel.swift in Sources */,
 				296909CD2BC9A4B500737D0A /* CreateCustomTimerViewModel.swift in Sources */,
 				29D4BD7F2BC99ECB00A0F6B4 /* ColorsAndFonts.swift in Sources */,
+				2990199F2C44256F009AF6B7 /* MirroredTimerStopped.swift in Sources */,
 				296909D72BC9A4BE00737D0A /* VibrationView.swift in Sources */,
 				299619472BE2B8080010F578 /* SendMessageView.swift in Sources */,
 				296909CE2BC9A4B500737D0A /* RoundsStepView.swift in Sources */,
 				2996194E2BE2BD840010F578 /* Delivery.swift in Sources */,
+				291DC5F82C4251B900419E55 /* MirroredTimerCountdown.swift in Sources */,
 				2996194C2BE2BD460010F578 /* ConnectivityUserInfoKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1644,55 +1666,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		29EBF3132BF2755900C79539 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.26.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		29EBF3142BF2755900C79539 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 29EBF3132BF2755900C79539 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		29EBF3162BF2755900C79539 /* FirebaseAnalyticsOnDeviceConversion */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 29EBF3132BF2755900C79539 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsOnDeviceConversion;
-		};
-		29EBF3182BF2755900C79539 /* FirebaseAnalyticsSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 29EBF3132BF2755900C79539 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsSwift;
-		};
-		29EBF31A2BF2755900C79539 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 29EBF3132BF2755900C79539 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsWithoutAdIdSupport;
-		};
-		29EBF31C2BF2755900C79539 /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 29EBF3132BF2755900C79539 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
-		};
-		29EBF31E2BF2755900C79539 /* FirebaseRemoteConfig */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 29EBF3132BF2755900C79539 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseRemoteConfig;
-		};
-		29EBF3202BF2755900C79539 /* FirebaseRemoteConfigSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 29EBF3132BF2755900C79539 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseRemoteConfigSwift;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2919868F2BC7048F0012ACA0 /* Project object */;
 }

@@ -13,72 +13,90 @@ struct TimerSelectionItem {
     let text: String
 }
 
-struct TimersSelectionView: View {
-    @State private var startCreateTimerFlow = false
-    @State var customTimer: CustomTimer?
-    @State private var mirroredTimer: MirroredTimer?
-    @StateObject var selectEMOMViewModel: CreateCustomTimerViewModel = CreateCustomTimerViewModel()
-    @StateObject private var timerStore = TimerStore.shared
-    private let healthStore = HKHealthStore()
-    @State var closedFromCompation = false
+enum TimersSelectionFlow {
+    case settings
+    case timerCreation
+}
 
-    // State variable to hold the heart rate
-    @State private var heartRate: Double = 0
+struct TimersSelectionView: View {
+    @State private var isPresented = false
+    @State private var isPresentedSettings = false
+    @State private var isSettings: Bool = false
+    
+    @State private var startSettingsFlow = false
+    @State var customTimer: CustomTimer?
+    @State private var navPath: [String] = []
+    @State private var mirroredTimer: MirroredTimer?
+    @StateObject var viewModel: CreateCustomTimerViewModel = CreateCustomTimerViewModel()
+    @StateObject private var timerStore = TimerStore.shared
+    @State var closedFromCompation = false
+    
+    @StateObject private var healthkitManager = HealthkitManager2.shared
     var body: some View {
         VStack(spacing: 0) {
-            //            Text("\(Int(heartRate)) BPM")
-            //                .font(.title)
-            //                .padding()
             if let customTimer {
                 switch customTimer.timerType {
                 case .emom:
-                    EMOMView(customTimer: $customTimer, closedFromCompation: $startCreateTimerFlow)
+                    EMOMView(customTimer: $customTimer, closedFromCompation: $isPresented)
                 case .upTimer:
                     UpTimerView(customTimer: $customTimer)
                 default:
                     EmptyView()
                 }
             } else if let mirroredTimer {
-                MirroredTimerView(mirroredTimer: $mirroredTimer, closedFromCompation: $startCreateTimerFlow)
+                MirroredTimerView(mirroredTimer: $mirroredTimer, closedFromCompation: $isPresented)
             } else {
-                VStack {
-                    Button(action: {
-                        let mirroredTimerStopped = MirroredTimerStopped(rounds: 10, currentRounds: 2, date: "12:34", isWork: false)
-                        mirroredTimer = MirroredTimer(mirroredTimerType: .working, mirroredTimerStopped: mirroredTimerStopped)
-                    }, label: {
-                        TimersSelectionButtonView(systemName: "iphone.landscape", text: "Mirrored")
-                        })
-                    Button(action: {
-                        Connectivity.shared.addTimer()
-                    }, label: {
-                        TimersSelectionButtonView(systemName: "timer", text: "Remote")
-                        })
-                    Button(action: {
-                        selectEMOMViewModel.setTimertype(type: .emom)
-                        startCreateTimerFlow.toggle()
+                List {
+                    TimerSelectionView(action: {
+                        viewModel.setTimertype(type: .emom)
+                        isSettings = false
+                        isPresented.toggle()
+                        
                     }, label: {
                         TimersSelectionButtonView(systemName: "timer", text: "EMOM timer")
-                        })
+                    })
                     Button(action: {
-                        selectEMOMViewModel.setTimertype(type: .upTimer)
-                        startCreateTimerFlow.toggle()
+                        viewModel.setTimertype(type: .upTimer)
+                        isSettings = false
+                        isPresented.toggle()
                     }, label: {
                         TimersSelectionButtonView(systemName: "timer", text: "Up timer")
-                        })
-                   // SendMessageView()
+                    })
+                    Button(action: {
+                        isSettings = true
+                        isPresentedSettings.toggle()
+                    }, label: {
+                        TimersSelectionButtonView(systemName: "gear", text: "Settings")
+                    })
+                    .fullScreenCover(isPresented: $isPresentedSettings) {
+                        AgeStepView(navPath: $navPath)
+                    }
                 }
-                    .fullScreenCover(isPresented: $startCreateTimerFlow) {
-                    CreateCustomTimerView(customTimer: $customTimer)
-                        .environmentObject(selectEMOMViewModel)
+                .fullScreenCover(isPresented: $isPresented) {
+//                    if isSettings ||
+//                        AppGroupStore.shared.getDate(forKey: .birthDate) == nil {
+//                        AgeStepView(navPath: $navPath, context: .settings)
+//                    } else {
+                        CreateCustomTimerView(customTimer: $customTimer)
+                            .environmentObject(viewModel)
+//                    }
                 }
             }
-        }.onAppear {
-            // Request authorization
-            authorizeHealthKit()
-
-            // Fetch heart rate data
-            fetchHeartRateData()
         }
+        .onAppear() {
+            guard  AppGroupStore.shared.getDate(forKey: .birthDate) == nil else { return }
+            isPresentedSettings.toggle()
+        }
+//        .onAppear {
+//            Task {
+//                if await healthkitManager.authorizeHealthKit() {
+//                    await MainActor.run {
+//                        guard AppGroupStore.shared.getDate(forKey: .birthDate) == nil else { return }
+//                        isPresented.toggle()
+//                    }
+//                }
+//            }
+//        }
         .onChange(of: timerStore.mirroredTimer) {
             guard let mirroredTimer = timerStore.mirroredTimer else { return }
             LocalLogger.log("TimerSelectionView.onChange \(mirroredTimer)")
@@ -92,14 +110,6 @@ struct TimersSelectionView: View {
             LocalLogger.log("TimerSelectionView.onChange \(timerStore.customTimer?.description ?? "") closedFromCompation: \(timerStore.customTimer != nil)")
             self.customTimer = timerStore.customTimer
             closedFromCompation = self.customTimer == nil
-            /*
-            if let companionCustomTimer = timerStore.customTimer {
-                self.customTimer = timerStore.customTimer
-                closedFromCompation = false
-            } else {
-                self.customTimer = nil
-                closedFromCompation = true
-            }*/
             LocalLogger.log("TimerSelectionView.onChange closedFromCompation: \(self.customTimer != nil)")
         }
         .onChange(of: self.customTimer) {
@@ -107,65 +117,15 @@ struct TimersSelectionView: View {
                 Connectivity.shared.removeTimer()
             }
         }
-//        .onChange(of: ticketOffice.removedTimerFromCompationApp) {
-//            closedFromCompation = true
-//        }
     }
-
-    // Request HealthKit authorization
-    private func authorizeHealthKit() {
-        let typesToRead: Set = [
-            HKObjectType.quantityType(forIdentifier: .heartRate)!
-        ]
-
-        healthStore.requestAuthorization(toShare: nil, read: typesToRead) { success, error in
-            if !success {
-                // Handle error
-                if let error = error {
-                    print("Error authorizing HealthKit: \(error.localizedDescription)")
-                }
-            }
+    
+    @ViewBuilder func fullScreenCover(isSettings: Bool) -> some View {
+        if isSettings {
+            AgeStepView(navPath: $navPath)
+        } else {
+            CreateCustomTimerView(customTimer: $customTimer)
+                .environmentObject(viewModel)
         }
-    }
-
-    // Fetch heart rate data
-    private func fetchHeartRateData() {
-        // Define the type of data to fetch
-        guard let heartRateType = HKObjectType.quantityType(forIdentifier: .heartRate) else {
-            print("Heart rate type not available")
-            return
-        }
-
-        // Define the query
-        let query = HKObserverQuery(sampleType: heartRateType, predicate: nil) { query, completionHandler, error in
-            if let error = error {
-                print("Error fetching heart rate data: \(error.localizedDescription)")
-                return
-            }
-
-            // Fetch the most recent heart rate sample
-            let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
-            let query = HKSampleQuery(sampleType: heartRateType, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { query, samples, error in
-                if let error = error {
-                    print("Error fetching heart rate data: \(error.localizedDescription)")
-                    return
-                }
-
-                guard let sample = samples?.first as? HKQuantitySample else {
-                    print("No heart rate data available")
-                    return
-                }
-
-                // Update the UI on the main thread
-                DispatchQueue.main.async {
-                    self.heartRate = sample.quantity.doubleValue(for: HKUnit(from: "count/min"))
-                }
-            }
-
-            self.healthStore.execute(query)
-        }
-
-        healthStore.execute(query)
     }
 }
 

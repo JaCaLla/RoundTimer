@@ -15,9 +15,16 @@ extension Color {
     static let timerFinishedBackgroundColor = Color("ElectricRedBack")
     static let buttonTextColor = Color("White")
     static let paragrahColor = Color(.white)
-    static let defaultBackgroundColor = Color(.black)
+    static let defaultBackgroundColor = Color("Black")
     static let countdownColor = Color("ElectricBlue")
     static let countdownInminentColor =  Color("ElectricRed")
+    static let heartRateZone1 = Color("Zone1")
+    static let heartRateZone2 = Color("Zone2")
+    static let heartRateZone3 = Color("Zone3")
+    static let heartRateZone4 = Color("Zone4")
+    static let heartRateZone5 = Color("Zone5")
+    static let heartRateZoneText = Color("Black")
+    static let heartRateText = Color("White")
 }
 
 extension Font {
@@ -38,4 +45,7 @@ extension Font {
     static let emomRoundsiOSAppFont = Font.system(size: 80, weight: .black)
     static let messageiOSAppFont =  Font.system(size: 40, weight: .black)
     static let buttoniOSAppFont =  Font.system(size: 40, weight: .black)
+
+    static let heartRateZone =  Font.system(size: 15 + 5, weight: .black)
+    static let heartRate =  Font.system(size: 20, weight: .black)
 }

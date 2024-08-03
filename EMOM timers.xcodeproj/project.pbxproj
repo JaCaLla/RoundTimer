@@ -49,9 +49,17 @@
 		293DF0362C37FBA200911E0C /* CreateCustomTimerMMSSPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293DF0352C37FBA200911E0C /* CreateCustomTimerMMSSPickerView.swift */; };
 		293EC2BA2BD2E3F1008D1FD3 /* EMOM-timers-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 293EC2B92BD2E3F1008D1FD3 /* EMOM-timers-Info.plist */; };
 		2944D2542C3590DC00085160 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944D2532C3590DC00085160 /* ApplicationManager.swift */; };
+		294850072C4B98CE004DF009 /* AgeStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294850062C4B98CE004DF009 /* AgeStepView.swift */; };
+		294850092C4B9B1A004DF009 /* FirstViewInFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294850082C4B9B1A004DF009 /* FirstViewInFlow.swift */; };
+		2948500F2C4CE512004DF009 /* AppGroupStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2948500E2C4CE512004DF009 /* AppGroupStore.swift */; };
+		294850102C4CE512004DF009 /* AppGroupStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2948500E2C4CE512004DF009 /* AppGroupStore.swift */; };
+		294850122C4D2299004DF009 /* AgeStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294850112C4D2299004DF009 /* AgeStepViewModel.swift */; };
+		294850132C4D2299004DF009 /* AgeStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294850112C4D2299004DF009 /* AgeStepViewModel.swift */; };
 		294B80022C381563002EC314 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 294B80012C381563002EC314 /* Localizable.xcstrings */; };
 		294B80032C387051002EC314 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 294B80012C381563002EC314 /* Localizable.xcstrings */; };
 		294E44252BFB4E8C00281D1C /* HealthkitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294E44242BFB4E8C00281D1C /* HealthkitManager.swift */; };
+		2961C3B22C54D4DF0011345C /* AppGroupStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2961C3B12C54D4DF0011345C /* AppGroupStoreTests.swift */; };
+		2961C3B42C5659A20011345C /* TimerSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2961C3B32C5659A20011345C /* TimerSelectionView.swift */; };
 		296909CC2BC9A4B500737D0A /* CreateCustomTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909BE2BC9A4B500737D0A /* CreateCustomTimerView.swift */; };
 		296909CD2BC9A4B500737D0A /* CreateCustomTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909BF2BC9A4B500737D0A /* CreateCustomTimerViewModel.swift */; };
 		296909CE2BC9A4B500737D0A /* RoundsStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909C02BC9A4B500737D0A /* RoundsStepView.swift */; };
@@ -74,6 +82,11 @@
 		2979A3F22BF7763D006E32E6 /* EMOMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2979A3F12BF7763D006E32E6 /* EMOMViewModel.swift */; };
 		2979A3F62BF7C69C006E32E6 /* OrientationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2979A3F52BF7C69C006E32E6 /* OrientationManager.swift */; };
 		2979A3F82BFA5496006E32E6 /* HealthkitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2979A3F72BFA5496006E32E6 /* HealthkitManager.swift */; };
+		2984B8D92C46B4D7009C0860 /* HeartZoneCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2984B8D82C46B4D7009C0860 /* HeartZoneCalculator.swift */; };
+		2984B8DA2C46B4D7009C0860 /* HeartZoneCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2984B8D82C46B4D7009C0860 /* HeartZoneCalculator.swift */; };
+		2984B8DE2C46BA43009C0860 /* HeartZoneCalculatorUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2984B8DD2C46BA43009C0860 /* HeartZoneCalculatorUT.swift */; };
+		2984B8E12C46C227009C0860 /* HeartZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2984B8E02C46C227009C0860 /* HeartZoneView.swift */; };
+		2984B8E22C46C227009C0860 /* HeartZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2984B8E02C46C227009C0860 /* HeartZoneView.swift */; };
 		2990199E2C44256F009AF6B7 /* MirroredTimerStopped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990199D2C44256F009AF6B7 /* MirroredTimerStopped.swift */; };
 		2990199F2C44256F009AF6B7 /* MirroredTimerStopped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990199D2C44256F009AF6B7 /* MirroredTimerStopped.swift */; };
 		299619472BE2B8080010F578 /* SendMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299619462BE2B8080010F578 /* SendMessageView.swift */; };
@@ -87,6 +100,8 @@
 		299619542BE2BE7A0010F578 /* TimerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299619522BE2BE7A0010F578 /* TimerStore.swift */; };
 		29A143912C27554400599CC0 /* LocalLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A143902C27554400599CC0 /* LocalLogger.swift */; };
 		29A143922C27554400599CC0 /* LocalLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A143902C27554400599CC0 /* LocalLogger.swift */; };
+		29BE3B782C4567E600097FB5 /* HealthkitManager2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BE3B772C4567E600097FB5 /* HealthkitManager2.swift */; };
+		29BE3B792C4567E600097FB5 /* HealthkitManager2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BE3B772C4567E600097FB5 /* HealthkitManager2.swift */; };
 		29D4BD7C2BC99EAB00A0F6B4 /* CustomTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4BD7A2BC99EAB00A0F6B4 /* CustomTimer.swift */; };
 		29D4BD7F2BC99ECB00A0F6B4 /* ColorsAndFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4BD7D2BC99ECB00A0F6B4 /* ColorsAndFonts.swift */; };
 		29D4BD832BC99ED300A0F6B4 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4BD802BC99ED300A0F6B4 /* AudioManager.swift */; };
@@ -201,8 +216,14 @@
 		293DF0352C37FBA200911E0C /* CreateCustomTimerMMSSPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomTimerMMSSPickerView.swift; sourceTree = "<group>"; };
 		293EC2B92BD2E3F1008D1FD3 /* EMOM-timers-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EMOM-timers-Info.plist"; sourceTree = "<group>"; };
 		2944D2532C3590DC00085160 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
+		294850062C4B98CE004DF009 /* AgeStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeStepView.swift; sourceTree = "<group>"; };
+		294850082C4B9B1A004DF009 /* FirstViewInFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewInFlow.swift; sourceTree = "<group>"; };
+		2948500E2C4CE512004DF009 /* AppGroupStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupStore.swift; sourceTree = "<group>"; };
+		294850112C4D2299004DF009 /* AgeStepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeStepViewModel.swift; sourceTree = "<group>"; };
 		294B80012C381563002EC314 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		294E44242BFB4E8C00281D1C /* HealthkitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthkitManager.swift; sourceTree = "<group>"; };
+		2961C3B12C54D4DF0011345C /* AppGroupStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupStoreTests.swift; sourceTree = "<group>"; };
+		2961C3B32C5659A20011345C /* TimerSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSelectionView.swift; sourceTree = "<group>"; };
 		296909BE2BC9A4B500737D0A /* CreateCustomTimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCustomTimerView.swift; sourceTree = "<group>"; };
 		296909BF2BC9A4B500737D0A /* CreateCustomTimerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCustomTimerViewModel.swift; sourceTree = "<group>"; };
 		296909C02BC9A4B500737D0A /* RoundsStepView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundsStepView.swift; sourceTree = "<group>"; };
@@ -225,6 +246,9 @@
 		2979A3F72BFA5496006E32E6 /* HealthkitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthkitManager.swift; sourceTree = "<group>"; };
 		2979A3F92BFA5B20006E32E6 /* EMOM-timers-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "EMOM-timers-Info.plist"; sourceTree = SOURCE_ROOT; };
 		2979A3FA2BFA5B51006E32E6 /* EMOM timers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "EMOM timers.entitlements"; sourceTree = "<group>"; };
+		2984B8D82C46B4D7009C0860 /* HeartZoneCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartZoneCalculator.swift; sourceTree = "<group>"; };
+		2984B8DD2C46BA43009C0860 /* HeartZoneCalculatorUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartZoneCalculatorUT.swift; sourceTree = "<group>"; };
+		2984B8E02C46C227009C0860 /* HeartZoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartZoneView.swift; sourceTree = "<group>"; };
 		2990199D2C44256F009AF6B7 /* MirroredTimerStopped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirroredTimerStopped.swift; sourceTree = "<group>"; };
 		299619462BE2B8080010F578 /* SendMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageView.swift; sourceTree = "<group>"; };
 		299619492BE2BD1C0010F578 /* Connectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
@@ -232,6 +256,7 @@
 		2996194D2BE2BD840010F578 /* Delivery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
 		299619522BE2BE7A0010F578 /* TimerStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerStore.swift; sourceTree = "<group>"; };
 		29A143902C27554400599CC0 /* LocalLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLogger.swift; sourceTree = "<group>"; };
+		29BE3B772C4567E600097FB5 /* HealthkitManager2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthkitManager2.swift; sourceTree = "<group>"; };
 		29D4BD7A2BC99EAB00A0F6B4 /* CustomTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTimer.swift; sourceTree = "<group>"; };
 		29D4BD7D2BC99ECB00A0F6B4 /* ColorsAndFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsAndFonts.swift; sourceTree = "<group>"; };
 		29D4BD802BC99ED300A0F6B4 /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
@@ -354,6 +379,7 @@
 		291986AA2BC704900012ACA0 /* EMOM timersTests */ = {
 			isa = PBXGroup;
 			children = (
+				2984B8DB2C46B967009C0860 /* Shared */,
 				291986AB2BC704900012ACA0 /* EMOM_timersTests.swift */,
 			);
 			path = "EMOM timersTests";
@@ -498,6 +524,15 @@
 			path = MirroredTimerView;
 			sourceTree = "<group>";
 		};
+		2948500A2C4CE4B6004DF009 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				29BE3B772C4567E600097FB5 /* HealthkitManager2.swift */,
+				2948500E2C4CE512004DF009 /* AppGroupStore.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		294B80042C387058002EC314 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -514,10 +549,19 @@
 			path = Strings;
 			sourceTree = "<group>";
 		};
+		2961C3B02C54D4BF0011345C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				2961C3B12C54D4DF0011345C /* AppGroupStoreTests.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		296909C22BC9A4B500737D0A /* CreateCustomTimerView */ = {
 			isa = PBXGroup;
 			children = (
 				296909BE2BC9A4B500737D0A /* CreateCustomTimerView.swift */,
+				294850082C4B9B1A004DF009 /* FirstViewInFlow.swift */,
 				296909BF2BC9A4B500737D0A /* CreateCustomTimerViewModel.swift */,
 				296909C02BC9A4B500737D0A /* RoundsStepView.swift */,
 				296909C12BC9A4B500737D0A /* TimerPickerStepView.swift */,
@@ -548,6 +592,7 @@
 			isa = PBXGroup;
 			children = (
 				296909CA2BC9A4B500737D0A /* TimersSelectionView.swift */,
+				2961C3B32C5659A20011345C /* TimerSelectionView.swift */,
 				291DC5F92C42663200419E55 /* MirroredTimerView */,
 				299619452BE2475D0010F578 /* SendMessage */,
 				296909C22BC9A4B500737D0A /* CreateCustomTimerView */,
@@ -615,6 +660,7 @@
 				291DC5FD2C42F30800419E55 /* MirroredTimerWorking.swift */,
 				2990199D2C44256F009AF6B7 /* MirroredTimerStopped.swift */,
 				29E61FE02BFE2D0900C0CD60 /* ConnectivityMessage.swift */,
+				2984B8D82C46B4D7009C0860 /* HeartZoneCalculator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -640,6 +686,31 @@
 			path = EMOMView;
 			sourceTree = "<group>";
 		};
+		2984B8DB2C46B967009C0860 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				2961C3B02C54D4BF0011345C /* Manager */,
+				2984B8DC2C46B97C009C0860 /* Model */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		2984B8DC2C46B97C009C0860 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2984B8DD2C46BA43009C0860 /* HeartZoneCalculatorUT.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2984B8DF2C46C1F3009C0860 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2984B8E02C46C227009C0860 /* HeartZoneView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		299619452BE2475D0010F578 /* SendMessage */ = {
 			isa = PBXGroup;
 			children = (
@@ -651,6 +722,8 @@
 		299619482BE2BCFE0010F578 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				2948500A2C4CE4B6004DF009 /* Managers */,
+				2984B8DF2C46C1F3009C0860 /* Views */,
 				291C8AF92C3C6B93001ABC9A /* ViewModifier */,
 				294B80042C387058002EC314 /* Resources */,
 				2979A3E52BF667C9006E32E6 /* Model */,
@@ -662,6 +735,15 @@
 				29A143902C27554400599CC0 /* LocalLogger.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		29BD30852C5172AB002AC35E /* AgeStepView */ = {
+			isa = PBXGroup;
+			children = (
+				294850062C4B98CE004DF009 /* AgeStepView.swift */,
+				294850112C4D2299004DF009 /* AgeStepViewModel.swift */,
+			);
+			path = AgeStepView;
 			sourceTree = "<group>";
 		};
 		29D4BD592BC99C1B00A0F6B4 /* Styles */ = {
@@ -689,9 +771,10 @@
 		29D4BD612BC99E1300A0F6B4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				29BD30852C5172AB002AC35E /* AgeStepView */,
 				291986C22BC704900012ACA0 /* EMOM_timersApp.swift */,
-				296909D62BC9A4BE00737D0A /* VibrationView.swift */,
 				296909CB2BC9A4B500737D0A /* TimersSelectionView */,
+				296909D62BC9A4BE00737D0A /* VibrationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1004,6 +1087,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2984B8D92C46B4D7009C0860 /* HeartZoneCalculator.swift in Sources */,
 				291DC5F42C424D5A00419E55 /* MirroredTimerView.swift in Sources */,
 				2990199E2C44256F009AF6B7 /* MirroredTimerStopped.swift in Sources */,
 				2979A3F22BF7763D006E32E6 /* EMOMViewModel.swift in Sources */,
@@ -1012,6 +1096,7 @@
 				291987032BC7074A0012ACA0 /* HelpView.swift in Sources */,
 				29EBF3242BF2773C00C79539 /* TrackingsManager.swift in Sources */,
 				29EBF32C2BF28FF700C79539 /* ReceivedWatchOSMessagesView.swift in Sources */,
+				2948500F2C4CE512004DF009 /* AppGroupStore.swift in Sources */,
 				291987062BC7074A0012ACA0 /* IntroView.swift in Sources */,
 				291DC5FB2C42664600419E55 /* MirroredTimerViewModel.swift in Sources */,
 				2979A3E42BF66607006E32E6 /* ColorsAndFonts.swift in Sources */,
@@ -1036,13 +1121,16 @@
 				293DF0362C37FBA200911E0C /* CreateCustomTimerMMSSPickerView.swift in Sources */,
 				29E61FE12BFE2D0900C0CD60 /* ConnectivityMessage.swift in Sources */,
 				29EBF32A2BF28D1D00C79539 /* LocalPersitenceManager.swift in Sources */,
+				2984B8E12C46C227009C0860 /* HeartZoneView.swift in Sources */,
 				291C8AF82C3C63FA001ABC9A /* buttonStyle.swift in Sources */,
 				299619512BE2BD9B0010F578 /* Delivery.swift in Sources */,
 				291987042BC7074A0012ACA0 /* EMOMTimerView.swift in Sources */,
 				2919869B2BC7048F0012ACA0 /* EMOM_timersApp.swift in Sources */,
 				29EFDC6D2C289B8800C46504 /* CreateCustomTimerPickerView.swift in Sources */,
 				291DC5F12C41AA0200419E55 /* MirroredTimer.swift in Sources */,
+				294850122C4D2299004DF009 /* AgeStepViewModel.swift in Sources */,
 				291C8AF62C3C5C6A001ABC9A /* CreateCustomTimerContinueButton.swift in Sources */,
+				29BE3B782C4567E600097FB5 /* HealthkitManager2.swift in Sources */,
 				2919870F2BC708AD0012ACA0 /* ParagraphImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1052,6 +1140,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				291986AC2BC704900012ACA0 /* EMOM_timersTests.swift in Sources */,
+				2984B8DE2C46BA43009C0860 /* HeartZoneCalculatorUT.swift in Sources */,
+				2961C3B22C54D4DF0011345C /* AppGroupStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1068,17 +1158,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2984B8E22C46C227009C0860 /* HeartZoneView.swift in Sources */,
 				291DC5F52C424D5A00419E55 /* MirroredTimerView.swift in Sources */,
 				296909D02BC9A4B500737D0A /* CountdownView.swift in Sources */,
 				291DC5FC2C42664600419E55 /* MirroredTimerViewModel.swift in Sources */,
 				291C8AFC2C3C6BD3001ABC9A /* ButtonAW.swift in Sources */,
+				2961C3B42C5659A20011345C /* TimerSelectionView.swift in Sources */,
 				29D4BD842BC99ED300A0F6B4 /* HapticManager.swift in Sources */,
 				2996194A2BE2BD1C0010F578 /* Connectivity.swift in Sources */,
+				2984B8DA2C46B4D7009C0860 /* HeartZoneCalculator.swift in Sources */,
 				296909D12BC9A4B500737D0A /* EMOMView.swift in Sources */,
 				29A143922C27554400599CC0 /* LocalLogger.swift in Sources */,
 				296909D32BC9A4B500737D0A /* UpTimerView.swift in Sources */,
 				291986C52BC704900012ACA0 /* ContentView.swift in Sources */,
 				29E61FE22BFE2D0900C0CD60 /* ConnectivityMessage.swift in Sources */,
+				294850092C4B9B1A004DF009 /* FirstViewInFlow.swift in Sources */,
 				294E44252BFB4E8C00281D1C /* HealthkitManager.swift in Sources */,
 				29D4BD832BC99ED300A0F6B4 /* AudioManager.swift in Sources */,
 				291DC5F22C41AA0200419E55 /* MirroredTimer.swift in Sources */,
@@ -1094,9 +1188,13 @@
 				296909CD2BC9A4B500737D0A /* CreateCustomTimerViewModel.swift in Sources */,
 				29D4BD7F2BC99ECB00A0F6B4 /* ColorsAndFonts.swift in Sources */,
 				2990199F2C44256F009AF6B7 /* MirroredTimerStopped.swift in Sources */,
+				294850132C4D2299004DF009 /* AgeStepViewModel.swift in Sources */,
+				294850102C4CE512004DF009 /* AppGroupStore.swift in Sources */,
 				296909D72BC9A4BE00737D0A /* VibrationView.swift in Sources */,
 				299619472BE2B8080010F578 /* SendMessageView.swift in Sources */,
 				296909CE2BC9A4B500737D0A /* RoundsStepView.swift in Sources */,
+				29BE3B792C4567E600097FB5 /* HealthkitManager2.swift in Sources */,
+				294850072C4B98CE004DF009 /* AgeStepView.swift in Sources */,
 				2996194E2BE2BD840010F578 /* Delivery.swift in Sources */,
 				291DC5F82C4251B900419E55 /* MirroredTimerCountdown.swift in Sources */,
 				2996194C2BE2BD460010F578 /* ConnectivityUserInfoKey.swift in Sources */,

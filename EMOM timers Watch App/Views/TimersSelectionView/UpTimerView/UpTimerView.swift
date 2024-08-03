@@ -61,17 +61,21 @@ struct UpTimerView: View {
                     Text("Screen dimmed. Tap to unblock.")
                 }.frame(height: 50)
             } else {
-                Button(action: {
-                    upTimerViewModel.action()
-                }, label: {
-                        Image(systemName: upTimerViewModel.getActionIcon())
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: bottonSideSize, height: bottonSideSize)
-                    })
-                    .foregroundStyle(upTimerViewModel.actionButtonColor())
-                    .frame(width: bottonSideSize, height: bottonSideSize)
-                    .clipShape(Circle())
+                HStack {
+                    HeartZoneView()
+                    Spacer()
+                }
+//                Button(action: {
+//                    upTimerViewModel.action()
+//                }, label: {
+//                        Image(systemName: upTimerViewModel.getActionIcon())
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fit)
+//                            .frame(width: bottonSideSize, height: bottonSideSize)
+//                    })
+//                    .foregroundStyle(upTimerViewModel.actionButtonColor())
+//                    .frame(width: bottonSideSize, height: bottonSideSize)
+//                    .clipShape(Circle())
             }
             Spacer(minLength: 5)
         }.background(upTimerViewModel.getBackground())

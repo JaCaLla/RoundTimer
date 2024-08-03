@@ -35,6 +35,7 @@ struct EMOMView: View {
                             .foregroundColor(.roundColor)
                     }
                     .font(emomViewModel.getTimerAndRoundFont())
+                    .privacySensitive()
                     Spacer()
                     VStack {
                         if let chronoOnMove = emomViewModel.chronoOnMove {
@@ -47,6 +48,7 @@ struct EMOMView: View {
                         }
                     }
                     .font(emomViewModel.getTimerAndRoundFont(isLuminanceReduced: isLuminanceReduced))
+                    .privacySensitive()
                 }
                 
                 Gauge(value: emomViewModel.getRoundsProgress(), label: { })
@@ -61,6 +63,10 @@ struct EMOMView: View {
                     Text("Screen dimmed. Tap to unblock.")
                 }.frame(height: 50)
             } else {
+                HStack {
+                    HeartZoneView()
+                    Spacer()
+                }
 //                Button(action: {
 //                    emomViewModel.action()
 //                }, label: {

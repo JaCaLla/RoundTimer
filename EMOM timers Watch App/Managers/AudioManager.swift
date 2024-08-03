@@ -47,7 +47,9 @@ extension AudioManager: AudioManagerProtocol {
     fileprivate func play(_ filename: String) {
         guard let soundURL = Bundle.main.url(forResource: filename, withExtension: "mp3") else { return }
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            //try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setCategory(.playback, options: [/*.duckOthers,*/.mixWithOthers])
+            
             try AVAudioSession.sharedInstance().setActive(true)
             audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
             audioPlayer?.prepareToPlay()

@@ -60,7 +60,7 @@ struct RoundsStepView: View {
             Spacer()
             if selectEMOMViewModel.rounds > 0 {
                 NavigationLink(value: CreateCustomTimerViewModel.Screens.timerPickerStepViewWork.rawValue) {
-                    Text("Next ... >")
+                    Text("Next") + Text(Image(systemName: "chevron.right"))
                 }
                 Spacer()
             } 

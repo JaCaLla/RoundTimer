@@ -10,6 +10,7 @@ import SwiftUI
 
 final class CreateCustomTimerViewModel: ObservableObject {
     enum Screens: String {
+        case ageStepView = "RoundsAgeView"
         case roundsStepView = "RoundsStepView"
         case timerPickerStepViewWork = "TimerPickerStepViewWork"
         case timerPickerStepViewRest = "TimerPickerStepViewRest"
@@ -25,6 +26,7 @@ final class CreateCustomTimerViewModel: ObservableObject {
     var rounds = -1
     var workSecs = -1
     var restSecs = -1
+   // var age = -1
     
     init() {
         rounds = roundsDefault

@@ -4,6 +4,9 @@
     "" : {
 
     },
+    " " : {
+
+    },
     ":" : {
 
     },
@@ -13,7 +16,13 @@
     "%lld" : {
 
     },
+    "%lld years old" : {
+
+    },
     "Action" : {
+
+    },
+    "Card Detail" : {
 
     },
     "continue" : {
@@ -74,7 +83,7 @@
     "Minutes" : {
 
     },
-    "Next ... >" : {
+    "Next" : {
 
     },
     "picker_mins" : {
@@ -130,6 +139,57 @@
     "Seconds" : {
 
     },
+    "Select a date" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a date"
+          }
+        }
+      }
+    },
+    "setup_age_info" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The purpose of knowing you birth date is just for heart rate zone calculation"
+          }
+        }
+      }
+    },
+    "setup_age_not_authorized" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You did not allowed access to your heart rate information. For having access you can always re-install app."
+          }
+        }
+      }
+    },
+    "setup_age_select_date" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a date"
+          }
+        }
+      }
+    },
+    "setup_age_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heart zone setup"
+          }
+        }
+      }
+    },
     "Start" : {
 
     },
@@ -139,6 +199,9 @@
     "Start workout session" : {
 
     },
+    "Subtitle" : {
+
+    },
     "Timers" : {
 
     },
@@ -146,6 +209,9 @@
 
     },
     "timerup_paragraph_3" : {
+
+    },
+    "Title" : {
 
     },
     "UP" : {
@@ -166,6 +232,17 @@
     },
     "Work" : {
 
+    },
+    "zone_n" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zone %d"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

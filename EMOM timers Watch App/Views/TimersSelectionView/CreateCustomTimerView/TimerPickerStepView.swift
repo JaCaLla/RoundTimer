@@ -12,8 +12,8 @@ enum TimerPickerStepViewType {
 
     var navigationTitle: String {
         switch self {
-        case .work: "Work"
-        case .rest: "Rest"
+        case .work: return String(localized: "title_work")
+        case .rest: return String(localized:"title_rest")
         }
     }
 }
@@ -30,22 +30,25 @@ struct TimerPickerStepView: View {
     var body: some View {
         VStack {
             HStack(spacing: 5) {
-                    Picker("Minutes", selection: $selectedMins) { ForEach(0..<60) { Text("\(String(format: "%0.1d", $0))") }
+                    Picker(String(localized: "picker_minutes"), selection: $selectedMins) { ForEach(0..<60) { Text("\(String(format: "%0.1d", $0))") }
                     }
                     .focused($fousedfield)
                     .frame(height: pickerHeight)
-                Picker("Seconds", selection: $selectedSecs) { ForEach(0..<60) { Text("\(String(format: "%0.2d", $0))") }
+                Picker(String(localized: "picker_seconds"), selection: $selectedSecs) { ForEach(0..<60) { Text("\(String(format: "%0.2d", $0))") }
                 }
                     .frame(height: pickerHeight)
             }
                 .pickerStyle(.wheel)
-                .foregroundColor(.timerStartedColor)
+                .foregroundColor(pickerViewType == .work ? .timerStartedColor : .timerRestStartedColor)
                 .font(.pickerSelectionFont)
             Spacer()
             if pickerViewType == .work,
                 !(selectedMins == 0 && selectedSecs == 0) {
                 NavigationLink(value: selectEMOMViewModel.getNavigationLink()) {
-                    Text(selectEMOMViewModel.getContinueButtonText())
+                    Group {
+                        Text(selectEMOMViewModel.getContinueButtonText()) + Text(Image(systemName: "chevron.right"))
+                    }
+                    .font(.buttonSubtitleFont)
                 }
                     .simultaneousGesture(TapGesture().onEnded {
                         if selectEMOMViewModel.timerType == .upTimer {
@@ -59,12 +62,13 @@ struct TimerPickerStepView: View {
                 Button(action: {
                     dismissFlowAndStartEMOM()
                 }, label: {
-                        Text("START WORK!")
+                    Text(String(localized: "button_start_work"))
+                        .font(.buttonSubtitleFont)
                     })
             }
-
         }
-            .navigationTitle(pickerViewType.navigationTitle)
+       // este string localized es que el que hace que falle.
+        .navigationTitle(pickerViewType.navigationTitle)
             .toolbar {
             if pickerViewType == .work {
                 // TO DO: NO SE PUEDE PONER EL BOTÓN POR QUE NO SE PUEDE DISTINGUIR

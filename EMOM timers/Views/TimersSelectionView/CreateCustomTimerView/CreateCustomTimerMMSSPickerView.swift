@@ -13,13 +13,13 @@ struct CreateCustomTimerMMSSPickerView: View {
     let isRestOn: Bool
     var body: some View {
         HStack(spacing: 5) {
-            CreateCustomTimerPickerView(title: String(localized: "picker_mins"),
+            CreateCustomTimerPickerView(title: String(localized: "picker_minutes"),
                                         color: color(isRestOn),
                                         value: $selectedMins)
             Text(":")
                 .foregroundColor(color(isRestOn))
                 .font(.pickerSelectionFont)
-            CreateCustomTimerPickerView(title: String(localized: "picker_secs"),
+            CreateCustomTimerPickerView(title: String(localized: "picker_seconds"),
                                         color: color(isRestOn),
                                         value: $selectedSecs)
         }

@@ -13,8 +13,9 @@ struct MirroredTimerView: View {
     @StateObject var viewModel: MirroredTimerViewModel = MirroredTimerViewModel()
     var body: some View {
         VStack(spacing: 0) {
-//            Text("\(viewModel.getCurrentMessage())")
-//                .font(.messageFont)
+            Text("\(viewModel.getCurrentMessage())")
+                .foregroundStyle(.white)
+                                .font(.messageFont)
             HStack {
                 HStack(alignment: .firstTextBaseline, spacing: 0) {
                     Text("\(viewModel.getCurrentRound())")
@@ -43,6 +44,7 @@ struct MirroredTimerView: View {
                 .gaugeStyle(.accessoryLinearCapacity)
                 .scaleEffect(x: 1.0, y: 0.25)
         }
+       // .background(viewModel.getBackground())
         .onAppear {
             guard let mirroredTimer else { return }
             viewModel.set(mirroredTimer: mirroredTimer)

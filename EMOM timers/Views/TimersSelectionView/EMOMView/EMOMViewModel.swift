@@ -26,10 +26,14 @@ final class EMOMViewModel: NSObject, ObservableObject {
     @Published var emom: CustomTimer?
 
     func close() {
+        if let emom,
+           emom.isMirroredOnAW {
+            TimerStore.shared.send(mirroredTimer: .removedFromCompanion)
+        }
         emom = nil
         state = .cancelled
         removeTimers()
-        TimerStore.shared.send(mirroredTimer: .removedFromCompanion)
+        
     }
 
     private func pause() {
@@ -125,9 +129,9 @@ final class EMOMViewModel: NSObject, ObservableObject {
         }
     }
 
-    func getBackground() -> Color {
-        state == .finished ? .timerFinishedBackgroundColor : .defaultBackgroundColor//.clear
-    }
+//    func getBackground() -> Color {
+//        state == .finished ? .timerFinishedBackgroundColor : .defaultBackgroundColor//.clear
+//    }
 
     //MARK: - Helpers
     func getForegroundTextColor() -> Color {
@@ -251,12 +255,15 @@ final class EMOMViewModel: NSObject, ObservableObject {
     
     internal func startRefreshTimer() {
         let blockTimerRefresh: (Timer) -> Void = { [weak self] _ in
-            guard let self else { return }
-            if state == .countdown, let mirroredTimer = getMirroredCustomTimer() {
+            guard let self, let emom else { return }
+            if state == .countdown,
+               emom.isMirroredOnAW,
+                let mirroredTimer = getMirroredCustomTimer() {
                 //TimerStore.shared.countdown(value: countdownCurrentValue)
                 TimerStore.shared.send(mirroredTimer: mirroredTimer)
                 LocalLogger.log("EmomViewModel.blockTimerRefresh state:\(state) value:\(countdownCurrentValue)")
             } else if  [.startedWork, .startedRest, .finished].contains(where: { self.state == $0 }),
+                       emom.isMirroredOnAW,
                         let mirroredTimer = getMirroredCustomTimer() {
                 TimerStore.shared.send(mirroredTimer: mirroredTimer)
                 LocalLogger.log("EmomViewModel.blockTimerRefresh state:\(state) value:\(countdownCurrentValue)")
@@ -281,18 +288,22 @@ final class EMOMViewModel: NSObject, ObservableObject {
             return mirroredTimer
         } else if [ .startedWork,.startedRest].contains(where: { $0 == state}) ,
                   let chronoOnMove {
+            let isWork =  state == .startedWork
+            let message =  String(localized: isWork ? "chorno_message_work" : "chorno_message_rest")
             let mirroredTimerWorking = MirroredTimerWorking(rounds: emom.rounds,
                                                             currentRounds: emom.rounds - roundsLeft + 1,
                                                             date: chronoOnMove.timeIntervalSince1970,
-                                                            isWork: state == .startedWork)
+                                                            isWork: state == .startedWork,
+                                                            message: message)
             let mirroredTimer = MirroredTimer(mirroredTimerType: .working, mirroredTimerWorking: mirroredTimerWorking)
             return mirroredTimer
         } else if [ .finished].contains(where: { $0 == state}) {
-           let mirroredTimerStopped = MirroredTimerStopped(rounds: emom.rounds,
+           let mirroredTimerFinished = MirroredTimerFinished(rounds: emom.rounds,
                                                            currentRounds: emom.rounds - roundsLeft + 1,
                                                            date: chronoFrozen,
-                                                           isWork: state == .startedWork)
-           let mirroredTimer = MirroredTimer(mirroredTimerType: .stopped, mirroredTimerStopped: mirroredTimerStopped)
+                                                            isWork: state == .startedWork, message: String(localized: "chorno_message_finished"))
+            let mirroredTimer = MirroredTimer(mirroredTimerType: .finished,
+                                              mirroredTimerFinished: mirroredTimerFinished)
            return mirroredTimer
        } else {
             return nil
@@ -390,7 +401,9 @@ final class EMOMViewModel: NSObject, ObservableObject {
             if let emom {
                 chronoFrozen = CustomTimer.getHHMMSS(seconds: CustomTimer.getTotal(emom: emom))
             }
-            if let mirroredTimer = getMirroredCustomTimer() {
+            if let mirroredTimer = getMirroredCustomTimer(),
+                let emom,
+                emom.isMirroredOnAW {
                 TimerStore.shared.send(mirroredTimer: mirroredTimer)
             }
         }

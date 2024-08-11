@@ -41,7 +41,7 @@ struct CreateCustomTimerPickerView: View {
 }
 
 #Preview(traits: .fixedLayout(width: 200, height: 200)) {
-    CreateCustomTimerPickerView(title: String(localized: "picker_secs"),
+    CreateCustomTimerPickerView(title: String(localized: "picker_seconds"),
                                 color: .timerStartedColor,
                                 value: .constant(5))
 }

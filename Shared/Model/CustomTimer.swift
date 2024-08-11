@@ -17,20 +17,23 @@ struct CustomTimer: Equatable, Codable {
     var rounds: Int
     var workSecs: Int = 0
     var restSecs: Int = 0
+    var isMirroredOnAW: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case timerType
         case rounds
         case workSecs
         case restSecs
+        case isMirroredOnAW
     }
 
     
-    init(timerType: TimerType, rounds: Int, workSecs: Int = 0, restSecs: Int = 0, pendingSecs: Int = 0) {
+    init(timerType: TimerType, rounds: Int, workSecs: Int = 0, restSecs: Int = 0, pendingSecs: Int = 0, isMirroredOnAW: Bool = false) {
         self.timerType = timerType
         self.rounds = rounds
         self.workSecs = workSecs
         self.restSecs = restSecs
+        self.isMirroredOnAW = isMirroredOnAW
     }
     
     init?(dictionary: [String:Any]) {
@@ -43,6 +46,7 @@ struct CustomTimer: Equatable, Codable {
         self.rounds = rounds
         self.workSecs = dictionary[CustomTimer.CodingKeys.workSecs.rawValue] as? Int ?? 0
         self.restSecs = dictionary[CustomTimer.CodingKeys.restSecs.rawValue] as? Int ?? 0
+        self.isMirroredOnAW = dictionary[CustomTimer.CodingKeys.isMirroredOnAW.rawValue] as? Bool ?? false
     }
 
     func timeHHMMSS(isWork: Bool = true) -> String {

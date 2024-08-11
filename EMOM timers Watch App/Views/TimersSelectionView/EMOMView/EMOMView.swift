@@ -1,16 +1,40 @@
 import SwiftUI
 
+//struct foregroundColorModifier: ViewModifier {
+//    let color: Color
+//    let isLowEnergy: Bool
+//    func body(content: Content) -> some View {
+//        if isLowEnergy {
+//            content
+//                .foregroundColor(color.opacity(0.16))
+//                //.shadow(color: color, radius: 1)
+//        } else {
+//            content
+//                .foregroundColor(color)
+//             //   .shadow(color: color, radius: 1)
+//        }
+//
+//    }
+//}
+//
+//extension View {
+//    func foregroundColor(color: Color, isLowEnergy: Bool) -> some View {
+//        modifier(foregroundColorModifier(color: color, isLowEnergy: isLowEnergy))
+//    }
+//}
+
 struct EMOMView: View {
     let bottonSideSize = 50.0
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.isLuminanceReduced) var isLuminanceReduced
     @Binding var customTimer: CustomTimer?
     @Binding var closedFromCompation: Bool
-    @StateObject var emomViewModel = EMOMViewModel()
+    @StateObject var viewModel = EMOMViewModel()
+  //  @State private var isLowEnergy = false
     var boolClosedByUser = false
     var body: some View {
         VStack(spacing: 0) {
-            if !isLuminanceReduced {
+          //  if !isLowerEnergyMode() {
                 HStack {
                     Button(action: {
                         //emomViewModel.close()
@@ -21,48 +45,50 @@ struct EMOMView: View {
                     .modifier(ButtonAW())
                     Spacer()
                 }
-            }
+         //   }
             Spacer()
+           // Toggle("LEM", isOn: $isLowEnergy)
             VStack(spacing: 0) {
-                Text("\(emomViewModel.getCurrentMessage())")
+                Text("\(viewModel.getCurrentMessage())")
                     .font(.messageFont)
+                    .foregroundColor(.paragrahColor)
                 HStack {
                     HStack(alignment: .firstTextBaseline, spacing: 0) {
-                        Text("\(emomViewModel.getCurrentRound())")
+                        Text("\(viewModel.getCurrentRound())")
                             .foregroundColor(.roundColor)
-                        Text("\(emomViewModel.getRounds())")
+                        Text("\(viewModel.getRounds())")
+                            .foregroundColor(.roundColor)
                             .font(.emomRounds)
-                            .foregroundColor(.roundColor)
                     }
-                    .font(emomViewModel.getTimerAndRoundFont())
-                    .privacySensitive()
+                    .font(viewModel.getTimerAndRoundFont())
                     Spacer()
                     VStack {
-                        if let chronoOnMove = emomViewModel.chronoOnMove {
-                            Text("\(chronoOnMove, style: .timer)")
-                                .foregroundStyle(emomViewModel.getForegroundTextColor())
-                                .allowsTightening(true)
+                        if let chronoOnMove = viewModel.chronoOnMove,
+                           !isLuminanceReduced {
+                                Text("\(chronoOnMove, style: .timer)")
+                                .foregroundStyle(viewModel.getForegroundTextColor())
+                                    .allowsTightening(true)
                         } else {
-                            Text(emomViewModel.chronoFrozen)
-                                .foregroundStyle(emomViewModel.getForegroundTextColor())
+                            Text(viewModel.chronoFrozen)
+                                .foregroundStyle(viewModel.getForegroundTextColor())
                         }
                     }
-                    .font(emomViewModel.getTimerAndRoundFont(isLuminanceReduced: isLuminanceReduced))
-                    .privacySensitive()
+                    .font(viewModel.getTimerAndRoundFont())
+                //    .privacySensitive()
                 }
                 
-                Gauge(value: emomViewModel.getRoundsProgress(), label: { })
+                Gauge(value: viewModel.getRoundsProgress(), label: { })
                     .tint(.roundColor)
                     .gaugeStyle(.accessoryLinearCapacity)
                     .scaleEffect(x: 1.0, y: 0.25)
             }
             Spacer(minLength: 7)
-            if isLuminanceReduced {
-                HStack {
-                    Image(systemName: "battery.25percent")
-                    Text("Screen dimmed. Tap to unblock.")
-                }.frame(height: 50)
-            } else {
+//            if isLowerEnergyMode() {
+//                HStack {
+//                    Image(systemName: "battery.25percent")
+//                    Text("Screen dimmed. Tap to unblock.")
+//                }.frame(height: 50)
+//            } else {
                 HStack {
                     HeartZoneView()
                     Spacer()
@@ -78,26 +104,34 @@ struct EMOMView: View {
 //                    .foregroundStyle(emomViewModel.actionButtonColor())
 //                    .frame(width: bottonSideSize, height: bottonSideSize)
 //                    .clipShape(Circle())
-            }
+ //           }
             Spacer(minLength: 15 - 10)
-        }.background(emomViewModel.getBackground())
-          //  .onChange(of: scenePhase) { print($0) }
+        }.background(viewModel.getBackground())
+//            .opacity(isLuminanceReduced ? AppUIConstants.opacityWhenLuminanceReduced : 1.0)
             .onAppear {
               //  print(" >>>> EMOMView. emomViewModel.set(emom:) state:\(emomViewModel.state)")
-                guard emomViewModel.state == .notStarted else {
+                guard viewModel.state == .notStarted else {
                     print(" >>>> EMOMView. NOT VALID STATE FOR START TIMER!!!")
                     return
                 }
-                emomViewModel.set(emom: customTimer)
-                emomViewModel.action()
+                viewModel.set(emom: customTimer)
+                viewModel.action()
             }.onDisappear {
-                emomViewModel.close()
+                viewModel.close()
             }
             .onChange(of: closedFromCompation) {
                 guard closedFromCompation else { return }
-                emomViewModel.close()
+                viewModel.close()
             }
+//            .onChange(of: isLowEnergy) {
+//                viewModel.lowEnergyMode(value: isLowEnergy)
+//            }
     }
+    
+//    private func isLowerEnergyMode() -> Bool {
+//        //isLowEnergy
+//        isLuminanceReduced ? true : isLowEnergy
+//    }
 }
 
 

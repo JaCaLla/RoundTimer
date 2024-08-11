@@ -8,6 +8,7 @@ import SwiftUI
 
 struct UpTimerView: View {
     let bottonSideSize = 50.0
+    
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.isLuminanceReduced) var isLuminanceReduced
     @Binding var customTimer: CustomTimer?
@@ -37,7 +38,8 @@ struct UpTimerView: View {
                     .font(upTimerViewModel.getTimerAndRoundFont())
                     Spacer()
                     VStack {
-                        if let chronoOnMove = upTimerViewModel.chronoOnMove {
+                        if let chronoOnMove = upTimerViewModel.chronoOnMove,
+                           !isLuminanceReduced {
                             Text("\(chronoOnMove, style: .timer)")
                                 .foregroundStyle(upTimerViewModel.getForegroundTextColor())
                                 .allowsTightening(true)

@@ -19,10 +19,11 @@ enum TimersSelectionFlow {
 }
 
 struct TimersSelectionView: View {
+    @Environment(\.isLuminanceReduced) var isLuminanceReduced
     @State private var isPresented = false
     @State private var isPresentedSettings = false
     @State private var isSettings: Bool = false
-    
+
     @State private var startSettingsFlow = false
     @State var customTimer: CustomTimer?
     @State private var navPath: [String] = []
@@ -30,7 +31,7 @@ struct TimersSelectionView: View {
     @StateObject var viewModel: CreateCustomTimerViewModel = CreateCustomTimerViewModel()
     @StateObject private var timerStore = TimerStore.shared
     @State var closedFromCompation = false
-    
+
     @StateObject private var healthkitManager = HealthkitManager2.shared
     var body: some View {
         VStack(spacing: 0) {
@@ -40,63 +41,49 @@ struct TimersSelectionView: View {
                     EMOMView(customTimer: $customTimer, closedFromCompation: $isPresented)
                 case .upTimer:
                     UpTimerView(customTimer: $customTimer)
-                default:
-                    EmptyView()
+//                default:
+//                    EmptyView()
                 }
             } else if let mirroredTimer {
                 MirroredTimerView(mirroredTimer: $mirroredTimer, closedFromCompation: $isPresented)
             } else {
                 List {
-                    TimerSelectionView(action: {
+                    TimerSelectionView(systemName: "timer",
+                        title: "title_emom_timer",
+                        subtitle: "subtitle_emom_timer") {
                         viewModel.setTimertype(type: .emom)
                         isSettings = false
                         isPresented.toggle()
-                        
-                    }, label: {
-                        TimersSelectionButtonView(systemName: "timer", text: "EMOM timer")
-                    })
-                    Button(action: {
+
+                    }
+                    /*
+                    TimerSelectionView(systemName: "timer",
+                        title: "title_up_timer",
+                        subtitle: "subtitle_up_timer") {
                         viewModel.setTimertype(type: .upTimer)
                         isSettings = false
                         isPresented.toggle()
-                    }, label: {
-                        TimersSelectionButtonView(systemName: "timer", text: "Up timer")
-                    })
-                    Button(action: {
+                    }
+                    TimerSelectionView(systemName: "gear",
+                        title: "title_setup") {
                         isSettings = true
                         isPresentedSettings.toggle()
-                    }, label: {
-                        TimersSelectionButtonView(systemName: "gear", text: "Settings")
-                    })
-                    .fullScreenCover(isPresented: $isPresentedSettings) {
-                        AgeStepView(navPath: $navPath)
                     }
+                        .fullScreenCover(isPresented: $isPresentedSettings) {
+                        AgeStepView(navPath: $navPath)
+                    }*/
                 }
-                .fullScreenCover(isPresented: $isPresented) {
-//                    if isSettings ||
-//                        AppGroupStore.shared.getDate(forKey: .birthDate) == nil {
-//                        AgeStepView(navPath: $navPath, context: .settings)
-//                    } else {
-                        CreateCustomTimerView(customTimer: $customTimer)
-                            .environmentObject(viewModel)
-//                    }
+                    .fullScreenCover(isPresented: $isPresented) {
+                    CreateCustomTimerView(customTimer: $customTimer)
+                        .environmentObject(viewModel)
                 }
             }
         }
+        .opacity(isLuminanceReduced ? AppUIConstants.opacityWhenLuminanceReduced : 1.0)
         .onAppear() {
-            guard  AppGroupStore.shared.getDate(forKey: .birthDate) == nil else { return }
+            guard AppGroupStore.shared.getDate(forKey: .birthDate) == nil else { return }
             isPresentedSettings.toggle()
         }
-//        .onAppear {
-//            Task {
-//                if await healthkitManager.authorizeHealthKit() {
-//                    await MainActor.run {
-//                        guard AppGroupStore.shared.getDate(forKey: .birthDate) == nil else { return }
-//                        isPresented.toggle()
-//                    }
-//                }
-//            }
-//        }
         .onChange(of: timerStore.mirroredTimer) {
             guard let mirroredTimer = timerStore.mirroredTimer else { return }
             LocalLogger.log("TimerSelectionView.onChange \(mirroredTimer)")
@@ -118,27 +105,13 @@ struct TimersSelectionView: View {
             }
         }
     }
-    
+
     @ViewBuilder func fullScreenCover(isSettings: Bool) -> some View {
         if isSettings {
             AgeStepView(navPath: $navPath)
         } else {
             CreateCustomTimerView(customTimer: $customTimer)
                 .environmentObject(viewModel)
-        }
-    }
-}
-
-struct TimersSelectionButtonView: View {
-    var systemName: String
-    var text: String
-    var body: some View {
-        HStack {
-            Image(systemName: systemName)
-                .resizable()
-                .foregroundColor(.electricBlue)
-                .frame(width: 20.0, height: 20.0)
-            Text(text)
         }
     }
 }

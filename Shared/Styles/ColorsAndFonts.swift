@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+struct AppUIConstants {
+    static let opacityWhenLuminanceReduced = 0.33
+}
 
 extension Color {
     static let roundColor = Color("ElectricBlue")
+    static let roundColorLuminanceReduced = Color("Gray")
     static let timerStartedColor =  Color("ElectricRed")
     static let timerNotStartedColor = Color("Gray")
     static let timerRestStartedColor = Color("ElectricYellow")
@@ -35,6 +39,8 @@ extension Font {
     static let timerAndRoundLRMediumFont =  Font.system(size: 20, weight: .black)
     static let timerAndRoundLRSmallFont =  Font.system(size: 15, weight: .black)
     static let messageFont =  Font.system(size: 20, weight: .black)
+    static let buttonTitleFont =  Font.system(size: 20, weight: .black)
+    static let buttonSubtitleFont =  Font.system(size: 15, weight: .black)
     static let roundInputFont =  Font.system(size: 70, weight: .black)
     static let pickerSelectionFont = Font.system(size: 40, weight: .black)
     static let countDownFont = Font.system(size: 120, weight: .black)

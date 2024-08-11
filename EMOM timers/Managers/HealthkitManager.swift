@@ -28,7 +28,7 @@ final class HealthkitManager {
     func authorizeHealthKit() {
         let typesToRead: Set = [
             HKObjectType.quantityType(forIdentifier: .heartRate)!,
-            HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!
+          //  HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!
         ]
 
         healthStore?.requestAuthorization(toShare: nil, read: typesToRead) { success, error in

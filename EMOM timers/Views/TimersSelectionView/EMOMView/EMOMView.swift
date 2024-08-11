@@ -60,7 +60,7 @@ struct EMOMView: View {
                         emomViewModel.set(emom: customTimer)
                         emomViewModel.action()
                     }
-        .background(emomViewModel.getBackground())
+     //   .background(emomViewModel.getBackground())
         .contentShape(Rectangle())
         .onTapGesture {
             emomViewModel.action()

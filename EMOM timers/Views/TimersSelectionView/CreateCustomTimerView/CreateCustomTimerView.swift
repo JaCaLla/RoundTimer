@@ -10,6 +10,7 @@ import SwiftUI
 struct CreateCustomTimerView: View {
  //   @Environment(\.dismiss) var dismiss
     @Binding var customTimer: CustomTimer?
+    @Binding var isConnectedAW: Bool
     let pickerSize = 200.0
     @State private var isRestOn = false
     @State private var isFetchingAW = false
@@ -46,16 +47,19 @@ struct CreateCustomTimerView: View {
 //                        .scaleEffect(2.0, anchor: .center)
 //                }
                 HStack() {
-                    Button {
-                        viewModel.isLinkedToAW.toggle()
-                    } label: {
-                        Image(systemName: viewModel.imageConnectionAW())
-                            .modifier(ButtonStyle())
+                    if isConnectedAW {
+                        Button {
+                            viewModel.createChronoMirroredInAW.toggle()
+                        } label: {
+                            Image(systemName: viewModel.imageConnectionAW())
+                                .modifier(ButtonStyle())
+                        }
                     }
-                    Spacer()
-                    CreateCustomTimerContinueButton(isFetchingAW: $isFetchingAW, 
-                                                    customTimer: $customTimer)
-                        .environmentObject(viewModel)
+                        Spacer()
+                        CreateCustomTimerContinueButton(isFetchingAW: $isFetchingAW,
+                                                        customTimer: $customTimer, createChronoMirroredInAW: viewModel.createChronoMirroredInAW)
+                            .environmentObject(viewModel)
+
                 }
       //      }
         }
@@ -72,7 +76,7 @@ struct CreateCustomTimerWorkRestToggleView: View {
     var body: some View {
         HStack {
             Spacer()
-            Text(isRestOn ? String(localized: "rest") : String(localized: "work"))
+            Text(isRestOn ? String(localized: "title_rest") : String(localized: "title_work"))
             Toggle("", isOn: $isRestOn)
                 .toggleStyle(SwitchToggleStyle(tint: isRestOn ? .timerRestStartedColor : .timerStartedColor))
                 .frame(width: 100)
@@ -81,6 +85,6 @@ struct CreateCustomTimerWorkRestToggleView: View {
     }
 }
 
-#Preview {
-    CreateCustomTimerView(customTimer: .constant(CustomTimer.customTimerDefault))
-}
+//#Preview {
+//    CreateCustomTimerView(customTimer: .constant(CustomTimer.customTimerDefault))
+//}

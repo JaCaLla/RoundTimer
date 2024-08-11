@@ -10,8 +10,7 @@ import SwiftUI
 final class CreateCustomTimerViewModel: ObservableObject {
     let minRounds = 2
     let maxRounds = 50
-    
-    @Published var isLinkedToAW = false
+    @Published var createChronoMirroredInAW = false
     @State private var isRestOn = false
     var selectedWorkMins = 0
     var selectedWorkSecs = 3
@@ -27,24 +26,24 @@ final class CreateCustomTimerViewModel: ObservableObject {
     
     // MARK: - Presentation logic
     func imageConnectionAW() -> String {
-        isLinkedToAW ? "checkmark.applewatch" : "applewatch.slash"
+        createChronoMirroredInAW ? "checkmark.applewatch" : "applewatch.slash"
     }
-    
+
     func buildCustomTimer(/*selectedWorkMins: Int,
                           selectedWorkSecs: Int,
                           selectedRestMins: Int,
                           selectedRestSecs: Int,
-                          selectedIndexRounds: Int*/) -> CustomTimer {
-        
+                           selectedIndexRounds: Int*/isMirroredOnAW: Bool) -> CustomTimer? {
         let workSecs = selectedWorkMins * 60 + selectedWorkSecs
+        guard workSecs > 0 else { return nil }
         let restSecs = selectedRestMins * 60 + selectedRestSecs
         let rounds = minRounds + selectedIndexRounds
-        return CustomTimer(timerType: .emom, rounds: rounds, workSecs: workSecs, restSecs: restSecs)
+        return CustomTimer(timerType: .emom, rounds: rounds, workSecs: workSecs, restSecs: restSecs, isMirroredOnAW: isMirroredOnAW)
 
     }
     
     // MARK: - Private/Internal
     @MainActor private func setisLinkedToAW(_ value: Bool) {
-            self.isLinkedToAW = value
+            self.createChronoMirroredInAW = value
     }
 }

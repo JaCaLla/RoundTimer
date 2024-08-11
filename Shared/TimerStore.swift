@@ -117,6 +117,7 @@ extension TimerStore: TimerStoreProtocol {
         let connectivityMessage = ConnectivityMessage(action: .refreshMirroredTimer,
                                                       direction: .fromAWatchToIPhone,
                                                       mirroredTimer: mirroredTimer)
-        Connectivity.shared.send(connectivityMessage: connectivityMessage, delivery: .highPriority)
+        let delivery: Delivery = mirroredTimer.mirroredTimerType == .finished ? .guaranteed :  .highPriority
+        Connectivity.shared.send(connectivityMessage: connectivityMessage, delivery: delivery)
     }
 }

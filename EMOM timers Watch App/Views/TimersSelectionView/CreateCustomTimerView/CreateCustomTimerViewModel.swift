@@ -23,15 +23,18 @@ final class CreateCustomTimerViewModel: ObservableObject {
     
     var dismissFlowAndStartEMOM = false
     var timerType: TimerType = .emom
-    var rounds = -1
+    private (set) var rounds = -1
     var workSecs = -1
     var restSecs = -1
-   // var age = -1
     
     init() {
         rounds = roundsDefault
         workSecs = workSecsDefault
         restSecs = restSecsDefault
+    }
+    
+    func setRounds(rounds: Int) {
+        self.rounds = rounds
     }
     
     func setTimertype(type: TimerType) {
@@ -56,8 +59,8 @@ final class CreateCustomTimerViewModel: ObservableObject {
         return CustomTimer(timerType: timerType, rounds: rounds, workSecs: workSecs, restSecs: restSecs)
     }
     
-    func getContinueButtonText() -> String {
-        timerType == .upTimer ? "START WORK!" : "Rest Time ... >"
+    func getContinueButtonText() -> LocalizedStringKey {
+        timerType == .upTimer ? "button_start_work" : "button_rest_next"
     }
     
     func getNavigationLink() -> String {

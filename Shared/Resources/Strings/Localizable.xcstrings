@@ -22,8 +22,85 @@
     "Action" : {
 
     },
-    "Card Detail" : {
-
+    "button_next" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        }
+      }
+    },
+    "button_rest_next" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setup Rest"
+          }
+        }
+      }
+    },
+    "button_start_work" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start work!"
+          }
+        }
+      }
+    },
+    "chorno_message_finished" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FINISHED!"
+          }
+        }
+      }
+    },
+    "chorno_message_last_round" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LAST ROUND"
+          }
+        }
+      }
+    },
+    "chorno_message_press_plaey" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PRESS PLAY!"
+          }
+        }
+      }
+    },
+    "chorno_message_rest" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "REST"
+          }
+        }
+      }
+    },
+    "chorno_message_work" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WORK"
+          }
+        }
+      }
     },
     "continue" : {
       "localizations" : {
@@ -68,6 +145,17 @@
     "emom_paragraph_10" : {
 
     },
+    "emom_timer" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EMOM timer"
+          }
+        }
+      }
+    },
     "Finish" : {
 
     },
@@ -80,18 +168,26 @@
     "intro_paragraph_2" : {
 
     },
-    "Minutes" : {
-
-    },
-    "Next" : {
+    "paused" : {
 
     },
     "picker_mins" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mins."
+          }
+        }
+      }
+    },
+    "picker_minutes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minutes"
           }
         }
       }
@@ -102,6 +198,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rounds"
+          }
+        }
+      }
+    },
+    "picker_seconds" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seconds"
           }
         }
       }
@@ -118,6 +224,7 @@
       }
     },
     "rest" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -134,9 +241,6 @@
 
     },
     "Screen dimmed. Tap to unblock." : {
-
-    },
-    "Seconds" : {
 
     },
     "Select a date" : {
@@ -193,14 +297,26 @@
     "Start" : {
 
     },
-    "START WORK!" : {
-
+    "subtitle_emom_timer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set rounds, work time and rest time between rounds"
+          }
+        }
+      }
     },
-    "Start workout session" : {
-
-    },
-    "Subtitle" : {
-
+    "subtitle_up_timer" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts from 00:00 to configured time"
+          }
+        }
+      }
     },
     "Timers" : {
 
@@ -211,8 +327,67 @@
     "timerup_paragraph_3" : {
 
     },
-    "Title" : {
-
+    "title_emom_timer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EMOM timer"
+          }
+        }
+      }
+    },
+    "title_rest" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rest"
+          }
+        }
+      }
+    },
+    "title_round" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Round"
+          }
+        }
+      }
+    },
+    "title_setup" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setup"
+          }
+        }
+      }
+    },
+    "title_up_timer" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Up timer"
+          }
+        }
+      }
+    },
+    "title_work" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work"
+          }
+        }
+      }
     },
     "UP" : {
 
@@ -221,6 +396,7 @@
 
     },
     "work" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

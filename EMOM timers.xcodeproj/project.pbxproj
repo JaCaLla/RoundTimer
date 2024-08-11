@@ -34,7 +34,7 @@
 		291C8AFC2C3C6BD3001ABC9A /* ButtonAW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C8AFA2C3C6BB0001ABC9A /* ButtonAW.swift */; };
 		291C8AFF2C3C6FF1001ABC9A /* DismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C8AFE2C3C6FF1001ABC9A /* DismissButton.swift */; };
 		291CB5442BF5296F00E4F2B2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291CB5432BF5296F00E4F2B2 /* MainView.swift */; };
-		291CB5482BF52B8500E4F2B2 /* TimerSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291CB5472BF52B8500E4F2B2 /* TimerSelectionView.swift */; };
+		291CB5482BF52B8500E4F2B2 /* TimersSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291CB5472BF52B8500E4F2B2 /* TimersSelectionView.swift */; };
 		291DC5F12C41AA0200419E55 /* MirroredTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DC5F02C41AA0200419E55 /* MirroredTimer.swift */; };
 		291DC5F22C41AA0200419E55 /* MirroredTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DC5F02C41AA0200419E55 /* MirroredTimer.swift */; };
 		291DC5F42C424D5A00419E55 /* MirroredTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DC5F32C424D5A00419E55 /* MirroredTimerView.swift */; };
@@ -45,6 +45,7 @@
 		291DC5FC2C42664600419E55 /* MirroredTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DC5FA2C42664600419E55 /* MirroredTimerViewModel.swift */; };
 		291DC5FE2C42F30800419E55 /* MirroredTimerWorking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DC5FD2C42F30800419E55 /* MirroredTimerWorking.swift */; };
 		291DC5FF2C42F30800419E55 /* MirroredTimerWorking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DC5FD2C42F30800419E55 /* MirroredTimerWorking.swift */; };
+		292431EB2C69173F0030AE06 /* TimerSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2961C3B32C5659A20011345C /* TimerSelectionView.swift */; };
 		293DF0342C36F03800911E0C /* CreateCustomTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293DF0332C36F03800911E0C /* CreateCustomTimerViewModel.swift */; };
 		293DF0362C37FBA200911E0C /* CreateCustomTimerMMSSPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293DF0352C37FBA200911E0C /* CreateCustomTimerMMSSPickerView.swift */; };
 		293EC2BA2BD2E3F1008D1FD3 /* EMOM-timers-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 293EC2B92BD2E3F1008D1FD3 /* EMOM-timers-Info.plist */; };
@@ -87,8 +88,8 @@
 		2984B8DE2C46BA43009C0860 /* HeartZoneCalculatorUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2984B8DD2C46BA43009C0860 /* HeartZoneCalculatorUT.swift */; };
 		2984B8E12C46C227009C0860 /* HeartZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2984B8E02C46C227009C0860 /* HeartZoneView.swift */; };
 		2984B8E22C46C227009C0860 /* HeartZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2984B8E02C46C227009C0860 /* HeartZoneView.swift */; };
-		2990199E2C44256F009AF6B7 /* MirroredTimerStopped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990199D2C44256F009AF6B7 /* MirroredTimerStopped.swift */; };
-		2990199F2C44256F009AF6B7 /* MirroredTimerStopped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990199D2C44256F009AF6B7 /* MirroredTimerStopped.swift */; };
+		2990199E2C44256F009AF6B7 /* MirroredTimerFinished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990199D2C44256F009AF6B7 /* MirroredTimerFinished.swift */; };
+		2990199F2C44256F009AF6B7 /* MirroredTimerFinished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2990199D2C44256F009AF6B7 /* MirroredTimerFinished.swift */; };
 		299619472BE2B8080010F578 /* SendMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299619462BE2B8080010F578 /* SendMessageView.swift */; };
 		2996194A2BE2BD1C0010F578 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299619492BE2BD1C0010F578 /* Connectivity.swift */; };
 		2996194C2BE2BD460010F578 /* ConnectivityUserInfoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2996194B2BE2BD460010F578 /* ConnectivityUserInfoKey.swift */; };
@@ -206,7 +207,7 @@
 		291C8AFA2C3C6BB0001ABC9A /* ButtonAW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAW.swift; sourceTree = "<group>"; };
 		291C8AFE2C3C6FF1001ABC9A /* DismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissButton.swift; sourceTree = "<group>"; };
 		291CB5432BF5296F00E4F2B2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		291CB5472BF52B8500E4F2B2 /* TimerSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSelectionView.swift; sourceTree = "<group>"; };
+		291CB5472BF52B8500E4F2B2 /* TimersSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersSelectionView.swift; sourceTree = "<group>"; };
 		291DC5F02C41AA0200419E55 /* MirroredTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirroredTimer.swift; sourceTree = "<group>"; };
 		291DC5F32C424D5A00419E55 /* MirroredTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirroredTimerView.swift; sourceTree = "<group>"; };
 		291DC5F62C4251B900419E55 /* MirroredTimerCountdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirroredTimerCountdown.swift; sourceTree = "<group>"; };
@@ -249,7 +250,7 @@
 		2984B8D82C46B4D7009C0860 /* HeartZoneCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartZoneCalculator.swift; sourceTree = "<group>"; };
 		2984B8DD2C46BA43009C0860 /* HeartZoneCalculatorUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartZoneCalculatorUT.swift; sourceTree = "<group>"; };
 		2984B8E02C46C227009C0860 /* HeartZoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartZoneView.swift; sourceTree = "<group>"; };
-		2990199D2C44256F009AF6B7 /* MirroredTimerStopped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirroredTimerStopped.swift; sourceTree = "<group>"; };
+		2990199D2C44256F009AF6B7 /* MirroredTimerFinished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirroredTimerFinished.swift; sourceTree = "<group>"; };
 		299619462BE2B8080010F578 /* SendMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageView.swift; sourceTree = "<group>"; };
 		299619492BE2BD1C0010F578 /* Connectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		2996194B2BE2BD460010F578 /* ConnectivityUserInfoKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectivityUserInfoKey.swift; sourceTree = "<group>"; };
@@ -508,7 +509,7 @@
 		291CB5462BF52B6900E4F2B2 /* TimersSelectionView */ = {
 			isa = PBXGroup;
 			children = (
-				291CB5472BF52B8500E4F2B2 /* TimerSelectionView.swift */,
+				291CB5472BF52B8500E4F2B2 /* TimersSelectionView.swift */,
 				2979A3EA2BF7748D006E32E6 /* EMOMView */,
 				2979A3E72BF6694E006E32E6 /* CreateCustomTimerView */,
 			);
@@ -592,7 +593,6 @@
 			isa = PBXGroup;
 			children = (
 				296909CA2BC9A4B500737D0A /* TimersSelectionView.swift */,
-				2961C3B32C5659A20011345C /* TimerSelectionView.swift */,
 				291DC5F92C42663200419E55 /* MirroredTimerView */,
 				299619452BE2475D0010F578 /* SendMessage */,
 				296909C22BC9A4B500737D0A /* CreateCustomTimerView */,
@@ -658,7 +658,7 @@
 				291DC5F02C41AA0200419E55 /* MirroredTimer.swift */,
 				291DC5F62C4251B900419E55 /* MirroredTimerCountdown.swift */,
 				291DC5FD2C42F30800419E55 /* MirroredTimerWorking.swift */,
-				2990199D2C44256F009AF6B7 /* MirroredTimerStopped.swift */,
+				2990199D2C44256F009AF6B7 /* MirroredTimerFinished.swift */,
 				29E61FE02BFE2D0900C0CD60 /* ConnectivityMessage.swift */,
 				2984B8D82C46B4D7009C0860 /* HeartZoneCalculator.swift */,
 			);
@@ -707,6 +707,7 @@
 			isa = PBXGroup;
 			children = (
 				2984B8E02C46C227009C0860 /* HeartZoneView.swift */,
+				2961C3B32C5659A20011345C /* TimerSelectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1089,7 +1090,7 @@
 			files = (
 				2984B8D92C46B4D7009C0860 /* HeartZoneCalculator.swift in Sources */,
 				291DC5F42C424D5A00419E55 /* MirroredTimerView.swift in Sources */,
-				2990199E2C44256F009AF6B7 /* MirroredTimerStopped.swift in Sources */,
+				2990199E2C44256F009AF6B7 /* MirroredTimerFinished.swift in Sources */,
 				2979A3F22BF7763D006E32E6 /* EMOMViewModel.swift in Sources */,
 				2979A3E62BF6681A006E32E6 /* CustomTimer.swift in Sources */,
 				2919870C2BC708840012ACA0 /* Image.swift in Sources */,
@@ -1100,7 +1101,7 @@
 				291987062BC7074A0012ACA0 /* IntroView.swift in Sources */,
 				291DC5FB2C42664600419E55 /* MirroredTimerViewModel.swift in Sources */,
 				2979A3E42BF66607006E32E6 /* ColorsAndFonts.swift in Sources */,
-				291CB5482BF52B8500E4F2B2 /* TimerSelectionView.swift in Sources */,
+				291CB5482BF52B8500E4F2B2 /* TimersSelectionView.swift in Sources */,
 				291DC5FE2C42F30800419E55 /* MirroredTimerWorking.swift in Sources */,
 				2979A3F82BFA5496006E32E6 /* HealthkitManager.swift in Sources */,
 				29A143912C27554400599CC0 /* LocalLogger.swift in Sources */,
@@ -1124,6 +1125,7 @@
 				2984B8E12C46C227009C0860 /* HeartZoneView.swift in Sources */,
 				291C8AF82C3C63FA001ABC9A /* buttonStyle.swift in Sources */,
 				299619512BE2BD9B0010F578 /* Delivery.swift in Sources */,
+				292431EB2C69173F0030AE06 /* TimerSelectionView.swift in Sources */,
 				291987042BC7074A0012ACA0 /* EMOMTimerView.swift in Sources */,
 				2919869B2BC7048F0012ACA0 /* EMOM_timersApp.swift in Sources */,
 				29EFDC6D2C289B8800C46504 /* CreateCustomTimerPickerView.swift in Sources */,
@@ -1187,7 +1189,7 @@
 				296909D22BC9A4B500737D0A /* EMOMViewModel.swift in Sources */,
 				296909CD2BC9A4B500737D0A /* CreateCustomTimerViewModel.swift in Sources */,
 				29D4BD7F2BC99ECB00A0F6B4 /* ColorsAndFonts.swift in Sources */,
-				2990199F2C44256F009AF6B7 /* MirroredTimerStopped.swift in Sources */,
+				2990199F2C44256F009AF6B7 /* MirroredTimerFinished.swift in Sources */,
 				294850132C4D2299004DF009 /* AgeStepViewModel.swift in Sources */,
 				294850102C4CE512004DF009 /* AppGroupStore.swift in Sources */,
 				296909D72BC9A4BE00737D0A /* VibrationView.swift in Sources */,

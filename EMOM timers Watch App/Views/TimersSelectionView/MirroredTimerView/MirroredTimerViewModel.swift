@@ -15,6 +15,7 @@ protocol MirroredTimerViewModelProtocol {
     func getForegroundTextColor() -> Color 
     func getTimerAndRoundFont(isLuminanceReduced: Bool) -> Font
     func close() 
+    func getCurrentMessage() -> String
 }
 
 final class MirroredTimerViewModel:NSObject, ObservableObject {
@@ -40,7 +41,7 @@ extension MirroredTimerViewModel: MirroredTimerViewModelProtocol {
             chronoOnMove = nil
         } else if let mirroredTimerWorking =  mirroredTimer.mirroredTimerWorking {
             chronoOnMove = Date(timeIntervalSince1970: mirroredTimerWorking.date)//mirroredTimerWorking.date
-        }else if let mirroredTimerStopped =  mirroredTimer.mirroredTimerStopped {
+        }else if let mirroredTimerStopped =  mirroredTimer.mirroredTimerFinished {
             chronoFrozen = mirroredTimerStopped.date//mirroredTimerWorking.date
             chronoOnMove = nil
         }
@@ -62,7 +63,7 @@ extension MirroredTimerViewModel: MirroredTimerViewModelProtocol {
             return ""
         } else if let mirroredTimerWorking = mirroredTimer.mirroredTimerWorking {
             return  String(format: "%0d", mirroredTimerWorking.currentRound)
-        } else if let mirroredTimerStopped = mirroredTimer.mirroredTimerStopped  {
+        } else if let mirroredTimerStopped = mirroredTimer.mirroredTimerFinished  {
             // TO DO: When is stopped due to pause (not finished) then is currentRound instead of rounds
             return  String(format: "%0d", mirroredTimerStopped.rounds)
         } else {
@@ -70,6 +71,21 @@ extension MirroredTimerViewModel: MirroredTimerViewModelProtocol {
         }
            
 //        }
+    }
+    
+    func getCurrentMessage() -> String {
+        guard let mirroredTimer else { return "" }
+        if mirroredTimer.mirroredTimerType == .countdown {
+            return ""
+        } else if let mirroredTimerWorking = mirroredTimer.mirroredTimerWorking {
+            return  mirroredTimerWorking.message
+        } else if let mirroredTimerFinished = mirroredTimer.mirroredTimerFinished  {
+            // TO DO: When is stopped due to pause (not finished) then is currentRound instead of rounds
+           // return  String(format: "%0d", mirroredTimerStopped.rounds)
+            return  mirroredTimerFinished.message
+        } else {
+            return ""
+        }
     }
     
     func getRounds() -> String {
@@ -111,12 +127,16 @@ extension MirroredTimerViewModel: MirroredTimerViewModelProtocol {
             return mirroredTimerCountdown.value > 3 ? .countdownColor : .countdownInminentColor
         } else if let mirroredTimerWorking =  mirroredTimer.mirroredTimerWorking {
             return mirroredTimerWorking.isWork ? .timerStartedColor : .timerRestStartedColor
-        }else if let mirroredTimerStopped =  mirroredTimer.mirroredTimerStopped {
+        } else if mirroredTimer.mirroredTimerFinished != nil {
             return .timerNotStartedColor
         }
             return .green
  //       }
     }
+    
+//    func getBackground() -> Color {
+//        mirroredTimer?.mirroredTimerFinished != nil ? .timerFinishedBackgroundColor : .clear
+//    }
     
     func getTimerAndRoundFont(isLuminanceReduced: Bool) -> Font {
 //        guard let emom else { return .timerAndRoundLargeFont }

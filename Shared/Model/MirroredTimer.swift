@@ -8,32 +8,32 @@
 import Foundation
 // TO DO: TRY TO USE STATE ENUM INSTEAD
 enum MirroredTimerType: String, Codable {
-    case countdown, working, stopped, removedFromCompanion
+    case countdown, working, finished, removedFromCompanion
 }
 
 struct MirroredTimer: Equatable, Codable {
     let mirroredTimerType: MirroredTimerType
     var mirroredTimerCountdown: MirroredTimerCountdown?
     var mirroredTimerWorking: MirroredTimerWorking?
-    var mirroredTimerStopped: MirroredTimerStopped?
+    var mirroredTimerFinished: MirroredTimerFinished?
     
     
     enum CodingKeys: String, CodingKey {
         case mirroredTimerType
         case mirroredTimerCountdown
         case mirroredTimerWorking
-        case mirroredTimerStopped
+        case mirroredTimerFinished
     }
     
     
     init(mirroredTimerType: MirroredTimerType,
          mirroredTimerCountdown: MirroredTimerCountdown? = nil,
          mirroredTimerWorking: MirroredTimerWorking? = nil,
-         mirroredTimerStopped: MirroredTimerStopped? = nil) {
+         mirroredTimerFinished: MirroredTimerFinished? = nil) {
         self.mirroredTimerType = mirroredTimerType
         self.mirroredTimerCountdown = mirroredTimerCountdown
         self.mirroredTimerWorking = mirroredTimerWorking
-        self.mirroredTimerStopped = mirroredTimerStopped
+        self.mirroredTimerFinished = mirroredTimerFinished
     }
     
     init?(dictionary: [String:Any]) {
@@ -52,10 +52,10 @@ struct MirroredTimer: Equatable, Codable {
                          // self.mirroredTimer = countdown
             self.mirroredTimerWorking = mirroredTimerWorking
         }
-        if  let dictionary =  dictionary[MirroredTimer.CodingKeys.mirroredTimerStopped.rawValue] as? [String : Any],
-            let mirroredTimerStopped = MirroredTimerStopped(dictionary: dictionary) {
+        if  let dictionary =  dictionary[MirroredTimer.CodingKeys.mirroredTimerFinished.rawValue] as? [String : Any],
+            let mirroredTimerStopped = MirroredTimerFinished(dictionary: dictionary) {
                          // self.mirroredTimer = countdown
-            self.mirroredTimerStopped = mirroredTimerStopped
+            self.mirroredTimerFinished = mirroredTimerStopped
         }
         
     }

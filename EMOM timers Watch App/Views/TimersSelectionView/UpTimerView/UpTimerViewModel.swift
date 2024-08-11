@@ -193,7 +193,7 @@ extension UpTimerViewModel: WKExtendedRuntimeSessionDelegate {
         
         HapticManager.shared.start()
         
-        createAndRunProgressTimer(customTimer, extendedRuntimeSession, timer: &refreshProgressTimer)
+        createAndRunProgressTimer(customTimer/*, extendedRuntimeSession*/, timer: &refreshProgressTimer)
         
         set(state: .startedWork)
     }
@@ -253,7 +253,7 @@ extension UpTimerViewModel: WKExtendedRuntimeSessionDelegate {
     }
     
     
-    fileprivate func createAndRunProgressTimer(_ customTimer: CustomTimer, _ extendedRuntimeSession: WKExtendedRuntimeSession, timer: inout Timer?) {
+    fileprivate func createAndRunProgressTimer(_ customTimer: CustomTimer,/* _ extendedRuntimeSession: WKExtendedRuntimeSession,*/ timer: inout Timer?) {
 
          let blockTimerWork: (Timer) -> Void = { [weak self] _ in
             

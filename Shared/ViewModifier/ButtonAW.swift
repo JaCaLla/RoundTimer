@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+extension View {
+    func buttonAWStyle() -> some View {
+        modifier(ButtonAW())
+    }
+}
+
 struct ButtonAW: ViewModifier {
     func body(content: Content) -> some View {
         content

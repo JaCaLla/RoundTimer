@@ -7,15 +7,11 @@
 
 import SwiftUI
 
-//extension View {
-//    func buttonStyle() -> some View {
-//        font(.buttoniOSAppFont)
-//        .padding()
-//        .foregroundStyle(Color.buttonTextColor)
-//        .background(Color.roundColor)
-//        .clipShape(RoundedRectangle(cornerRadius: 16))
-//    }
-//}
+extension View {
+    func buttonStyle() -> some View {
+        modifier(ButtonStyle())
+    }
+}
 
 struct ButtonStyle: ViewModifier {
     func body(content: Content) -> some View {
@@ -27,3 +23,20 @@ struct ButtonStyle: ViewModifier {
                 .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }
+
+/*
+ extension View {
+     func buttonAWStyle() -> some View {
+         modifier(ButtonAW())
+     }
+ }
+
+ struct ButtonAW: ViewModifier {
+     func body(content: Content) -> some View {
+         content
+             .frame(width: 25, height: 25)
+             .foregroundColor(Color.white)
+             .clipShape(Circle())
+     }
+ }
+ */

@@ -26,8 +26,7 @@ struct TimerSelectionView/*<T: View>*/: View {
     }
     
     var tap: some Gesture {
-         TapGesture(count: 1)
-             .onEnded { _ in self.action() }
+         TapGesture(count: 1).onEnded { _ in self.action() }
      }
     
     var body: some View {

@@ -32,7 +32,7 @@ struct TimersSelectionView: View {
     @StateObject private var timerStore = TimerStore.shared
     @State var closedFromCompation = false
 
-    @StateObject private var healthkitManager = HealthkitManager2.shared
+    @StateObject private var healthkitManager = HealthkitManager.shared
     var body: some View {
         VStack(spacing: 0) {
             if let customTimer {

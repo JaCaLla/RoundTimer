@@ -11,6 +11,7 @@ final class CreateCustomTimerViewModel: ObservableObject {
     let minRounds = 2
     let maxRounds = 50
     @Published var createChronoMirroredInAW = false
+    @Published var isFetchingAW = false
     @State private var isRestOn = false
     var selectedWorkMins = 0
     var selectedWorkSecs = 3
@@ -21,7 +22,7 @@ final class CreateCustomTimerViewModel: ObservableObject {
     // MARK :- Lifecycle
     func onAppearActions() async {
             let result = await HealthkitManager.shared.startWorkoutSession()
-            await setisLinkedToAW(result)
+            await setIsLinkedToAW(result)
     }
     
     // MARK: - Presentation logic
@@ -29,21 +30,33 @@ final class CreateCustomTimerViewModel: ObservableObject {
         createChronoMirroredInAW ? "checkmark.applewatch" : "applewatch.slash"
     }
 
-    func buildCustomTimer(/*selectedWorkMins: Int,
-                          selectedWorkSecs: Int,
-                          selectedRestMins: Int,
-                          selectedRestSecs: Int,
-                           selectedIndexRounds: Int*/isMirroredOnAW: Bool) -> CustomTimer? {
+    func buildCustomTimer(isMirroredOnAW: Bool) -> CustomTimer? {
         let workSecs = selectedWorkMins * 60 + selectedWorkSecs
         guard workSecs > 0 else { return nil }
         let restSecs = selectedRestMins * 60 + selectedRestSecs
         let rounds = minRounds + selectedIndexRounds
-        return CustomTimer(timerType: .emom, rounds: rounds, workSecs: workSecs, restSecs: restSecs, isMirroredOnAW: isMirroredOnAW)
+        return CustomTimer(timerType: .emom, 
+                           rounds: rounds,
+                           workSecs: workSecs,
+                           restSecs: restSecs,
+                           isMirroredOnAW: isMirroredOnAW)
 
     }
     
+    @MainActor func createCustomTimer() async -> CustomTimer? {
+        if createChronoMirroredInAW {
+            isFetchingAW = true
+            _ = await HealthkitManager.shared.startWorkoutSession()
+            LocalLogger.log("CreateCustomTimerView2.Button(action:)")
+            isFetchingAW = false
+            return buildCustomTimer(isMirroredOnAW: true)
+        } else {
+            return buildCustomTimer(isMirroredOnAW: false)
+        }
+    }
+    
     // MARK: - Private/Internal
-    @MainActor private func setisLinkedToAW(_ value: Bool) {
+    @MainActor private func setIsLinkedToAW(_ value: Bool) {
             self.createChronoMirroredInAW = value
     }
 }

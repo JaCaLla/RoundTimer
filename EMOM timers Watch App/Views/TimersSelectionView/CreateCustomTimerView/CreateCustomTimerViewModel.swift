@@ -17,8 +17,8 @@ final class CreateCustomTimerViewModel: ObservableObject {
     }
     
     // TO REFACTOR: Replace this by an Emom
-    let roundsDefault = 12
-    let workSecsDefault = 90
+    let roundsDefault = 5
+    let workSecsDefault = 60
     let restSecsDefault = 0
     
     var dismissFlowAndStartEMOM = false

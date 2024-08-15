@@ -18,7 +18,7 @@ struct HeartZoneView: View {
             .heartRateZone5
     ]
     @State var heartRate: Double?//String = ""
-    @StateObject private var healthkitManager = HealthkitManager2.shared
+    @StateObject private var healthkitManager = HealthkitManager.shared
 
     var body: some View {
         VStack(alignment: .leading) {

@@ -103,6 +103,18 @@ struct CustomTimer: Equatable, Codable {
         let remaining = secsEllapsed % secsRound
         return remaining == 0 ? 0 : secsRound - remaining
     }
+    
+    func endOfRound() -> Date? {
+        Date.now.addingTimeInterval(Double(workSecs + restSecs))
+    }
+
+     func endOfWork() -> Date? {
+        Date.now.addingTimeInterval(Double(workSecs))
+    }
+    
+    func secondsPerRound() -> Double {
+        Double(workSecs + restSecs)
+    }
 }
 
 // MARK :- CustomStringConvertible

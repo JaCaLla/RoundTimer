@@ -21,7 +21,7 @@ struct AgeStepView: View {
     @State private var isVisible = false
     
     @StateObject var viewModel: AgeStepViewModel = AgeStepViewModel()
-    @StateObject private var healthkitManager = HealthkitManager2.shared
+    @StateObject private var healthkitManager = HealthkitManager.shared
     
     var body: some View {
         ScrollView {

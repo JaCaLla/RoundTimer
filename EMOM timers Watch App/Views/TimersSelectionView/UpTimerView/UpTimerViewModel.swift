@@ -236,7 +236,7 @@ extension UpTimerViewModel: WKExtendedRuntimeSessionDelegate {
         
         let blockTimerWork: (Timer) -> Void = { [weak self] _ in
             guard let self else { return }
-                AudioManager.shared.finish()
+               // AudioManager.shared.finish()
                 self.set(state: .finished)
                 extendedRuntimeSession.invalidate()
                 HapticManager.shared.finish()

@@ -8,11 +8,10 @@
 import Foundation
 import HealthKit
 
-final class HealthkitManager2: NSObject, ObservableObject {
+final class HealthkitManager: NSObject, ObservableObject {
     // 2
-    static let shared = HealthkitManager2()
+    static let shared = HealthkitManager()
 
-    // 3
     var healthStore: HKHealthStore?
     var session: HKWorkoutSession?
     #if os(watchOS)
@@ -30,7 +29,7 @@ final class HealthkitManager2: NSObject, ObservableObject {
             LocalLogger.log("HealthkitManager2.grantedPermissionForHeartRate.didSet \(grantedPermissionForHeartRate)")
         }
     }
-
+    
     private override init() {
         guard HKHealthStore.isHealthDataAvailable() else {
             return
@@ -44,7 +43,7 @@ final class HealthkitManager2: NSObject, ObservableObject {
         ]
         LocalLogger.log("HealthkitManager2.authorizeHealthKit")
         return await withCheckedContinuation {[weak self] continuation in
-            healthStore?.requestAuthorization(toShare: nil, read: typesToRead) { userWasShownPermissionView, error in
+            self?.healthStore?.requestAuthorization(toShare: nil, read: typesToRead) { userWasShownPermissionView, error in
                 if (userWasShownPermissionView) {
                     let authorized = (self?.healthStore?.authorizationStatus(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!) == .sharingAuthorized)
                     AppGroupStore.shared.setBool(value: authorized, forKey: .grantedPermissionForHeartRate)
@@ -59,7 +58,103 @@ final class HealthkitManager2: NSObject, ObservableObject {
             }
         }
     }
+    
+    func fetchHeartRateData() {
+        fetchHealthKitData(forIdentifier: .heartRate) { samples in
+                            guard let sample = samples?.first as? HKQuantitySample else {
+                                LocalLogger.log(type: .error, "No heart rate data available")
+                               // print("No heart rate data available")
+                                return
+                            }
+            
+                            // Update the UI on the main thread
+                            DispatchQueue.main.async {
+                                self.heartRate = sample.quantity.doubleValue(for: HKUnit(from: "count/min"))
+                                LocalLogger.log("HealthkitManager2.fetchHeartRateData: \(String(describing: self.heartRate)) ")
+                            }
+        }
+    }
+    
+    // Fetch heart rate data
+    private func fetchHealthKitData(forIdentifier: HKQuantityTypeIdentifier, completion: @escaping ([HKSample]?) -> Void) {
+        // Define the type of data to fetch
+        guard let heartRateType = HKObjectType.quantityType(forIdentifier: forIdentifier) else {
+            LocalLogger.log(type: .error, "Heart rate type not available")
+           // print("Heart rate type not available")
+            return
+        }
 
+        // Define the query
+        let query = HKObserverQuery(sampleType: heartRateType, predicate: nil) { query, completionHandler, error in
+            if let error = error {
+                LocalLogger.log(type: .error, "Error fetching heart rate data: \(error.localizedDescription)")
+            //    print("Error fetching heart rate data: \(error.localizedDescription)")
+                return
+            }
+
+            // Fetch the most recent heart rate sample
+            let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+            let query = HKSampleQuery(sampleType: heartRateType, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { query, samples, error in
+                if let error = error {
+                    LocalLogger.log(type: .error, "Error fetching heart rate data: \(error.localizedDescription)")
+                  //  print("Error fetching heart rate data: \(error.localizedDescription)")
+                    return
+                }
+                completion(samples)
+//                guard let sample = samples?.first as? HKQuantitySample else {
+//                    LocalLogger.log(type: .error, "No heart rate data available")
+//                   // print("No heart rate data available")
+//                    return
+//                }
+//
+//                // Update the UI on the main thread
+//                DispatchQueue.main.async {
+//                    self.heartRate = sample.quantity.doubleValue(for: HKUnit(from: "count/min"))
+//                    LocalLogger.log("HealthkitManager2.fetchHeartRateData: \(String(describing: self.heartRate)) ")
+//                }
+            }
+
+            self.healthStore?.execute(query)
+        }
+
+        healthStore?.execute(query)
+    }
+    
+    // MARK :- iOS
+#if os(iOS)
+    func startWorkoutSession() async -> Bool {
+
+            let configuration = HKWorkoutConfiguration()
+            configuration.activityType = .running
+            configuration.locationType = .outdoor
+            
+        return await withCheckedContinuation { continuation in
+            healthStore?.startWatchApp(with: configuration, completion: { result, error in
+                continuation.resume(returning: error == nil)
+                //return error == nil
+            })
+        }
+    }
+    
+    func authorizeHealthKit() {
+        let typesToRead: Set = [
+            HKObjectType.quantityType(forIdentifier: .heartRate)!,
+          //  HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!
+        ]
+
+        healthStore?.requestAuthorization(toShare: nil, read: typesToRead) { success, error in
+            if !success {
+                // Handle error
+                if let error = error {
+                    print("Error authorizing HealthKit: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+#endif
+    
+    
+// MARK :- watchOS
     #if os(watchOS)
         func startWorkout() async {
 
@@ -126,70 +221,9 @@ final class HealthkitManager2: NSObject, ObservableObject {
             //       logger.debug("*** Workout Session Started ***")
         }
     #endif
-    
-    func fetchHeartRateData() {
-        fetchHealthKitData(forIdentifier: .heartRate) { samples in
-                            guard let sample = samples?.first as? HKQuantitySample else {
-                                LocalLogger.log(type: .error, "No heart rate data available")
-                               // print("No heart rate data available")
-                                return
-                            }
-            
-                            // Update the UI on the main thread
-                            DispatchQueue.main.async {
-                                self.heartRate = sample.quantity.doubleValue(for: HKUnit(from: "count/min"))
-                                LocalLogger.log("HealthkitManager2.fetchHeartRateData: \(String(describing: self.heartRate)) ")
-                            }
-        }
-    }
-    
-    // Fetch heart rate data
-    private func fetchHealthKitData(forIdentifier: HKQuantityTypeIdentifier, completion: @escaping ([HKSample]?) -> Void) {
-        // Define the type of data to fetch
-        guard let heartRateType = HKObjectType.quantityType(forIdentifier: forIdentifier) else {
-            LocalLogger.log(type: .error, "Heart rate type not available")
-           // print("Heart rate type not available")
-            return
-        }
-
-        // Define the query
-        let query = HKObserverQuery(sampleType: heartRateType, predicate: nil) { query, completionHandler, error in
-            if let error = error {
-                LocalLogger.log(type: .error, "Error fetching heart rate data: \(error.localizedDescription)")
-            //    print("Error fetching heart rate data: \(error.localizedDescription)")
-                return
-            }
-
-            // Fetch the most recent heart rate sample
-            let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
-            let query = HKSampleQuery(sampleType: heartRateType, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { query, samples, error in
-                if let error = error {
-                    LocalLogger.log(type: .error, "Error fetching heart rate data: \(error.localizedDescription)")
-                  //  print("Error fetching heart rate data: \(error.localizedDescription)")
-                    return
-                }
-                completion(samples)
-//                guard let sample = samples?.first as? HKQuantitySample else {
-//                    LocalLogger.log(type: .error, "No heart rate data available")
-//                   // print("No heart rate data available")
-//                    return
-//                }
-//
-//                // Update the UI on the main thread
-//                DispatchQueue.main.async {
-//                    self.heartRate = sample.quantity.doubleValue(for: HKUnit(from: "count/min"))
-//                    LocalLogger.log("HealthkitManager2.fetchHeartRateData: \(String(describing: self.heartRate)) ")
-//                }
-            }
-
-            self.healthStore?.execute(query)
-        }
-
-        healthStore?.execute(query)
-    }
 }
 
-extension HealthkitManager2: HKWorkoutSessionDelegate {
+extension HealthkitManager: HKWorkoutSessionDelegate {
     /**
      @method        workoutSession:didChangeToState:fromState:date:
      @abstract      This method is called when a workout session transitions to a new state.
@@ -212,8 +246,9 @@ extension HealthkitManager2: HKWorkoutSessionDelegate {
         print("To Do")
     }
 }
+
 #if os(watchOS)
-    extension HealthkitManager2: HKLiveWorkoutBuilderDelegate {
+    extension HealthkitManager: HKLiveWorkoutBuilderDelegate {
 
         /**
      @method        workoutBuilder:didCollectDataOfTypes:

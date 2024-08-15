@@ -19,38 +19,27 @@ struct TimersSelectionView: View {
                 TimerSelectionView(systemName: "timer",
                     title: "title_emom_timer",
                     subtitle: "subtitle_emom_timer") {
-                                        HealthkitManager.shared.startWorkoutSession(completion: { result in
-                                            LocalLogger.log("HealthkitManager.shared.startWorkoutSession:\(result ? "✅" : "❌")")
-                                            foregroundColor = result ? .green : .red
-                                            isConnectedAW = result
-                                            if result {
-                                                isPresentedCreateCustomTimerView.toggle()
-                                            }
-                                        })
+                    Task {
+                        let result = await HealthkitManager.shared.startWorkoutSession()
+                        await MainActor.run {
+                            LocalLogger.log("HealthkitManager.shared.startWorkoutSession:\(result ? "✅" : "❌")")
+                            foregroundColor = result ? .green : .red
+                            isConnectedAW = result
+                            if result {
+                                isPresentedCreateCustomTimerView.toggle()
+                            }
+                            }
+                    }
+//                                        HealthkitManager.shared.startWorkoutSession(completion: { result in
+//                                            LocalLogger.log("HealthkitManager.shared.startWorkoutSession:\(result ? "✅" : "❌")")
+//                                            foregroundColor = result ? .green : .red
+//                                            isConnectedAW = result
+//                                            if result {
+//                                                isPresentedCreateCustomTimerView.toggle()
+//                                            }
+//                                        })
 
                 }
-//                Button(action: {
-//                    HealthkitManager.shared.startWorkoutSession(completion: { result in
-//                        LocalLogger.log("HealthkitManager.shared.startWorkoutSession:\(result ? "✅" : "❌")")
-//                        foregroundColor = result ? .green : .red
-//                        if result {
-//                            isPresentedCreateCustomTimerView.toggle()
-//                        }
-//                    })
-//                }, label: {
-//                    TimersSelectionButtonView(systemName: "timer", text: "EMOM timer")
-//                    })
-                
-//                Spacer()
-//                Button(action: {
-//                    foregroundColor = .white
-//                    HealthkitManager.shared.startWorkoutSession(completion: {
-//                        foregroundColor = $0 ? .green : .red
-//                    })
-//                }, label: {
-//                    Text("Start workout session")
-//                        .foregroundStyle(foregroundColor)
-//                    })
             }.fullScreenCover(isPresented: $isPresentedCreateCustomTimerView) {
                 CreateCustomTimerView(customTimer: $customTimer,
                                       isConnectedAW: $isConnectedAW)

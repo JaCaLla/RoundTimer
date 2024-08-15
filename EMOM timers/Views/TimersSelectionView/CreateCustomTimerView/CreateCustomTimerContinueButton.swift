@@ -12,6 +12,7 @@ struct CreateCustomTimerContinueButton: View {
     @Binding var customTimer: CustomTimer?
     var createChronoMirroredInAW: Bool
     @EnvironmentObject var viewModel: CreateCustomTimerViewModel
+
     var body: some View {
         ZStack {
             if isFetchingAW {
@@ -20,26 +21,18 @@ struct CreateCustomTimerContinueButton: View {
                     .scaleEffect(2.0, anchor: .center)
             }
             Button(action: {
-                if createChronoMirroredInAW {
-                    isFetchingAW = true
-                    //TimerStore.shared.ping {
-                        HealthkitManager.shared.startWorkoutSession(completion: { result in
-                            LocalLogger.log("CreateCustomTimerView2.Button(action:)")
-                            isFetchingAW = false
-                            customTimer = viewModel.buildCustomTimer(isMirroredOnAW: true)
-                        })
-                } else {
-                    customTimer = viewModel.buildCustomTimer(isMirroredOnAW: false)
+                Task {
+                    customTimer = await viewModel.createCustomTimer()
                 }
-
-                //}
             }) {
-                Text(String(localized: "continue"))
-                    .modifier(ButtonStyle())
-                // .buttonStyle()
+                Text(String(localized: "button_continue"))
+                    .buttonStyle()
             }
         }
     }
+    
+
+    
 }
 
 //#Preview(traits: .fixedLayout(width: 300, height: 150)) {

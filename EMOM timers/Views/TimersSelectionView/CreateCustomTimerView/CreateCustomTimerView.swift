@@ -40,12 +40,6 @@ struct CreateCustomTimerView: View {
                 }
             }
             Spacer()
-//            ZStack {
-//                if isFetchingAW {
-//                    ProgressView()
-//                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
-//                        .scaleEffect(2.0, anchor: .center)
-//                }
                 HStack() {
                     if isConnectedAW {
                         Button {
@@ -57,13 +51,12 @@ struct CreateCustomTimerView: View {
                     }
                         Spacer()
                         CreateCustomTimerContinueButton(isFetchingAW: $isFetchingAW,
-                                                        customTimer: $customTimer, createChronoMirroredInAW: viewModel.createChronoMirroredInAW)
+                                                        customTimer: $customTimer, 
+                                                        createChronoMirroredInAW: viewModel.createChronoMirroredInAW)
                             .environmentObject(viewModel)
 
                 }
-      //      }
         }
-          //  .pickerStyle(.wheel)
             .task {
             await viewModel.onAppearActions()
         }

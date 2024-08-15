@@ -22,6 +22,16 @@
     "Action" : {
 
     },
+    "button_continue" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contine"
+          }
+        }
+      }
+    },
     "button_next" : {
       "localizations" : {
         "en" : {
@@ -72,17 +82,33 @@
         }
       }
     },
-    "chorno_message_press_plaey" : {
+    "chrono_message_finished" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "PRESS PLAY!"
+            "value" : "FINISHED!"
           }
         }
       }
     },
-    "chorno_message_rest" : {
+    "chrono_message_last_round" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LAST ROUND"
+          }
+        }
+      }
+    },
+    "chrono_message_press_paused" : {
+
+    },
+    "chrono_message_press_play" : {
+
+    },
+    "chrono_message_rest" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -92,22 +118,12 @@
         }
       }
     },
-    "chorno_message_work" : {
+    "chrono_message_work" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "WORK"
-          }
-        }
-      }
-    },
-    "continue" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Continue"
           }
         }
       }
@@ -145,21 +161,7 @@
     "emom_paragraph_10" : {
 
     },
-    "emom_timer" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "EMOM timer"
-          }
-        }
-      }
-    },
     "Finish" : {
-
-    },
-    "Hello, world!" : {
 
     },
     "intro_paragraph_1" : {
@@ -168,16 +170,12 @@
     "intro_paragraph_2" : {
 
     },
-    "paused" : {
-
-    },
-    "picker_mins" : {
-      "extractionState" : "stale",
+    "message_10_secs_to_go" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mins."
+            "value" : "10 seconds to go"
           }
         }
       }
@@ -223,36 +221,25 @@
         }
       }
     },
-    "rest" : {
-      "extractionState" : "stale",
+    "Rest" : {
+
+    },
+    "round_n" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rest"
+            "value" : "Round %@"
           }
         }
       }
-    },
-    "Rest" : {
-
     },
     "Rounds" : {
 
     },
     "Screen dimmed. Tap to unblock." : {
 
-    },
-    "Select a date" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Select a date"
-          }
-        }
-      }
     },
     "setup_age_info" : {
       "localizations" : {
@@ -307,17 +294,6 @@
         }
       }
     },
-    "subtitle_up_timer" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Starts from 00:00 to configured time"
-          }
-        }
-      }
-    },
     "Timers" : {
 
     },
@@ -357,28 +333,6 @@
         }
       }
     },
-    "title_setup" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Setup"
-          }
-        }
-      }
-    },
-    "title_up_timer" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Up timer"
-          }
-        }
-      }
-    },
     "title_work" : {
       "localizations" : {
         "en" : {
@@ -395,30 +349,8 @@
     "Vibration" : {
 
     },
-    "work" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Work"
-          }
-        }
-      }
-    },
     "Work" : {
 
-    },
-    "zone_n" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zone %d"
-          }
-        }
-      }
     }
   },
   "version" : "1.0"

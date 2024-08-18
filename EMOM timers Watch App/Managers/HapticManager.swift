@@ -28,7 +28,7 @@ extension HapticManager: HapticManagerProtocol {
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
 //            WKInterfaceDevice.current().play(.failure)
 //        }
-        WKInterfaceDevice.current().play(.start)
+        WKInterfaceDevice.current().play(.notification)//start)
     }
     
     func pause() {

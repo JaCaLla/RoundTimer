@@ -62,9 +62,9 @@ struct EMOMView: View {
                     }
      //   .background(emomViewModel.getBackground())
         .contentShape(Rectangle())
-        .onTapGesture {
-            emomViewModel.action()
-        }
+//        .onTapGesture {
+//            emomViewModel.action()
+//        }
     }
 }
 

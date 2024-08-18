@@ -15,13 +15,12 @@ protocol EMOMViewModelProtocol {
     func hasNotStarted() -> Bool
 }
 
+//// MARK: - Emom timer states
+//public enum EMOMViewModelState: String {
+//    case countdown, notStarted,  startedWork, startedRest, finished, cancelled
+//}
 
 final class EMOMViewModel: NSObject, ObservableObject {
-
-    // MARK: - Emom timer states
-    enum State: String {
-        case countdown, notStarted,  startedWork, startedRest, finished, cancelled
-    }
 
     @Published var chronoOnMove: Date?
     @Published var chronoFrozen = ""
@@ -33,7 +32,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
     
     private var extendedRuntimeSession: WKExtendedRuntimeSession?
    
-    private var state: State = .notStarted
+    private var state: EMOMViewModelState = EMOMViewModelState()
     private var roundsLeft = 0
     static let coundownValue = 10//4
     private var countdownCurrentValue = coundownValue
@@ -47,7 +46,7 @@ extension EMOMViewModel: EMOMViewModelProtocol {
     
     func close() {
         customTimer = nil
-        state = .cancelled
+        changeStateAndSpeechWhenApplies(to: .cancelled)
         removeTimers()
         removeExtendedRuntimeSession()
     }
@@ -59,7 +58,7 @@ extension EMOMViewModel: EMOMViewModelProtocol {
     
     func set(emom: CustomTimer?) {
         guard let emom else { return }
-        self.set(state: .countdown)
+        changeStateAndSpeechWhenApplies(to: .countdown)
         self.customTimer = emom
         
         if let customTimer {
@@ -69,10 +68,9 @@ extension EMOMViewModel: EMOMViewModelProtocol {
        // HapticManager.shared.pause()
     }
     
-    private func set(state to: State) {
-        self.state = to
-        LocalLogger.log("EMOMViewModel.set state:\(to.rawValue)")
-    }
+//    private func set(state to: EMOMViewModelState) {
+//        self.state = to
+//    }
     
     private func set(roundsLeft: Int) {
         self.roundsLeft = roundsLeft
@@ -87,11 +85,11 @@ extension EMOMViewModel: EMOMViewModelProtocol {
     
     func getRoundsProgress() -> Double {
         guard let customTimer else { return 0.0 }
-        if state == .finished {
+        if state.value == .finished {
             return 1.0
-        } else if state == .startedWork || state == .startedRest {
+        } else if state.value == .startedWork || state.value == .startedRest {
             return Double(customTimer.rounds - roundsLeft + 1) / Double(customTimer.rounds)
-        } else if state == .countdown {
+        } else if state.value == .countdown {
             return 1.0 - Double(countdownCurrentValue) / Double(EMOMViewModel.coundownValue)
         } else {
             return 0.0
@@ -99,13 +97,13 @@ extension EMOMViewModel: EMOMViewModelProtocol {
     }
     
     func getForegroundTextColor() -> Color {
-        if [.notStarted, .finished].contains(where: { $0 == state }) {
+        if [.notStarted, .finished].contains(where: { $0 == state.value }) {
             return .timerNotStartedColor
-        } else if state == .startedWork {
+        } else if state.value == .startedWork {
             return .timerStartedColor
-        } else if state == .startedRest {
+        } else if state.value == .startedRest {
             return .timerRestStartedColor
-        } else if state == .countdown {
+        } else if state.value == .countdown {
             return countdownCurrentValue > 3 ? .countdownColor : .countdownInminentColor
         } else {
             return .green
@@ -116,7 +114,7 @@ extension EMOMViewModel: EMOMViewModelProtocol {
         guard let customTimer else { return .timerAndRoundLargeFont }
         let isRound2Digits = customTimer.rounds > 9
         let isWork2MMDigits = [customTimer.workSecs, customTimer.restSecs].contains(where: { $0 >= 10 * 60 }) ||
-        (state == .finished && ((customTimer.workSecs + customTimer.restSecs) * customTimer.rounds) > 10 * 60)
+        (state.value == .finished && ((customTimer.workSecs + customTimer.restSecs) * customTimer.rounds) > 10 * 60)
         if isRound2Digits && isWork2MMDigits {
             return  .timerAndRoundSmallFont
         } else if isRound2Digits || isWork2MMDigits {
@@ -127,14 +125,14 @@ extension EMOMViewModel: EMOMViewModelProtocol {
     }
     
     func getCurrentRound() -> String {
-        guard let customTimer, [.countdown].allSatisfy({ state != $0 }) else { return "" }
-        if [.notStarted].contains(where: { state == $0 }) {
+        guard let customTimer, [.countdown].allSatisfy({ state.value != $0 }) else { return "" }
+        if [.notStarted].contains(where: { state.value == $0 }) {
             return "1"
-        } else if [.finished].contains(where: { state == $0 }) {
+        } else if [.finished].contains(where: { state.value == $0 }) {
             return String(format: "%0d", customTimer.rounds)
-        } else if state == .startedWork {
+        } else if state.value == .startedWork {
             return String(format: "%0d", customTimer.rounds - roundsLeft + 1)
-        } else if state == .startedRest {
+        } else if state.value == .startedRest {
             return String(format: "%0d", customTimer.rounds - roundsLeft + 1)
         } else {
             return "00"
@@ -142,18 +140,18 @@ extension EMOMViewModel: EMOMViewModelProtocol {
     }
     
     func getRounds() -> String {
-        guard let customTimer, [.countdown].allSatisfy({ state != $0 }) else { return "" }
+        guard let customTimer, [.countdown].allSatisfy({ state.value != $0 }) else { return "" }
         return String(format: "/%0d", customTimer.rounds)
     }
     
     func getCurrentMessage() -> String {
-        if state == .finished {
+        if state.value == .finished {
             return String(localized: "chrono_message_finished")
-        } else if state == .notStarted {
+        } else if state.value == .notStarted {
             return String(localized: "chrono_message_press_play")
-        } else if state == .startedWork {
+        } else if state.value == .startedWork {
             return roundsLeft <= 1 ? String(localized: "chorno_message_last_round") : String(localized: "chrono_message_work")
-        } else if state == .startedRest {
+        } else if state.value == .startedRest {
             return roundsLeft <= 1 ? String(localized: "chorno_message_last_round") : String(localized: "chrono_message_rest")
         } else {
             return ""
@@ -161,7 +159,7 @@ extension EMOMViewModel: EMOMViewModelProtocol {
     }
     
     func hasNotStarted() -> Bool {
-        state == .notStarted
+        state.value == .notStarted
     }
 }
 
@@ -191,7 +189,7 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
         removeTimers()
         chronoOnMove = nil
 
-        if state == .finished {
+        if state.value == .finished {
             set(roundsLeft: 0)
             if let customTimer {
                 chronoFrozen = CustomTimer.getHHMMSS(seconds: CustomTimer.getTotal(emom: customTimer))
@@ -216,8 +214,8 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
     private func startRefreshProgressTimer(timer: inout Timer?) {
         
         let blockTimerWork: (Timer) -> Void = { [weak self] _ in
-            guard let self, state != .cancelled else { return }
-            if [.startedWork, .startedRest].contains(where: { $0 == self.state }) {
+            guard let self, state.value != .cancelled else { return }
+            if [.startedWork, .startedRest].contains(where: { $0 == self.state.value }) {
                 chronoFrozen = getChronoOnLowEnergyMode()
             }
        }
@@ -245,22 +243,19 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
     private func startCountdown(extendedRuntimeSession: WKExtendedRuntimeSession,
                                  customTimer: CustomTimer) {
         let blockTimerCountdown: (Timer) -> Void = { [weak self] _ in
-            guard let self, state != .cancelled else { return }
+            guard let self, state.value != .cancelled else { return }
             countdownCurrentValue -= 1
-//            if countdownCurrentValue == 3 {
-//               // AudioManager.shared.start()
-//            }
             if countdownCurrentValue < 1 {
                 timerCountdown?.invalidate()
                 dropTimer(&timerCountdown)
                 self.chronoFrozen = "--"
-                self.set(state: .startedWork)
+                changeStateAndSpeechWhenApplies(to: .startedWork)
                 setupWorkAndRestTimers(extendedRuntimeSession, customTimer)
                 return
             }
             self.chronoFrozen = "\(countdownCurrentValue)"
         }
-        audioManager.speak(text: String(localized: "message_10_secs_to_go"))
+    //    audioManager.countdown()
         //let secondsPerRound = Double(emom.workSecs /*+ 1 */+ emom.restSecs)
         timerCountdown = Timer(
             fire: Date.now,
@@ -280,7 +275,7 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
     
         processWorktime(extendedRuntimeSession: extendedRuntimeSession, emom: customTimer, timerWork: &timerWork)
         
-        HapticManager.shared.start()
+      //  HapticManager.shared.start()
         
         if customTimer.restSecs > 0 {
             processResttime(extendedRuntimeSession: extendedRuntimeSession, emom: customTimer, timerRest: &timerRest)
@@ -300,22 +295,22 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
         HapticManager.shared.start()
     
         let blockTimerWork: (Timer) -> Void = { [weak self] _ in
-            guard let self, state != .cancelled else { return }
+            guard let self, state.value != .cancelled else { return }
             self.decreaseBy1RoundsLeft()
             speakRound(audioManager)
 
             if roundsLeft > 0 {
-                self.set(state: .startedWork)
+                changeStateAndSpeechWhenApplies(to: .startedWork)
                 self.chronoOnMove = Date.now
                // AudioManager.shared.work()
-                audioManager.speak(text: String(localized: "chrono_message_work"))
-                HapticManager.shared.work()
+       //         audioManager.work()
+         //       HapticManager.shared.work()
             } else {
-                self.set(state: .finished)
-                audioManager.speak(text: String(localized: "chrono_message_finished"))
+                changeStateAndSpeechWhenApplies(to: .finished)
+             //   audioManager.rest()
                 extendedRuntimeSession.invalidate()
                // AudioManager.shared.finish()
-                HapticManager.shared.finish()
+            //    HapticManager.shared.finish()
             }
         }
         let secondsPerRound = emom.secondsPerRound()
@@ -329,6 +324,16 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
         RunLoop.main.add(timerWork, forMode: .common)
     }
     
+    private func changeStateAndSpeechWhenApplies(to: EMOMViewModelState.State) {
+        state = state.set(state: to)
+        speech(state: state)
+    }
+
+    private func speech(state: EMOMViewModelState) {
+        guard state.didChanged else { return }
+        audioManager.speech(state: state)
+    }
+
     fileprivate func speakRound(_ audioManager: AudioManager) {
         guard roundsLeft > 0 else { return }
         let text = roundsLeft == 1 ?
@@ -351,16 +356,16 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
     private func createAndRunRestTimer(_ emom: CustomTimer, _ fireRest: Date, _ extendedRuntimeSession: WKExtendedRuntimeSession, timerRest: inout Timer?) {
         
         let blockRestTimer: (Timer) -> Void = { [weak self] _ in
-            guard let self, state != .cancelled else { return }
-            self.set(state: .startedRest)
+            guard let self, state.value != .cancelled else { return }
+            changeStateAndSpeechWhenApplies(to: .startedRest)
             if roundsLeft > 0 {
                 self.chronoOnMove = Date.now
-                audioManager.speak(text: String(localized: "chrono_message_rest"))
-                HapticManager.shared.rest()
+             //   audioManager.rest()
+            //    HapticManager.shared.rest()
             } else {
                 extendedRuntimeSession.invalidate()
-                audioManager.speak(text: String(localized: "chrono_message_finished"))
-                HapticManager.shared.finish()
+              //  audioManager.finished()
+              //  HapticManager.shared.finish()
             }
         }
         let secondsPerRound = Double(emom.workSecs + emom.restSecs)

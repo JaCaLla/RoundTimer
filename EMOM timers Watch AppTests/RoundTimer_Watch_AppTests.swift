@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import RoundTimer_Watch_App
+@testable import EMOM_timers_Watch_App
 
 final class RoundTimer_Watch_AppTests: XCTestCase {
 

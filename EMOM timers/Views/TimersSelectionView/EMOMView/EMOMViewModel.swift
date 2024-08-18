@@ -105,28 +105,6 @@ final class EMOMViewModel: NSObject, ObservableObject {
         }
     }
 
-//    internal func getActionIcon() -> String {
-//        if state == .finished {
-//            return "arrow.uturn.left.circle"
-//        } else if state == .startedWork || state == .startedRest {
-//            return "pause.circle"
-//        } else {
-//            return "play.circle"
-//        }
-//    }
-
-    func actionButtonColor() -> Color {
-        if state == .finished {
-            return .timerNotStartedColor
-        } else if state == .startedWork || state == .startedRest {
-            return .timerNotStartedColor
-        } else if state == .notStarted || state == .paused {
-            return .timerStartedColor
-        } else {
-            return .green
-        }
-    }
-
     //MARK: - Helpers
     func getForegroundTextColor() -> Color {
         if [.notStarted, .finished, .paused].contains(where: { $0 == state }) {
@@ -279,7 +257,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
         } else if [ .startedWork,.startedRest].contains(where: { $0 == state}) ,
                   let chronoOnMove {
             let isWork =  state == .startedWork
-            let message =  String(localized: isWork ? "chorno_message_work" : "chorno_message_rest")
+            let message =  String(localized: isWork ? "chrono_message_work" : "chrono_message_rest")
             let mirroredTimerWorking = MirroredTimerWorking(rounds: emom.rounds,
                                                             currentRounds: emom.rounds - roundsLeft + 1,
                                                             date: chronoOnMove.timeIntervalSince1970,

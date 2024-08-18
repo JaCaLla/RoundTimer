@@ -34,8 +34,9 @@ final class CreateCustomTimerViewModel: ObservableObject {
         let workSecs = selectedWorkMins * 60 + selectedWorkSecs
         guard workSecs > 0 else { return nil }
         let restSecs = selectedRestMins * 60 + selectedRestSecs
-        let rounds = minRounds + selectedIndexRounds
-        return CustomTimer(timerType: .emom, 
+      //  let rounds = /*minRounds +*/ selectedIndexRounds
+        let rounds = max(minRounds, selectedIndexRounds)
+        return CustomTimer(timerType: .emom,
                            rounds: rounds,
                            workSecs: workSecs,
                            restSecs: restSecs,

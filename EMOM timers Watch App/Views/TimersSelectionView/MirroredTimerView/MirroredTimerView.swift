@@ -44,7 +44,6 @@ struct MirroredTimerView: View {
                 .gaugeStyle(.accessoryLinearCapacity)
                 .scaleEffect(x: 1.0, y: 0.25)
         }
-       // .background(viewModel.getBackground())
         .onAppear {
             guard let mirroredTimer else { return }
             viewModel.set(mirroredTimer: mirroredTimer)
@@ -64,13 +63,13 @@ struct MirroredTimerView: View {
 
 #Preview {
     //let viewModel = MirroredTimerViewModel(mirroredTimer: .countdown5)
-    return MirroredTimerView(mirroredTimer: .constant(.countdown5), closedFromCompation: .constant(false))
+    return MirroredTimerView(mirroredTimer: .constant(.countdown2), closedFromCompation: .constant(false))
 }
 
 extension MirroredTimerCountdown {
-    static let countdown5 = MirroredTimerCountdown(value: 5)
+    static let countdown2 = MirroredTimerCountdown(value: 2)
 }
 
 extension MirroredTimer {
-    static let countdown5 = MirroredTimer(mirroredTimerType: .countdown, mirroredTimerCountdown: .countdown5)
+    static let countdown2 = MirroredTimer(mirroredTimerType: .countdown, mirroredTimerCountdown: .countdown2)
 }

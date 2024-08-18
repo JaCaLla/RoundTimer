@@ -10,11 +10,11 @@ import AVFAudio
 
 
 protocol AudioManagerProtocol {
-//    func pause()
-//    func rest()
-//    func work()
-//    func finish()
     func speak(text: String)
+    func speech(state: EMOMViewModelState)
+    func countdown()
+    func work()
+    func finished()
 }
 
 final class AudioManager: NSObject, ObservableObject {
@@ -29,14 +29,46 @@ final class AudioManager: NSObject, ObservableObject {
     }
 }
 
-
 extension AudioManager: AudioManagerProtocol {
     
+    func countdown() {
+        HapticManager.shared.start()
+        speak(text: String(localized: "message_10_secs_to_go"))
+    }
+
+    func work() {
+        HapticManager.shared.start()
+        speak(text: String(localized: "chrono_message_work"))
+    }
+    
+    func rest() {
+        HapticManager.shared.start()
+        speak(text: String(localized: "chrono_message_rest"))
+    }
+    
+    func finished() {
+        HapticManager.shared.start()
+        speak(text: String(localized: "chrono_message_finished"))
+    }
+
+    // MARK :- Private
     func speak(text: String) {
+        HapticManager.shared.start()
         let utterance = AVSpeechUtterance(string: text)
-        utterance.volume = 0.1
+        utterance.volume = volume//0.1
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         speechSynthesizer.speak(utterance)
+    }
+    
+    func speech(state: EMOMViewModelState) {
+        switch state.value {
+        case .countdown: countdown()
+        case .notStarted: break
+        case .startedWork: work()
+        case .startedRest: rest()
+        case .finished: finished()
+        case .cancelled: break
+        }
     }
     
 //    func start() {

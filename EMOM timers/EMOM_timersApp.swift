@@ -47,13 +47,27 @@ struct AppRoundTimerApp: App {
   // register app delegate for Firebase setup
   @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @Environment(\.scenePhase) private var scenePhase
-
+    @State private var isActive = false
+    
   var body: some Scene {
     WindowGroup {
       NavigationView {
           //ContentView()
-          MainView()
-      }.onAppear {
+          if isActive {
+              MainView()
+          } else {
+              SplashScreenView()
+          }
+      }
+      .onAppear {
+                  // Delay for 2 seconds before switching to the main view
+                  DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                      withAnimation {
+                          self.isActive = true
+                      }
+                  }
+              }
+      .onAppear {
 #if !RELEASE
     var args = ProcessInfo.processInfo.arguments
     args.append("-FIRAnalyticsDebugEnabled")

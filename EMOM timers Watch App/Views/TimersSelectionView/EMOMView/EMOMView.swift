@@ -59,27 +59,17 @@ struct EMOMView: View {
     private func rounds() -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 0) {
             Text("\(viewModel.getCurrentRound())")
-                .foregroundColor(.roundColor)
+                .font(viewModel.getTimerAndRoundFont())
             Text("\(viewModel.getRounds())")
-                .foregroundColor(.roundColor)
                 .font(.emomRounds)
         }
-        .font(viewModel.getTimerAndRoundFont())
+        .foregroundColor(.roundColor)
     }
     
     private func mmss() -> some View {
-        VStack {
-            if let chronoOnMove = viewModel.chronoOnMove,
-               !isLuminanceReduced {
-                Text("\(chronoOnMove, style: .timer)")
-                    .foregroundStyle(viewModel.getForegroundTextColor())
-                    .allowsTightening(true)
-            } else {
-                Text(viewModel.chronoFrozen)
-                    .foregroundStyle(viewModel.getForegroundTextColor())
-            }
-        }
-        .font(viewModel.getTimerAndRoundFont())
+        Text(viewModel.chronoFrozen)
+            .foregroundStyle(viewModel.getForegroundTextColor())
+            .font(viewModel.getTimerAndRoundFont())
     }
     
     private func progress() -> some View {

@@ -23,18 +23,18 @@ struct TimerPickerStepView: View {
     @Binding var navPath: [String]
     var pickerViewType: TimerPickerStepViewType
     @FocusState private var fousedfield: Bool
-    @State private var selectedMins = 0
-    @State private var selectedSecs = 30
-    @EnvironmentObject var selectEMOMViewModel: CreateCustomTimerViewModel
+    @State private var selected: (mins:Int, secs: Int) = (0, 30)
+    @EnvironmentObject var viewModel: CreateCustomTimerViewModel
+
     let pickerHeight = 100.0
     var body: some View {
         VStack {
             HStack(spacing: 5) {
-                    Picker(String(localized: "picker_minutes"), selection: $selectedMins) { ForEach(0..<60) { Text("\(String(format: "%0.1d", $0))") }
+                Picker(String(localized: "picker_minutes"), selection: $selected.mins) { ForEach(0..<60) { Text("\(String(format: "%0.1d", $0))") }
                     }
                     .focused($fousedfield)
                     .frame(height: pickerHeight)
-                Picker(String(localized: "picker_seconds"), selection: $selectedSecs) { ForEach(0..<60) { Text("\(String(format: "%0.2d", $0))") }
+                Picker(String(localized: "picker_seconds"), selection: $selected.secs) { ForEach(0..<60) { Text("\(String(format: "%0.2d", $0))") }
                 }
                     .frame(height: pickerHeight)
             }
@@ -43,19 +43,19 @@ struct TimerPickerStepView: View {
                 .font(.pickerSelectionFont)
             Spacer()
             if pickerViewType == .work,
-                !(selectedMins == 0 && selectedSecs == 0) {
-                NavigationLink(value: selectEMOMViewModel.getNavigationLink()) {
+               !(selected.mins == 0 && selected.secs == 0) {
+                NavigationLink(value: viewModel.getNavigationLink()) {
                     Group {
-                        Text(selectEMOMViewModel.getContinueButtonText()) + Text(Image(systemName: "chevron.right"))
+                        Text(viewModel.getContinueButtonText()) + Text(Image(systemName: "chevron.right"))
                     }
                     .font(.buttonSubtitleFont)
                 }
                     .simultaneousGesture(TapGesture().onEnded {
-                        if selectEMOMViewModel.timerType == .upTimer {
+                        if viewModel.timerType == .upTimer {
                             dismissFlowAndStartEMOM()
                         } else {
-                            let secs = selectedMins * 60 + selectedSecs
-                            selectEMOMViewModel.workSecs = secs
+                            let secs = selected.mins * 60 + selected.secs
+                            viewModel.workSecs = secs
                         }
                     })
             } else if pickerViewType == .rest {
@@ -90,26 +90,13 @@ struct TimerPickerStepView: View {
             }
         }.onAppear {
             fousedfield = true
-            let seconds = pickerViewType == .work ? selectEMOMViewModel.workSecs : selectEMOMViewModel.restSecs
-            (selectedMins, selectedSecs) = getHHMMSSIndexs(seconds: seconds)
+            selected = viewModel.getHHMMSSIndexs(pickerViewType: pickerViewType)
         }
-    }
-
-    func getHHMMSSIndexs(seconds: Int) -> ( Int, Int) {
-        (CustomTimer.getMM(seconds: seconds),
-            CustomTimer.getSS(seconds: seconds))
     }
 
     private func dismissFlowAndStartEMOM() {
         navPath.removeAll()
-        selectEMOMViewModel.dismissFlowAndStartEMOM = true
-        // TO DO: Extract this calculation because will be performed in many places
-        let secs = selectedMins * 60 + selectedSecs
-        if pickerViewType == .work {
-            selectEMOMViewModel.workSecs = secs
-        } else {
-            selectEMOMViewModel.restSecs = secs
-        }
+        viewModel.dismissFlowAndStartEMOM(pickerViewType: pickerViewType,selected: selected)
     }
 }
 

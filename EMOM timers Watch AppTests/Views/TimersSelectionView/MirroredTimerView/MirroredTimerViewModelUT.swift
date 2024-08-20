@@ -39,7 +39,6 @@ final class MirroredTimerViewModelUT: XCTestCase {
         sut.set(mirroredTimer: mirroredTimer)
         XCTAssertEqual(mirroredTimer, sut.mirroredTimer)
         XCTAssertEqual(sut.chronoFrozen, "5")
-        XCTAssertNil(sut.chronoOnMove)
         XCTAssertEqual(sut.state.value, .countdown)
         XCTAssertEqual(sut.state.didChanged, true)
         XCTAssertEqual(audioManagerMock.speakStateCount, 1)
@@ -47,8 +46,7 @@ final class MirroredTimerViewModelUT: XCTestCase {
         mirroredTimer = MirroredTimer.work
         sut.set(mirroredTimer: mirroredTimer)
         XCTAssertEqual(mirroredTimer, sut.mirroredTimer)
-        XCTAssertEqual(sut.chronoFrozen, "5")
-        XCTAssertEqual(sut.chronoOnMove?.timeIntervalSince1970, 1723810036)
+        XCTAssertEqual(sut.chronoFrozen, "1723810036")
         XCTAssertEqual(sut.state.value, .startedWork)
         XCTAssertEqual(sut.state.didChanged, true)
         XCTAssertEqual(audioManagerMock.speakStateCount, 2)
@@ -56,8 +54,7 @@ final class MirroredTimerViewModelUT: XCTestCase {
         mirroredTimer = MirroredTimer.rest
         sut.set(mirroredTimer: mirroredTimer)
         XCTAssertEqual(mirroredTimer, sut.mirroredTimer)
-        XCTAssertEqual(sut.chronoFrozen, "5")
-        XCTAssertEqual(sut.chronoOnMove?.timeIntervalSince1970, 1723810036)
+        XCTAssertEqual(sut.chronoFrozen, "1723810036")
         XCTAssertEqual(sut.state.value, .startedRest)
         XCTAssertEqual(sut.state.didChanged, true)
         XCTAssertEqual(audioManagerMock.speakStateCount, 3)
@@ -66,7 +63,6 @@ final class MirroredTimerViewModelUT: XCTestCase {
         sut.set(mirroredTimer: mirroredTimer)
         XCTAssertEqual(mirroredTimer, sut.mirroredTimer)
         XCTAssertEqual(sut.chronoFrozen, "1723810036")
-        XCTAssertNil(sut.chronoOnMove)
         XCTAssertEqual(sut.state.value, .finished)
         XCTAssertEqual(sut.state.didChanged, true)
         XCTAssertEqual(audioManagerMock.speakStateCount, 4)
@@ -169,19 +165,19 @@ final class MirroredTimerViewModelUT: XCTestCase {
         
          mirroredTimer = MirroredTimer.countdown2
         sut.set(mirroredTimer: mirroredTimer)
-        XCTAssertEqual(sut.getForegroundTextColor(), .countdownColor)
+        XCTAssertEqual(sut.getForegroundTextColor(), .countdownInminentColor)
         
         mirroredTimer = MirroredTimer.work
         sut.set(mirroredTimer: mirroredTimer)
-        XCTAssertEqual(sut.getForegroundTextColor(), .green)
+        XCTAssertEqual(sut.getForegroundTextColor(), .timerStartedColor)
         
         mirroredTimer = MirroredTimer.rest
         sut.set(mirroredTimer: mirroredTimer)
-        XCTAssertEqual(sut.getForegroundTextColor(), .green)
+        XCTAssertEqual(sut.getForegroundTextColor(), .timerRestStartedColor)
         
         mirroredTimer = MirroredTimer.finished
         sut.set(mirroredTimer: mirroredTimer)
-        XCTAssertEqual(sut.getForegroundTextColor(), .green)
+        XCTAssertEqual(sut.getForegroundTextColor(), .timerNotStartedColor)
         
         mirroredTimer = MirroredTimer(mirroredTimerType: .working,
                                       mirroredTimerWorking: nil)
@@ -189,23 +185,39 @@ final class MirroredTimerViewModelUT: XCTestCase {
         XCTAssertEqual(sut.getForegroundTextColor(), .green)
     }
     
-    /*
-     func getTimerAndRoundFont() -> Font {
-         .timerAndRoundLargeFont
-     }
-     
-     func getForegroundTextColor() -> Color {
-         guard let mirroredTimer else { return .green }
-         if let mirroredTimerCountdown =  mirroredTimer.mirroredTimerCountdown {
-             return mirroredTimerCountdown.value > 3 ? .countdownColor : .countdownInminentColor
-         } else if let mirroredTimerWorking =  mirroredTimer.mirroredTimerWorking {
-             return mirroredTimerWorking.isWork ? .timerStartedColor : .timerRestStartedColor
-         } else if mirroredTimer.mirroredTimerFinished != nil {
-             return .timerNotStartedColor
-         }
-             return .green
-     }
-     */
+    func testgetRoundsProgress() {
+        XCTAssertEqual(sut.getRoundsProgress(), 0.0)
+        
+        var mirroredTimer = MirroredTimer.countdown5
+        sut.set(mirroredTimer: mirroredTimer)
+        XCTAssertEqual(sut.getRoundsProgress(), 0.5)
+        
+         mirroredTimer = MirroredTimer.countdown2
+        sut.set(mirroredTimer: mirroredTimer)
+        XCTAssertEqual(sut.getRoundsProgress(), 0.8)
+        
+        mirroredTimer = MirroredTimer.work
+        sut.set(mirroredTimer: mirroredTimer)
+        XCTAssertEqual(sut.getRoundsProgress(), 0.4)
+        
+        mirroredTimer = MirroredTimer.rest
+        sut.set(mirroredTimer: mirroredTimer)
+        XCTAssertEqual(sut.getRoundsProgress(), 0.4)
+        
+        mirroredTimer = MirroredTimer.finished
+        sut.set(mirroredTimer: mirroredTimer)
+        XCTAssertEqual(sut.getRoundsProgress(), 1.0)
+        
+        mirroredTimer = MirroredTimer(mirroredTimerType: .working,
+                                      mirroredTimerWorking: nil)
+        sut.set(mirroredTimer: mirroredTimer)
+        XCTAssertEqual(sut.getRoundsProgress(), 0.0)
+    }
+    
+    func testClose() {
+        sut.close()
+        XCTAssertNil(sut.mirroredTimer)
+    }
 }
 
 extension MirroredTimerCountdown {
@@ -216,12 +228,12 @@ extension MirroredTimerCountdown {
 extension MirroredTimerWorking {
     static let mirroredTimerWorking = MirroredTimerWorking(rounds: 5,
                                                            currentRounds: 3,
-                                                           date: 1723810036,
+                                                           date: "1723810036",
                                                            isWork: true,
                                                            message: "WORK")
     static let mirroredTimerRest = MirroredTimerWorking(rounds: 5,
                                                            currentRounds: 3,
-                                                           date: 1723810036,
+                                                           date: "1723810036",
                                                            isWork: false,
                                                            message: "REST")
 }

@@ -86,7 +86,8 @@ struct CustomTimer: Equatable, Codable {
     }
     
     static func getTotal(emom: CustomTimer) -> Int {
-        emom.rounds * ( emom.workSecs + emom.restSecs)
+        // Remove restSecs from last round. Last round when ends work, timer is finished.
+        (emom.rounds * ( emom.workSecs + emom.restSecs)) - emom.restSecs
     }
     
     static func getRound(emom: CustomTimer, secsEllapsed: Int) -> Int {
@@ -126,5 +127,7 @@ extension CustomTimer: CustomStringConvertible {
 
 // MARK :- Examples
 extension CustomTimer {
-    static let customTimerDefault = CustomTimer(timerType: .upTimer, rounds: 0, workSecs: 0, restSecs: 0)
+    static let customTimerDefault = CustomTimer(timerType: .upTimer, rounds: 2, workSecs: 60, restSecs: 0)
+    static let emom2r60w10r = CustomTimer(timerType: .emom, rounds: 2, workSecs: 60, restSecs: 10)
+    static let emom2r60w0r = CustomTimer(timerType: .emom, rounds: 2, workSecs: 60, restSecs: 0)
 }

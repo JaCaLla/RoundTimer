@@ -70,10 +70,10 @@
 		296909D42BC9A4B500737D0A /* UpTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909C82BC9A4B500737D0A /* UpTimerViewModel.swift */; };
 		296909D52BC9A4B500737D0A /* TimersSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909CA2BC9A4B500737D0A /* TimersSelectionView.swift */; };
 		296909D72BC9A4BE00737D0A /* VibrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909D62BC9A4BE00737D0A /* VibrationView.swift */; };
-		296909E42BC9B7DA00737D0A /* EMOMViewModelUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909DB2BC9B7DA00737D0A /* EMOMViewModelUT.swift */; };
 		296909E52BC9B7DA00737D0A /* AppVersionUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909E02BC9B7DA00737D0A /* AppVersionUT.swift */; };
 		296909E62BC9B7DA00737D0A /* EmomUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909E12BC9B7DA00737D0A /* EmomUT.swift */; };
 		296909E72BC9B7DA00737D0A /* RoundTimer_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296909E32BC9B7DA00737D0A /* RoundTimer_Watch_AppTests.swift */; };
+		29773CBF2C72973F000A041C /* EMOMViewModelUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29773CBE2C72973F000A041C /* EMOMViewModelUT.swift */; };
 		2979A3E32BF66607006E32E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29D4BD8E2BC99F1B00A0F6B4 /* Assets.xcassets */; };
 		2979A3E42BF66607006E32E6 /* ColorsAndFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4BD7D2BC99ECB00A0F6B4 /* ColorsAndFonts.swift */; };
 		2979A3E62BF6681A006E32E6 /* CustomTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4BD7A2BC99EAB00A0F6B4 /* CustomTimer.swift */; };
@@ -118,6 +118,7 @@
 		29EFDC6B2C289B4600C46504 /* CreateCustomTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EFDC6A2C289B4600C46504 /* CreateCustomTimerView.swift */; };
 		29EFDC6D2C289B8800C46504 /* CreateCustomTimerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EFDC6C2C289B8800C46504 /* CreateCustomTimerPickerView.swift */; };
 		29F150EB2C6D073C00584757 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4BD802BC99ED300A0F6B4 /* AudioManager.swift */; };
+		29F303DD2C73E94F004B8CF3 /* WKExtendedRuntimeSessionDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F303DC2C73E94F004B8CF3 /* WKExtendedRuntimeSessionDelegateMock.swift */; };
 		29FEED2F2C6E24B600E64DD1 /* MirroredTimerViewModelUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FEED2E2C6E24B600E64DD1 /* MirroredTimerViewModelUT.swift */; };
 /* End PBXBuildFile section */
 
@@ -235,10 +236,10 @@
 		296909CA2BC9A4B500737D0A /* TimersSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimersSelectionView.swift; sourceTree = "<group>"; };
 		296909D62BC9A4BE00737D0A /* VibrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VibrationView.swift; sourceTree = "<group>"; };
 		296909D92BC9A70D00737D0A /* EMOM timers Watch App.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "EMOM timers Watch App.entitlements"; sourceTree = "<group>"; };
-		296909DB2BC9B7DA00737D0A /* EMOMViewModelUT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMOMViewModelUT.swift; sourceTree = "<group>"; };
 		296909E02BC9B7DA00737D0A /* AppVersionUT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVersionUT.swift; sourceTree = "<group>"; };
 		296909E12BC9B7DA00737D0A /* EmomUT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmomUT.swift; sourceTree = "<group>"; };
 		296909E32BC9B7DA00737D0A /* RoundTimer_Watch_AppTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTimer_Watch_AppTests.swift; sourceTree = "<group>"; };
+		29773CBE2C72973F000A041C /* EMOMViewModelUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOMViewModelUT.swift; sourceTree = "<group>"; };
 		2979A3EB2BF774D5006E32E6 /* EMOMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOMView.swift; sourceTree = "<group>"; };
 		2979A3F12BF7763D006E32E6 /* EMOMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOMViewModel.swift; sourceTree = "<group>"; };
 		2979A3F52BF7C69C006E32E6 /* OrientationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationManager.swift; sourceTree = "<group>"; };
@@ -272,6 +273,7 @@
 		29EBF32B2BF28FF700C79539 /* ReceivedWatchOSMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedWatchOSMessagesView.swift; sourceTree = "<group>"; };
 		29EFDC6A2C289B4600C46504 /* CreateCustomTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomTimerView.swift; sourceTree = "<group>"; };
 		29EFDC6C2C289B8800C46504 /* CreateCustomTimerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomTimerPickerView.swift; sourceTree = "<group>"; };
+		29F303DC2C73E94F004B8CF3 /* WKExtendedRuntimeSessionDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKExtendedRuntimeSessionDelegateMock.swift; sourceTree = "<group>"; };
 		29FEED2E2C6E24B600E64DD1 /* MirroredTimerViewModelUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirroredTimerViewModelUT.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -561,6 +563,7 @@
 		296845882C6F7BF300D9C6E5 /* MOCKS */ = {
 			isa = PBXGroup;
 			children = (
+				29F303D72C73CF2B004B8CF3 /* Views */,
 				296845892C6F7C2900D9C6E5 /* Managers */,
 			);
 			path = MOCKS;
@@ -607,44 +610,19 @@
 		296909CB2BC9A4B500737D0A /* TimersSelectionView */ = {
 			isa = PBXGroup;
 			children = (
-				296909CA2BC9A4B500737D0A /* TimersSelectionView.swift */,
-				291DC5F92C42663200419E55 /* MirroredTimerView */,
 				296909C22BC9A4B500737D0A /* CreateCustomTimerView */,
 				296909C62BC9A4B500737D0A /* EMOMView */,
+				291DC5F92C42663200419E55 /* MirroredTimerView */,
+				296909CA2BC9A4B500737D0A /* TimersSelectionView.swift */,
 				296909C92BC9A4B500737D0A /* UpTimerView */,
 			);
 			path = TimersSelectionView;
-			sourceTree = "<group>";
-		};
-		296909DC2BC9B7DA00737D0A /* EMOMView */ = {
-			isa = PBXGroup;
-			children = (
-				296909DB2BC9B7DA00737D0A /* EMOMViewModelUT.swift */,
-			);
-			path = EMOMView;
-			sourceTree = "<group>";
-		};
-		296909DD2BC9B7DA00737D0A /* ActiveTimerView */ = {
-			isa = PBXGroup;
-			children = (
-				296909DC2BC9B7DA00737D0A /* EMOMView */,
-			);
-			path = ActiveTimerView;
-			sourceTree = "<group>";
-		};
-		296909DE2BC9B7DA00737D0A /* EMOM */ = {
-			isa = PBXGroup;
-			children = (
-				296909DD2BC9B7DA00737D0A /* ActiveTimerView */,
-			);
-			path = EMOM;
 			sourceTree = "<group>";
 		};
 		296909DF2BC9B7DA00737D0A /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				29FEED2C2C6E246000E64DD1 /* TimersSelectionView */,
-				296909DE2BC9B7DA00737D0A /* EMOM */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -655,6 +633,14 @@
 				296909E12BC9B7DA00737D0A /* EmomUT.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		29773CBD2C7296A3000A041C /* EMOMView */ = {
+			isa = PBXGroup;
+			children = (
+				29773CBE2C72973F000A041C /* EMOMViewModelUT.swift */,
+			);
+			path = EMOMView;
 			sourceTree = "<group>";
 		};
 		2979A3E02BF665B3006E32E6 /* Styles */ = {
@@ -842,9 +828,34 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		29F303D72C73CF2B004B8CF3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				29F303D82C73CF3E004B8CF3 /* TimersSelectionView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		29F303D82C73CF3E004B8CF3 /* TimersSelectionView */ = {
+			isa = PBXGroup;
+			children = (
+				29F303DB2C73CF5A004B8CF3 /* EMOMView */,
+			);
+			path = TimersSelectionView;
+			sourceTree = "<group>";
+		};
+		29F303DB2C73CF5A004B8CF3 /* EMOMView */ = {
+			isa = PBXGroup;
+			children = (
+				29F303DC2C73E94F004B8CF3 /* WKExtendedRuntimeSessionDelegateMock.swift */,
+			);
+			path = EMOMView;
+			sourceTree = "<group>";
+		};
 		29FEED2C2C6E246000E64DD1 /* TimersSelectionView */ = {
 			isa = PBXGroup;
 			children = (
+				29773CBD2C7296A3000A041C /* EMOMView */,
 				29FEED2D2C6E248200E64DD1 /* MirroredTimerView */,
 			);
 			path = TimersSelectionView;
@@ -1233,10 +1244,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				296909E42BC9B7DA00737D0A /* EMOMViewModelUT.swift in Sources */,
+				29F303DD2C73E94F004B8CF3 /* WKExtendedRuntimeSessionDelegateMock.swift in Sources */,
 				296909E72BC9B7DA00737D0A /* RoundTimer_Watch_AppTests.swift in Sources */,
 				2968458B2C6F7C4600D9C6E5 /* AudioManagerMock.swift in Sources */,
 				296909E62BC9B7DA00737D0A /* EmomUT.swift in Sources */,
+				29773CBF2C72973F000A041C /* EMOMViewModelUT.swift in Sources */,
 				29FEED2F2C6E24B600E64DD1 /* MirroredTimerViewModelUT.swift in Sources */,
 				296909E52BC9B7DA00737D0A /* AppVersionUT.swift in Sources */,
 			);

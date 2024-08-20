@@ -8,6 +8,11 @@
 import Combine
 import SwiftUI
 
+protocol TimerPickerStepViewModelProtocol {
+    func dismissFlowAndStartEMOM(pickerViewType: TimerPickerStepViewType, selected: (mins: Int, secs: Int))
+    func getHHMMSSIndexs(/*seconds: Int,*/ pickerViewType: TimerPickerStepViewType) -> ( Int, Int)
+}
+
 final class CreateCustomTimerViewModel: ObservableObject {
     enum Screens: String {
         case ageStepView = "RoundsAgeView"
@@ -56,7 +61,9 @@ final class CreateCustomTimerViewModel: ObservableObject {
     func getEmom() -> CustomTimer? {
         guard dismissFlowAndStartEMOM else { return nil }
         let rounds = timerType == .upTimer ? 1 : rounds
+        // TO DO: Valiate against a real clock.
         return CustomTimer(timerType: timerType, rounds: rounds, workSecs: workSecs, restSecs: restSecs)
+//        return CustomTimer(timerType: timerType, rounds: rounds, workSecs: workSecs + 1, restSecs: restSecs + 1)
     }
     
     func getContinueButtonText() -> LocalizedStringKey {
@@ -65,5 +72,26 @@ final class CreateCustomTimerViewModel: ObservableObject {
     
     func getNavigationLink() -> String {
         timerType == .upTimer ? Screens.timerPickerStepViewWork.rawValue  : Screens.timerPickerStepViewRest.rawValue
+    }
+}
+
+
+// MARK: - TimerPickerStepViewModelProtocol
+extension CreateCustomTimerViewModel: TimerPickerStepViewModelProtocol {
+    func dismissFlowAndStartEMOM(pickerViewType: TimerPickerStepViewType,  selected: (mins: Int, secs: Int)) {
+        dismissFlowAndStartEMOM = true
+        // TO DO: Extract this calculation because will be performed in many places
+        let secs = selected.mins * 60 + selected.secs
+        if pickerViewType == .work {
+            workSecs = secs
+        } else {
+            restSecs = secs
+        }
+    }
+    
+    func getHHMMSSIndexs( pickerViewType: TimerPickerStepViewType) -> ( Int, Int) {
+    let seconds = pickerViewType == .work ? workSecs : restSecs
+      return  (CustomTimer.getMM(seconds: seconds),
+            CustomTimer.getSS(seconds: seconds))
     }
 }

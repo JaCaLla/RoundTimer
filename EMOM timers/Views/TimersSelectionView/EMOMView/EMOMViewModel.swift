@@ -16,6 +16,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
     internal var timerCountdown: Timer?
     internal var timerRefresh: Timer?
     internal var state: State = .notStarted
+    private var startWorkTimeStamp: Date?
     internal var previousStateBeforePausing: State = .startedWork
     internal var secsToFinishAfterPausing: TimeInterval = 0
     internal var secsToFinishRestAfterPausing: TimeInterval = 0
@@ -260,7 +261,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
             let message =  String(localized: isWork ? "chrono_message_work" : "chrono_message_rest")
             let mirroredTimerWorking = MirroredTimerWorking(rounds: emom.rounds,
                                                             currentRounds: emom.rounds - roundsLeft + 1,
-                                                            date: chronoOnMove.timeIntervalSince1970,
+                                                            date: getChronoOnLowEnergyMode(customTimer: emom),
                                                             isWork: state == .startedWork,
                                                             message: message)
             let mirroredTimer = MirroredTimer(mirroredTimerType: .working, mirroredTimerWorking: mirroredTimerWorking)
@@ -277,6 +278,22 @@ final class EMOMViewModel: NSObject, ObservableObject {
             return nil
         }
     }
+        
+    private func getChronoOnLowEnergyMode(customTimer: CustomTimer) -> String {
+        guard let startWorkTimeStamp  else { return "--:--" }
+        let ellapsedSecs = abs(Int(startWorkTimeStamp.timeIntervalSinceNow))
+        
+        let secsPerRound = customTimer.workSecs + customTimer.restSecs
+        
+        let ellapsedRounds = Int((Double(ellapsedSecs) / Double(secsPerRound)).rounded(.towardZero))
+        
+        var remainigSecs = ellapsedSecs - ellapsedRounds * secsPerRound
+        if remainigSecs >= customTimer.workSecs {
+            remainigSecs -= customTimer.workSecs
+        }
+        return String(format: "%0.1d:%0.2d", remainigSecs / 60, remainigSecs % 60)
+   }
+
     
     private func removeTimers() {
         dropTimer(&timerWork)

@@ -12,16 +12,14 @@ protocol MirroredTimerViewModelProtocol {
     func getCurrentRound() -> String
     func getRounds() -> String
     func getTimerAndRoundFont() -> Font
-    func getForegroundTextColor() -> Color 
-    func getTimerAndRoundFont(isLuminanceReduced: Bool) -> Font
-    func close() 
+    func getForegroundTextColor() -> Color
+    func close()
     func getCurrentMessage() -> String
 }
 
 final class MirroredTimerViewModel:NSObject, ObservableObject {
     
     @Published var chronoFrozen = "--:--"
-    @Published var chronoOnMove: Date?
     private let audioManager: AudioManagerProtocol
     private (set) var state: EMOMViewModelState
     var mirroredTimer: MirroredTimer?
@@ -43,14 +41,12 @@ extension MirroredTimerViewModel: MirroredTimerViewModelProtocol {
         
         if let mirroredTimerCountdown =  mirroredTimer.mirroredTimerCountdown {
             chronoFrozen = "\(mirroredTimerCountdown.value)"
-            chronoOnMove = nil
             changeStateAndSpeechWhenApplies(to: .countdown)
         } else if let mirroredTimerWorking =  mirroredTimer.mirroredTimerWorking {
-            chronoOnMove = Date(timeIntervalSince1970: mirroredTimerWorking.date)
+            chronoFrozen = mirroredTimerWorking.date
             changeStateAndSpeechWhenApplies(to: mirroredTimerWorking.isWork ? .startedWork : .startedRest)
         } else if let mirroredTimerStopped =  mirroredTimer.mirroredTimerFinished {
             chronoFrozen = mirroredTimerStopped.date
-            chronoOnMove = nil
             changeStateAndSpeechWhenApplies(to: .finished)
         }
     }
@@ -115,16 +111,14 @@ extension MirroredTimerViewModel: MirroredTimerViewModelProtocol {
             return .green
     }
     
-    func getTimerAndRoundFont(isLuminanceReduced: Bool) -> Font {
-        return  .timerAndRoundLargeFont
-    }
-    
     func getRoundsProgress() -> Double {
         guard let mirroredTimer else { return 0.0 }
         if let mirroredTimerCountdown =  mirroredTimer.mirroredTimerCountdown {
             return 1.0 - Double(mirroredTimerCountdown.value) / Double(EMOMViewModel.coundownValue)
         } else if let mirroredTimerWorking =  mirroredTimer.mirroredTimerWorking {
             return 1.0 - Double(mirroredTimerWorking.currentRound) / Double(mirroredTimerWorking.rounds)
+        } else if let mirroredTimerFinished =  mirroredTimer.mirroredTimerFinished {
+            return 1.0
         }
         return 0.0
     }

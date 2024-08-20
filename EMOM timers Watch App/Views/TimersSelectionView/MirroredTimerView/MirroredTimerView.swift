@@ -27,16 +27,16 @@ struct MirroredTimerView: View {
                 .font(viewModel.getTimerAndRoundFont())
                 Spacer()
                 VStack {
-                    if let chronoOnMove = viewModel.chronoOnMove {
-                        Text("\(chronoOnMove, style: .timer)")
-                            .foregroundStyle(viewModel.getForegroundTextColor())
-                            .allowsTightening(true)
-                    } else {
+//                    if let chronoOnMove = viewModel.chronoOnMove {
+//                        Text("\(chronoOnMove, style: .timer)")
+//                            .foregroundStyle(viewModel.getForegroundTextColor())
+//                            .allowsTightening(true)
+//                    } else {
                         Text(viewModel.chronoFrozen)
                             .foregroundStyle(viewModel.getForegroundTextColor())
-                    }
+//                    }
                 }
-                .font(viewModel.getTimerAndRoundFont(isLuminanceReduced: false))
+                .font(viewModel.getTimerAndRoundFont())
             }
             
             Gauge(value: viewModel.getRoundsProgress(), label: { })

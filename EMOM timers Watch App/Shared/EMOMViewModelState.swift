@@ -16,7 +16,6 @@ public struct EMOMViewModelState {
     private (set) var didChanged: Bool = false
     
     mutating func set(state to: State) -> Self {
-     //   HapticManager.shared.start()
         self.didChanged = self.value != to
         self.value = to
         return self

@@ -4,7 +4,7 @@
 //
 //  Created by Javier Calartrava on 20/1/24.
 //
-@testable import RoundTimer_Watch_App
+@testable import EMOM_timers_Watch_App
 import XCTest
 
 final class EmomUT: XCTestCase {

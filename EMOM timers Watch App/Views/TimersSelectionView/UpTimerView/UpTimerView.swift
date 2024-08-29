@@ -8,6 +8,7 @@ import SwiftUI
 
 struct UpTimerView: View {
     let bottonSideSize = 50.0
+    
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.isLuminanceReduced) var isLuminanceReduced
     @Binding var customTimer: CustomTimer?
@@ -37,7 +38,8 @@ struct UpTimerView: View {
                     .font(upTimerViewModel.getTimerAndRoundFont())
                     Spacer()
                     VStack {
-                        if let chronoOnMove = upTimerViewModel.chronoOnMove {
+                        if let chronoOnMove = upTimerViewModel.chronoOnMove,
+                           !isLuminanceReduced {
                             Text("\(chronoOnMove, style: .timer)")
                                 .foregroundStyle(upTimerViewModel.getForegroundTextColor())
                                 .allowsTightening(true)
@@ -61,17 +63,21 @@ struct UpTimerView: View {
                     Text("Screen dimmed. Tap to unblock.")
                 }.frame(height: 50)
             } else {
-                Button(action: {
-                    upTimerViewModel.action()
-                }, label: {
-                        Image(systemName: upTimerViewModel.getActionIcon())
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: bottonSideSize, height: bottonSideSize)
-                    })
-                    .foregroundStyle(upTimerViewModel.actionButtonColor())
-                    .frame(width: bottonSideSize, height: bottonSideSize)
-                    .clipShape(Circle())
+                HStack {
+                    HeartZoneView()
+                    Spacer()
+                }
+//                Button(action: {
+//                    upTimerViewModel.action()
+//                }, label: {
+//                        Image(systemName: upTimerViewModel.getActionIcon())
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fit)
+//                            .frame(width: bottonSideSize, height: bottonSideSize)
+//                    })
+//                    .foregroundStyle(upTimerViewModel.actionButtonColor())
+//                    .frame(width: bottonSideSize, height: bottonSideSize)
+//                    .clipShape(Circle())
             }
             Spacer(minLength: 5)
         }.background(upTimerViewModel.getBackground())

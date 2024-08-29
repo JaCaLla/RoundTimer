@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>EMOM timers wants to access your health data in order to analyze your health and best advice</string>
-	<key>NSHealthShareUsageDescription</key>
-	<string>EMOM timers wants to access your health data in order to analyze your health and best advice</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>UIBackgroundModes</key>
@@ -13,6 +9,7 @@
 	<key>WKBackgroundModes</key>
 	<array>
 		<string>physical-therapy</string>
+		<string>workout-processing</string>
 	</array>
 </dict>
 </plist>

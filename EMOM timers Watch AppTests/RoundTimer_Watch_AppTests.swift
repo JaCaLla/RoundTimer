@@ -26,11 +26,11 @@ final class RoundTimer_Watch_AppTests: XCTestCase {
         // Tests marked async will run the test method on an arbitrary thread managed by the Swift runtime.
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+//    func testPerformanceExample() throws {
+//        // This is an example of a performance test case.
+//        self.measure {
+//            // Put the code you want to measure the time of here.
+//        }
+//    }
 
 }

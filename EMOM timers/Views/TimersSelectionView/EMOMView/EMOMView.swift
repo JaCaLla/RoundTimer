@@ -15,65 +15,67 @@ struct EMOMView: View {
 
     var body: some View {
         VStack {
-                            HStack {
-                                Spacer()
-                                Button(action: {
-                                    emomViewModel.close()
-                                    customTimer = nil
-                                }, label: {
-                                    Image(systemName: "xmark")
-                                })
-                                .modifier(ButtonAW())
-                                
-                            }
+            HStack {
+                Spacer()
+                closeButton()
+            }
             Spacer()
             VStack {
-                Text("\(emomViewModel.getCurrentMessage())")
-                    .foregroundStyle(.white)
-                                    .font(.messageiOSAppFont)
+                message()
                 HStack {
-                    HStack(alignment: .firstTextBaseline, spacing: 0) {
-                      Text((emomViewModel.getCurrentRound()))
-                            .font(.timerAndRoundiOSAppFont)
-                        Text("\(emomViewModel.getRounds())")
-                                    .font(.emomRoundsiOSAppFont)
-                     // Spacer()
-                    } .foregroundColor(.roundColor)
+                    rounds()
                     Spacer()
-                        VStack {
-                            if let chronoOnMove = emomViewModel.chronoOnMove {
-                                Text("\(chronoOnMove, style: .timer)")
-                                    .foregroundStyle(emomViewModel.getForegroundTextColor())
-                                    .allowsTightening(true)
-                            } else {
-                                Text(emomViewModel.chronoFrozen)
-                                    .foregroundStyle(emomViewModel.getForegroundTextColor())
-                            }
-                        }
-                        .font(.timerAndRoundiOSAppFont)
+                    mmss()
                 }
             }
             Spacer()
         }
-                    .onAppear {
-                        guard emomViewModel.state == .notStarted else { return }
-                        emomViewModel.set(emom: customTimer)
-                        emomViewModel.action()
-                    }
-     //   .background(emomViewModel.getBackground())
+        .onAppear {
+            guard emomViewModel.state == .notStarted else { return }
+            emomViewModel.setAndStart(emom: customTimer)
+          //  emomViewModel.action()
+        }
         .contentShape(Rectangle())
-//        .onTapGesture {
-//            emomViewModel.action()
-//        }
+    }
+    
+    private func closeButton() -> some View {
+        Button(action: {
+            emomViewModel.close()
+            customTimer = nil
+        }, label: {
+                Image(systemName: "xmark")
+            })
+            .modifier(ButtonAW())
+    }
+    
+    private func message() -> some View {
+        Text("\(emomViewModel.getCurrentMessage())")
+            .foregroundStyle(.white)
+            .font(.messageiOSAppFont)
+    }
+    
+    private func rounds() -> some View {
+        HStack(alignment: .firstTextBaseline, spacing: 0) {
+            Text((emomViewModel.getCurrentRound()))
+                .font(.timerAndRoundiOSAppFont)
+            Text("\(emomViewModel.getRounds())")
+                .font(.emomRoundsiOSAppFont)
+        } .foregroundColor(.roundColor)
+    }
+    
+    private func mmss() -> some View {
+            Text(emomViewModel.mmss)
+                .foregroundStyle(emomViewModel.getForegroundTextColor())
+                .font(.timerAndRoundiOSAppFont)
     }
 }
 
 
 #Preview("Small Font") {
-    let model =  EMOMViewModel()
-    let customTimer = CustomTimer(timerType: .emom,rounds: 2, workSecs: 1800, restSecs: 0)
-    
-    model.set(emom:customTimer )
+    let model = EMOMViewModel()
+    let customTimer = CustomTimer(timerType: .emom, rounds: 2, workSecs: 1800, restSecs: 0)
+
+    model.setAndStart(emom: customTimer)
     return EMOMView(customTimer: .constant(customTimer))
         .previewInterfaceOrientation(.landscapeLeft)
         .environmentObject(model)

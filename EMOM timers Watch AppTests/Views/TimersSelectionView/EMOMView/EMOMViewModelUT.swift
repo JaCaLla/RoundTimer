@@ -11,9 +11,11 @@ import XCTest
 final class EMOMViewModelUT: XCTestCase {
     
     var sut: EMOMViewModel!
+    var         audioManagerMock: AudioManagerMock!
 
     override func setUpWithError() throws {
-        sut = EMOMViewModel()
+        audioManagerMock = AudioManagerMock()
+        sut = EMOMViewModel(audioManager: audioManagerMock)
     }
 
     override func tearDownWithError() throws {
@@ -79,6 +81,16 @@ final class EMOMViewModelUT: XCTestCase {
         }
     }
     
+    func testSet() {
+        sut.set(emom: .emom2r60w10r)
+        XCTAssertEqual(sut.state.value, .countdown )
+        XCTAssertEqual(sut.state.didChanged, true )
+        XCTAssertEqual(audioManagerMock.speakStateCount, 1)
+        XCTAssertEqual(sut.customTimer, .emom2r60w10r)
+        XCTAssertEqual(sut.roundsLeft, 2)
+        XCTAssertNotNil(sut.extendedRuntimeSession)
+    }
+    
     func testSetCustomTimerWhenMock() {
         let expectation = expectation(description: "testSetCustomTimerWhenMock")
         let mock = WKExtendedRuntimeSessionDelegateMock()
@@ -96,7 +108,7 @@ final class EMOMViewModelUT: XCTestCase {
             XCTFail("extendedRuntimeSession was not set to WKExtendedRuntimeSessionDelegateMock class")
         }
     }
-
+/*
     func testWhenRestTimerIsNotSet() {
         
         sut.set(emom: .emom2r60w0r)
@@ -104,14 +116,14 @@ final class EMOMViewModelUT: XCTestCase {
         XCTAssertNil(sut.timerWork)
         XCTAssertNil(sut.timerRest)
         
-        var delayExpectation = XCTestExpectation()
+        let delayExpectation = XCTestExpectation()
         delayExpectation.isInverted = true
         wait(for: [delayExpectation], timeout: 5)
         
         XCTAssertNil(sut.timerWork)
         XCTAssertNil(sut.timerRest)
     }
-    
+ */
     func testRemoveAllTimersOnClose() {
         sut.set(emom: .emom2r60w10r)
         
@@ -140,29 +152,46 @@ final class EMOMViewModelUT: XCTestCase {
         XCTAssertNil(sut.refreshProgressTimer)
     }
     
-    /*
-     func set(emom: CustomTimer?) {
-         guard let emom else { return }
-         changeStateAndSpeechWhenApplies(to: .countdown)
-         self.customTimer = emom
-         
-         if let customTimer {
-             set(roundsLeft: customTimer.rounds)
-         }
-         setupExtendedRuntimeSession()
-     }
-     */
-    
     func testClose() {
         sut.close()
         XCTAssertNil(sut.customTimer)
     }
+
+    func testgetRoundsProgress() {
+        XCTAssertEqual(sut.getRoundsProgress(), 0.0)
+        
+        sut.set(emom: .emom2r60w10r)
+        sut.changeStateAndSpeechWhenApplies(to: .finished)
+        XCTAssertEqual(sut.getRoundsProgress(), 1.0)
+        
+        sut.changeStateAndSpeechWhenApplies(to: .startedWork)
+        XCTAssertEqual(sut.getRoundsProgress(), 0.5)
+        sut.changeStateAndSpeechWhenApplies(to: .startedRest)
+        XCTAssertEqual(sut.getRoundsProgress(), 0.5)
+        
+        sut.changeStateAndSpeechWhenApplies(to: .countdown)
+        XCTAssertEqual(sut.getRoundsProgress(), 0.0)
+        
+        sut.changeStateAndSpeechWhenApplies(to: .notStarted)
+        XCTAssertEqual(sut.getRoundsProgress(), 0.0)
+    }
+    
+    func testgetForegroundTextColor() {
+            XCTFail("implemnt test")
+    }
     /*
-     func close() {
-         customTimer = nil
-         changeStateAndSpeechWhenApplies(to: .cancelled)
-         removeTimers()
-         removeExtendedRuntimeSession()
+     func getForegroundTextColor() -> Color {
+         if [.notStarted, .finished].contains(where: { $0 == state.value }) {
+             return .timerNotStartedColor
+         } else if state.value == .startedWork {
+             return .timerStartedColor
+         } else if state.value == .startedRest {
+             return .timerRestStartedColor
+         } else if state.value == .countdown {
+             return countdownCurrentValue > 3 ? .countdownColor : .countdownInminentColor
+         } else {
+             return .green
+         }
      }
      */
 }

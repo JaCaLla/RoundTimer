@@ -37,9 +37,9 @@ final class EMOMViewModel: NSObject, ObservableObject {
     private (set) var audioManager: AudioManagerProtocol = AudioManager.shared
     
     
-    init(audioManager: AudioManager = AudioManager.shared,
+    init(audioManager: AudioManagerProtocol = AudioManager.shared,
          extendedRuntimeSessionDelegate: WKExtendedRuntimeSessionDelegate? = nil) {
-        self.audioManager = AudioManager.shared
+        self.audioManager = audioManager
         self.extendedRuntimeSessionDelegate = extendedRuntimeSessionDelegate
     }
 }
@@ -51,10 +51,7 @@ extension EMOMViewModel: EMOMViewModelProtocol {
         guard let emom else { return }
         changeStateAndSpeechWhenApplies(to: .countdown)
         self.customTimer = emom
-        
-      //  if let customTimer {
-            set(roundsLeft: emom.rounds)
-      //  }
+        set(roundsLeft: emom.rounds)
         setupExtendedRuntimeSession()
     }
     
@@ -310,7 +307,7 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
         RunLoop.main.add(timerWork, forMode: .common)
     }
     
-    private func changeStateAndSpeechWhenApplies(to: EMOMViewModelState.State) {
+    internal func changeStateAndSpeechWhenApplies(to: EMOMViewModelState.State) {
         state = state.set(state: to)
         speech(state: state)
     }
@@ -346,7 +343,7 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
             changeStateAndSpeechWhenApplies(to: .startedRest)
             if roundsLeft > 1 {
                 chronoFrozen = getChronoOnLowEnergyMode()
-            } else if emom.restSecs == 0 {
+            } else /*if emom.restSecs == 0*/ {
                 changeStateAndSpeechWhenApplies(to: .finished)
                 extendedRuntimeSession.invalidate()
             }

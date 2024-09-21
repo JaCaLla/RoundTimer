@@ -44,7 +44,7 @@ struct TimersSelectionView: View {
 //                default:
 //                    EmptyView()
                 }
-            } else if let mirroredTimer {
+            } else if mirroredTimer != nil {
                 MirroredTimerView(mirroredTimer: $mirroredTimer, closedFromCompation: $isPresented)
             } else {
                 List {

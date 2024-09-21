@@ -51,7 +51,7 @@ struct TimersSelectionView: View {
     
     func checkIfiPhoneIsConnectedToAppleWatch() -> Bool {
         // Check if the current device supports WatchConnectivity
-        do{
+//        do{
             if WCSession.isSupported() {
                 let session = WCSession.default
                 
@@ -67,9 +67,9 @@ struct TimersSelectionView: View {
                 }
             }
             return false
-        } catch {
-            return false
-        }
+//        } catch {
+//            return false
+//        }
     }
 }
 
@@ -88,6 +88,6 @@ struct TimersSelectionView: View {
 //}
 
 #Preview {
-    @State var customTimer: CustomTimer? = nil
+    @Previewable @State var customTimer: CustomTimer? = nil
     return TimersSelectionView(customTimer: $customTimer)
 }

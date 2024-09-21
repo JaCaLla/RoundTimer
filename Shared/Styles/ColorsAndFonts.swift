@@ -12,14 +12,14 @@ struct AppUIConstants {
 
 extension Color {
     static let roundColor = Color("ElectricBlue")
-    static let roundColorLuminanceReduced = Color("Gray")
+    static let roundColorLuminanceReduced = Color("Gray_ET")
     static let timerStartedColor =  Color("ElectricRed")
-    static let timerNotStartedColor = Color("Gray")
+    static let timerNotStartedColor = Color("Gray_ET")
     static let timerRestStartedColor = Color("ElectricYellow")
     static let timerFinishedBackgroundColor = Color("ElectricRedBack")
-    static let buttonTextColor = Color("White")
-    static let paragrahColor = Color(.white)
-    static let defaultBackgroundColor = Color("Black")
+    static let buttonTextColor = Color("White_ET")
+    static let paragrahColor = Color("White_ET")
+    static let defaultBackgroundColor = Color("Black_ET")
     static let countdownColor = Color("ElectricBlue")
     static let countdownInminentColor =  Color("ElectricRed")
     static let heartRateZone1 = Color("Zone1")
@@ -27,8 +27,8 @@ extension Color {
     static let heartRateZone3 = Color("Zone3")
     static let heartRateZone4 = Color("Zone4")
     static let heartRateZone5 = Color("Zone5")
-    static let heartRateZoneText = Color("Black")
-    static let heartRateText = Color("White")
+    static let heartRateZoneText = Color("Black_ET")
+    static let heartRateText = Color("White_ET")
 }
 
 extension Font {

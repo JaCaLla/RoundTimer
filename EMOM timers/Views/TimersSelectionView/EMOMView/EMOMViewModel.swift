@@ -293,7 +293,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
     
     // MARK :- Private/Internal
     private func processWorktime(emom: CustomTimer, timerWork: inout Timer?) {
-        guard var fireWork = endOfRound(emom: emom) else { return }
+        guard let fireWork = endOfRound(emom: emom) else { return }
        // chronoOnMove = Date.now
       //  chronoFrozen = getChronoOnLowEnergyMode()
 
@@ -360,7 +360,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
     }
     
     private func processResttime( emom: CustomTimer, timerRest: inout Timer?) {
-        guard var fireRest = endOfWork(emom: emom) else { return }
+        guard let fireRest = endOfWork(emom: emom) else { return }
         createAndRunRestTimer(emom, fireRest, timerRest: &timerRest)
     }
     

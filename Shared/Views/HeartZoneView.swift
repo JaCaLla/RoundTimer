@@ -67,5 +67,4 @@ struct HeartZoneView: View {
 
 #Preview(traits: .fixedLayout(width: 200, height: 50)) {
     HeartZoneView(currentZone: 1)
-        .previewDevice("Apple Watch Series 7 - 41mm")
 }

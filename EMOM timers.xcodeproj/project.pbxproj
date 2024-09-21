@@ -108,7 +108,6 @@
 		29D4BD8C2BC99EDE00A0F6B4 /* start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29D4BD872BC99EDD00A0F6B4 /* start.mp3 */; };
 		29D4BD8D2BC99EDE00A0F6B4 /* work.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29D4BD882BC99EDD00A0F6B4 /* work.mp3 */; };
 		29D4BD8F2BC99F1B00A0F6B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29D4BD8E2BC99F1B00A0F6B4 /* Assets.xcassets */; };
-		29E377892BC9BC7D001DFE00 /* EMOM-timers-Watch-App-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29E377882BC9BC7D001DFE00 /* EMOM-timers-Watch-App-Info.plist */; };
 		29E61FE12BFE2D0900C0CD60 /* ConnectivityMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E61FE02BFE2D0900C0CD60 /* ConnectivityMessage.swift */; };
 		29E61FE22BFE2D0900C0CD60 /* ConnectivityMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E61FE02BFE2D0900C0CD60 /* ConnectivityMessage.swift */; };
 		29EBF3242BF2773C00C79539 /* TrackingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBF3232BF2773C00C79539 /* TrackingsManager.swift */; };
@@ -991,7 +990,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					291986962BC7048F0012ACA0 = {
 						CreatedOnToolsVersion = 15.3;
@@ -1075,7 +1074,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29E377892BC9BC7D001DFE00 /* EMOM-timers-Watch-App-Info.plist in Resources */,
 				29D4BD8B2BC99EDE00A0F6B4 /* rest.mp3 in Resources */,
 				291986CA2BC704910012ACA0 /* Preview Assets.xcassets in Resources */,
 				29D4BD8C2BC99EDE00A0F6B4 /* start.mp3 in Resources */,
@@ -1106,6 +1104,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		2907B74D2BD39CD900E97D2A /* Settings app version */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1329,6 +1328,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 6;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1394,6 +1394,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 6;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1488,7 +1489,6 @@
 		291986E82BC704910012ACA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "EMOM timers/EMOM timers.entitlements";
@@ -1531,7 +1531,6 @@
 		291986E92BC704910012ACA0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "EMOM timers/EMOM timers.entitlements";
@@ -1574,7 +1573,6 @@
 		291986EB2BC704910012ACA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = $CURRENT_PROJECT_VERSION;
@@ -1595,7 +1593,6 @@
 		291986EC2BC704910012ACA0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = $CURRENT_PROJECT_VERSION;
@@ -1617,7 +1614,6 @@
 		291986EE2BC704910012ACA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = $CURRENT_PROJECT_VERSION;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
@@ -1637,7 +1633,6 @@
 		291986EF2BC704910012ACA0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = $CURRENT_PROJECT_VERSION;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
@@ -1658,7 +1653,6 @@
 		291986F12BC704910012ACA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = $CURRENT_PROJECT_VERSION;
@@ -1679,7 +1673,6 @@
 		291986F22BC704910012ACA0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = $CURRENT_PROJECT_VERSION;
@@ -1701,7 +1694,6 @@
 		291986F42BC704910012ACA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = $CURRENT_PROJECT_VERSION;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
@@ -1721,7 +1713,6 @@
 		291986F52BC704910012ACA0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = $CURRENT_PROJECT_VERSION;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;

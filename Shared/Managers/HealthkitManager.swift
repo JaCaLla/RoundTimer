@@ -43,7 +43,7 @@ final class HealthkitManager: NSObject, ObservableObject {
         ]
         LocalLogger.log("HealthkitManager2.authorizeHealthKit")
         return await withCheckedContinuation {[weak self] continuation in
-            self?.healthStore?.requestAuthorization(toShare: nil, read: typesToRead) { userWasShownPermissionView, error in
+            self?.healthStore?.requestAuthorization(toShare: nil, read: typesToRead) { [weak self] userWasShownPermissionView, error in
                 if (userWasShownPermissionView) {
                     let authorized = (self?.healthStore?.authorizationStatus(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!) == .sharingAuthorized)
                     AppGroupStore.shared.setBool(value: authorized, forKey: .grantedPermissionForHeartRate)

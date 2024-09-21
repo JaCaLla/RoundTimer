@@ -96,7 +96,7 @@ struct EMOMView: View {
 }
 
 #Preview("Large Font") {
-    let model = EMOMViewModel()
+    //let model = EMOMViewModel()
     //   model.set(emom: CustomTimer(timerType: .emom,rounds: 12, workSecs: 200, restSecs: 0))
     return EMOMView(customTimer: .constant(nil), closedFromCompation: .constant(false))
     //     .environmentObject(model)

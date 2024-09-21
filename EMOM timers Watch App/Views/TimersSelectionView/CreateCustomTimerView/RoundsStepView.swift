@@ -83,5 +83,5 @@ struct RoundsStepView: View {
 #Preview {
     RoundsStepView(navPath: .constant(["RoundsStepView"]))
         .environmentObject(CreateCustomTimerViewModel())
-        .previewDevice("Apple Watch Series 7 - 41mm")
+        //.previewDevice("Apple Watch Series 7 - 41mm")
 }

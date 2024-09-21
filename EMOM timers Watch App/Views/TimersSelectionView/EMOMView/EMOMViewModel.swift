@@ -20,21 +20,21 @@ final class EMOMViewModel: NSObject, ObservableObject {
 
     @Published var chronoFrozen = ""
 
-    private (set) var timerWork: Timer?
-    private (set) var timerRest: Timer?
-    private (set) var timerCountdown: Timer?
-    private (set) var refreshProgressTimer: Timer?
+    private(set) var timerWork: Timer?
+    private(set) var timerRest: Timer?
+    private(set) var timerCountdown: Timer?
+    private(set) var refreshProgressTimer: Timer?
     
-    private (set) var extendedRuntimeSession: WKExtendedRuntimeSession?
-    private (set) var extendedRuntimeSessionDelegate: WKExtendedRuntimeSessionDelegate?
+    private(set) var extendedRuntimeSession: WKExtendedRuntimeSession?
+    private(set) var extendedRuntimeSessionDelegate: WKExtendedRuntimeSessionDelegate?
    
-    private (set) var state: EMOMViewModelState = EMOMViewModelState()
-    private (set) var roundsLeft = 0
+    private(set) var state: EMOMViewModelState = EMOMViewModelState()
+    private(set) var roundsLeft = 0
     static let coundownValue = 10//4
-    private (set) var countdownCurrentValue = coundownValue
-    private (set) var startWorkTimeStamp: Date?
-    private (set) var customTimer: CustomTimer?
-    private (set) var audioManager: AudioManagerProtocol = AudioManager.shared
+    private(set) var countdownCurrentValue = coundownValue
+    private(set) var startWorkTimeStamp: Date?
+    private(set) var customTimer: CustomTimer?
+    private(set) var audioManager: AudioManagerProtocol = AudioManager.shared
     
     
     init(audioManager: AudioManagerProtocol = AudioManager.shared,

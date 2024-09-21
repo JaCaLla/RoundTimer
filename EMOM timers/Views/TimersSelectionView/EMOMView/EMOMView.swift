@@ -77,7 +77,7 @@ struct EMOMView: View {
 
     model.setAndStart(emom: customTimer)
     return EMOMView(customTimer: .constant(customTimer))
-        .previewInterfaceOrientation(.landscapeLeft)
+       // .previewInterfaceOrientation(.landscapeLeft)
         .environmentObject(model)
 }
 

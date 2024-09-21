@@ -81,7 +81,6 @@ struct UpTimerView: View {
             }
             Spacer(minLength: 5)
         }.background(upTimerViewModel.getBackground())
-            .onChange(of: scenePhase) { print($0) }
             .onChange(of: upTimerViewModel.progress) {
                 gaugeProgress = upTimerViewModel.progress
             }
@@ -96,21 +95,21 @@ struct UpTimerView: View {
 
 
 #Preview("Small Font") {
-    let model =  UpTimerViewModel()
+   // let model =  UpTimerViewModel()
     //model.set(emom: CustomTimer(timerType: .emom,rounds: 22, workSecs: 1800, restSecs: 0))
     return UpTimerView(customTimer:.constant(nil))
        // .environmentObject(model)
 }
 
 #Preview("Regular Font") {
-    let model =  UpTimerViewModel()
+   // let model =  UpTimerViewModel()
     //model.set(emom: CustomTimer(timerType: .emom,rounds: 2, workSecs: 1800, restSecs: 0))
     return UpTimerView(customTimer:.constant(nil))
         //.environmentObject(model)
 }
 
 #Preview("Large Font") {
-    let model =  UpTimerViewModel()
+    //let model =  UpTimerViewModel()
     //model.set(emom: CustomTimer(timerType: .emom,rounds: 12, workSecs: 200, restSecs: 0))
     return UpTimerView(customTimer:.constant(nil))
        // .environmentObject(model)

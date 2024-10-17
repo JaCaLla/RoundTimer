@@ -40,7 +40,7 @@ struct HeartZoneView: View {
                 }
             }
         }.onAppear {
-            Task {
+            Task { @MainActor in
                 if await healthkitManager.authorizeHealthKit() {
                     healthkitManager.fetchHeartRateData()
                 }

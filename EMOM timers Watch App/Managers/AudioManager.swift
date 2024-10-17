@@ -8,7 +8,7 @@
 import Foundation
 import AVFAudio
 
-
+@MainActor
 protocol AudioManagerProtocol {
     func speak(text: String)
     func speech(state: EMOMViewModelState)
@@ -17,8 +17,9 @@ protocol AudioManagerProtocol {
     func finished()
 }
 
+@MainActor
 final class AudioManager: NSObject, ObservableObject {
-    var audioPlayer: AVAudioPlayer?
+  //  var audioPlayer: AVAudioPlayer?
     private let volume: Float = 0.05
     
     static let shared = AudioManager()

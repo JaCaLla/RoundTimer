@@ -6,8 +6,9 @@
 //
 
 import Foundation
-import HealthKit
+@preconcurrency import HealthKit
 
+@MainActor
 final class HealthkitManager: NSObject, ObservableObject {
     // 2
     static let shared = HealthkitManager()
@@ -44,17 +45,22 @@ final class HealthkitManager: NSObject, ObservableObject {
         LocalLogger.log("HealthkitManager2.authorizeHealthKit")
         return await withCheckedContinuation {[weak self] continuation in
             self?.healthStore?.requestAuthorization(toShare: nil, read: typesToRead) { [weak self] userWasShownPermissionView, error in
-                if (userWasShownPermissionView) {
-                    let authorized = (self?.healthStore?.authorizationStatus(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!) == .sharingAuthorized)
-                    AppGroupStore.shared.setBool(value: authorized, forKey: .grantedPermissionForHeartRate)
-                    self?.grantedPermissionForHeartRate = authorized
-                    continuation.resume(returning: authorized)
-                } else {
-                    LocalLogger.log("User was not shown permission view")
-                    if let e = error {
-                        print(e)
+                DispatchQueue.main.async { [weak self] in
+                    MainActor.assumeIsolated {
+                        if (userWasShownPermissionView) {
+                            let authorized = (self?.healthStore?.authorizationStatus(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!) == .sharingAuthorized)
+                            AppGroupStore.shared.setBool(value: authorized, forKey: .grantedPermissionForHeartRate)
+                            self?.grantedPermissionForHeartRate = authorized
+                            continuation.resume(returning: authorized)
+                        } else {
+                            LocalLogger.log("User was not shown permission view")
+                            if let e = error {
+                                print(e)
+                            }
+                        }
                     }
                 }
+                
             }
         }
     }
@@ -231,7 +237,7 @@ extension HealthkitManager: HKWorkoutSessionDelegate {
                     suspended then the delegate will receive this call once the application resumes, which may be much later
                     than when the original state change ocurred.
      */
-    func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState, from fromState: HKWorkoutSessionState, date: Date) {
+    nonisolated func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState, from fromState: HKWorkoutSessionState, date: Date) {
         print("To Do")
     }
 
@@ -242,12 +248,13 @@ extension HealthkitManager: HKWorkoutSessionDelegate {
      @discussion    When the state of the workout session changes due to an error occurring, this method is always called
                     before workoutSession:didChangeToState:fromState:date:.
      */
-    func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: any Error) {
+    nonisolated func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: any Error) {
         print("To Do")
     }
 }
 
 #if os(watchOS)
+
     extension HealthkitManager: HKLiveWorkoutBuilderDelegate {
 
         /**
@@ -258,7 +265,7 @@ extension HealthkitManager: HKWorkoutSessionDelegate {
      @param         workoutBuilder    The workout builder to which samples were added.
      @param         collectedTypes    The sample types that were added.
      */
-        func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>) {
+        nonisolated func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>) {
             print("To Do")
         }
 
@@ -269,7 +276,7 @@ extension HealthkitManager: HKWorkoutSessionDelegate {
      
      @param         workoutBuilder    The workout builder to which an event was added.
      */
-        func workoutBuilderDidCollectEvent(_ workoutBuilder: HKLiveWorkoutBuilder) {
+        nonisolated  func workoutBuilderDidCollectEvent(_ workoutBuilder: HKLiveWorkoutBuilder) {
             print("To Do")
         }
     }

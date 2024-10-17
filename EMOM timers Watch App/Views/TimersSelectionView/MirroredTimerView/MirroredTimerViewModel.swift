@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+@MainActor
 protocol MirroredTimerViewModelProtocol {
     func set(mirroredTimer: MirroredTimer)
     func getCurrentRound() -> String
@@ -16,7 +16,7 @@ protocol MirroredTimerViewModelProtocol {
     func close()
     func getCurrentMessage() -> String
 }
-
+@MainActor
 final class MirroredTimerViewModel:NSObject, ObservableObject {
     
     @Published var chronoFrozen = "--:--"

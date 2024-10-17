@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 final class CreateCustomTimerViewModel: ObservableObject {
     let minRounds = 2
     let maxRounds = 50
@@ -22,7 +23,7 @@ final class CreateCustomTimerViewModel: ObservableObject {
     // MARK :- Lifecycle
     func onAppearActions() async {
             let result = await HealthkitManager.shared.startWorkoutSession()
-            await setIsLinkedToAW(result)
+             setIsLinkedToAW(result)
     }
     
     // MARK: - Presentation logic

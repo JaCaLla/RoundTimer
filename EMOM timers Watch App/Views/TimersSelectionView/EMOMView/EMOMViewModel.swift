@@ -1,7 +1,8 @@
 import Combine
-import SwiftUI
+@preconcurrency import SwiftUI
 import AVFoundation
 
+@MainActor
 protocol EMOMViewModelProtocol {
 
     func set(emom: CustomTimer?)
@@ -15,7 +16,7 @@ protocol EMOMViewModelProtocol {
     func hasNotStarted() -> Bool
 }
 
-
+@MainActor
 final class EMOMViewModel: NSObject, ObservableObject {
 
     @Published var chronoFrozen = ""
@@ -162,31 +163,42 @@ extension EMOMViewModel: EMOMViewModelProtocol {
 // MARK: - WKExtendedRuntimeSessionDelegate
 extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
     
-    func extendedRuntimeSessionDidStart(
+    nonisolated func extendedRuntimeSessionDidStart(
         _ extendedRuntimeSession: WKExtendedRuntimeSession
     ) {
-        guard let customTimer else { return }
-        startRefreshProgressTimer(timer: &refreshProgressTimer)
-        startCountdown(extendedRuntimeSession: extendedRuntimeSession,
-                       customTimer: customTimer)
+        DispatchQueue.main.async { [weak self] in
+            MainActor.assumeIsolated {
+                guard let self,
+                      let customTimer = self.customTimer else { return }
+                self.startRefreshProgressTimer(timer: &self.refreshProgressTimer)
+                self.startCountdown(extendedRuntimeSession: extendedRuntimeSession,
+                               customTimer: customTimer)
+            }
+        }
+
     }
     
-    func extendedRuntimeSessionWillExpire(
+    nonisolated func extendedRuntimeSessionWillExpire(
         _ extendedRuntimeSession: WKExtendedRuntimeSession
     ) {
     }
 
-    func extendedRuntimeSession(
+    nonisolated func extendedRuntimeSession(
         _ extendedRuntimeSession: WKExtendedRuntimeSession,
         didInvalidateWith reason: WKExtendedRuntimeSessionInvalidationReason,
         error: Error?
     ) {
-        removeTimers()
+        DispatchQueue.main.async { [weak self] in
+            MainActor.assumeIsolated {
+                guard let self else { return }
+                self.removeTimers()
 
-        if state.value == .finished {
-            set(roundsLeft: 0)
-            if let customTimer {
-                chronoFrozen = CustomTimer.getHHMMSS(seconds: CustomTimer.getTotal(emom: customTimer))
+                if self.state.value == .finished {
+                    self.set(roundsLeft: 0)
+                    if let customTimer = self.customTimer {
+                        self.chronoFrozen = CustomTimer.getHHMMSS(seconds: CustomTimer.getTotal(emom: customTimer))
+                    }
+                }
             }
         }
     }
@@ -206,15 +218,19 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
     }
     
     private func startRefreshProgressTimer(timer: inout Timer?) {
-        
-        let blockTimerWork: (Timer) -> Void = { [weak self] _ in
-            guard let self, state.value != .cancelled else { return }
-            if [.startedWork, .startedRest].contains(where: { $0 == self.state.value }) {
-                chronoFrozen = getChronoOnLowEnergyMode()
-            }
-       }
 
-       timer = Timer( fire: Date.now, interval: 1.0,repeats: true, block: blockTimerWork)
+       timer = Timer( fire: Date.now,
+                      interval: 1.0,
+                      repeats: true) { _ in
+           DispatchQueue.main.async { [weak self] in
+               MainActor.assumeIsolated {
+                   guard let self, self.state.value != .cancelled else { return }
+                   if [.startedWork, .startedRest].contains(where: { $0 == self.state.value }) {
+                       self.chronoFrozen = self.getChronoOnLowEnergyMode()
+                   }
+               }
+           }
+       }
        guard let timer else { return }
        RunLoop.main.add(timer, forMode: .common)
     }
@@ -237,27 +253,28 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
     
     private func startCountdown(extendedRuntimeSession: WKExtendedRuntimeSession,
                                  customTimer: CustomTimer) {
-        let blockTimerCountdown: (Timer) -> Void = { [weak self] _ in
-            guard let self, state.value != .cancelled else { return }
-            countdownCurrentValue -= 1
-            if countdownCurrentValue < 1 {
-                timerCountdown?.invalidate()
-                dropTimer(&timerCountdown)
-                self.chronoFrozen = "--"
-                changeStateAndSpeechWhenApplies(to: .startedWork)
-                setupWorkAndRestTimers(extendedRuntimeSession, customTimer)
-                return
-            }
-            self.chronoFrozen = "\(countdownCurrentValue)"
-        }
 
         timerCountdown = Timer(
             fire: Date.now,
             interval: 1,
-            repeats: true,
-            block: blockTimerCountdown)
-        
-        timerCountdown = Timer(fire: Date.now,interval: 1,repeats: true, block: blockTimerCountdown)
+            repeats: true) { _ in
+                DispatchQueue.main.async { [weak self] in
+                    MainActor.assumeIsolated {
+                        guard let self, self.state.value != .cancelled else { return }
+                        self.countdownCurrentValue -= 1
+                        if self.countdownCurrentValue < 1 {
+                            self.timerCountdown?.invalidate()
+                            self.dropTimer(&self.timerCountdown)
+                            self.chronoFrozen = "--"
+                            self.changeStateAndSpeechWhenApplies(to: .startedWork)
+                            self.setupWorkAndRestTimers(extendedRuntimeSession, customTimer)
+                            return
+                        }
+                        self.chronoFrozen = "\(self.countdownCurrentValue)"
+                    }
+                }
+            }
+    
         guard let timerCountdown else { return }
         RunLoop.main.add(timerCountdown, forMode: .common)
     }
@@ -283,25 +300,27 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
         
     private func createAndRunTimerWork(_ emom: CustomTimer, _ extendedRuntimeSession: WKExtendedRuntimeSession, _ fireWork: Date, timerWork: inout Timer?) {
 
-        let blockTimerWork: (Timer) -> Void = { [weak self] _ in
-            guard let self, state.value != .cancelled else { return }
-            self.decreaseBy1RoundsLeft()
-            speakRound(audioManager)
-
-            if roundsLeft > 0 {
-                changeStateAndSpeechWhenApplies(to: .startedWork)
-                chronoFrozen = getChronoOnLowEnergyMode()
-            } else {
-                changeStateAndSpeechWhenApplies(to: .finished)
-                extendedRuntimeSession.invalidate()
-            }
-        }
         let secondsPerRound = emom.secondsPerRound()
         timerWork = Timer(
             fire: fireWork,
             interval: secondsPerRound,
-            repeats: true,
-            block: blockTimerWork)
+            repeats: true) { _ in
+                DispatchQueue.main.async { [weak self] in
+                    MainActor.assumeIsolated {
+                        guard let self, self.state.value != .cancelled else { return }
+                        self.decreaseBy1RoundsLeft()
+                        self.speakRound(self.audioManager)
+
+                        if self.roundsLeft > 0 {
+                            self.changeStateAndSpeechWhenApplies(to: .startedWork)
+                            self.chronoFrozen = self.getChronoOnLowEnergyMode()
+                        } else {
+                            self.changeStateAndSpeechWhenApplies(to: .finished)
+                            extendedRuntimeSession.invalidate()
+                        }
+                    }
+                }
+            }
         
         guard let timerWork else { return }
         RunLoop.main.add(timerWork, forMode: .common)
@@ -338,18 +357,23 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
     
     private func createAndRunRestTimer(_ emom: CustomTimer, _ fireRest: Date, _ extendedRuntimeSession: WKExtendedRuntimeSession, timerRest: inout Timer?) {
         
-        let blockRestTimer: (Timer) -> Void = { [weak self] _ in
-            guard let self, state.value != .cancelled else { return }
-            changeStateAndSpeechWhenApplies(to: .startedRest)
-            if roundsLeft > 1 {
-                chronoFrozen = getChronoOnLowEnergyMode()
-            } else /*if emom.restSecs == 0*/ {
-                changeStateAndSpeechWhenApplies(to: .finished)
-                extendedRuntimeSession.invalidate()
+        let secondsPerRound = Double(emom.workSecs + emom.restSecs)
+        timerRest = Timer(fire: fireRest,
+                          interval: secondsPerRound,
+                          repeats: true) { _ in
+            DispatchQueue.main.async { [weak self] in
+                MainActor.assumeIsolated { [weak self] in
+                    guard let self, self.state.value != .cancelled else { return }
+                    self.changeStateAndSpeechWhenApplies(to: .startedRest)
+                    if self.roundsLeft > 1 {
+                        self.chronoFrozen = self.getChronoOnLowEnergyMode()
+                    } else {
+                        self.changeStateAndSpeechWhenApplies(to: .finished)
+                        extendedRuntimeSession.invalidate()
+                    }
+                }
             }
         }
-        let secondsPerRound = Double(emom.workSecs + emom.restSecs)
-        timerRest = Timer(fire: fireRest, interval: secondsPerRound, repeats: true, block: blockRestTimer)
         guard let timerRest else { return }
         RunLoop.main.add(timerRest, forMode: .common)
     }

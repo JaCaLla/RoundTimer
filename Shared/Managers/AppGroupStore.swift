@@ -6,6 +6,7 @@
 //
 
 import Foundation
+@MainActor
 protocol AppGroupStoreProtocol {
     func getDate(forKey: AppGroupStoreKey) -> Date?
     func setDate(date: Date, forKey: AppGroupStoreKey)
@@ -16,6 +17,7 @@ enum AppGroupStoreKey: String {
     case grantedPermissionForHeartRate
 }
 
+@MainActor
 final class AppGroupStore {
     let defaults = UserDefaults(suiteName: "group.jca.EMOM-timers")
     

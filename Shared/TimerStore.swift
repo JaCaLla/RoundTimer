@@ -1,5 +1,7 @@
 import SwiftUI
 import Combine
+
+@MainActor
 protocol TimerStoreProtocol {
     func startTimerOnAW(customTimer: CustomTimer)
     func removeTimerOnAW()
@@ -7,6 +9,7 @@ protocol TimerStoreProtocol {
     func send(mirroredTimer: MirroredTimer)
 }
 
+@MainActor
 final class TimerStore: NSObject, ObservableObject {
     static let shared = TimerStore()
     private static let purchasedKey = "purchased"

@@ -5,8 +5,8 @@
 //  Created by Javier Calartrava on 17/3/24.
 //
 
-import SwiftUI
-
+@preconcurrency import SwiftUI
+@MainActor
 final class UpTimerViewModel: NSObject, ObservableObject {
 
     // MARK: - Emom timer states
@@ -27,7 +27,9 @@ final class UpTimerViewModel: NSObject, ObservableObject {
     @Published var customTimer: CustomTimer?
     
     deinit {
-        removeTimers()
+        Task { [weak self] in
+            await self?.removeTimers()
+        }
     }
 
     private func startWorkTime() {
@@ -185,35 +187,47 @@ final class UpTimerViewModel: NSObject, ObservableObject {
 
 // MARK: - WKExtendedRuntimeSessionDelegate
 extension UpTimerViewModel: WKExtendedRuntimeSessionDelegate {
-    func extendedRuntimeSessionDidStart(
+    nonisolated func extendedRuntimeSessionDidStart(
         _ extendedRuntimeSession: WKExtendedRuntimeSession
     ) {
-        guard let customTimer else { return }
-        processWorktime(extendedRuntimeSession: extendedRuntimeSession, emom: customTimer, timerWork: &timerWork)
-        
-        HapticManager.shared.start()
-        
-        createAndRunProgressTimer(customTimer/*, extendedRuntimeSession*/, timer: &refreshProgressTimer)
-        
-        set(state: .startedWork)
+        DispatchQueue.main.async { [weak self] in
+            MainActor.assumeIsolated {
+                guard let self,
+                      let customTimer = self.customTimer else { return }
+                self.processWorktime(extendedRuntimeSession: extendedRuntimeSession, emom: customTimer, timerWork: &self.timerWork)
+                
+                HapticManager.shared.start()
+                
+                self.createAndRunProgressTimer(customTimer, timer: &self.refreshProgressTimer)
+                
+                self.set(state: .startedWork)
+            }
+        }
+
     }
 
-    func extendedRuntimeSessionWillExpire(
+    nonisolated func extendedRuntimeSessionWillExpire(
         _ extendedRuntimeSession: WKExtendedRuntimeSession
     ) {
     }
 
-    func extendedRuntimeSession(
+    nonisolated func extendedRuntimeSession(
         _ extendedRuntimeSession: WKExtendedRuntimeSession,
         didInvalidateWith reason: WKExtendedRuntimeSessionInvalidationReason,
         error: Error?
     ) {
-        removeTimers()
-        chronoOnMove = nil
+        DispatchQueue.main.async { [weak self] in
+            MainActor.assumeIsolated {
+                guard let self else { return }
+                self.removeTimers()
+                self.chronoOnMove = nil
 
-        if state == .finished, let customTimer {
-            chronoFrozen = CustomTimer.getHHMMSS(seconds: CustomTimer.getTotal(emom: customTimer))
+                if self.state == .finished, let customTimer = self.customTimer {
+                    self.chronoFrozen = CustomTimer.getHHMMSS(seconds: CustomTimer.getTotal(emom: customTimer))
+                }
+            }
         }
+
     }
 
     // MARK :- Private/Internal
@@ -234,19 +248,28 @@ extension UpTimerViewModel: WKExtendedRuntimeSessionDelegate {
 
         HapticManager.shared.start()
         
-        let blockTimerWork: (Timer) -> Void = { [weak self] _ in
-            guard let self else { return }
-               // AudioManager.shared.finish()
-                self.set(state: .finished)
-                extendedRuntimeSession.invalidate()
-                HapticManager.shared.finish()
-        }
+//        let blockTimerWork: (Timer) -> Void = { [weak self] _ in
+//            guard let self else { return }
+//               // AudioManager.shared.finish()
+//                self.set(state: .finished)
+//                extendedRuntimeSession.invalidate()
+//                HapticManager.shared.finish()
+//        }
 
         timerWork = Timer(
             fire: fireWork,
             interval: 0.0,
-            repeats: true,
-            block: blockTimerWork)
+            repeats: true) {_ in 
+                DispatchQueue.main.async { [weak self] in
+                    MainActor.assumeIsolated {
+                        guard let self else { return }
+                           // AudioManager.shared.finish()
+                            self.set(state: .finished)
+                            extendedRuntimeSession.invalidate()
+                            HapticManager.shared.finish()
+                    }
+                }
+            }
         
         guard let timerWork else { return }
         RunLoop.main.add(timerWork, forMode: .common)
@@ -255,19 +278,19 @@ extension UpTimerViewModel: WKExtendedRuntimeSessionDelegate {
     
     fileprivate func createAndRunProgressTimer(_ customTimer: CustomTimer,/* _ extendedRuntimeSession: WKExtendedRuntimeSession,*/ timer: inout Timer?) {
 
-         let blockTimerWork: (Timer) -> Void = { [weak self] _ in
-            
-            guard let self else { return }
-            let ellapsed = getEllapedSecs(timerWork: timerWork, customTimer: customTimer)
-            self.progress = ellapsed / Double(customTimer.workSecs)
-            print("Timer refresh! \(ellapsed) progress: \(self.progress)")
-        }
-
         timer = Timer(
             fire: Date.now.addingTimeInterval(1.0),
             interval: 1.0,
-            repeats: true,
-            block: blockTimerWork)
+            repeats: true) { _ in
+                DispatchQueue.main.async { [weak self] in
+                    MainActor.assumeIsolated {
+                        guard let self else { return }
+                        let ellapsed = self.getEllapedSecs(timerWork: self.timerWork,
+                                                      customTimer: self.customTimer)
+                        self.progress = ellapsed / Double(customTimer.workSecs)
+                    }
+                }
+            }
         
         guard let timer else { return }
         RunLoop.main.add(timer, forMode: .common)

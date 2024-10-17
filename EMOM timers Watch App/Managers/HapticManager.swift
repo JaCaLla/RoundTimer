@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+@MainActor
 protocol HapticManagerProtocol {
     func start()
     func pause()
@@ -16,6 +17,7 @@ protocol HapticManagerProtocol {
     func finish()
 }
 
+@MainActor
 final class HapticManager {
     static let shared = HapticManager()
 }

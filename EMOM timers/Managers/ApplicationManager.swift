@@ -7,6 +7,7 @@
 
 import UIKit
 
+@MainActor
 final class ApplicationManager {
     
     private init() {

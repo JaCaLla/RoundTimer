@@ -44,8 +44,10 @@ struct TimersSelectionView: View {
             _ = HealthkitManager.shared
         }
         .onAppear(perform: {
-            HealthkitManager.shared.authorizeHealthKit()
-            wcSessionIsSuppported = checkIfiPhoneIsConnectedToAppleWatch()
+            Task {
+                _ = await HealthkitManager.shared.authorizeHealthKit()
+                wcSessionIsSuppported = checkIfiPhoneIsConnectedToAppleWatch()
+            }
         })
     }
     

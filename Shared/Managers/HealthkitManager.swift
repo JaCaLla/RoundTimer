@@ -8,8 +8,7 @@
 import Foundation
 @preconcurrency import HealthKit
 
-@MainActor
-final class HealthkitManager: NSObject, ObservableObject {
+actor HealthkitManager: NSObject, ObservableObject {
     // 2
     static let shared = HealthkitManager()
 
@@ -25,6 +24,7 @@ final class HealthkitManager: NSObject, ObservableObject {
         }
     }
     
+    @MainActor
     @Published var grantedPermissionForHeartRate = false {
         didSet {
             LocalLogger.log("HealthkitManager2.grantedPermissionForHeartRate.didSet \(grantedPermissionForHeartRate)")
@@ -43,6 +43,23 @@ final class HealthkitManager: NSObject, ObservableObject {
             HKObjectType.quantityType(forIdentifier: .heartRate)!
         ]
         LocalLogger.log("HealthkitManager2.authorizeHealthKit")
+        guard let healthStore else { return false }
+        do {
+            try await healthStore.requestAuthorization(toShare: Set([]), read: typesToRead)
+            let authorized = (healthStore.authorizationStatus(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!) == .sharingAuthorized)
+            await AppGroupStore.shared.setBool(value: authorized, forKey: .grantedPermissionForHeartRate)
+            DispatchQueue.main.async {
+                MainActor.assumeIsolated {
+                    self.grantedPermissionForHeartRate = authorized
+                }
+            }
+            
+            return false
+        } catch {
+            return false
+        }
+        
+        /*
         return await withCheckedContinuation {[weak self] continuation in
             self?.healthStore?.requestAuthorization(toShare: nil, read: typesToRead) { [weak self] userWasShownPermissionView, error in
                 DispatchQueue.main.async { [weak self] in
@@ -62,7 +79,7 @@ final class HealthkitManager: NSObject, ObservableObject {
                 }
                 
             }
-        }
+        }*/
     }
     
     func fetchHeartRateData() {
@@ -74,10 +91,10 @@ final class HealthkitManager: NSObject, ObservableObject {
                             }
             
                             // Update the UI on the main thread
-                            DispatchQueue.main.async {
+                        //    DispatchQueue.main.async {
                                 self.heartRate = sample.quantity.doubleValue(for: HKUnit(from: "count/min"))
                                 LocalLogger.log("HealthkitManager2.fetchHeartRateData: \(String(describing: self.heartRate)) ")
-                            }
+                          //  }
         }
     }
     
@@ -135,11 +152,15 @@ final class HealthkitManager: NSObject, ObservableObject {
             configuration.locationType = .outdoor
             
         return await withCheckedContinuation { continuation in
-            healthStore?.startWatchApp(with: configuration, completion: { result, error in
-                continuation.resume(returning: error == nil)
-                //return error == nil
-            })
-        }
+       //     DispatchQueue.global(qos: .background).async {
+                self.healthStore?.startWatchApp(with: configuration, completion: { result, error in
+                    DispatchQueue.main.async {
+                        continuation.resume(returning: error == nil)
+                    }
+                    //return error == nil
+                })
+            }
+     //   }
     }
     
     func authorizeHealthKit() {

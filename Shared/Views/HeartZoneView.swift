@@ -42,16 +42,16 @@ struct HeartZoneView: View {
         }.onAppear {
             Task { @MainActor in
                 if await healthkitManager.authorizeHealthKit() {
-                    healthkitManager.fetchHeartRateData()
+                    await healthkitManager.fetchHeartRateData()
                 }
             }
-        }.onChange(of: healthkitManager.heartRate) {
+        }/*.onChange(of: healthkitManager.heartRate) {
             self.heartRate = healthkitManager.heartRate
             if let birthDate = AppGroupStore.shared.getDate(forKey: .birthDate) {
                 let age = HeartZoneCalculator.calculateAge(from: birthDate)
                 self.currentZone = HeartZoneCalculator(age: age).zone(heartRate: heartRate)
             }
-        }
+        }*/
     }
 
     func zoneText(_ index: Int, _ currentZone: Int, _ heartRate: Double?) -> String {

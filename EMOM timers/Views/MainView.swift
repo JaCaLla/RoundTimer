@@ -14,7 +14,7 @@ struct MainView: View {
         ZStack {
             if customTimer != nil {
                 EMOMView(customTimer: $customTimer)
-                    .forceRotation(orientation: .landscape)
+                   // .forceRotation(orientation: .landscape)
                     
             } else {
 //                TabView {
@@ -48,7 +48,7 @@ struct MainView: View {
             }
             
         }
-        .forceRotation(orientation: .landscape)
+      //  .forceRotation(orientation: .landscape)
     }
 }
 

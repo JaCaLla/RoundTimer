@@ -108,7 +108,10 @@
 		29D4BD8C2BC99EDE00A0F6B4 /* start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29D4BD872BC99EDD00A0F6B4 /* start.mp3 */; };
 		29D4BD8D2BC99EDE00A0F6B4 /* work.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29D4BD882BC99EDD00A0F6B4 /* work.mp3 */; };
 		29D4BD8F2BC99F1B00A0F6B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29D4BD8E2BC99F1B00A0F6B4 /* Assets.xcassets */; };
-		29E377892BC9BC7D001DFE00 /* EMOM-timers-Watch-App-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29E377882BC9BC7D001DFE00 /* EMOM-timers-Watch-App-Info.plist */; };
+		29DDB1AF2CC03A46007C4F14 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDB1AE2CC03A46007C4F14 /* DictionaryExtension.swift */; };
+		29DDB1B02CC03A46007C4F14 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDB1AE2CC03A46007C4F14 /* DictionaryExtension.swift */; };
+		29DDB1B22CC03A61007C4F14 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDB1B12CC03A61007C4F14 /* ArrayExtension.swift */; };
+		29DDB1B32CC03A61007C4F14 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DDB1B12CC03A61007C4F14 /* ArrayExtension.swift */; };
 		29E61FE12BFE2D0900C0CD60 /* ConnectivityMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E61FE02BFE2D0900C0CD60 /* ConnectivityMessage.swift */; };
 		29E61FE22BFE2D0900C0CD60 /* ConnectivityMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E61FE02BFE2D0900C0CD60 /* ConnectivityMessage.swift */; };
 		29EBF3242BF2773C00C79539 /* TrackingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBF3232BF2773C00C79539 /* TrackingsManager.swift */; };
@@ -265,6 +268,8 @@
 		29D4BD872BC99EDD00A0F6B4 /* start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = start.mp3; sourceTree = "<group>"; };
 		29D4BD882BC99EDD00A0F6B4 /* work.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = work.mp3; sourceTree = "<group>"; };
 		29D4BD8E2BC99F1B00A0F6B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		29DDB1AE2CC03A46007C4F14 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		29DDB1B12CC03A61007C4F14 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		29E377882BC9BC7D001DFE00 /* EMOM-timers-Watch-App-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "EMOM-timers-Watch-App-Info.plist"; sourceTree = "<group>"; };
 		29E61FE02BFE2D0900C0CD60 /* ConnectivityMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityMessage.swift; sourceTree = "<group>"; };
 		29EBF3232BF2773C00C79539 /* TrackingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingsManager.swift; sourceTree = "<group>"; };
@@ -724,6 +729,7 @@
 		299619482BE2BCFE0010F578 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				29DDB1AD2CC03A2E007C4F14 /* Extensions */,
 				2948500A2C4CE4B6004DF009 /* Managers */,
 				2984B8DF2C46C1F3009C0860 /* Views */,
 				291C8AF92C3C6B93001ABC9A /* ViewModifier */,
@@ -814,6 +820,15 @@
 				29D4BD882BC99EDD00A0F6B4 /* work.mp3 */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		29DDB1AD2CC03A2E007C4F14 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				29DDB1AE2CC03A46007C4F14 /* DictionaryExtension.swift */,
+				29DDB1B12CC03A61007C4F14 /* ArrayExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		29EBF3222BF2772900C79539 /* Managers */ = {
@@ -991,7 +1006,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					291986962BC7048F0012ACA0 = {
 						CreatedOnToolsVersion = 15.3;
@@ -1075,7 +1090,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29E377892BC9BC7D001DFE00 /* EMOM-timers-Watch-App-Info.plist in Resources */,
 				29D4BD8B2BC99EDE00A0F6B4 /* rest.mp3 in Resources */,
 				291986CA2BC704910012ACA0 /* Preview Assets.xcassets in Resources */,
 				29D4BD8C2BC99EDE00A0F6B4 /* start.mp3 in Resources */,
@@ -1106,6 +1120,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		2907B74D2BD39CD900E97D2A /* Settings app version */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1162,6 +1177,7 @@
 				29E61FE12BFE2D0900C0CD60 /* ConnectivityMessage.swift in Sources */,
 				29EBF32A2BF28D1D00C79539 /* LocalPersitenceManager.swift in Sources */,
 				2984B8E12C46C227009C0860 /* HeartZoneView.swift in Sources */,
+				29DDB1B22CC03A61007C4F14 /* ArrayExtension.swift in Sources */,
 				291C8AF82C3C63FA001ABC9A /* buttonStyle.swift in Sources */,
 				299619512BE2BD9B0010F578 /* Delivery.swift in Sources */,
 				292431EB2C69173F0030AE06 /* TimerSelectionView.swift in Sources */,
@@ -1170,6 +1186,7 @@
 				29EFDC6D2C289B8800C46504 /* CreateCustomTimerPickerView.swift in Sources */,
 				291DC5F12C41AA0200419E55 /* MirroredTimer.swift in Sources */,
 				294850122C4D2299004DF009 /* AgeStepViewModel.swift in Sources */,
+				29DDB1B02CC03A46007C4F14 /* DictionaryExtension.swift in Sources */,
 				291C8AF62C3C5C6A001ABC9A /* CreateCustomTimerContinueButton.swift in Sources */,
 				29BE3B782C4567E600097FB5 /* HealthkitManager.swift in Sources */,
 				2919870F2BC708AD0012ACA0 /* ParagraphImageView.swift in Sources */,
@@ -1228,11 +1245,13 @@
 				29D4BD7F2BC99ECB00A0F6B4 /* ColorsAndFonts.swift in Sources */,
 				2990199F2C44256F009AF6B7 /* MirroredTimerFinished.swift in Sources */,
 				294850132C4D2299004DF009 /* AgeStepViewModel.swift in Sources */,
+				29DDB1AF2CC03A46007C4F14 /* DictionaryExtension.swift in Sources */,
 				294850102C4CE512004DF009 /* AppGroupStore.swift in Sources */,
 				296909D72BC9A4BE00737D0A /* VibrationView.swift in Sources */,
 				296909CE2BC9A4B500737D0A /* RoundsStepView.swift in Sources */,
 				29BE3B792C4567E600097FB5 /* HealthkitManager.swift in Sources */,
 				294850072C4B98CE004DF009 /* AgeStepView.swift in Sources */,
+				29DDB1B32CC03A61007C4F14 /* ArrayExtension.swift in Sources */,
 				29805BF82C6DE28C004BEAC6 /* EMOMViewModelState.swift in Sources */,
 				2996194E2BE2BD840010F578 /* Delivery.swift in Sources */,
 				291DC5F82C4251B900419E55 /* MirroredTimerCountdown.swift in Sources */,
@@ -1329,6 +1348,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 6;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1394,6 +1414,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 6;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1444,7 +1465,8 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
@@ -1478,7 +1500,8 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
@@ -1488,7 +1511,6 @@
 		291986E82BC704910012ACA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "EMOM timers/EMOM timers.entitlements";
@@ -1523,7 +1545,8 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1531,7 +1554,6 @@
 		291986E92BC704910012ACA0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "EMOM timers/EMOM timers.entitlements";
@@ -1565,7 +1587,8 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1574,7 +1597,6 @@
 		291986EB2BC704910012ACA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = $CURRENT_PROJECT_VERSION;
@@ -1595,7 +1617,6 @@
 		291986EC2BC704910012ACA0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = $CURRENT_PROJECT_VERSION;
@@ -1617,7 +1638,6 @@
 		291986EE2BC704910012ACA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = $CURRENT_PROJECT_VERSION;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
@@ -1637,7 +1657,6 @@
 		291986EF2BC704910012ACA0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = $CURRENT_PROJECT_VERSION;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
@@ -1658,7 +1677,6 @@
 		291986F12BC704910012ACA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = $CURRENT_PROJECT_VERSION;
@@ -1679,7 +1697,6 @@
 		291986F22BC704910012ACA0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = $CURRENT_PROJECT_VERSION;
@@ -1701,7 +1718,6 @@
 		291986F42BC704910012ACA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = $CURRENT_PROJECT_VERSION;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
@@ -1721,7 +1737,6 @@
 		291986F52BC704910012ACA0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = $CURRENT_PROJECT_VERSION;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;

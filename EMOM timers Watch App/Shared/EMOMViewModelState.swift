@@ -12,8 +12,8 @@ public struct EMOMViewModelState {
         case countdown, notStarted,  startedWork, startedRest, finished, cancelled
     }
     
-    private (set) var value: State = .notStarted
-    private (set) var didChanged: Bool = false
+    private(set) var value: State = .notStarted
+    private(set) var didChanged: Bool = false
     
     mutating func set(state to: State) -> Self {
         self.didChanged = self.value != to

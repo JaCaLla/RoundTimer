@@ -28,8 +28,10 @@ struct VibrationView: View {
     var body: some View {
         ScrollView {
             Picker("Vibration", selection: $pickerRoundIndex ) {
-                ForEach(0..<dic.values.count) {
-                    Text("\(Array(dic.keys)[$0])")
+                //ForEach(0..<dic.values.count) {
+                ForEach(Array(dic), id:\.key) { key, value in
+                    //Text("\(Array(dic.keys)[$0])")
+                    Text(key)
                 }
             }
             .frame(height: 100)

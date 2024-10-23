@@ -1,7 +1,7 @@
 import Foundation
 import WatchConnectivity
 import os.log
-
+@MainActor
 final class Connectivity: NSObject, ObservableObject {
   @Published var purchasedIds: [Int] = []
  
@@ -145,73 +145,71 @@ final class Connectivity: NSObject, ObservableObject {
 
 // MARK: - WCSessionDelegate
 extension Connectivity: WCSessionDelegate {
-  func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    internal nonisolated func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
   }
 
   #if os(iOS)
-  func sessionDidBecomeInactive(_ session: WCSession) {
+  nonisolated func sessionDidBecomeInactive(_ session: WCSession) {
   }
 
-  func sessionDidDeactivate(_ session: WCSession) {
+  nonisolated func sessionDidDeactivate(_ session: WCSession) {
     // If the person has more than one watch, and they switch,
     // reactivate their session on the new device.
     WCSession.default.activate()
   }
   #endif
 
-  func session(
+     nonisolated func session(
     _ session: WCSession,
     didReceiveUserInfo userInfo: [String: Any] = [:]
   ) {
-      Task {
-          await update(from: userInfo)
-      }
+      doCopyAndCallUpdateInMainActor(userInfo)
   }
+    
+     private nonisolated func doCopyAndCallUpdateInMainActor(_ dictionary: [String: Any] = [:])  {
+         nonisolated(unsafe) let dictionaryCopy =  dictionary.deepCopy()
+             Task { @MainActor in
+                 await self.update(from: dictionaryCopy)
+             }
+    }
 
-  func session(
+nonisolated func session(
     _ session: WCSession,
     didReceiveApplicationContext applicationContext: [String: Any]
   ) {
-      Task {
-          await update(from: applicationContext)
-      }
+      doCopyAndCallUpdateInMainActor(applicationContext)
   }
 
   // This method is called when a message is sent with failable priority
   // *and* a reply was requested.
-  func session(
+  nonisolated func session(
     _ session: WCSession,
     didReceiveMessage message: [String: Any],
     replyHandler: @escaping ([String: Any]) -> Void
   ) {
-      Task {
-          await update(from: message)
-      }
+      
+      doCopyAndCallUpdateInMainActor(message)
     
-
     let key = ConnectivityUserInfoKey.verified.rawValue
     replyHandler([key: true])
   }
 
   // This method is called when a message is sent with failable priority
   // and a reply was *not* request.
-  func session(
+  nonisolated func session(
     _ session: WCSession,
     didReceiveMessage message: [String: Any]
   ) {
-      Task {
-          await update(from: message)
-      }
-   
+      doCopyAndCallUpdateInMainActor(message)
   }
 
-  func session(
+  nonisolated func session(
     _ session: WCSession,
     didReceiveMessageData messageData: Data
   ) {
   }
 
-  func session(
+  nonisolated func session(
     _ session: WCSession,
     didReceiveMessageData messageData: Data,
     replyHandler: @escaping (Data) -> Void

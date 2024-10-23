@@ -1,5 +1,6 @@
 import SwiftUI
 
+@MainActor
 protocol EMOMViewModelProtocol {
     func setAndStart(emom: CustomTimer?)
     func close()
@@ -28,6 +29,7 @@ extension EMOMViewModel: EMOMViewModelProtocol {
     }
 }
 
+@MainActor
 final class EMOMViewModel: NSObject, ObservableObject {
 
     // MARK: - Emom timer states
@@ -166,55 +168,54 @@ final class EMOMViewModel: NSObject, ObservableObject {
     }
 
     internal func startCountdown() {
-        let blockTimerCountdown: (Timer) -> Void = { [weak self] _ in
-            guard let self else { return }
-            countdownCurrentValue -= 1
-
-            if countdownCurrentValue < 1 {
-                timerCountdown?.invalidate()
-                dropTimer(&timerCountdown)
-                self.set(state: .notStarted)
-                startWorkTime()
-                return
-            }
-            self.mmss = "\(countdownCurrentValue)"
-        }
         timerCountdown = Timer(
             fire: Date.now,
             interval: 1,
-            repeats: true,
-            block: blockTimerCountdown)
+            repeats: true) {_ in 
+                DispatchQueue.main.async { [weak self] in
+                    MainActor.assumeIsolated {
+                        guard let self else { return }
+                        self.countdownCurrentValue -= 1
+
+                        if self.countdownCurrentValue < 1 {
+                            self.timerCountdown?.invalidate()
+                            self.dropTimer(&self.timerCountdown)
+                            self.set(state: .notStarted)
+                            self.startWorkTime()
+                            return
+                        }
+                        self.mmss = "\(self.countdownCurrentValue)"
+                    }
+                }
+            }
         
         guard let timerCountdown else { return }
         RunLoop.main.add(timerCountdown, forMode: .common)
     }
     
     internal func startRefreshTimer() {
-        let blockTimerRefresh: (Timer) -> Void = { [weak self] _ in
-            guard let self, let customTimer else { return }
-            if state == .countdown,
-               customTimer.isMirroredOnAW,
-                let mirroredTimer = getMirroredCustomTimer() {
-                TimerStore.shared.send(mirroredTimer: mirroredTimer)
-                LocalLogger.log("EmomViewModel.blockTimerRefresh state:\(state) value:\(countdownCurrentValue)")
-            } else if  [.startedWork, .startedRest, .finished].contains(where: { self.state == $0 }),
-                       customTimer.isMirroredOnAW,
-                        let mirroredTimer = getMirroredCustomTimer() {
-                TimerStore.shared.send(mirroredTimer: mirroredTimer)
-                LocalLogger.log("EmomViewModel.blockTimerRefresh state:\(state) value:\(countdownCurrentValue)")
-                
-                
-            }
-            if  [.startedWork, .startedRest ].contains(where: { self.state == $0 }) {
-                mmss = getMMSS()
-            }
-        }
          refreshProgressTimer = Timer(
             fire: Date.now,
             interval: 1,
-            repeats: true,
-            block: blockTimerRefresh)
-        
+            repeats: true) {_ in
+                DispatchQueue.main.async { [weak self] in
+                    MainActor.assumeIsolated {
+                        guard let customTimer = self?.customTimer else { return }
+                        if self?.state == .countdown,
+                           customTimer.isMirroredOnAW,
+                           let mirroredTimer = self?.getMirroredCustomTimer() {
+                            TimerStore.shared.send(mirroredTimer: mirroredTimer)
+                        } else if  [.startedWork, .startedRest, .finished].contains(where: { self?.state == $0 }),
+                                   customTimer.isMirroredOnAW,
+                                   let mirroredTimer = self?.getMirroredCustomTimer() {
+                            TimerStore.shared.send(mirroredTimer: mirroredTimer)
+                        }
+                        if  [.startedWork, .startedRest ].contains(where: { self?.state == $0 }) {
+                            self?.mmss = self?.getMMSS() ?? "??:??"
+                        }
+                    }
+                }
+            }
         guard let refreshProgressTimer else { return }
         RunLoop.main.add(refreshProgressTimer, forMode: .common)
     }
@@ -293,7 +294,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
     
     // MARK :- Private/Internal
     private func processWorktime(emom: CustomTimer, timerWork: inout Timer?) {
-        guard var fireWork = endOfRound(emom: emom) else { return }
+        guard let fireWork = endOfRound(emom: emom) else { return }
        // chronoOnMove = Date.now
       //  chronoFrozen = getChronoOnLowEnergyMode()
 
@@ -317,26 +318,26 @@ final class EMOMViewModel: NSObject, ObservableObject {
    }
     
     fileprivate func createAndRunTimerWork(_ emom: CustomTimer, _ fireWork: Date, timerWork: inout Timer?) {
-        
-        let blockTimerWork: (Timer) -> Void = { [weak self] _ in
-            guard let self else { return }
-            self.decreaseBy1RoundsLeft()
-            
-            if roundsLeft > 0 {
-                self.set(state: .startedWork)
-                //self.chronoOnMove = Date.now
-                mmss = getMMSS()
-            } else {
-                self.set(state: .finished)
-                self.timerFinished()
-            }
-        }
-        let secondsPerRound = Double(emom.workSecs /*+ 1 */+ emom.restSecs)
+
+        let secondsPerRound = Double(emom.workSecs + emom.restSecs)
         timerWork = Timer(
             fire: fireWork,
             interval: secondsPerRound,
-            repeats: true,
-            block: blockTimerWork)
+            repeats: true) { _ in
+                DispatchQueue.main.async { [weak self] in
+                    MainActor.assumeIsolated {
+                        guard let self else { return }
+                        self.decreaseBy1RoundsLeft()
+                        if self.roundsLeft > 0 {
+                            self.set(state: .startedWork)
+                            self.mmss = self.getMMSS()
+                        } else {
+                            self.set(state: .finished)
+                            self.timerFinished()
+                        }
+                    }
+                }
+            }
         
         guard let timerWork else { return }
         RunLoop.main.add(timerWork, forMode: .common)
@@ -344,7 +345,6 @@ final class EMOMViewModel: NSObject, ObservableObject {
     
     private func timerFinished() {
         removeTimers()
-        //chronoOnMove = nil
 
         if state == .finished {
             set(roundsLeft: 0)
@@ -360,26 +360,28 @@ final class EMOMViewModel: NSObject, ObservableObject {
     }
     
     private func processResttime( emom: CustomTimer, timerRest: inout Timer?) {
-        guard var fireRest = endOfWork(emom: emom) else { return }
+        guard let fireRest = endOfWork(emom: emom) else { return }
         createAndRunRestTimer(emom, fireRest, timerRest: &timerRest)
     }
     
     fileprivate func createAndRunRestTimer(_ emom: CustomTimer, _ fireRest: Date,
                                            timerRest: inout Timer?) {
         
-        let blockRestTimer: (Timer) -> Void = { [weak self] _ in
-            guard let self else { return }
-            self.set(state: .startedRest)
-            if roundsLeft > 1 {
-               //  self.chronoOnMove = Date.now
-               // chronoFrozen = getChronoOnLowEnergyMode()
-            }else /*if emom.restSecs == 0*/ {
-                self.set(state: .finished)
-                self.timerFinished()
+        let secondsPerRound = Double(emom.workSecs + emom.restSecs)
+        timerRest = Timer(fire: fireRest,
+                          interval: secondsPerRound,
+                          repeats: true) { _ in
+            DispatchQueue.main.async { [weak self] in
+                MainActor.assumeIsolated {
+                    guard let self else { return }
+                    self.set(state: .startedRest)
+                    if self.roundsLeft <= 1 {
+                        self.set(state: .finished)
+                        self.timerFinished()
+                    }
+                }
             }
         }
-        let secondsPerRound = Double(emom.workSecs /*+ 1*/ + emom.restSecs)
-        timerRest = Timer(fire: fireRest, interval: secondsPerRound, repeats: true, block: blockRestTimer)
         guard let timerRest else { return }
         RunLoop.main.add(timerRest, forMode: .common)
     }

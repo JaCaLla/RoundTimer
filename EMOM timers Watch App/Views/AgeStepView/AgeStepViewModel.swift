@@ -7,6 +7,7 @@
 import Foundation
 import Combine
 
+@MainActor
 protocol AgeStepViewModelProtocol {
     func getBirthDate() -> Date
     func setBirthDate(date: Date)

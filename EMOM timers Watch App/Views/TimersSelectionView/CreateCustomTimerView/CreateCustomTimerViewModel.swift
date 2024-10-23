@@ -28,7 +28,7 @@ final class CreateCustomTimerViewModel: ObservableObject {
     
     var dismissFlowAndStartEMOM = false
     var timerType: TimerType = .emom
-    private (set) var rounds = -1
+    private(set) var rounds = -1
     var workSecs = -1
     var restSecs = -1
     

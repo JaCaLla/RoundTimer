@@ -9,37 +9,20 @@ import SwiftUI
 //import FirebaseCore
 
 
-class AppDelegate: NSObject, UIApplicationDelegate {
-    
-    static var orientationLock = UIInterfaceOrientationMask.portrait {
-        didSet {
-            if #available(iOS 16.0, *) {
-                UIApplication.shared.connectedScenes.forEach { scene in
-                    if let windowScene = scene as? UIWindowScene {
-                        windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: orientationLock))
-                    }
-                }
-                UIViewController.attemptRotationToDeviceOrientation()
-            } else {
-                if orientationLock == .landscape {
-                    UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue, forKey: "orientation")
-                } else {
-                    UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
-                }
-            }
-        }
+struct LandscapeViewController: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = .systemBackground
+        return viewController
     }
+    
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) { }
+}
 
+class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        return AppDelegate.orientationLock
+        return .landscape
     }
-    
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-   // FirebaseApp.configure()
-
-    return true
-  }
 }
 
 @main
@@ -59,6 +42,7 @@ struct AppRoundTimerApp: App {
               SplashScreenView()
           }
       }
+      .edgesIgnoringSafeArea(.all)
       .onAppear {
                   // Delay for 2 seconds before switching to the main view
                   DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -92,19 +76,19 @@ struct AppRoundTimerApp: App {
   }
 }
 
-extension View {
-    @ViewBuilder
-    func forceRotation(orientation: UIInterfaceOrientationMask) -> some View {
-        self.onAppear() {
-            AppDelegate.orientationLock = orientation
-        }
-        // Reset orientation to previous setting
-        let currentOrientation = AppDelegate.orientationLock
-        self.onDisappear() {
-            AppDelegate.orientationLock = currentOrientation
-        }
-    }
-}
+//extension View {
+//    @ViewBuilder
+//    func forceRotation(orientation: UIInterfaceOrientationMask) -> some View {
+//        self.onAppear() {
+//            AppDelegate.orientationLock = orientation
+//        }
+//        // Reset orientation to previous setting
+//        let currentOrientation = AppDelegate.orientationLock
+//        self.onDisappear() {
+//            AppDelegate.orientationLock = currentOrientation
+//        }
+//    }
+//}
 
 //@main
 //struct AppRoundTimerApp: App {

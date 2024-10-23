@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+@MainActor
 protocol MirroredTimerViewModelProtocol {
     func set(mirroredTimer: MirroredTimer)
     func getCurrentRound() -> String
@@ -16,12 +16,12 @@ protocol MirroredTimerViewModelProtocol {
     func close()
     func getCurrentMessage() -> String
 }
-
+@MainActor
 final class MirroredTimerViewModel:NSObject, ObservableObject {
     
     @Published var chronoFrozen = "--:--"
     private let audioManager: AudioManagerProtocol
-    private (set) var state: EMOMViewModelState
+    private(set) var state: EMOMViewModelState
     var mirroredTimer: MirroredTimer?
     
     init(mirroredTimer: MirroredTimer? = nil,
@@ -117,7 +117,7 @@ extension MirroredTimerViewModel: MirroredTimerViewModelProtocol {
             return 1.0 - Double(mirroredTimerCountdown.value) / Double(EMOMViewModel.coundownValue)
         } else if let mirroredTimerWorking =  mirroredTimer.mirroredTimerWorking {
             return 1.0 - Double(mirroredTimerWorking.currentRound) / Double(mirroredTimerWorking.rounds)
-        } else if let mirroredTimerFinished =  mirroredTimer.mirroredTimerFinished {
+        } else if mirroredTimer.mirroredTimerFinished != nil {
             return 1.0
         }
         return 0.0

@@ -19,7 +19,7 @@ struct SplashScreenView: View {
                 .font(.largeTitle)
                 .fontWeight(.bold)
         }
-        .forceRotation(orientation: .landscape)
+       // .forceRotation(orientation: .landscape)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
        // .background(Color.white) // Customize background color
         .edgesIgnoringSafeArea(.all)

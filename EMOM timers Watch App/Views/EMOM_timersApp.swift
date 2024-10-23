@@ -10,7 +10,6 @@ import AVFoundation
 
 @main
 struct EMOM_timers_Watch_AppApp: App {
-    @Environment(\.scenePhase) private var scenePhase
     var body: some Scene {
         WindowGroup {
          //   VibrationView()
@@ -19,15 +18,11 @@ struct EMOM_timers_Watch_AppApp: App {
         .backgroundTask(.appRefresh("My_App_Updates")) { context in
             print("todo")
         }
-        .onChange(of: scenePhase) {
-            LocalLogger.log("EMOM_timers_Watch_AppApp.onChange: \($0)")
-        }
     }
 }
 
 
 class AppDelegate: NSObject, WKApplicationDelegate {
-
 
     func handle(_ workoutConfiguration: HKWorkoutConfiguration) {
         Task {

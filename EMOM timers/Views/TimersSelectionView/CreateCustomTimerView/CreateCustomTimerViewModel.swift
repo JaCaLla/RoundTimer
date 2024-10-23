@@ -22,8 +22,8 @@ final class CreateCustomTimerViewModel: ObservableObject {
     
     // MARK :- Lifecycle
     func onAppearActions() async {
-            let result = await HealthkitManager.shared.startWorkoutSession()
-             setIsLinkedToAW(result)
+//            let result = await HealthkitManager.shared.startWorkoutSession()
+//             setIsLinkedToAW(result)
     }
     
     // MARK: - Presentation logic
@@ -48,7 +48,7 @@ final class CreateCustomTimerViewModel: ObservableObject {
     @MainActor func createCustomTimer() async -> CustomTimer? {
         if createChronoMirroredInAW {
             isFetchingAW = true
-            _ = await HealthkitManager.shared.startWorkoutSession()
+           // _ = await HealthkitManager.shared.startWorkoutSession()
             LocalLogger.log("CreateCustomTimerView2.Button(action:)")
             isFetchingAW = false
             return buildCustomTimer(isMirroredOnAW: true)

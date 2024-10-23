@@ -7,7 +7,7 @@
 
 import Foundation
 @preconcurrency import HealthKit
-
+/*
 actor HealthkitManager: NSObject, ObservableObject {
     // 2
     static let shared = HealthkitManager()
@@ -58,28 +58,6 @@ actor HealthkitManager: NSObject, ObservableObject {
         } catch {
             return false
         }
-        
-        /*
-        return await withCheckedContinuation {[weak self] continuation in
-            self?.healthStore?.requestAuthorization(toShare: nil, read: typesToRead) { [weak self] userWasShownPermissionView, error in
-                DispatchQueue.main.async { [weak self] in
-                    MainActor.assumeIsolated {
-                        if (userWasShownPermissionView) {
-                            let authorized = (self?.healthStore?.authorizationStatus(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!) == .sharingAuthorized)
-                            AppGroupStore.shared.setBool(value: authorized, forKey: .grantedPermissionForHeartRate)
-                            self?.grantedPermissionForHeartRate = authorized
-                            continuation.resume(returning: authorized)
-                        } else {
-                            LocalLogger.log("User was not shown permission view")
-                            if let e = error {
-                                print(e)
-                            }
-                        }
-                    }
-                }
-                
-            }
-        }*/
     }
     
     func fetchHeartRateData() {
@@ -120,21 +98,9 @@ actor HealthkitManager: NSObject, ObservableObject {
             let query = HKSampleQuery(sampleType: heartRateType, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { query, samples, error in
                 if let error = error {
                     LocalLogger.log(type: .error, "Error fetching heart rate data: \(error.localizedDescription)")
-                  //  print("Error fetching heart rate data: \(error.localizedDescription)")
                     return
                 }
                 completion(samples)
-//                guard let sample = samples?.first as? HKQuantitySample else {
-//                    LocalLogger.log(type: .error, "No heart rate data available")
-//                   // print("No heart rate data available")
-//                    return
-//                }
-//
-//                // Update the UI on the main thread
-//                DispatchQueue.main.async {
-//                    self.heartRate = sample.quantity.doubleValue(for: HKUnit(from: "count/min"))
-//                    LocalLogger.log("HealthkitManager2.fetchHeartRateData: \(String(describing: self.heartRate)) ")
-//                }
             }
 
             self.healthStore?.execute(query)
@@ -302,3 +268,4 @@ extension HealthkitManager: HKWorkoutSessionDelegate {
         }
     }
 #endif
+*/

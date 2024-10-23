@@ -23,11 +23,11 @@ struct TimersSelectionView: View {
                 subtitle: "subtitle_emom_timer") {
                 if wcSessionIsSuppported {
                     Task {
-                        let result = await HealthkitManager.shared.startWorkoutSession()
+//                        let result = await HealthkitManager.shared.startWorkoutSession()
                         await MainActor.run {
-                            LocalLogger.log("HealthkitManager.shared.startWorkoutSession:\(result ? "✅" : "❌")")
-                            foregroundColor = result ? .green : .red
-                            isConnectedAW = result
+//                            LocalLogger.log("HealthkitManager.shared.startWorkoutSession:\(result ? "✅" : "❌")")
+//                            foregroundColor = result ? .green : .red
+//                            isConnectedAW = result
                             isPresentedCreateCustomTimerView.toggle()
                         }
                     }
@@ -40,14 +40,14 @@ struct TimersSelectionView: View {
         }.fullScreenCover(isPresented: $isPresentedCreateCustomTimerView) {
             CreateCustomTimerView(customTimer: $customTimer,
                 isConnectedAW: $isConnectedAW)
-        }.task {
+        }/*.task {
             _ = HealthkitManager.shared
-        }
+        }*/
         .onAppear(perform: {
-            Task {
-                _ = await HealthkitManager.shared.authorizeHealthKit()
-                wcSessionIsSuppported = checkIfiPhoneIsConnectedToAppleWatch()
-            }
+//            Task {
+//                _ = await HealthkitManager.shared.authorizeHealthKit()
+//                wcSessionIsSuppported = checkIfiPhoneIsConnectedToAppleWatch()
+//            }
         })
     }
     

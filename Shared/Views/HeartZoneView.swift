@@ -18,7 +18,7 @@ struct HeartZoneView: View {
             .heartRateZone5
     ]
     @State var heartRate: Double?//String = ""
-    @StateObject private var healthkitManager = HealthkitManager.shared
+   // @StateObject private var healthkitManager = HealthkitManager.shared
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -40,18 +40,12 @@ struct HeartZoneView: View {
                 }
             }
         }.onAppear {
-            Task { @MainActor in
-                if await healthkitManager.authorizeHealthKit() {
-                    await healthkitManager.fetchHeartRateData()
-                }
-            }
-        }/*.onChange(of: healthkitManager.heartRate) {
-            self.heartRate = healthkitManager.heartRate
-            if let birthDate = AppGroupStore.shared.getDate(forKey: .birthDate) {
-                let age = HeartZoneCalculator.calculateAge(from: birthDate)
-                self.currentZone = HeartZoneCalculator(age: age).zone(heartRate: heartRate)
-            }
-        }*/
+//            Task { @MainActor in
+//                if await healthkitManager.authorizeHealthKit() {
+//                    await healthkitManager.fetchHeartRateData()
+//                }
+//            }
+        }
     }
 
     func zoneText(_ index: Int, _ currentZone: Int, _ heartRate: Double?) -> String {

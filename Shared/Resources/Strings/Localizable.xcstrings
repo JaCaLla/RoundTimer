@@ -249,6 +249,7 @@
       }
     },
     "setup_age_not_authorized" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

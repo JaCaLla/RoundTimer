@@ -167,16 +167,6 @@
     "intro_paragraph_2" : {
 
     },
-    "message_10_secs_to_go" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "10 seconds to go"
-          }
-        }
-      }
-    },
     "picker_minutes" : {
       "localizations" : {
         "en" : {
@@ -248,17 +238,6 @@
         }
       }
     },
-    "setup_age_not_authorized" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You did not allowed access to your heart rate information. For having access you can always re-install app."
-          }
-        }
-      }
-    },
     "setup_age_select_date" : {
       "localizations" : {
         "en" : {
@@ -279,6 +258,16 @@
         }
       }
     },
+    "splash_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready to go?!?"
+          }
+        }
+      }
+    },
     "Start" : {
 
     },
@@ -291,9 +280,6 @@
           }
         }
       }
-    },
-    "Timers" : {
-
     },
     "timerup_paragraph_1" : {
 
@@ -345,9 +331,6 @@
 
     },
     "Vibration" : {
-
-    },
-    "Welcome to MyApp" : {
 
     },
     "Work" : {

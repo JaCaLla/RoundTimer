@@ -38,9 +38,9 @@ final class EMOMViewModel: NSObject, ObservableObject {
     private(set) var audioManager: AudioManagerProtocol = AudioManager.shared
     
     
-    init(audioManager: AudioManagerProtocol = AudioManager.shared,
+    init(audioManager: AudioManagerProtocol? = nil,
          extendedRuntimeSessionDelegate: WKExtendedRuntimeSessionDelegate? = nil) {
-        self.audioManager = audioManager
+        self.audioManager = audioManager ?? AudioManager.shared
         self.extendedRuntimeSessionDelegate = extendedRuntimeSessionDelegate
     }
 }

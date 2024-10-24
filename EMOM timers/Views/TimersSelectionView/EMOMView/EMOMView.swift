@@ -31,7 +31,7 @@ struct EMOMView: View {
             Spacer()
         }
         .onAppear {
-            guard emomViewModel.state == .notStarted else { return }
+            guard emomViewModel.state.value == .notStarted else { return }
             emomViewModel.setAndStart(emom: customTimer)
           //  emomViewModel.action()
         }

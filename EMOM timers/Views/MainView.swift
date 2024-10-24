@@ -10,6 +10,7 @@ import os.log
 struct MainView: View {
     @State var customTimer: CustomTimer?
     @StateObject private var timerStore = TimerStore.shared
+    @StateObject var viewModel = CreateCustomTimerViewModel()
     var body: some View {
         ZStack {
             if customTimer != nil {
@@ -17,6 +18,7 @@ struct MainView: View {
                     
             } else {
                     TimersSelectionView(customTimer: $customTimer)
+                    .environmentObject(viewModel)
             }
         }
         .onChange(of: customTimer) {

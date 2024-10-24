@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct CreateCustomTimerView: View {
- //   @Environment(\.dismiss) var dismiss
     @Binding var customTimer: CustomTimer?
     @Binding var isConnectedAW: Bool
     let pickerSize = 200.0
     @State private var isRestOn = false
     @State private var isFetchingAW = false
-    @StateObject var viewModel = CreateCustomTimerViewModel()
+    @EnvironmentObject var viewModel: CreateCustomTimerViewModel
     var body: some View {
         VStack {
             Spacer()
@@ -31,6 +30,7 @@ struct CreateCustomTimerView: View {
                     max: viewModel.maxRounds,
                     format: "%d",
                     value: $viewModel.selectedIndexRounds)
+                //.environmentObject(viewModel)
                     .frame(width: pickerSize, height: pickerSize)
                 Spacer(minLength: 150)
                 if isRestOn {
@@ -53,7 +53,7 @@ struct CreateCustomTimerView: View {
                         CreateCustomTimerContinueButton(isFetchingAW: $isFetchingAW,
                                                         customTimer: $customTimer, 
                                                         createChronoMirroredInAW: viewModel.createChronoMirroredInAW)
-                            .environmentObject(viewModel)
+                            //.environmentObject(viewModel)
 
                 }
         }

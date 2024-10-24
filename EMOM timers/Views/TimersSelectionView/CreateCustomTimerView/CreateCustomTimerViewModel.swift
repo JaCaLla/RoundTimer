@@ -14,10 +14,10 @@ final class CreateCustomTimerViewModel: ObservableObject {
     @Published var createChronoMirroredInAW = false
     @Published var isFetchingAW = false
     @State private var isRestOn = false
-    var selectedWorkMins = 0
-    var selectedWorkSecs = 3
+    var selectedWorkMins = 1
+    var selectedWorkSecs = 0
     var selectedRestMins = 0
-    var selectedRestSecs = 1
+    var selectedRestSecs = 0
     var selectedIndexRounds = 0
     
     // MARK :- Lifecycle
@@ -31,11 +31,10 @@ final class CreateCustomTimerViewModel: ObservableObject {
         createChronoMirroredInAW ? "checkmark.applewatch" : "applewatch.slash"
     }
 
-    func buildCustomTimer(isMirroredOnAW: Bool) -> CustomTimer? {
+    private func buildCustomTimer(isMirroredOnAW: Bool) -> CustomTimer? {
         let workSecs = selectedWorkMins * 60 + selectedWorkSecs
         guard workSecs > 0 else { return nil }
         let restSecs = selectedRestMins * 60 + selectedRestSecs
-      //  let rounds = /*minRounds +*/ selectedIndexRounds
         let rounds = max(minRounds, selectedIndexRounds)
         return CustomTimer(timerType: .emom,
                            rounds: rounds,
@@ -48,7 +47,6 @@ final class CreateCustomTimerViewModel: ObservableObject {
     @MainActor func createCustomTimer() async -> CustomTimer? {
         if createChronoMirroredInAW {
             isFetchingAW = true
-           // _ = await HealthkitManager.shared.startWorkoutSession()
             LocalLogger.log("CreateCustomTimerView2.Button(action:)")
             isFetchingAW = false
             return buildCustomTimer(isMirroredOnAW: true)

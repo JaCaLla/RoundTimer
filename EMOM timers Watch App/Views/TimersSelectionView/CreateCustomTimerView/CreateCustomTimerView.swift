@@ -12,6 +12,7 @@ struct CreateCustomTimerView: View {
     @State private var navPath: [String] = []
     @Binding var customTimer: CustomTimer?
     @EnvironmentObject var createCustomTimerViewModel: CreateCustomTimerViewModel
+    
     var body: some View {
         NavigationStack(path: $navPath) {
             ScrollView {

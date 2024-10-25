@@ -11,6 +11,7 @@ struct AppUIConstants {
 }
 
 extension Color {
+    static let splashText = Color("ElectricRed")
     static let roundColor = Color("ElectricBlue")
     static let roundColorLuminanceReduced = Color("Gray_ET")
     static let timerStartedColor =  Color("ElectricRed")
@@ -32,6 +33,8 @@ extension Color {
 }
 
 extension Font {
+    static let splashAppFont =  Font.system(size: 75, weight: .black)
+    
     static let timerAndRoundLargeFont =  Font.system(size: 50, weight: .black)
     static let timerAndRoundMediumFont =  Font.system(size: 45, weight: .black)
     static let timerAndRoundSmallFont =  Font.system(size: 40, weight: .black)

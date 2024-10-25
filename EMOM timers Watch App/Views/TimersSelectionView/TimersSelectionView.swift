@@ -32,7 +32,7 @@ struct TimersSelectionView: View {
     @StateObject private var timerStore = TimerStore.shared
     @State var closedFromCompation = false
 
-    @StateObject private var healthkitManager = HealthkitManager.shared
+    //@StateObject private var healthkitManager = HealthkitManager.shared
     var body: some View {
         VStack(spacing: 0) {
             if let customTimer {
@@ -41,8 +41,6 @@ struct TimersSelectionView: View {
                     EMOMView(customTimer: $customTimer, closedFromCompation: $isPresented)
                 case .upTimer:
                     UpTimerView(customTimer: $customTimer)
-//                default:
-//                    EmptyView()
                 }
             } else if mirroredTimer != nil {
                 MirroredTimerView(mirroredTimer: $mirroredTimer, closedFromCompation: $isPresented)
@@ -56,22 +54,6 @@ struct TimersSelectionView: View {
                         isPresented.toggle()
 
                     }
-                    /*
-                    TimerSelectionView(systemName: "timer",
-                        title: "title_up_timer",
-                        subtitle: "subtitle_up_timer") {
-                        viewModel.setTimertype(type: .upTimer)
-                        isSettings = false
-                        isPresented.toggle()
-                    }
-                    TimerSelectionView(systemName: "gear",
-                        title: "title_setup") {
-                        isSettings = true
-                        isPresentedSettings.toggle()
-                    }
-                        .fullScreenCover(isPresented: $isPresentedSettings) {
-                        AgeStepView(navPath: $navPath)
-                    }*/
                 }
                     .fullScreenCover(isPresented: $isPresented) {
                     CreateCustomTimerView(customTimer: $customTimer)

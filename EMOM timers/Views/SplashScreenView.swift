@@ -9,19 +9,18 @@ import SwiftUI
 
 struct SplashScreenView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "sparkles") // Replace with your logo
+        ZStack {
+            Image("splash") // Replace with your logo
                 .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 150, height: 150)
-            
-            Text("Welcome to MyApp")
-                .font(.largeTitle)
-                .fontWeight(.bold)
+                .aspectRatio(contentMode: .fill)
+                .ignoresSafeArea()
+            Text(String(localized: "splash_title"))
+                .foregroundColor(.splashText)
+                .font(.splashAppFont)
         }
-       // .forceRotation(orientation: .landscape)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-       // .background(Color.white) // Customize background color
-        .edgesIgnoringSafeArea(.all)
     }
+}
+
+#Preview {
+        SplashScreenView()
 }

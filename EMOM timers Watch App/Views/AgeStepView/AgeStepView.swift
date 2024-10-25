@@ -21,12 +21,12 @@ struct AgeStepView: View {
     @State private var isVisible = false
     
     @StateObject var viewModel: AgeStepViewModel = AgeStepViewModel()
-    @StateObject private var healthkitManager = HealthkitManager.shared
+   // @StateObject private var healthkitManager = HealthkitManager.shared
     
     var body: some View {
         ScrollView {
             VStack {
-                if healthkitManager.grantedPermissionForHeartRate {
+              //  if healthkitManager.grantedPermissionForHeartRate {
                     if isVisible {
                         DatePicker(
                             String(localized: "setup_age_select_date"),
@@ -41,20 +41,19 @@ struct AgeStepView: View {
                     Divider()
                     Text(Image(systemName: "info.bubble")) + Text(" ") + Text(String(localized:"setup_age_info"))
                     Spacer()
-                } else {
-                    Text(Image(systemName: "heart.slash")) + Text(" ") + Text(String(localized:"setup_age_not_authorized"))
-                    Divider()
-                }
+//                } else {
+//                    Text(Image(systemName: "heart.slash")) + Text(" ") + Text(String(localized:"setup_age_not_authorized"))
+//                    Divider()
+//                }
             }
             .navigationTitle(String(localized: "setup_age_title"))
-            .onAppear {
-              //  fousedfield = true
-                selectedDate =  viewModel.getBirthDate()
-                isVisible = true
-                Task {
-                    _ = await healthkitManager.authorizeHealthKit()
-                }
-            }
+//            .onAppear {
+//                selectedDate =  viewModel.getBirthDate()
+//                isVisible = true
+//                Task {
+//                    _ = await healthkitManager.authorizeHealthKit()
+//                }
+//            }
             .onDisappear() {
                 viewModel.setBirthDate(date: selectedDate)
             }

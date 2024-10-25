@@ -43,6 +43,8 @@
 		291DC5FE2C42F30800419E55 /* MirroredTimerWorking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DC5FD2C42F30800419E55 /* MirroredTimerWorking.swift */; };
 		291DC5FF2C42F30800419E55 /* MirroredTimerWorking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DC5FD2C42F30800419E55 /* MirroredTimerWorking.swift */; };
 		292431EB2C69173F0030AE06 /* TimerSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2961C3B32C5659A20011345C /* TimerSelectionView.swift */; };
+		2930B2A92CCA9E85002C5BCF /* EMOMViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29805BF72C6DE28C004BEAC6 /* EMOMViewModelState.swift */; };
+		2930B2AA2CCAA1E3002C5BCF /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4BD802BC99ED300A0F6B4 /* AudioManager.swift */; };
 		293DF0342C36F03800911E0C /* CreateCustomTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293DF0332C36F03800911E0C /* CreateCustomTimerViewModel.swift */; };
 		293DF0362C37FBA200911E0C /* CreateCustomTimerMMSSPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293DF0352C37FBA200911E0C /* CreateCustomTimerMMSSPickerView.swift */; };
 		293EC2BA2BD2E3F1008D1FD3 /* EMOM-timers-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 293EC2B92BD2E3F1008D1FD3 /* EMOM-timers-Info.plist */; };
@@ -537,6 +539,7 @@
 			children = (
 				29BE3B772C4567E600097FB5 /* HealthkitManager.swift */,
 				2948500E2C4CE512004DF009 /* AppGroupStore.swift */,
+				29D4BD802BC99ED300A0F6B4 /* AudioManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -804,7 +807,6 @@
 		29D4BD822BC99ED300A0F6B4 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				29D4BD802BC99ED300A0F6B4 /* AudioManager.swift */,
 				29D4BD812BC99ED300A0F6B4 /* HapticManager.swift */,
 				294E44242BFB4E8C00281D1C /* HealthkitManagerAW.swift */,
 			);
@@ -1172,6 +1174,7 @@
 				293DF0342C36F03800911E0C /* CreateCustomTimerViewModel.swift in Sources */,
 				299619532BE2BE7A0010F578 /* TimerStore.swift in Sources */,
 				291C8AFF2C3C6FF1001ABC9A /* DismissButton.swift in Sources */,
+				2930B2A92CCA9E85002C5BCF /* EMOMViewModelState.swift in Sources */,
 				2979A3F62BF7C69C006E32E6 /* OrientationManager.swift in Sources */,
 				293DF0362C37FBA200911E0C /* CreateCustomTimerMMSSPickerView.swift in Sources */,
 				29E61FE12BFE2D0900C0CD60 /* ConnectivityMessage.swift in Sources */,
@@ -1185,6 +1188,7 @@
 				2919869B2BC7048F0012ACA0 /* EMOM_timersApp.swift in Sources */,
 				29EFDC6D2C289B8800C46504 /* CreateCustomTimerPickerView.swift in Sources */,
 				291DC5F12C41AA0200419E55 /* MirroredTimer.swift in Sources */,
+				2930B2AA2CCAA1E3002C5BCF /* AudioManager.swift in Sources */,
 				294850122C4D2299004DF009 /* AgeStepViewModel.swift in Sources */,
 				29DDB1B02CC03A46007C4F14 /* DictionaryExtension.swift in Sources */,
 				291C8AF62C3C5C6A001ABC9A /* CreateCustomTimerContinueButton.swift in Sources */,

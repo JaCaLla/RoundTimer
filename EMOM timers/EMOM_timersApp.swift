@@ -42,6 +42,8 @@ struct AppRoundTimerApp: App {
               SplashScreenView()
           }
       }
+      .navigationViewStyle(StackNavigationViewStyle()) 
+      .preferredColorScheme(.dark)
       .edgesIgnoringSafeArea(.all)
       .onAppear {
                   // Delay for 2 seconds before switching to the main view

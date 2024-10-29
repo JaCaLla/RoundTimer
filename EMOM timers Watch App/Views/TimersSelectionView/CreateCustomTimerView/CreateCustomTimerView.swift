@@ -12,13 +12,16 @@ struct CreateCustomTimerView: View {
     @State private var navPath: [String] = []
     @Binding var customTimer: CustomTimer?
     @EnvironmentObject var createCustomTimerViewModel: CreateCustomTimerViewModel
+    
     var body: some View {
         NavigationStack(path: $navPath) {
             ScrollView {
-                NextCreateCustomTimerView(navPath: $navPath)
+                FirstViewInFlow(navPath: $navPath)
                 .navigationTitle("EMOM")
                 .navigationDestination(for: String.self) { pathValue in
-                    if pathValue == CreateCustomTimerViewModel.Screens.roundsStepView.rawValue {
+                    if pathValue == CreateCustomTimerViewModel.Screens.ageStepView.rawValue {
+                        AgeStepView(navPath: $navPath)
+                    } else if pathValue == CreateCustomTimerViewModel.Screens.roundsStepView.rawValue {
                         RoundsStepView(navPath: $navPath)
                     } else if pathValue == CreateCustomTimerViewModel.Screens.timerPickerStepViewWork.rawValue {
                         TimerPickerStepView(navPath: $navPath, pickerViewType: .work)
@@ -64,20 +67,6 @@ struct CreateCustomTimerView: View {
         oldValue.count == newValue.count + 1 &&
         Array(oldValue.prefix(newValue.count)) == newValue &&
         oldValue.last == from.rawValue
-    }
-}
-
-public struct NextCreateCustomTimerView: View {
-    @Binding var navPath: [String]
-    @EnvironmentObject var selectEMOMViewModel: CreateCustomTimerViewModel
-    public var body: some View {
-        if selectEMOMViewModel.timerType == .emom {
-            RoundsStepView(navPath: $navPath)
-        } else if selectEMOMViewModel.timerType == .upTimer {
-            TimerPickerStepView(navPath: $navPath, pickerViewType: .work)
-        } else {
-            EmptyView()
-        }
     }
 }
 

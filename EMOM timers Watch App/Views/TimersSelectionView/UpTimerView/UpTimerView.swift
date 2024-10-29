@@ -8,6 +8,7 @@ import SwiftUI
 
 struct UpTimerView: View {
     let bottonSideSize = 50.0
+    
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.isLuminanceReduced) var isLuminanceReduced
     @Binding var customTimer: CustomTimer?
@@ -37,7 +38,8 @@ struct UpTimerView: View {
                     .font(upTimerViewModel.getTimerAndRoundFont())
                     Spacer()
                     VStack {
-                        if let chronoOnMove = upTimerViewModel.chronoOnMove {
+                        if let chronoOnMove = upTimerViewModel.chronoOnMove,
+                           !isLuminanceReduced {
                             Text("\(chronoOnMove, style: .timer)")
                                 .foregroundStyle(upTimerViewModel.getForegroundTextColor())
                                 .allowsTightening(true)
@@ -61,21 +63,24 @@ struct UpTimerView: View {
                     Text("Screen dimmed. Tap to unblock.")
                 }.frame(height: 50)
             } else {
-                Button(action: {
-                    upTimerViewModel.action()
-                }, label: {
-                        Image(systemName: upTimerViewModel.getActionIcon())
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: bottonSideSize, height: bottonSideSize)
-                    })
-                    .foregroundStyle(upTimerViewModel.actionButtonColor())
-                    .frame(width: bottonSideSize, height: bottonSideSize)
-                    .clipShape(Circle())
+                HStack {
+                    HeartZoneView()
+                    Spacer()
+                }
+//                Button(action: {
+//                    upTimerViewModel.action()
+//                }, label: {
+//                        Image(systemName: upTimerViewModel.getActionIcon())
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fit)
+//                            .frame(width: bottonSideSize, height: bottonSideSize)
+//                    })
+//                    .foregroundStyle(upTimerViewModel.actionButtonColor())
+//                    .frame(width: bottonSideSize, height: bottonSideSize)
+//                    .clipShape(Circle())
             }
             Spacer(minLength: 5)
         }.background(upTimerViewModel.getBackground())
-            .onChange(of: scenePhase) { print($0) }
             .onChange(of: upTimerViewModel.progress) {
                 gaugeProgress = upTimerViewModel.progress
             }
@@ -90,21 +95,21 @@ struct UpTimerView: View {
 
 
 #Preview("Small Font") {
-    let model =  UpTimerViewModel()
+   // let model =  UpTimerViewModel()
     //model.set(emom: CustomTimer(timerType: .emom,rounds: 22, workSecs: 1800, restSecs: 0))
     return UpTimerView(customTimer:.constant(nil))
        // .environmentObject(model)
 }
 
 #Preview("Regular Font") {
-    let model =  UpTimerViewModel()
+   // let model =  UpTimerViewModel()
     //model.set(emom: CustomTimer(timerType: .emom,rounds: 2, workSecs: 1800, restSecs: 0))
     return UpTimerView(customTimer:.constant(nil))
         //.environmentObject(model)
 }
 
 #Preview("Large Font") {
-    let model =  UpTimerViewModel()
+    //let model =  UpTimerViewModel()
     //model.set(emom: CustomTimer(timerType: .emom,rounds: 12, workSecs: 200, restSecs: 0))
     return UpTimerView(customTimer:.constant(nil))
        // .environmentObject(model)

@@ -1,0 +1,341 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    " " : {
+
+    },
+    ":" : {
+
+    },
+    "%@" : {
+
+    },
+    "%lld" : {
+
+    },
+    "%lld years old" : {
+
+    },
+    "Action" : {
+
+    },
+    "button_continue" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contine"
+          }
+        }
+      }
+    },
+    "button_next" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        }
+      }
+    },
+    "button_rest_next" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setup Rest"
+          }
+        }
+      }
+    },
+    "button_start_work" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start work!"
+          }
+        }
+      }
+    },
+    "chorno_message_finished" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FINISHED!"
+          }
+        }
+      }
+    },
+    "chorno_message_last_round" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LAST ROUND"
+          }
+        }
+      }
+    },
+    "chrono_message_finished" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FINISHED!"
+          }
+        }
+      }
+    },
+    "chrono_message_last_round" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LAST ROUND"
+          }
+        }
+      }
+    },
+    "chrono_message_press_play" : {
+
+    },
+    "chrono_message_rest" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "REST"
+          }
+        }
+      }
+    },
+    "chrono_message_work" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WORK"
+          }
+        }
+      }
+    },
+    "EMOM" : {
+
+    },
+    "emom_paragraph_1" : {
+
+    },
+    "emom_paragraph_2" : {
+
+    },
+    "emom_paragraph_3" : {
+
+    },
+    "emom_paragraph_4" : {
+
+    },
+    "emom_paragraph_5" : {
+
+    },
+    "emom_paragraph_6" : {
+
+    },
+    "emom_paragraph_7" : {
+
+    },
+    "emom_paragraph_8" : {
+
+    },
+    "emom_paragraph_9" : {
+
+    },
+    "emom_paragraph_10" : {
+
+    },
+    "Finish" : {
+
+    },
+    "intro_paragraph_1" : {
+
+    },
+    "intro_paragraph_2" : {
+
+    },
+    "picker_minutes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minutes"
+          }
+        }
+      }
+    },
+    "picker_rounds" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rounds"
+          }
+        }
+      }
+    },
+    "picker_seconds" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seconds"
+          }
+        }
+      }
+    },
+    "picker_secs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Secs."
+          }
+        }
+      }
+    },
+    "Rest" : {
+
+    },
+    "round_n" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Round %@"
+          }
+        }
+      }
+    },
+    "Rounds" : {
+
+    },
+    "Screen dimmed. Tap to unblock." : {
+
+    },
+    "setup_age_info" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The purpose of knowing you birth date is just for heart rate zone calculation"
+          }
+        }
+      }
+    },
+    "setup_age_select_date" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a date"
+          }
+        }
+      }
+    },
+    "setup_age_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heart zone setup"
+          }
+        }
+      }
+    },
+    "splash_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready to go?!?"
+          }
+        }
+      }
+    },
+    "Start" : {
+
+    },
+    "subtitle_emom_timer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set rounds, work time and rest time between rounds"
+          }
+        }
+      }
+    },
+    "timerup_paragraph_1" : {
+
+    },
+    "timerup_paragraph_3" : {
+
+    },
+    "title_emom_timer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EMOM timer"
+          }
+        }
+      }
+    },
+    "title_rest" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rest"
+          }
+        }
+      }
+    },
+    "title_round" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Round"
+          }
+        }
+      }
+    },
+    "title_work" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Work"
+          }
+        }
+      }
+    },
+    "UP" : {
+
+    },
+    "Vibration" : {
+
+    },
+    "Work" : {
+
+    }
+  },
+  "version" : "1.0"
+}

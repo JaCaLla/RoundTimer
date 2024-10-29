@@ -10,11 +10,11 @@ import SwiftUI
 enum RoundStepViewType {
     case round, work, rest
 
-    var navigationTitle: String {
+    var navigationTitle: LocalizedStringKey {
         switch self {
-        case .work: "Work"
-        case .rest: "Rest"
-        case .round: "Round"
+        case .work: "title_work"
+        case .rest: "title_rest"
+        case .round: "title_round"
         }
     }
     
@@ -37,7 +37,7 @@ enum RoundStepViewType {
 
 struct RoundsStepView: View {
     
-    @State private var pickerRoundIndex = 0
+   // @State private var pickerRoundIndex = 0
     @FocusState private var fousedfield: Bool
     @Binding var navPath: [String]
     @Environment(\.dismiss) var dismiss
@@ -60,13 +60,17 @@ struct RoundsStepView: View {
             Spacer()
             if selectEMOMViewModel.rounds > 0 {
                 NavigationLink(value: CreateCustomTimerViewModel.Screens.timerPickerStepViewWork.rawValue) {
-                    Text("Next ... >")
+                    Group {
+                        Text(String(localized: "button_next")) + Text(Image(systemName: "chevron.right"))
+                    }
+                    .font(.buttonSubtitleFont)
+                    
                 }
                 Spacer()
             } 
         }
-        .onChange(of: selectedRound, initial: true) { _, newValue in
-            selectEMOMViewModel.rounds = Int(selectedRound)
+        .onChange(of: selectedRound) {
+            selectEMOMViewModel.setRounds(rounds: Int(selectedRound))
         }
         .navigationTitle("Rounds")
         .onAppear {
@@ -79,5 +83,5 @@ struct RoundsStepView: View {
 #Preview {
     RoundsStepView(navPath: .constant(["RoundsStepView"]))
         .environmentObject(CreateCustomTimerViewModel())
-        .previewDevice("Apple Watch Series 7 - 41mm")
+        //.previewDevice("Apple Watch Series 7 - 41mm")
 }

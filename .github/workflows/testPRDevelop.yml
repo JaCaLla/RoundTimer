@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Run a simple command
-        run: echo "Hello, GitHub Actions!"
-      - name: Run a simple command
-        run: echo "Hello, GitHub Actions!"
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: List repository content
+        run: ls -la

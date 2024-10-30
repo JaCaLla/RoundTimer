@@ -16,3 +16,6 @@ jobs:
 
       - name: List repository content
         run: ls -la
+
+      - name: Mostrar rama actual
+        run: git branch --show-current

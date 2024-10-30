@@ -13,5 +13,6 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - name: 'Hello World'
-      run: echo "Hello World"
+    - uses: actions/checkout@v4
+    - name: 'Muestra el contenido del directorio'
+      run: ls -la

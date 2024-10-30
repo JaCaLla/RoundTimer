@@ -1,4 +1,4 @@
-name: Blank Workflow
+name: Test Before PR to develop
 
 # Especifica en qué ramas se ejecutará el workflow
 on:

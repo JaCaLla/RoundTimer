@@ -2,9 +2,8 @@ name: Blank Workflow
 
 # Especifica en qué ramas se ejecutará el workflow
 on:
-  push:
-    branches:
-      - '**'
+  pull_request:
+    branches: [main, develop]
 
 jobs:
   blank-job:

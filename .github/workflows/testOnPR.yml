@@ -20,8 +20,9 @@ jobs:
       - name: Mostrar rama actual
         run: git branch --show-current
 
-      - name: Select Xcode
-        run: sudo xcode-select -switch /Applications/Xcode.app
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+           xcode-version: '16.0'
 
       - name: Execute Unit tessts
         run: xcodebuild test -scheme 'EMOM timers' -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' -enableCodeCoverage YES

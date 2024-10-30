@@ -1,0 +1,17 @@
+name: Blank Workflow
+
+# Especifica en qué ramas se ejecutará el workflow
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  blank-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run a simple command
+        run: echo "Hello, GitHub Actions!"
+      - name: List current content folder
+        run: ls -la

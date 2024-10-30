@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		292712832CCD346E0088AA40 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 292712822CCD346E0088AA40 /* Settings.bundle */; };
 		292712A42CCD528E0088AA40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2927129D2CCD528E0088AA40 /* Assets.xcassets */; };
-		292712AB2CCD528E0088AA40 /* EMOM_timersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292712AA2CCD528E0088AA40 /* EMOM_timersTests.swift */; };
 		292712B82CCD528E0088AA40 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 292712B02CCD528E0088AA40 /* Preview Assets.xcassets */; };
 		292712B92CCD528E0088AA40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 292712B22CCD528E0088AA40 /* Assets.xcassets */; };
 		292712C02CCD57AF0088AA40 /* EMOM-timers-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 292712A12CCD528E0088AA40 /* EMOM-timers-Info.plist */; };
@@ -117,16 +116,10 @@
 		292714442CCD71B40088AA40 /* work.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 292713A02CCD60780088AA40 /* work.mp3 */; };
 		292714452CCD71B40088AA40 /* start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2927139F2CCD60780088AA40 /* start.mp3 */; };
 		297A76682CCD2F3600939DB4 /* EMOM timers Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 297A76672CCD2F3600939DB4 /* EMOM timers Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		29AA13832CD27848009FA18C /* EMOM timers Watch App.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 29AA13822CD27848009FA18C /* EMOM timers Watch App.xctestplan */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		297A76522CCD2F3600939DB4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 297A76392CCD2F3400939DB4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 297A76402CCD2F3400939DB4;
-			remoteInfo = "EMOM timers";
-		};
 		297A76692CCD2F3600939DB4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 297A76392CCD2F3400939DB4 /* Project object */;
@@ -134,12 +127,19 @@
 			remoteGlobalIDString = 297A76662CCD2F3600939DB4;
 			remoteInfo = "EMOM timers Watch App";
 		};
-		297A767A2CCD2F3700939DB4 /* PBXContainerItemProxy */ = {
+		29AA13692CD26EEC009FA18C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 297A76392CCD2F3400939DB4 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 297A76662CCD2F3600939DB4;
 			remoteInfo = "EMOM timers Watch App";
+		};
+		29AA137A2CD2723F009FA18C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 297A76392CCD2F3400939DB4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 297A76402CCD2F3400939DB4;
+			remoteInfo = "EMOM timers";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -163,7 +163,6 @@
 		2927129D2CCD528E0088AA40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2927129F2CCD528E0088AA40 /* EMOM timers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "EMOM timers.entitlements"; sourceTree = "<group>"; };
 		292712A12CCD528E0088AA40 /* EMOM-timers-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EMOM-timers-Info.plist"; sourceTree = "<group>"; };
-		292712AA2CCD528E0088AA40 /* EMOM_timersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOM_timersTests.swift; sourceTree = "<group>"; };
 		292712B02CCD528E0088AA40 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		292712B22CCD528E0088AA40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		292712B42CCD528E0088AA40 /* EMOM timers Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "EMOM timers Watch App.entitlements"; sourceTree = "<group>"; };
@@ -240,20 +239,28 @@
 		292714072CCD63C10088AA40 /* CreateCustomTimerMMSSPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomTimerMMSSPickerView.swift; sourceTree = "<group>"; };
 		2927143D2CCD65050088AA40 /* EMOM_timersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOM_timersApp.swift; sourceTree = "<group>"; };
 		297A76412CCD2F3400939DB4 /* EMOM timers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EMOM timers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		297A76512CCD2F3600939DB4 /* EMOM timersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EMOM timersTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		297A76672CCD2F3600939DB4 /* EMOM timers Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EMOM timers Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		297A76792CCD2F3700939DB4 /* EMOM timers Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EMOM timers Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		29AA13652CD26EEC009FA18C /* EMOM timers Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EMOM timers Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		29AA13762CD2723F009FA18C /* EMOM timers Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EMOM timers Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		29AA13812CD27341009FA18C /* EMOM timers.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "EMOM timers.xctestplan"; sourceTree = "<group>"; };
+		29AA13822CD27848009FA18C /* EMOM timers Watch App.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "EMOM timers Watch App.xctestplan"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		29AA13662CD26EEC009FA18C /* EMOM timers Watch AppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "EMOM timers Watch AppTests";
+			sourceTree = "<group>";
+		};
+		29AA13772CD2723F009FA18C /* EMOM timers Tests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "EMOM timers Tests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		297A763E2CCD2F3400939DB4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		297A764E2CCD2F3600939DB4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -267,7 +274,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		297A76762CCD2F3700939DB4 /* Frameworks */ = {
+		29AA13622CD26EEC009FA18C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29AA13732CD2723F009FA18C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -608,23 +622,18 @@
 			path = Audio;
 			sourceTree = "<group>";
 		};
-		292714462CCE10170088AA40 /* EMOM timersTests */ = {
-			isa = PBXGroup;
-			children = (
-				292712AA2CCD528E0088AA40 /* EMOM_timersTests.swift */,
-			);
-			path = "EMOM timersTests";
-			sourceTree = "<group>";
-		};
 		297A76382CCD2F3400939DB4 = {
 			isa = PBXGroup;
 			children = (
+				29AA13812CD27341009FA18C /* EMOM timers.xctestplan */,
+				29AA13822CD27848009FA18C /* EMOM timers Watch App.xctestplan */,
 				292712922CCD44170088AA40 /* EMOM-timers-Watch-App-Info.plist */,
 				292712822CCD346E0088AA40 /* Settings.bundle */,
 				2927130D2CCD5CBB0088AA40 /* Shared */,
 				292713E62CCD634A0088AA40 /* EMOM timers */,
-				292714462CCE10170088AA40 /* EMOM timersTests */,
 				292713962CCD60030088AA40 /* EMOM timers Watch App */,
+				29AA13662CD26EEC009FA18C /* EMOM timers Watch AppTests */,
+				29AA13772CD2723F009FA18C /* EMOM timers Tests */,
 				297A76422CCD2F3400939DB4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -633,9 +642,9 @@
 			isa = PBXGroup;
 			children = (
 				297A76412CCD2F3400939DB4 /* EMOM timers.app */,
-				297A76512CCD2F3600939DB4 /* EMOM timersTests.xctest */,
 				297A76672CCD2F3600939DB4 /* EMOM timers Watch App.app */,
-				297A76792CCD2F3700939DB4 /* EMOM timers Watch AppTests.xctest */,
+				29AA13652CD26EEC009FA18C /* EMOM timers Watch AppTests.xctest */,
+				29AA13762CD2723F009FA18C /* EMOM timers Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -664,26 +673,6 @@
 			productReference = 297A76412CCD2F3400939DB4 /* EMOM timers.app */;
 			productType = "com.apple.product-type.application";
 		};
-		297A76502CCD2F3600939DB4 /* EMOM timersTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 297A76942CCD2F3700939DB4 /* Build configuration list for PBXNativeTarget "EMOM timersTests" */;
-			buildPhases = (
-				297A764D2CCD2F3600939DB4 /* Sources */,
-				297A764E2CCD2F3600939DB4 /* Frameworks */,
-				297A764F2CCD2F3600939DB4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				297A76532CCD2F3600939DB4 /* PBXTargetDependency */,
-			);
-			name = "EMOM timersTests";
-			packageProductDependencies = (
-			);
-			productName = "EMOM timersTests";
-			productReference = 297A76512CCD2F3600939DB4 /* EMOM timersTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		297A76662CCD2F3600939DB4 /* EMOM timers Watch App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 297A768D2CCD2F3700939DB4 /* Build configuration list for PBXNativeTarget "EMOM timers Watch App" */;
@@ -703,24 +692,50 @@
 			productReference = 297A76672CCD2F3600939DB4 /* EMOM timers Watch App.app */;
 			productType = "com.apple.product-type.application";
 		};
-		297A76782CCD2F3700939DB4 /* EMOM timers Watch AppTests */ = {
+		29AA13642CD26EEC009FA18C /* EMOM timers Watch AppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 297A769A2CCD2F3700939DB4 /* Build configuration list for PBXNativeTarget "EMOM timers Watch AppTests" */;
+			buildConfigurationList = 29AA136B2CD26EEC009FA18C /* Build configuration list for PBXNativeTarget "EMOM timers Watch AppTests" */;
 			buildPhases = (
-				297A76752CCD2F3700939DB4 /* Sources */,
-				297A76762CCD2F3700939DB4 /* Frameworks */,
-				297A76772CCD2F3700939DB4 /* Resources */,
+				29AA13612CD26EEC009FA18C /* Sources */,
+				29AA13622CD26EEC009FA18C /* Frameworks */,
+				29AA13632CD26EEC009FA18C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				297A767B2CCD2F3700939DB4 /* PBXTargetDependency */,
+				29AA136A2CD26EEC009FA18C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				29AA13662CD26EEC009FA18C /* EMOM timers Watch AppTests */,
 			);
 			name = "EMOM timers Watch AppTests";
 			packageProductDependencies = (
 			);
 			productName = "EMOM timers Watch AppTests";
-			productReference = 297A76792CCD2F3700939DB4 /* EMOM timers Watch AppTests.xctest */;
+			productReference = 29AA13652CD26EEC009FA18C /* EMOM timers Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		29AA13752CD2723F009FA18C /* EMOM timers Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 29AA137C2CD2723F009FA18C /* Build configuration list for PBXNativeTarget "EMOM timers Tests" */;
+			buildPhases = (
+				29AA13722CD2723F009FA18C /* Sources */,
+				29AA13732CD2723F009FA18C /* Frameworks */,
+				29AA13742CD2723F009FA18C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				29AA137B2CD2723F009FA18C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				29AA13772CD2723F009FA18C /* EMOM timers Tests */,
+			);
+			name = "EMOM timers Tests";
+			packageProductDependencies = (
+			);
+			productName = "EMOM timers Tests";
+			productReference = 29AA13762CD2723F009FA18C /* EMOM timers Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -736,16 +751,16 @@
 					297A76402CCD2F3400939DB4 = {
 						CreatedOnToolsVersion = 16.0;
 					};
-					297A76502CCD2F3600939DB4 = {
-						CreatedOnToolsVersion = 16.0;
-						TestTargetID = 297A76402CCD2F3400939DB4;
-					};
 					297A76662CCD2F3600939DB4 = {
 						CreatedOnToolsVersion = 16.0;
 					};
-					297A76782CCD2F3700939DB4 = {
+					29AA13642CD26EEC009FA18C = {
 						CreatedOnToolsVersion = 16.0;
 						TestTargetID = 297A76662CCD2F3600939DB4;
+					};
+					29AA13752CD2723F009FA18C = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 297A76402CCD2F3400939DB4;
 					};
 				};
 			};
@@ -764,9 +779,9 @@
 			projectRoot = "";
 			targets = (
 				297A76402CCD2F3400939DB4 /* EMOM timers */,
-				297A76502CCD2F3600939DB4 /* EMOM timersTests */,
 				297A76662CCD2F3600939DB4 /* EMOM timers Watch App */,
-				297A76782CCD2F3700939DB4 /* EMOM timers Watch AppTests */,
+				29AA13642CD26EEC009FA18C /* EMOM timers Watch AppTests */,
+				29AA13752CD2723F009FA18C /* EMOM timers Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -789,13 +804,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		297A764F2CCD2F3600939DB4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		297A76652CCD2F3600939DB4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -814,7 +822,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		297A76772CCD2F3700939DB4 /* Resources */ = {
+		29AA13632CD26EEC009FA18C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29AA13832CD27848009FA18C /* EMOM timers Watch App.xctestplan in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29AA13742CD2723F009FA18C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -878,14 +894,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		297A764D2CCD2F3600939DB4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				292712AB2CCD528E0088AA40 /* EMOM_timersTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		297A76632CCD2F3600939DB4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -933,7 +941,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		297A76752CCD2F3700939DB4 /* Sources */ = {
+		29AA13612CD26EEC009FA18C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29AA13722CD2723F009FA18C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -943,20 +958,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		297A76532CCD2F3600939DB4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 297A76402CCD2F3400939DB4 /* EMOM timers */;
-			targetProxy = 297A76522CCD2F3600939DB4 /* PBXContainerItemProxy */;
-		};
 		297A766A2CCD2F3600939DB4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 297A76662CCD2F3600939DB4 /* EMOM timers Watch App */;
 			targetProxy = 297A76692CCD2F3600939DB4 /* PBXContainerItemProxy */;
 		};
-		297A767B2CCD2F3700939DB4 /* PBXTargetDependency */ = {
+		29AA136A2CD26EEC009FA18C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 297A76662CCD2F3600939DB4 /* EMOM timers Watch App */;
-			targetProxy = 297A767A2CCD2F3700939DB4 /* PBXContainerItemProxy */;
+			targetProxy = 29AA13692CD26EEC009FA18C /* PBXContainerItemProxy */;
+		};
+		29AA137B2CD2723F009FA18C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 297A76402CCD2F3400939DB4 /* EMOM timers */;
+			targetProxy = 29AA137A2CD2723F009FA18C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1219,7 +1234,7 @@
 			};
 			name = Release;
 		};
-		297A76952CCD2F3700939DB4 /* Debug */ = {
+		29AA136C2CD26EEC009FA18C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1227,19 +1242,19 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timersTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timers-Watch-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EMOM timers.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EMOM timers";
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EMOM timers Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EMOM timers Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Debug;
 		};
-		297A76962CCD2F3700939DB4 /* Release */ = {
+		29AA136D2CD26EEC009FA18C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1247,20 +1262,20 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timersTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timers-Watch-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EMOM timers.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EMOM timers";
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EMOM timers Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EMOM timers Watch App";
 				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Release;
 		};
-		297A769B2CCD2F3700939DB4 /* Debug */ = {
+		29AA137D2CD2723F009FA18C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1268,19 +1283,19 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timers-Watch-AppTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timers-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
+				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EMOM timers Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EMOM timers Watch App";
-				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EMOM timers.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EMOM timers";
 			};
 			name = Debug;
 		};
-		297A769C2CCD2F3700939DB4 /* Release */ = {
+		29AA137E2CD2723F009FA18C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1288,16 +1303,16 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timers-Watch-AppTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "jca.EMOM-timers-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
+				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EMOM timers Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EMOM timers Watch App";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EMOM timers.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EMOM timers";
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Release;
 		};
@@ -1331,20 +1346,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		297A76942CCD2F3700939DB4 /* Build configuration list for PBXNativeTarget "EMOM timersTests" */ = {
+		29AA136B2CD26EEC009FA18C /* Build configuration list for PBXNativeTarget "EMOM timers Watch AppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				297A76952CCD2F3700939DB4 /* Debug */,
-				297A76962CCD2F3700939DB4 /* Release */,
+				29AA136C2CD26EEC009FA18C /* Debug */,
+				29AA136D2CD26EEC009FA18C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		297A769A2CCD2F3700939DB4 /* Build configuration list for PBXNativeTarget "EMOM timers Watch AppTests" */ = {
+		29AA137C2CD2723F009FA18C /* Build configuration list for PBXNativeTarget "EMOM timers Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				297A769B2CCD2F3700939DB4 /* Debug */,
-				297A769C2CCD2F3700939DB4 /* Release */,
+				29AA137D2CD2723F009FA18C /* Debug */,
+				29AA137E2CD2723F009FA18C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

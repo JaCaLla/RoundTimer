@@ -13,5 +13,5 @@ jobs:
     steps:
       - name: Run a simple command
         run: echo "Hello, GitHub Actions!"
-      - name: List current content folder
-        run: ls -la
+      - name: Run a simple command
+        run: echo "Hello, GitHub Actions!"

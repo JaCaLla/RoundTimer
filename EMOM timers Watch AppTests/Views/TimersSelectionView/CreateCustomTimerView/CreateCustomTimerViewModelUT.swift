@@ -89,13 +89,31 @@ struct CreateCustomTimerViewModelUT {
         #expect(mm == 2)
         #expect(ss == 10)
     }
+    
+    @Test func getContinueButtonText()  {
+        let viewModel = getSUT()
+        #expect(viewModel.getContinueButtonText() == "button_rest_next")
+        
+        viewModel.setTimertype(type: .upTimer)
+        #expect(viewModel.getContinueButtonText() == "button_start_work")
+    }
+    
+    @Test func getNavigationLink()  {
+        let viewModel = getSUT()
+        #expect(viewModel.getNavigationLink() == "TimerPickerStepViewRest")
+        
+        viewModel.setTimertype(type: .upTimer)
+        #expect(viewModel.getNavigationLink() == "TimerPickerStepViewWork")
+    }
 }
 
 
 /*
- func getHHMMSSIndexs( pickerViewType: TimerPickerStepViewType) -> ( Int, Int) {
- let seconds = pickerViewType == .work ? workSecs : restSecs
-   return  (CustomTimer.getMM(seconds: seconds),
-         CustomTimer.getSS(seconds: seconds))
+ func getContinueButtonText() -> LocalizedStringKey {
+     timerType == .upTimer ? "button_start_work" : "button_rest_next"
+ }
+ 
+ func getNavigationLink() -> String {
+     timerType == .upTimer ? Screens.timerPickerStepViewWork.rawValue  : Screens.timerPickerStepViewRest.rawValue
  }
  */

@@ -2,9 +2,9 @@ name: Blank Workflow
 
 # Especifica en qué ramas se ejecutará el workflow
 on:
-  pull_request:
-    branches: [main, develop]
-
+  push:
+    branches:
+      - '**'
 jobs:
   blank-job:
     runs-on: macos-latest
@@ -24,4 +24,4 @@ jobs:
            xcode-version: '16.0'
 
       - name: Execute Unit tessts
-        run: xcodebuild test -scheme 'EMOM timers' -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' -enableCodeCoverage YES
+        run: xcodebuild test -scheme 'EMOM timers Watch App' -destination 'platform=watchOS Simulator,name=Apple Watch Series 10 (42mm),OS=latest'

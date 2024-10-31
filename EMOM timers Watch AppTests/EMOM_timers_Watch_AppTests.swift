@@ -4,7 +4,7 @@
 //
 //  Created by Javier Calatrava on 30/10/24.
 //
-
+@testable import EMOM_timers_Watch_App
 import Testing
 
 struct EMOM_timers_Watch_AppTests {

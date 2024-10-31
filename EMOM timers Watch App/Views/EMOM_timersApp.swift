@@ -12,7 +12,9 @@ import AVFoundation
 struct EMOM_timers_Watch_AppApp: App {
     var body: some Scene {
         WindowGroup {
-         //   VibrationView()
+            #if false
+            VibrationView()
+            #endif
            TimersSelectionView()
         }
         .backgroundTask(.appRefresh("My_App_Updates")) { context in

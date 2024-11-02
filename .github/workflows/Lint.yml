@@ -2,9 +2,11 @@ name: Lint
 
 # Especifica en qué ramas se ejecutará el workflow
 on:
-  push:
-    branches:
-      - '**'
+  pull_request:
+    branches: [main, develop]
+#  push:
+#    branches:
+#      - '**'
 jobs:
   lint:
     runs-on: macos-latest

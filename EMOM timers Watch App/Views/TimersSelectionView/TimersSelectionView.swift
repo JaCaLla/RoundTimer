@@ -63,8 +63,10 @@ struct TimersSelectionView: View {
         }
         .opacity(isLuminanceReduced ? AppUIConstants.opacityWhenLuminanceReduced : 1.0)
         .onAppear() {
-            guard AppGroupStore.shared.getDate(forKey: .birthDate) == nil else { return }
-            isPresentedSettings.toggle()
+            Task {
+                guard await AppGroupStore.shared.getDate(forKey: .birthDate) == nil else { return }
+                isPresentedSettings.toggle()
+            }
         }
         .onChange(of: timerStore.mirroredTimer) {
             guard let mirroredTimer = timerStore.mirroredTimer else { return }

@@ -117,7 +117,7 @@
 		292714452CCD71B40088AA40 /* start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2927139F2CCD60780088AA40 /* start.mp3 */; };
 		297A76682CCD2F3600939DB4 /* EMOM timers Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 297A76672CCD2F3600939DB4 /* EMOM timers Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		29AA13832CD27848009FA18C /* EMOM timers Watch App.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 29AA13822CD27848009FA18C /* EMOM timers Watch App.xctestplan */; };
-		29EAFC752CD2B55C00921B78 /* EMOM_timers_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAFC742CD2B55C00921B78 /* EMOM_timers_Watch_AppTests.swift */; };
+		29EAFC752CD2B55C00921B78 /* EMOMTimersWatchAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAFC742CD2B55C00921B78 /* EMOMTimersWatchAppTests.swift */; };
 		29EAFC812CD3D7A800921B78 /* CreateCustomTimerViewModelUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAFC802CD3D7A800921B78 /* CreateCustomTimerViewModelUT.swift */; };
 /* End PBXBuildFile section */
 
@@ -246,7 +246,7 @@
 		29AA13762CD2723F009FA18C /* EMOM timers Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EMOM timers Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29AA13812CD27341009FA18C /* EMOM timers.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "EMOM timers.xctestplan"; sourceTree = "<group>"; };
 		29AA13822CD27848009FA18C /* EMOM timers Watch App.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "EMOM timers Watch App.xctestplan"; sourceTree = "<group>"; };
-		29EAFC742CD2B55C00921B78 /* EMOM_timers_Watch_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOM_timers_Watch_AppTests.swift; sourceTree = "<group>"; };
+		29EAFC742CD2B55C00921B78 /* EMOMTimersWatchAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOMTimersWatchAppTests.swift; sourceTree = "<group>"; };
 		29EAFC802CD3D7A800921B78 /* CreateCustomTimerViewModelUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomTimerViewModelUT.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -652,7 +652,7 @@
 			isa = PBXGroup;
 			children = (
 				29EAFC7B2CD3D73400921B78 /* Views */,
-				29EAFC742CD2B55C00921B78 /* EMOM_timers_Watch_AppTests.swift */,
+				29EAFC742CD2B55C00921B78 /* EMOMTimersWatchAppTests.swift */,
 			);
 			path = "EMOM timers Watch AppTests";
 			sourceTree = "<group>";
@@ -692,6 +692,7 @@
 				297A763E2CCD2F3400939DB4 /* Frameworks */,
 				297A763F2CCD2F3400939DB4 /* Resources */,
 				297A76902CCD2F3700939DB4 /* Embed Watch Content */,
+				292883262CD69AFD00DE1399 /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -868,6 +869,29 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		292883262CD69AFD00DE1399 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \">>>>>>>>>>>>>>>>>>>>>>>> SWIFTLINT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\"\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\necho \"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\"\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		297A763D2CCD2F3400939DB4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -975,7 +999,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29EAFC812CD3D7A800921B78 /* CreateCustomTimerViewModelUT.swift in Sources */,
-				29EAFC752CD2B55C00921B78 /* EMOM_timers_Watch_AppTests.swift in Sources */,
+				29EAFC752CD2B55C00921B78 /* EMOMTimersWatchAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1207,6 +1231,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"EMOM timers/Preview Content\"";
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "EMOM timers";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1241,6 +1266,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"EMOM timers/Preview Content\"";
 				DEVELOPMENT_TEAM = 7ZPDPWR8XU;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "EMOM timers";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

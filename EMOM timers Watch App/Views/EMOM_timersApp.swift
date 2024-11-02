@@ -9,7 +9,7 @@ import SwiftUI
 import AVFoundation
 
 @main
-struct EMOM_timers_Watch_AppApp: App {
+struct EMOMTimersWatchApp: App {
     var body: some Scene {
         WindowGroup {
             #if false

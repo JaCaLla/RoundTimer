@@ -7,7 +7,7 @@
 @testable import EMOM_timers_Watch_App
 import Testing
 
-struct EMOM_timers_Watch_AppTests {
+struct EMOMTimersWatchAppTests {
 
     @Test func example() async throws {
         // Write your test here and use APIs like `#expect(...)` to check expected conditions.

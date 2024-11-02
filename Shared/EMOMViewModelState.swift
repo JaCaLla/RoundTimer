@@ -9,7 +9,7 @@
 public struct EMOMViewModelState {
     
     enum State: String {
-        case countdown, notStarted,  startedWork, startedRest, finished, cancelled
+        case countdown, notStarted, startedWork, startedRest, finished, cancelled
     }
     
     private(set) var value: State = .notStarted

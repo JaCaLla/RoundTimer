@@ -8,7 +8,7 @@
 import XCTest
 @testable import RoundTimer_Watch_App
 
-final class RoundTimer_Watch_AppTests: XCTestCase {
+final class RoundTimerWatchAppTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

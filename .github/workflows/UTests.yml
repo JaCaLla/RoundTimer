@@ -1,4 +1,4 @@
-name: Blank Workflow
+name: utests
 
 # Especifica en qué ramas se ejecutará el workflow
 on:

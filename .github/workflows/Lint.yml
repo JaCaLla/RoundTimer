@@ -1,4 +1,4 @@
-name: Lint
+name: lint
 
 # Especifica en qué ramas se ejecutará el workflow
 on:

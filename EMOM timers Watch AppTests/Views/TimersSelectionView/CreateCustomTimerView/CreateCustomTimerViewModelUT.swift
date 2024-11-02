@@ -31,7 +31,7 @@ struct CreateCustomTimerViewModelUT {
         // Given
         #expect(viewModel.timerType == .emom)
         // When
-        viewModel.setTimertype(type: .upTimer)
+        viewModel.setTimertype(type: .emom)//upTimer)
         // Then
         #expect(viewModel.timerType == .upTimer)
     }

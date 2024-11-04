@@ -11,9 +11,6 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v4
 
-      - name: Mostrar rama actual
-        run: git branch --show-current
-
       - uses: maxim-lobanov/setup-xcode@v1
         with:
            xcode-version: '16.0'

@@ -1,4 +1,4 @@
-name: utests
+name: utests-workflow
 
 on:
   pull_request:

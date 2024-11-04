@@ -713,6 +713,7 @@
 				297A76632CCD2F3600939DB4 /* Sources */,
 				297A76642CCD2F3600939DB4 /* Frameworks */,
 				297A76652CCD2F3600939DB4 /* Resources */,
+				292883272CD8DB1A00DE1399 /* swiftlint */,
 			);
 			buildRules = (
 			);
@@ -887,7 +888,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \">>>>>>>>>>>>>>>>>>>>>>>> SWIFTLINT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\"\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\necho \"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\"\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "echo \">>>>>>>>>>>>>>>>>>>>>>>> SWIFTLINT (BEGIN) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\"\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\necho \"<<<<<<<<<<<<<<<<<<<<<<<<< SWIFTLINT (END) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\"\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			showEnvVarsInLog = 0;
+		};
+		292883272CD8DB1A00DE1399 /* swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \">>>>>>>>>>>>>>>>>>>>>>>> SWIFTLINT (BEGIN) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\"\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\necho \"<<<<<<<<<<<<<<<<<<<<<<<<< SWIFTLINT (END) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

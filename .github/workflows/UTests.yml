@@ -25,5 +25,8 @@ jobs:
         with:
            xcode-version: '16.0'
 
-      - name: Execute Unit tessts
+      - name: Execute Unit tessts (iOS target)
+        run: xcodebuild test -scheme 'EMOM timers' -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest'
+
+      - name: Execute Unit tessts (AW target)
         run: xcodebuild test -scheme 'EMOM timers Watch App' -destination 'platform=watchOS Simulator,name=Apple Watch Series 10 (42mm),OS=latest'

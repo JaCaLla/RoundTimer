@@ -1,11 +1,10 @@
 name: utests
 
-# Especifica en qué ramas se ejecutará el workflow
 on:
   pull_request:
     branches: [main, develop]
 jobs:
-  utests:
+  utests-job:
     runs-on: macos-latest
 
     steps:

@@ -4,11 +4,8 @@ name: utests
 on:
   pull_request:
     branches: [main, develop]
-#  push:
-#    branches:
-#      - '**'
 jobs:
-  blank-job:
+  utests:
     runs-on: macos-latest
 
     steps:

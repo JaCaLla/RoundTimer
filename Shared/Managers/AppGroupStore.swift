@@ -6,10 +6,10 @@
 //
 
 import Foundation
-@MainActor
+//@MainActor
 protocol AppGroupStoreProtocol {
-    func getDate(forKey: AppGroupStoreKey) -> Date?
-    func setDate(date: Date, forKey: AppGroupStoreKey)
+    func getDate(forKey: AppGroupStoreKey) async -> Date?
+    func setDate(date: Date, forKey: AppGroupStoreKey) async
 }
 
 enum AppGroupStoreKey: String {
@@ -17,9 +17,8 @@ enum AppGroupStoreKey: String {
     case grantedPermissionForHeartRate
 }
 
-@MainActor
-final class AppGroupStore {
-    let defaults = UserDefaults(suiteName: "group.jca.EMOM-timers")
+actor AppGroupStore {
+    let defaults = UserDefaults(suiteName: "group.jca.XYZ")
     
     static let shared = AppGroupStore()
     
@@ -30,11 +29,11 @@ final class AppGroupStore {
 
 // MARK: - AppGroupStoreProtocol
 extension AppGroupStore: AppGroupStoreProtocol {
-    func getDate(forKey: AppGroupStoreKey) -> Date? {
+    func getDate(forKey: AppGroupStoreKey) async -> Date? {
         return defaults?.object(forKey: forKey.rawValue) as? Date
     }
     
-    func setDate(date: Date, forKey: AppGroupStoreKey) {
+    func setDate(date: Date, forKey: AppGroupStoreKey) async {
         defaults?.set(date, forKey: forKey.rawValue)
     }
     

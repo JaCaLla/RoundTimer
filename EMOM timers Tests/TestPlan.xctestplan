@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "D713F750-3B04-4042-A346-0656BD3160A5",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:EMOM timers.xcodeproj",
+        "identifier" : "29AA13752CD2723F009FA18C",
+        "name" : "EMOM timers Tests"
+      }
+    }
+  ],
+  "version" : 1
+}

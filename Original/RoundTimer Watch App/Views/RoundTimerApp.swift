@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct RoundTimer_Watch_AppApp: App {
+struct RoundTimerWatchAppApp: App {
     @Environment(\.scenePhase) private var scenePhase
     var body: some Scene {
         WindowGroup {

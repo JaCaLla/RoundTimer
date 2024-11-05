@@ -10,7 +10,7 @@ import SwiftUI
 
 protocol TimerPickerStepViewModelProtocol {
     func dismissFlowAndStartEMOM(pickerViewType: TimerPickerStepViewType, selected: (mins: Int, secs: Int))
-    func getHHMMSSIndexs(/*seconds: Int,*/ pickerViewType: TimerPickerStepViewType) -> ( Int, Int)
+    func getHHMMSSIndexs(pickerViewType: TimerPickerStepViewType) -> ( Int, Int)
 }
 
 final class CreateCustomTimerViewModel: ObservableObject {
@@ -21,10 +21,7 @@ final class CreateCustomTimerViewModel: ObservableObject {
         case timerPickerStepViewRest = "TimerPickerStepViewRest"
     }
     
-    // TO REFACTOR: Replace this by an Emom
-    let roundsDefault = 5
-    let workSecsDefault = 60
-    let restSecsDefault = 0
+    private let defaulltCustomTimer = CustomTimer(timerType: .emom, rounds: 5, workSecs:  60, restSecs: 0)
     
     var dismissFlowAndStartEMOM = false
     var timerType: TimerType = .emom
@@ -33,9 +30,9 @@ final class CreateCustomTimerViewModel: ObservableObject {
     var restSecs = -1
     
     init() {
-        rounds = roundsDefault
-        workSecs = workSecsDefault
-        restSecs = restSecsDefault
+        rounds = defaulltCustomTimer.rounds
+        workSecs = defaulltCustomTimer.workSecs
+        restSecs = defaulltCustomTimer.restSecs
     }
     
     func setRounds(rounds: Int) {
@@ -47,23 +44,21 @@ final class CreateCustomTimerViewModel: ObservableObject {
     }
     
     func backFromRoundsStepView() {
-        rounds = roundsDefault
+        rounds = defaulltCustomTimer.rounds
     }
     
     func backFromTimerPickerStepViewWork() {
-        workSecs = workSecsDefault
+        workSecs = defaulltCustomTimer.workSecs
     }
     
     func backFromTimerPickerStepViewRest() {
-        restSecs = restSecsDefault
+        restSecs = defaulltCustomTimer.restSecs
     }
     
     func getEmom() -> CustomTimer? {
         guard dismissFlowAndStartEMOM else { return nil }
         let rounds = timerType == .upTimer ? 1 : rounds
-        // TO DO: Valiate against a real clock.
         return CustomTimer(timerType: timerType, rounds: rounds, workSecs: workSecs, restSecs: restSecs)
-//        return CustomTimer(timerType: timerType, rounds: rounds, workSecs: workSecs + 1, restSecs: restSecs + 1)
     }
     
     func getContinueButtonText() -> LocalizedStringKey {

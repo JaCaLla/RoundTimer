@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class RoundTimer_Watch_AppUITestsLaunchTests: XCTestCase {
+final class RoundTimerWatchAppUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

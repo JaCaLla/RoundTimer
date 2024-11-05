@@ -9,7 +9,7 @@ import Combine
 
 @MainActor
 protocol AgeStepViewModelProtocol {
-    func getBirthDate() -> Date
+    func getBirthDate() async -> Date
     func setBirthDate(date: Date)
     func calculateAge(from: Date) -> Int
 }
@@ -41,15 +41,17 @@ final class AgeStepViewModel: NSObject, ObservableObject {
 }
 // MARK: - AgeStepViewModelProtocol
 extension AgeStepViewModel: AgeStepViewModelProtocol {
-    func getBirthDate() -> Date {
-        guard let date = AppGroupStore.shared.getDate(forKey: .birthDate) else {
+    func getBirthDate() async -> Date {
+        guard let date = await AppGroupStore.shared.getDate(forKey: .birthDate) else {
             return Calendar.current.date(byAdding: .year, value: -25, to: Date()) ?? Date.now
         }
         return date
     }
     
     func setBirthDate(date: Date) {
-        AppGroupStore.shared.setDate(date: date, forKey: .birthDate)
+        Task {
+            await AppGroupStore.shared.setDate(date: date, forKey: .birthDate)
+        }
     }
     
     func calculateAge(from: Date) -> Int {

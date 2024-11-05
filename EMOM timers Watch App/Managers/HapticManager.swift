@@ -24,12 +24,6 @@ final class HapticManager {
 
 extension HapticManager: HapticManagerProtocol {
     func start() {
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
-//            WKInterfaceDevice.current().play(.failure)
-//        }
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-//            WKInterfaceDevice.current().play(.failure)
-//        }
         WKInterfaceDevice.current().play(.notification)//start)
     }
     
@@ -38,26 +32,14 @@ extension HapticManager: HapticManagerProtocol {
     }
     
     func rest() {
-       // WKInterfaceDevice.current().play(.notification)
         WKInterfaceDevice.current().play(.stop)
     }
     
     func work() {
-        //start()
         WKInterfaceDevice.current().play(.retry)
     }
     
     func finish() {
-        /*
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
-            WKInterfaceDevice.current().play(.failure)
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            WKInterfaceDevice.current().play(.failure)
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            WKInterfaceDevice.current().play(.notification)
-        }*/
         WKInterfaceDevice.current().play(.success)
     }
     

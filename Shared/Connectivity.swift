@@ -100,9 +100,6 @@ final class Connectivity: NSObject, ObservableObject {
                        self.pingReceivedOnAW = true
                    }
                }
-           } else if connectivityMessage.action == .refreshMirroredTimer,
-                    let mirroredTimer = connectivityMessage.mirroredTimer {
-               self.mirroredTimer = mirroredTimer
            } else {
                LocalLogger.log("Connectivity.update unknown message")
            }

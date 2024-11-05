@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "551620A6-F2E5-4C63-AB44-3D3089119911",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:EMOM timers.xcodeproj",
+      "identifier" : "297A76662CCD2F3600939DB4",
+      "name" : "EMOM timers Watch App"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:EMOM timers.xcodeproj",
+        "identifier" : "29AA13752CD2723F009FA18C",
+        "name" : "EMOM timers Tests"
+      }
+    }
+  ],
+  "version" : 1
+}

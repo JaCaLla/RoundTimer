@@ -4,9 +4,6 @@ name: lint
 on:
   pull_request:
     branches: [main, develop]
-#  push:
-#    branches:
-#      - '**'
 jobs:
   lint:
     runs-on: macos-latest

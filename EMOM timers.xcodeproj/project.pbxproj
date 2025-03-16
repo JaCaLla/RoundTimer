@@ -12,7 +12,6 @@
 		292712B82CCD528E0088AA40 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 292712B02CCD528E0088AA40 /* Preview Assets.xcassets */; };
 		292712B92CCD528E0088AA40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 292712B22CCD528E0088AA40 /* Assets.xcassets */; };
 		292712C02CCD57AF0088AA40 /* EMOM-timers-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 292712A12CCD528E0088AA40 /* EMOM-timers-Info.plist */; };
-		292712C42CCD5A2C0088AA40 /* EMOM-timers-Watch-App-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 292712922CCD44170088AA40 /* EMOM-timers-Watch-App-Info.plist */; };
 		2927130E2CCD5CBB0088AA40 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 292713012CCD5CBB0088AA40 /* Localizable.xcstrings */; };
 		2927130F2CCD5CBB0088AA40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 292713042CCD5CBB0088AA40 /* Assets.xcassets */; };
 		292713102CCD5CBB0088AA40 /* MirroredTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292712FA2CCD5CBB0088AA40 /* MirroredTimer.swift */; };
@@ -689,10 +688,10 @@
 			buildConfigurationList = 297A76912CCD2F3700939DB4 /* Build configuration list for PBXNativeTarget "EMOM timers" */;
 			buildPhases = (
 				297A763D2CCD2F3400939DB4 /* Sources */,
+				292883262CD69AFD00DE1399 /* Swiftlint */,
 				297A763E2CCD2F3400939DB4 /* Frameworks */,
 				297A763F2CCD2F3400939DB4 /* Resources */,
 				297A76902CCD2F3700939DB4 /* Embed Watch Content */,
-				292883262CD69AFD00DE1399 /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -777,7 +776,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					297A76402CCD2F3400939DB4 = {
 						CreatedOnToolsVersion = 16.0;
@@ -839,7 +838,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				292712C42CCD5A2C0088AA40 /* EMOM-timers-Watch-App-Info.plist in Resources */,
 				292712B82CCD528E0088AA40 /* Preview Assets.xcassets in Resources */,
 				292713DF2CCD616A0088AA40 /* Localizable.xcstrings in Resources */,
 				292712B92CCD528E0088AA40 /* Assets.xcassets in Resources */,
@@ -888,7 +886,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \">>>>>>>>>>>>>>>>>>>>>>>> SWIFTLINT (BEGIN) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\"\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\necho \"<<<<<<<<<<<<<<<<<<<<<<<<< SWIFTLINT (END) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\"\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "echo \">>>>>>>>>>>>>>>>>>>>>>>> SWIFTLINT (BEGIN) >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\"\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\n#if which swiftlint > /dev/null; then\n#  swiftlint\n#else\n#  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\necho \"<<<<<<<<<<<<<<<<<<<<<<<<< SWIFTLINT (END) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\"\n# Type a script or drag a script file from your workspace to insert its path.\n";
 			showEnvVarsInLog = 0;
 		};
 		292883272CD8DB1A00DE1399 /* swiftlint */ = {
@@ -1087,6 +1085,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 13;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1112,6 +1111,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
@@ -1150,6 +1151,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 13;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1167,6 +1169,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
 		};

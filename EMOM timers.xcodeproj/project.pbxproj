@@ -118,6 +118,9 @@
 		29AA13832CD27848009FA18C /* EMOM timers Watch App.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 29AA13822CD27848009FA18C /* EMOM timers Watch App.xctestplan */; };
 		29EAFC752CD2B55C00921B78 /* EMOMTimersWatchAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAFC742CD2B55C00921B78 /* EMOMTimersWatchAppTests.swift */; };
 		29EAFC812CD3D7A800921B78 /* CreateCustomTimerViewModelUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EAFC802CD3D7A800921B78 /* CreateCustomTimerViewModelUT.swift */; };
+		5ADD23C22DC8FE43000364E5 /* CreateCustomTimerWorkRestToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD23C12DC8FE43000364E5 /* CreateCustomTimerWorkRestToggleView.swift */; };
+		5ADD23C72DC9069A000364E5 /* UpTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD23C52DC9069A000364E5 /* UpTimerViewModel.swift */; };
+		5ADD23C82DC9069A000364E5 /* UpTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD23C42DC9069A000364E5 /* UpTimerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -247,6 +250,9 @@
 		29AA13822CD27848009FA18C /* EMOM timers Watch App.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "EMOM timers Watch App.xctestplan"; sourceTree = "<group>"; };
 		29EAFC742CD2B55C00921B78 /* EMOMTimersWatchAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOMTimersWatchAppTests.swift; sourceTree = "<group>"; };
 		29EAFC802CD3D7A800921B78 /* CreateCustomTimerViewModelUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomTimerViewModelUT.swift; sourceTree = "<group>"; };
+		5ADD23C12DC8FE43000364E5 /* CreateCustomTimerWorkRestToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomTimerWorkRestToggleView.swift; sourceTree = "<group>"; };
+		5ADD23C42DC9069A000364E5 /* UpTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpTimerView.swift; sourceTree = "<group>"; };
+		5ADD23C52DC9069A000364E5 /* UpTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpTimerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -569,6 +575,7 @@
 			isa = PBXGroup;
 			children = (
 				292714032CCD63C10088AA40 /* CreateCustomTimerView.swift */,
+				5ADD23C12DC8FE43000364E5 /* CreateCustomTimerWorkRestToggleView.swift */,
 				292714042CCD63C10088AA40 /* CreateCustomTimerContinueButton.swift */,
 				292714052CCD63C10088AA40 /* CreateCustomTimerViewModel.swift */,
 				292714062CCD63C10088AA40 /* CreateCustomTimerPickerView.swift */,
@@ -580,6 +587,7 @@
 		292714092CCD63C10088AA40 /* TimersSelectionView */ = {
 			isa = PBXGroup;
 			children = (
+				5ADD23C62DC9069A000364E5 /* UpTimerView */,
 				292713FF2CCD63C10088AA40 /* TimersSelectionView.swift */,
 				292714022CCD63C10088AA40 /* EMOMView */,
 				292714082CCD63C10088AA40 /* CreateCustomTimerView */,
@@ -678,6 +686,15 @@
 				29EAFC802CD3D7A800921B78 /* CreateCustomTimerViewModelUT.swift */,
 			);
 			path = CreateCustomTimerView;
+			sourceTree = "<group>";
+		};
+		5ADD23C62DC9069A000364E5 /* UpTimerView */ = {
+			isa = PBXGroup;
+			children = (
+				5ADD23C42DC9069A000364E5 /* UpTimerView.swift */,
+				5ADD23C52DC9069A000364E5 /* UpTimerViewModel.swift */,
+			);
+			path = UpTimerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -921,6 +938,8 @@
 				292713112CCD5CBB0088AA40 /* Connectivity.swift in Sources */,
 				292713122CCD5CBB0088AA40 /* Delivery.swift in Sources */,
 				292713132CCD5CBB0088AA40 /* MirroredTimerWorking.swift in Sources */,
+				5ADD23C72DC9069A000364E5 /* UpTimerViewModel.swift in Sources */,
+				5ADD23C82DC9069A000364E5 /* UpTimerView.swift in Sources */,
 				292713142CCD5CBB0088AA40 /* AudioManager.swift in Sources */,
 				2927140C2CCD63C10088AA40 /* EMOMView.swift in Sources */,
 				2927140D2CCD63C10088AA40 /* EMOMViewModel.swift in Sources */,
@@ -950,6 +969,7 @@
 				292713162CCD5CBB0088AA40 /* MirroredTimerCountdown.swift in Sources */,
 				292713172CCD5CBB0088AA40 /* HealthkitManager.swift in Sources */,
 				292713182CCD5CBB0088AA40 /* ConnectivityMessage.swift in Sources */,
+				5ADD23C22DC8FE43000364E5 /* CreateCustomTimerWorkRestToggleView.swift in Sources */,
 				292713192CCD5CBB0088AA40 /* HeartZoneCalculator.swift in Sources */,
 				2927131A2CCD5CBB0088AA40 /* ButtonAW.swift in Sources */,
 				2927131B2CCD5CBB0088AA40 /* LocalLogger.swift in Sources */,

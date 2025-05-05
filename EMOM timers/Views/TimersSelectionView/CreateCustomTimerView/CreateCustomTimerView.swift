@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct CreateCustomTimerView: View {
+    let timerType: TimerType
     @Binding var customTimer: CustomTimer?
-    @Binding var isConnectedAW: Bool
-    let pickerSize = 200.0
+    
+    @EnvironmentObject var viewModel: CreateCustomTimerViewModel
+    
     @State private var isRestOn = false
     @State private var isFetchingAW = false
-    @EnvironmentObject var viewModel: CreateCustomTimerViewModel
+    
+    let pickerSize = 200.0
+    
     var body: some View {
         VStack {
             Spacer()
@@ -24,60 +28,41 @@ struct CreateCustomTimerView: View {
                 DismissButton()
             }
             HStack {
-                CreateCustomTimerPickerView(title: String(localized: "picker_rounds"),
-                    color: .roundColor,
-                    min: viewModel.minRounds,
-                    max: viewModel.maxRounds,
-                    format: "%d",
-                    value: $viewModel.selectedIndexRounds)
-                //.environmentObject(viewModel)
+                if timerType == .emom {
+                    CreateCustomTimerPickerView(title: String(localized: "picker_rounds"),
+                                                color: .roundColor,
+                                                min: viewModel.minRounds,
+                                                max: viewModel.maxRounds,
+                                                format: "%d",
+                                                value: $viewModel.selectedIndexRounds)
                     .frame(width: pickerSize, height: pickerSize)
-                Spacer(minLength: 150)
-                if isRestOn {
-                    CreateCustomTimerMMSSPickerView(selectedMins: $viewModel.selectedRestMins, selectedSecs: $viewModel.selectedRestSecs, isRestOn: isRestOn)
+                    Spacer(minLength: 150)
+                }
+                if isRestOn && timerType == .emom {
+                    CreateCustomTimerMMSSPickerView(selectedMins: $viewModel.selectedRestMins,
+                                                    selectedSecs: $viewModel.selectedRestSecs,
+                                                    isRestOn: isRestOn)
                 } else {
-                    CreateCustomTimerMMSSPickerView(selectedMins: $viewModel.selectedWorkMins, selectedSecs: $viewModel.selectedWorkSecs, isRestOn: isRestOn)
+                    CreateCustomTimerMMSSPickerView(selectedMins: $viewModel.selectedWorkMins,
+                                                    selectedSecs: $viewModel.selectedWorkSecs,
+                                                    isRestOn: isRestOn)
                 }
             }
             Spacer()
-                HStack() {
-                    if isConnectedAW {
-                        Button {
-                            viewModel.createChronoMirroredInAW.toggle()
-                        } label: {
-                            Image(systemName: viewModel.imageConnectionAW())
-                                .modifier(ButtonStyle())
-                        }
-                    }
-                        Spacer()
-                        CreateCustomTimerContinueButton(isFetchingAW: $isFetchingAW,
-                                                        customTimer: $customTimer, 
-                                                        createChronoMirroredInAW: viewModel.createChronoMirroredInAW)
-                            //.environmentObject(viewModel)
-
-                }
+            HStack() {
+                Spacer()
+                CreateCustomTimerContinueButton(/*isFetchingAW: $isFetchingAW,*/
+                                                customTimer: $customTimer)
+            }
         }
-            .task {
-            await viewModel.onAppearActions()
-        }
-            .background(Color.defaultBackgroundColor)
-    }
-}
-
-struct CreateCustomTimerWorkRestToggleView: View {
-    @Binding var isRestOn: Bool
-    var body: some View {
-        HStack {
-            Spacer()
-            Text(isRestOn ? String(localized: "title_rest") : String(localized: "title_work"))
-            Toggle("", isOn: $isRestOn)
-                .toggleStyle(SwitchToggleStyle(tint: isRestOn ? .timerRestStartedColor : .timerStartedColor))
-                .frame(width: 100)
-        }.foregroundColor(isRestOn ? .timerRestStartedColor : .timerStartedColor)
-            .font(.pickerSelectionFont)
+//        .task {
+//            await viewModel.onAppearActions()
+//        }
+        .background(Color.defaultBackgroundColor)
     }
 }
 
 //#Preview {
-//    CreateCustomTimerView(customTimer: .constant(CustomTimer.customTimerDefault))
+//    CreateCustomTimerView(timerType: .emom,
+//                          customTimer: .constant(CustomTimer.customTimerDefault))
 //}

@@ -30,7 +30,7 @@ extension EMOMViewModel: EMOMViewModelProtocol {
 }
 
 @MainActor
-final class EMOMViewModel: NSObject, ObservableObject {
+/*final*/ class EMOMViewModel: NSObject, ObservableObject {
 
     // MARK: - Emom timer states
 //    enum State: String {
@@ -119,7 +119,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
         return work ? state.value == .startedWork: state.value == .startedRest
     }
 
-    func getCurrentRound() -> String {
+    open func getCurrentRound() -> String {
         guard let customTimer, [.countdown].allSatisfy({ state.value != $0 }) else { return "" }
         if [.notStarted].contains(where: { state.value == $0 }) {
             return "1"

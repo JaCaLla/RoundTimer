@@ -11,10 +11,10 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v4
 
-      - name: Set to XCode 16.0
+      - name: Set to XCode 16.2
         uses: maxim-lobanov/setup-xcode@v1
         with:
-           xcode-version: '16.0'
+           xcode-version: '16.2'
 
       - name: Execute Unit tessts (iOS target)
         run: xcodebuild test -scheme 'EMOM timers' -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest'

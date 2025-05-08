@@ -45,15 +45,12 @@
 		292713A52CCD60780088AA40 /* rest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2927139E2CCD60780088AA40 /* rest.mp3 */; };
 		292713BD2CCD60AC0088AA40 /* CreateCustomTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292713AA2CCD60AC0088AA40 /* CreateCustomTimerView.swift */; };
 		292713BE2CCD60AC0088AA40 /* AgeStepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292713A72CCD60AC0088AA40 /* AgeStepViewModel.swift */; };
-		292713BF2CCD60AC0088AA40 /* UpTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292713B72CCD60AC0088AA40 /* UpTimerView.swift */; };
 		292713C02CCD60AC0088AA40 /* EMOMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292713B12CCD60AC0088AA40 /* EMOMViewModel.swift */; };
 		292713C12CCD60AC0088AA40 /* VibrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292713BB2CCD60AC0088AA40 /* VibrationView.swift */; };
 		292713C22CCD60AC0088AA40 /* RoundsStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292713AD2CCD60AC0088AA40 /* RoundsStepView.swift */; };
 		292713C32CCD60AC0088AA40 /* EMOM_timersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292713A92CCD60AC0088AA40 /* EMOM_timersApp.swift */; };
 		292713C42CCD60AC0088AA40 /* TimerPickerStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292713AE2CCD60AC0088AA40 /* TimerPickerStepView.swift */; };
-		292713C52CCD60AC0088AA40 /* MirroredTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292713B42CCD60AC0088AA40 /* MirroredTimerViewModel.swift */; };
 		292713C62CCD60AC0088AA40 /* CreateCustomTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292713AC2CCD60AC0088AA40 /* CreateCustomTimerViewModel.swift */; };
-		292713C72CCD60AC0088AA40 /* MirroredTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292713B32CCD60AC0088AA40 /* MirroredTimerView.swift */; };
 		292713C82CCD60AC0088AA40 /* AgeStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292713A62CCD60AC0088AA40 /* AgeStepView.swift */; };
 		292713C92CCD60AC0088AA40 /* FirstViewInFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292713AB2CCD60AC0088AA40 /* FirstViewInFlow.swift */; };
 		292713CA2CCD60AC0088AA40 /* EMOMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292713B02CCD60AC0088AA40 /* EMOMView.swift */; };
@@ -210,10 +207,7 @@
 		292713AE2CCD60AC0088AA40 /* TimerPickerStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPickerStepView.swift; sourceTree = "<group>"; };
 		292713B02CCD60AC0088AA40 /* EMOMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOMView.swift; sourceTree = "<group>"; };
 		292713B12CCD60AC0088AA40 /* EMOMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMOMViewModel.swift; sourceTree = "<group>"; };
-		292713B32CCD60AC0088AA40 /* MirroredTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirroredTimerView.swift; sourceTree = "<group>"; };
-		292713B42CCD60AC0088AA40 /* MirroredTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirroredTimerViewModel.swift; sourceTree = "<group>"; };
 		292713B62CCD60AC0088AA40 /* TimersSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersSelectionView.swift; sourceTree = "<group>"; };
-		292713B72CCD60AC0088AA40 /* UpTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpTimerView.swift; sourceTree = "<group>"; };
 		292713B82CCD60AC0088AA40 /* UpTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpTimerViewModel.swift; sourceTree = "<group>"; };
 		292713BB2CCD60AC0088AA40 /* VibrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrationView.swift; sourceTree = "<group>"; };
 		292713E82CCD63C10088AA40 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -450,19 +444,9 @@
 			path = EMOMView;
 			sourceTree = "<group>";
 		};
-		292713B52CCD60AC0088AA40 /* MirroredTimerView */ = {
-			isa = PBXGroup;
-			children = (
-				292713B32CCD60AC0088AA40 /* MirroredTimerView.swift */,
-				292713B42CCD60AC0088AA40 /* MirroredTimerViewModel.swift */,
-			);
-			path = MirroredTimerView;
-			sourceTree = "<group>";
-		};
 		292713B92CCD60AC0088AA40 /* UpTimerView */ = {
 			isa = PBXGroup;
 			children = (
-				292713B72CCD60AC0088AA40 /* UpTimerView.swift */,
 				292713B82CCD60AC0088AA40 /* UpTimerViewModel.swift */,
 			);
 			path = UpTimerView;
@@ -473,7 +457,6 @@
 			children = (
 				292713AF2CCD60AC0088AA40 /* CreateCustomTimerView */,
 				292713B22CCD60AC0088AA40 /* EMOMView */,
-				292713B52CCD60AC0088AA40 /* MirroredTimerView */,
 				292713B62CCD60AC0088AA40 /* TimersSelectionView.swift */,
 				292713B92CCD60AC0088AA40 /* UpTimerView */,
 			);
@@ -995,7 +978,6 @@
 				2927139C2CCD60540088AA40 /* HealthkitManagerAW.swift in Sources */,
 				292713BD2CCD60AC0088AA40 /* CreateCustomTimerView.swift in Sources */,
 				292713BE2CCD60AC0088AA40 /* AgeStepViewModel.swift in Sources */,
-				292713BF2CCD60AC0088AA40 /* UpTimerView.swift in Sources */,
 				292713C02CCD60AC0088AA40 /* EMOMViewModel.swift in Sources */,
 				292713D12CCD616A0088AA40 /* MirroredTimerFinished.swift in Sources */,
 				292713D22CCD616A0088AA40 /* TimerStore.swift in Sources */,
@@ -1017,9 +999,7 @@
 				292713E12CCD62560088AA40 /* ColorsAndFonts.swift in Sources */,
 				292713D02CCD61420088AA40 /* LocalLogger.swift in Sources */,
 				292713C42CCD60AC0088AA40 /* TimerPickerStepView.swift in Sources */,
-				292713C52CCD60AC0088AA40 /* MirroredTimerViewModel.swift in Sources */,
 				292713C62CCD60AC0088AA40 /* CreateCustomTimerViewModel.swift in Sources */,
-				292713C72CCD60AC0088AA40 /* MirroredTimerView.swift in Sources */,
 				292713C82CCD60AC0088AA40 /* AgeStepView.swift in Sources */,
 				292713C92CCD60AC0088AA40 /* FirstViewInFlow.swift in Sources */,
 				292713CD2CCD613E0088AA40 /* Connectivity.swift in Sources */,

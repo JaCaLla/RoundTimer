@@ -42,25 +42,20 @@ struct VibrationView: View {
                     WKInterfaceDevice.current().play(vibration)
                 }
             }, label: {
-                Text("Action")
+                Text("Action \(pickerRoundIndex)")
             })
             Button(action: {
-                HapticManager.shared.start()
+                HapticManager.shared.countdown1()
             }, label: {
-                Text("Start")
+                Text("countdown1")
             })
             Button(action: {
-                HapticManager.shared.work()
+                HapticManager.shared.countdown23()
             }, label: {
-                Text("Work")
+                Text("countdown23")
             })
             Button(action: {
-                HapticManager.shared.rest()
-            }, label: {
-                Text("Rest")
-            })
-            Button(action: {
-                HapticManager.shared.finish()
+                HapticManager.shared.timerFinished()
             }, label: {
                 Text("Finish")
             })

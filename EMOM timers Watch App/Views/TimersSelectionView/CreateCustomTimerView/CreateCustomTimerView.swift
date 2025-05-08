@@ -17,7 +17,7 @@ struct CreateCustomTimerView: View {
         NavigationStack(path: $navPath) {
             ScrollView {
                 FirstViewInFlow(navPath: $navPath)
-                .navigationTitle("EMOM")
+                    .navigationTitle(String(localized: createCustomTimerViewModel.timerType == .emom ? "EMOM" : "title_up_timer"))
                 .navigationDestination(for: String.self) { pathValue in
                     if pathValue == CreateCustomTimerViewModel.Screens.ageStepView.rawValue {
                         AgeStepView(navPath: $navPath)

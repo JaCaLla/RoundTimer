@@ -19,7 +19,7 @@
     "%lld years old" : {
 
     },
-    "Action" : {
+    "Action %lld" : {
 
     },
     "button_continue" : {
@@ -125,7 +125,10 @@
         }
       }
     },
-    "EMOM" : {
+    "countdown1" : {
+
+    },
+    "countdown23" : {
 
     },
     "emom_paragraph_1" : {
@@ -208,9 +211,6 @@
         }
       }
     },
-    "Rest" : {
-
-    },
     "round_n" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -223,9 +223,6 @@
       }
     },
     "Rounds" : {
-
-    },
-    "Screen dimmed. Tap to unblock." : {
 
     },
     "setup_age_info" : {
@@ -268,15 +265,22 @@
         }
       }
     },
-    "Start" : {
-
-    },
     "subtitle_emom_timer" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Set rounds, work time and rest time between rounds"
+          }
+        }
+      }
+    },
+    "subtitle_up_timer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set up-timer work time"
           }
         }
       }
@@ -317,6 +321,16 @@
         }
       }
     },
+    "title_up_timer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Up timer"
+          }
+        }
+      }
+    },
     "title_work" : {
       "localizations" : {
         "en" : {
@@ -327,13 +341,17 @@
         }
       }
     },
-    "UP" : {
-
+    "up_indicator" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UP"
+          }
+        }
+      }
     },
     "Vibration" : {
-
-    },
-    "Work" : {
 
     }
   },

@@ -24,7 +24,7 @@ final class CreateCustomTimerViewModel: ObservableObject {
     private let defaulltCustomTimer = CustomTimer(timerType: .emom, rounds: 5, workSecs:  60, restSecs: 0)
     
     var dismissFlowAndStartEMOM = false
-    var timerType: TimerType = .emom
+    @Published var timerType: TimerType = .emom
     private(set) var rounds = -1
     var workSecs = -1
     var restSecs = -1
@@ -58,7 +58,7 @@ final class CreateCustomTimerViewModel: ObservableObject {
     func getEmom() -> CustomTimer? {
         guard dismissFlowAndStartEMOM else { return nil }
         let rounds = timerType == .upTimer ? 1 : rounds
-        return CustomTimer(timerType: timerType, rounds: rounds, workSecs: workSecs, restSecs: restSecs)
+        return CustomTimer(timerType: timerType, rounds: rounds, workSecs: workSecs /*+ 1*/, restSecs: restSecs /*== 0 ? 0 : restSecs + 1*/)
     }
     
     func getContinueButtonText() -> LocalizedStringKey {
@@ -67,6 +67,10 @@ final class CreateCustomTimerViewModel: ObservableObject {
     
     func getNavigationLink() -> String {
         timerType == .upTimer ? Screens.timerPickerStepViewWork.rawValue  : Screens.timerPickerStepViewRest.rawValue
+    }
+    
+    func getButtonTitle() -> LocalizedStringKey {
+        timerType == .upTimer ? "button_start_work" : "button_rest_next"
     }
 }
 

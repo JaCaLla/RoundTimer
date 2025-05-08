@@ -11,60 +11,43 @@ import WatchConnectivity
 import os.log
 
 struct TimersSelectionView: View {
+    
     @Binding var customTimer: CustomTimer?
+    @EnvironmentObject var viewModel: CreateCustomTimerViewModel
+    
     @State var isPresentedCreateCustomTimerView: Bool = false
     @State var foregroundColor: Color = .blue
     @State var isConnectedAW = false
-    @State var wcSessionIsSuppported = false
-    @EnvironmentObject var viewModel: CreateCustomTimerViewModel
-    //@StateObject var viewModel = CreateCustomTimerViewModel()
+    
+    let columns = [
+        GridItem(.flexible())
+    ]
+    
     var body: some View {
-        List {
-            TimerSelectionView(systemName: "timer",
-                title: "title_emom_timer",
-                subtitle: "subtitle_emom_timer") {
-                if wcSessionIsSuppported {
-                    Task {
-//                        let result = await HealthkitManager.shared.startWorkoutSession()
-                        await MainActor.run {
-//                            LocalLogger.log("HealthkitManager.shared.startWorkoutSession:\(result ? "✅" : "❌")")
-//                            foregroundColor = result ? .green : .red
-//                            isConnectedAW = result
-                            isPresentedCreateCustomTimerView.toggle()
-                        }
-                    }
-                } else {
-                    isConnectedAW = false
-                    isPresentedCreateCustomTimerView.toggle()
+        VStack {
+            Spacer()
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(TimerType.allCases, content: timerSelectionCellView)
                 }
-  
-            }
-        }.fullScreenCover(isPresented: $isPresentedCreateCustomTimerView) {
-            CreateCustomTimerView(customTimer: $customTimer,
-                isConnectedAW: $isConnectedAW)
-            //.environmentObject(viewModel)
+            Spacer()
         }
-        .onAppear(perform: {
-//            Task {
-//                _ = await HealthkitManager.shared.authorizeHealthKit()
-//                wcSessionIsSuppported = checkIfiPhoneIsConnectedToAppleWatch()
-//            }
-        })
+        .padding(.horizontal, 20)
+        .fullScreenCover(isPresented: $isPresentedCreateCustomTimerView) {
+            CreateCustomTimerView(timerType: viewModel.timerType,
+                                  customTimer: $customTimer)
+        }
     }
     
-    func checkIfiPhoneIsConnectedToAppleWatch() -> Bool {
-            if WCSession.isSupported() {
-                let session = WCSession.default
-                session.activate()
-                if session.isPaired {
-                    if session.isWatchAppInstalled {
-                        return session.isReachable
-                    }
+    private func timerSelectionCellView(_ type: TimerType) -> some View {
+            TimerSelectionView(
+                title: type == .emom ? "title_emom_timer" : "title_up_timer",
+                subtitle: type == .emom ? "subtitle_emom_timer" : "subtitle_up_timer",
+                action: {
+                    viewModel.timerType = type
+                    isPresentedCreateCustomTimerView.toggle()
                 }
-            }
-            return false
-
-    }
+            )
+        }
 }
 #Preview {
     @Previewable @State var customTimer: CustomTimer? = nil

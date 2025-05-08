@@ -17,7 +17,7 @@ protocol EMOMViewModelProtocol {
 }
 
 @MainActor
-final class EMOMViewModel: NSObject, ObservableObject {
+class EMOMViewModel: NSObject, ObservableObject {
 
     @Published var chronoFrozen = ""
 
@@ -31,8 +31,10 @@ final class EMOMViewModel: NSObject, ObservableObject {
    
     private(set) var state: EMOMViewModelState = EMOMViewModelState()
     private(set) var roundsLeft = 0
-    static let coundownValue = 10//4
+    
+    static let coundownValue = 11
     private(set) var countdownCurrentValue = coundownValue
+    
     private(set) var startWorkTimeStamp: Date?
     private(set) var customTimer: CustomTimer?
     private(set) var audioManager: AudioManagerProtocol = AudioManager.shared
@@ -244,11 +246,14 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
         let ellapsedRounds = Int((Double(ellapsedSecs) / Double(secsPerRound)).rounded(.towardZero))
         
         var remainigSecs = ellapsedSecs - ellapsedRounds * secsPerRound
+        
         if remainigSecs >= customTimer.workSecs {
             remainigSecs -= customTimer.workSecs
         }
+       
+        let str = String(format: "%0.1d:%0.2d", remainigSecs / 60, remainigSecs % 60)
         remainigSecs += 1
-        return String(format: "%0.1d:%0.2d", remainigSecs / 60, remainigSecs % 60)
+        return str
    }
     
     private func startCountdown(extendedRuntimeSession: WKExtendedRuntimeSession,
@@ -262,7 +267,10 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
                     MainActor.assumeIsolated {
                         guard let self, self.state.value != .cancelled else { return }
                         self.countdownCurrentValue -= 1
-                        if self.countdownCurrentValue < 1 {
+                        if self.countdownCurrentValue <= 3,
+                            self.countdownCurrentValue >= 1 {
+                            HapticManager.shared.countdown1()
+                        }else if self.countdownCurrentValue < 1 {
                             self.timerCountdown?.invalidate()
                             self.dropTimer(&self.timerCountdown)
                             self.chronoFrozen = "--"

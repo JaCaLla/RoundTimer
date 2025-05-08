@@ -33,30 +33,30 @@ extension AudioManager: AudioManagerProtocol {
     
     func work() {
 #if os(watchOS)
-        HapticManager.shared.start()
+        HapticManager.shared.countdown23()
 #endif
         speak(text: String(localized: "chrono_message_work"))
     }
     
     func rest() {
 #if os(watchOS)
-        HapticManager.shared.start()
+        HapticManager.shared.countdown23()
 #endif
         speak(text: String(localized: "chrono_message_rest"))
     }
     
     func finished() {
 #if os(watchOS)
-        HapticManager.shared.start()
+        HapticManager.shared.timerFinished()
 #endif
         speak(text: String(localized: "chrono_message_finished"))
     }
 
     // MARK :- Private
     func speak(text: String) {
-#if os(watchOS)
-        HapticManager.shared.start()
-#endif
+//#if os(watchOS)
+ //       HapticManager.shared.start()
+//#endif
         let utterance = AVSpeechUtterance(string: text)
         utterance.volume = volume//0.1
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")

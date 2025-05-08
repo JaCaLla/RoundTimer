@@ -10,11 +10,9 @@ import SwiftUI
 
 @MainActor
 protocol HapticManagerProtocol {
-    func start()
-    func pause()
-    func rest()
-    func work()
-    func finish()
+    func countdown1()
+    func countdown23()
+    func timerFinished()
 }
 
 @MainActor
@@ -23,23 +21,16 @@ final class HapticManager {
 }
 
 extension HapticManager: HapticManagerProtocol {
-    func start() {
-        WKInterfaceDevice.current().play(.notification)//start)
+    
+    func countdown1() {
+        WKInterfaceDevice.current().play(.notification)
     }
     
-    func pause() {
+    func countdown23() {
         WKInterfaceDevice.current().play(.start)
     }
     
-    func rest() {
-        WKInterfaceDevice.current().play(.stop)
-    }
-    
-    func work() {
-        WKInterfaceDevice.current().play(.retry)
-    }
-    
-    func finish() {
+    func timerFinished() {
         WKInterfaceDevice.current().play(.success)
     }
     

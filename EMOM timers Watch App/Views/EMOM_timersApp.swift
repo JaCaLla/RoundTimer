@@ -14,22 +14,10 @@ struct EMOMTimersWatchApp: App {
         WindowGroup {
             #if false
             VibrationView()
+            #else
+            TimersSelectionView()
             #endif
-           TimersSelectionView()
-        }
-        .backgroundTask(.appRefresh("My_App_Updates")) { context in
-            print("todo")
+           
         }
     }
 }
-
-
-//class AppDelegate: NSObject, WKApplicationDelegate {
-//
-//    func handle(_ workoutConfiguration: HKWorkoutConfiguration) {
-//        Task {
-//            await HealthkitManager.shared.startWorkout()
-//         //   logger.debug("Successfully started workout")
-//        }
-//    }
-//}

@@ -3,7 +3,6 @@ import SwiftUI
 struct EMOMView: View {
     @Environment(\.isLuminanceReduced) var isLuminanceReduced
     @Binding var customTimer: CustomTimer?
-    @Binding var closedFromCompation: Bool
     @StateObject var viewModel = EMOMViewModel()
     var body: some View {
         VStack(spacing: 0) {
@@ -15,7 +14,7 @@ struct EMOMView: View {
             VStack(spacing: 0) {
                 message()
                 HStack {
-                    rounds()
+                    rounds
                     Spacer()
                     mmss()
                 }
@@ -35,10 +34,6 @@ struct EMOMView: View {
         .onDisappear {
             viewModel.close()
         }
-        .onChange(of: closedFromCompation) {
-            guard closedFromCompation else { return }
-            viewModel.close()
-        }
     }
     
     private func closeButton() -> some View {
@@ -56,15 +51,26 @@ struct EMOMView: View {
             .foregroundColor(.paragrahColor)
     }
     
-    private func rounds() -> some View {
-        HStack(alignment: .firstTextBaseline, spacing: 0) {
-            Text("\(viewModel.getCurrentRound())")
-                .font(viewModel.getTimerAndRoundFont())
-            Text("\(viewModel.getRounds())")
-                .font(.emomRounds)
-        }
-        .foregroundColor(.roundColor)
-    }
+//    private func rounds() -> some View {
+//        guard let timerType = customTimer?.timerType else { return EmptyView() }
+//        switch timerType {
+//        case .emom:
+//           return HStack(alignment: .firstTextBaseline, spacing: 0) {
+//                Text("\(viewModel.getCurrentRound())")
+//                    .font(viewModel.getTimerAndRoundFont())
+//                Text("\(viewModel.getRounds())")
+//                    .font(.emomRounds)
+//            }
+//            .foregroundColor(.roundColor)
+//        case .upTimer:
+//           return  HStack(alignment: .firstTextBaseline, spacing: 0) {
+//                Text(String(localized: "up_indicator"))
+//                    .font(viewModel.getTimerAndRoundFont())
+//            }
+//            .foregroundColor(.roundColor)
+//        }
+//
+//    }
     
     private func mmss() -> some View {
         Text(viewModel.chronoFrozen)
@@ -80,24 +86,38 @@ struct EMOMView: View {
     }
 }
 
+private extension EMOMView {
+    @ViewBuilder var rounds: some View {
+        if let timerType = customTimer?.timerType {
+            switch timerType {
+            case .emom:
+                HStack(alignment: .firstTextBaseline, spacing: 0) {
+                    Text("\(viewModel.getCurrentRound())")
+                        .font(viewModel.getTimerAndRoundFont())
+                    Text("\(viewModel.getRounds())")
+                        .font(.emomRounds)
+                }
+                .foregroundColor(.roundColor)
+            case .upTimer:
+                 HStack(alignment: .firstTextBaseline, spacing: 0) {
+                    Text(String(localized: "up_indicator"))
+                        .font(viewModel.getTimerAndRoundFont())
+                }
+                .foregroundColor(.roundColor)
+            }
+        }
+    }
+}
+
 
 #Preview("Small Font") {
-    // let model =  EMOMViewModel()
-    //  model.set(emom: CustomTimer(timerType: .emom,rounds: 22, workSecs: 1800, restSecs: 0))
-    return EMOMView(customTimer: .constant(nil), closedFromCompation: .constant(false))
-    //    .environmentObject(model)
+    return EMOMView(customTimer: .constant(nil))
 }
 
 #Preview("Regular Font") {
-    //let model =  EMOMViewModel()
-    // model.set(emom: CustomTimer(timerType: .emom,rounds: 2, workSecs: 1800, restSecs: 0))
-    return EMOMView(customTimer: .constant(nil), closedFromCompation: .constant(false))
-    //   .environmentObject(model)
+    return EMOMView(customTimer: .constant(nil))
 }
 
 #Preview("Large Font") {
-    //let model = EMOMViewModel()
-    //   model.set(emom: CustomTimer(timerType: .emom,rounds: 12, workSecs: 200, restSecs: 0))
-    return EMOMView(customTimer: .constant(nil), closedFromCompation: .constant(false))
-    //     .environmentObject(model)
+    return EMOMView(customTimer: .constant(nil))
 }

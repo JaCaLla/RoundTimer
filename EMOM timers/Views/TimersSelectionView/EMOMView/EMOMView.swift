@@ -33,7 +33,6 @@ struct EMOMView: View {
         .onAppear {
             guard emomViewModel.state.value == .notStarted else { return }
             emomViewModel.setAndStart(emom: customTimer)
-          //  emomViewModel.action()
         }
         .contentShape(Rectangle())
     }
@@ -77,22 +76,5 @@ struct EMOMView: View {
 
     model.setAndStart(emom: customTimer)
     return EMOMView(customTimer: .constant(customTimer))
-       // .previewInterfaceOrientation(.landscapeLeft)
         .environmentObject(model)
 }
-
-//#Preview("Regular Font") {
-//    //let model =  EMOMViewModel()
-//   // model.set(emom: CustomTimer(timerType: .emom,rounds: 2, workSecs: 1800, restSecs: 0))
-//    return EMOMView(customTimer: .constant(nil))
-//        .previewInterfaceOrientation(.landscapeLeft)
-//     //   .environmentObject(model)
-//}
-
-//#Preview("Large Font") {
-//    let model =  EMOMViewModel()
-// //   model.set(emom: CustomTimer(timerType: .emom,rounds: 12, workSecs: 200, restSecs: 0))
-//    return EMOMView(customTimer: .constant(nil))
-//        .previewInterfaceOrientation(.landscapeLeft)
-//   //     .environmentObject(model)
-//}

@@ -51,26 +51,6 @@ struct EMOMView: View {
             .foregroundColor(.paragrahColor)
     }
     
-//    private func rounds() -> some View {
-//        guard let timerType = customTimer?.timerType else { return EmptyView() }
-//        switch timerType {
-//        case .emom:
-//           return HStack(alignment: .firstTextBaseline, spacing: 0) {
-//                Text("\(viewModel.getCurrentRound())")
-//                    .font(viewModel.getTimerAndRoundFont())
-//                Text("\(viewModel.getRounds())")
-//                    .font(.emomRounds)
-//            }
-//            .foregroundColor(.roundColor)
-//        case .upTimer:
-//           return  HStack(alignment: .firstTextBaseline, spacing: 0) {
-//                Text(String(localized: "up_indicator"))
-//                    .font(viewModel.getTimerAndRoundFont())
-//            }
-//            .foregroundColor(.roundColor)
-//        }
-//
-//    }
     
     private func mmss() -> some View {
         Text(viewModel.chronoFrozen)

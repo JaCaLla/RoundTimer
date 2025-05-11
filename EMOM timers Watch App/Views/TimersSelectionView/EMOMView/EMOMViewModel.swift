@@ -45,6 +45,19 @@ class EMOMViewModel: NSObject, ObservableObject {
         self.audioManager = audioManager ?? AudioManager.shared
         self.extendedRuntimeSessionDelegate = extendedRuntimeSessionDelegate
     }
+    
+    open func getRoundsProgress() -> Double {
+        guard let customTimer else { return 0.0 }
+        if state.value == .finished {
+            return 1.0
+        } else if state.value == .startedWork || state.value == .startedRest {
+            return Double(customTimer.rounds - roundsLeft + 1) / Double(customTimer.rounds)
+        } else if state.value == .countdown {
+            return 1.0 - Double(countdownCurrentValue) / Double(EMOMViewModel.coundownValue)
+        } else {
+            return 0.0
+        }
+    }
 }
 
 // MARK :- EMOMViewModelProtocol
@@ -79,19 +92,6 @@ extension EMOMViewModel: EMOMViewModelProtocol {
         extendedRuntimeSession = WKExtendedRuntimeSession()
         extendedRuntimeSession?.delegate = extendedRuntimeSessionDelegate ?? self
         extendedRuntimeSession?.start()
-    }
-    
-    func getRoundsProgress() -> Double {
-        guard let customTimer else { return 0.0 }
-        if state.value == .finished {
-            return 1.0
-        } else if state.value == .startedWork || state.value == .startedRest {
-            return Double(customTimer.rounds - roundsLeft + 1) / Double(customTimer.rounds)
-        } else if state.value == .countdown {
-            return 1.0 - Double(countdownCurrentValue) / Double(EMOMViewModel.coundownValue)
-        } else {
-            return 0.0
-        }
     }
     
     func getForegroundTextColor() -> Color {
@@ -148,7 +148,11 @@ extension EMOMViewModel: EMOMViewModelProtocol {
         } else if state.value == .notStarted {
             return String(localized: "chrono_message_press_play")
         } else if state.value == .startedWork {
-            return roundsLeft <= 1 ? String(localized: "chorno_message_last_round") : String(localized: "chrono_message_work")
+            if customTimer?.timerType == .emom {
+                return roundsLeft <= 1 ? String(localized: "chorno_message_last_round") : String(localized: "chrono_message_work")
+            } else {
+                return ""
+            }
         } else if state.value == .startedRest {
             return roundsLeft <= 1 ? String(localized: "chorno_message_last_round") : String(localized: "chrono_message_rest")
         } else {
@@ -340,7 +344,6 @@ extension EMOMViewModel: WKExtendedRuntimeSessionDelegate {
     }
 
     private func speech(state: EMOMViewModelState) {
-        guard state.didChanged else { return }
         audioManager.speech(state: state)
     }
 

@@ -6,29 +6,31 @@
 //
 
 import SwiftUI
-import os.log
+
 struct MainView: View {
-    @State var customTimer: CustomTimer?
-    @StateObject private var timerStore = TimerStore.shared
-    @StateObject var viewModel = CreateCustomTimerViewModel()
+    @State private var customTimer: CustomTimer?
+    @StateObject private var viewModel = CreateCustomTimerViewModel()
+    
     var body: some View {
         ZStack {
-            if customTimer != nil {
-                EMOMView(customTimer: $customTimer)
-                    
-            } else {
+            Group {
+                if let timer = customTimer {
+                    timerView(for: timer)
+                } else {
                     TimersSelectionView(customTimer: $customTimer)
-                    .environmentObject(viewModel)
+                        .environmentObject(viewModel)
+                }
             }
         }
-        .onChange(of: customTimer) {
-            if let customTimer {
-                LocalLogger.log("MainView.onChange:\(customTimer.description)")
-                timerStore.startTimerOnAW(customTimer: customTimer)
-            } else {
-                timerStore.removeTimerOnAW()
-            }
-            
+    }
+    
+    @ViewBuilder
+    private func timerView(for timer: CustomTimer) -> some View {
+        switch timer.timerType {
+        case .emom:
+            EMOMView(customTimer: $customTimer)
+        case .upTimer:
+            UpTimerView(customTimer: $customTimer)
         }
     }
 }

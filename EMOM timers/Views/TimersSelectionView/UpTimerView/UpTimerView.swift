@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct EMOMView: View {
+struct UpTimerView: View {
     let bottonSideSize = 50.0
     @Environment(\.scenePhase) private var scenePhase
     @Binding var customTimer: CustomTimer?
-    @StateObject var emomViewModel = EMOMViewModel()
+    @StateObject var emomViewModel = UpTimerViewModel()
 
     var body: some View {
         VStack {
@@ -55,10 +55,8 @@ struct EMOMView: View {
     
     private func rounds() -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 0) {
-            Text((emomViewModel.getCurrentRound()))
-                .font(.timerAndRoundiOSAppFont)
-            Text("\(emomViewModel.getRounds())")
-                .font(.emomRoundsiOSAppFont)
+                        Text((emomViewModel.getCurrentRound()))
+                            .font(.timerAndRoundiOSAppFont)
         } .foregroundColor(.roundColor)
     }
     

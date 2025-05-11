@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct CreateCustomTimerContinueButton: View {
-    @Binding var isFetchingAW: Bool
+ //   @Binding var isFetchingAW: Bool
     @Binding var customTimer: CustomTimer?
-    var createChronoMirroredInAW: Bool
+ //   var createChronoMirroredInAW: Bool
     @EnvironmentObject var viewModel: CreateCustomTimerViewModel
 
     var body: some View {
         ZStack {
-            if isFetchingAW {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                    .scaleEffect(2.0, anchor: .center)
-            }
+//            if isFetchingAW {
+//                ProgressView()
+//                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+//                    .scaleEffect(2.0, anchor: .center)
+//            }
             Button(action: {
                 Task {
                     customTimer = await viewModel.createCustomTimer()

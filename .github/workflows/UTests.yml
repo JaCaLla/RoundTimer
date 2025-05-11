@@ -1,0 +1,23 @@
+name: utests-workflow
+
+on:
+  pull_request:
+    branches: [main, develop]
+jobs:
+  utests-job:
+    runs-on: macos-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set to XCode 16.2
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+           xcode-version: '16.2'
+
+      - name: Execute Unit tessts (iOS target)
+        run: xcodebuild test -scheme 'EMOM timers' -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest'
+
+      - name: Execute Unit tessts (AW target)
+        run: xcodebuild test -scheme 'EMOM timers Watch App' -destination 'platform=watchOS Simulator,name=Apple Watch Series 10 (42mm),OS=latest'

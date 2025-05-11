@@ -12,12 +12,11 @@ struct TimerSelectionView/*<T: View>*/: View {
     let title: LocalizedStringKey
     let subtitle: LocalizedStringKey?
     let action: () -> Void
- //   let label: ()->T
     
-    init(systemName: String,
+    init(systemName: String = "timer",
          title: LocalizedStringKey,
          subtitle: LocalizedStringKey? = nil,
-         action: @escaping () -> Void/*, @ViewBuilder label: @escaping ()->T*/) {
+         action: @escaping () -> Void) {
         
         self.systemName = systemName
         self.title = title
@@ -45,6 +44,9 @@ struct TimerSelectionView/*<T: View>*/: View {
                     .font(.buttonSubtitleFont)
             }
         }
+        .padding()
+        .background(.gray10)
+        .cornerRadius(8.0)
         .gesture(tap)
     }
     

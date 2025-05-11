@@ -6,10 +6,12 @@
 //
 
 import Foundation
-enum TimerType: String, Codable {
+enum TimerType: String, Codable, CaseIterable, Identifiable  {
   //  case none
     case emom
     case upTimer
+    
+    var id: String { self.rawValue }
 }
 
 struct CustomTimer: Equatable, Codable {

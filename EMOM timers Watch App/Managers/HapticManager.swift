@@ -10,11 +10,9 @@ import SwiftUI
 
 @MainActor
 protocol HapticManagerProtocol {
-    func start()
-    func pause()
-    func rest()
-    func work()
-    func finish()
+    func countdown1()
+    func countdown23()
+    func timerFinished()
 }
 
 @MainActor
@@ -23,41 +21,16 @@ final class HapticManager {
 }
 
 extension HapticManager: HapticManagerProtocol {
-    func start() {
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
-//            WKInterfaceDevice.current().play(.failure)
-//        }
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-//            WKInterfaceDevice.current().play(.failure)
-//        }
-        WKInterfaceDevice.current().play(.notification)//start)
+    
+    func countdown1() {
+        WKInterfaceDevice.current().play(.notification)
     }
     
-    func pause() {
+    func countdown23() {
         WKInterfaceDevice.current().play(.start)
     }
     
-    func rest() {
-       // WKInterfaceDevice.current().play(.notification)
-        WKInterfaceDevice.current().play(.stop)
-    }
-    
-    func work() {
-        //start()
-        WKInterfaceDevice.current().play(.retry)
-    }
-    
-    func finish() {
-        /*
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
-            WKInterfaceDevice.current().play(.failure)
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            WKInterfaceDevice.current().play(.failure)
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            WKInterfaceDevice.current().play(.notification)
-        }*/
+    func timerFinished() {
         WKInterfaceDevice.current().play(.success)
     }
     

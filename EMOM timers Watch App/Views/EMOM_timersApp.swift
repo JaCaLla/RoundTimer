@@ -9,25 +9,15 @@ import SwiftUI
 import AVFoundation
 
 @main
-struct EMOM_timers_Watch_AppApp: App {
+struct EMOMTimersWatchApp: App {
     var body: some Scene {
         WindowGroup {
-         //   VibrationView()
-           TimersSelectionView()
-        }
-        .backgroundTask(.appRefresh("My_App_Updates")) { context in
-            print("todo")
+            #if false
+            VibrationView()
+            #else
+            TimersSelectionView()
+            #endif
+           
         }
     }
 }
-
-
-//class AppDelegate: NSObject, WKApplicationDelegate {
-//
-//    func handle(_ workoutConfiguration: HKWorkoutConfiguration) {
-//        Task {
-//            await HealthkitManager.shared.startWorkout()
-//         //   logger.debug("Successfully started workout")
-//        }
-//    }
-//}

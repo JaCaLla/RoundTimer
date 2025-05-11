@@ -30,12 +30,7 @@ extension EMOMViewModel: EMOMViewModelProtocol {
 }
 
 @MainActor
-final class EMOMViewModel: NSObject, ObservableObject {
-
-    // MARK: - Emom timer states
-//    enum State: String {
-//        case notStarted, countdown, startedWork, startedRest, finished, cancelled
-//    }
+class EMOMViewModel: NSObject, ObservableObject {
 
     @Published var mmss = "--:--"
 
@@ -119,7 +114,7 @@ final class EMOMViewModel: NSObject, ObservableObject {
         return work ? state.value == .startedWork: state.value == .startedRest
     }
 
-    func getCurrentRound() -> String {
+    open func getCurrentRound() -> String {
         guard let customTimer, [.countdown].allSatisfy({ state.value != $0 }) else { return "" }
         if [.notStarted].contains(where: { state.value == $0 }) {
             return "1"
@@ -145,7 +140,11 @@ final class EMOMViewModel: NSObject, ObservableObject {
         } else if state.value == .notStarted {
             return String(localized: "chrono_message_press_play")
         } else if state.value == .startedWork {
-            return roundsLeft <= 1 ? String(localized: "chrono_message_last_round") : String(localized: "chrono_message_work")
+            if customTimer?.timerType == .emom {
+                return roundsLeft <= 1 ? String(localized: "chrono_message_last_round") : String(localized: "chrono_message_work")
+            } else {
+                return ""
+            }
         } else if state.value == .startedRest {
             return roundsLeft <= 1 ? String(localized: "chrono_message_last_round") : String(localized: "chrono_message_rest")
         } else {
@@ -311,8 +310,6 @@ final class EMOMViewModel: NSObject, ObservableObject {
     // MARK :- Private/Internal
     private func processWorktime(emom: CustomTimer, timerWork: inout Timer?) {
         guard let fireWork = endOfRound(emom: emom) else { return }
-       // chronoOnMove = Date.now
-      //  chronoFrozen = getChronoOnLowEnergyMode()
 
         createAndRunTimerWork(emom, fireWork, timerWork: &timerWork)
     }
@@ -329,8 +326,10 @@ final class EMOMViewModel: NSObject, ObservableObject {
         if remainigSecs >= customTimer.workSecs {
             remainigSecs -= customTimer.workSecs
         }
-       // remainigSecs += 1
-        return String(format: "%0.1d:%0.2d", remainigSecs / 60, remainigSecs % 60)
+
+        let mmss = String(format: "%0.1d:%0.2d", remainigSecs / 60, remainigSecs % 60)
+        print(mmss)
+        return mmss
    }
     
     fileprivate func createAndRunTimerWork(_ emom: CustomTimer, _ fireWork: Date, timerWork: inout Timer?) {
